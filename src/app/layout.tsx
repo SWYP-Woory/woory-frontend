@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={`${notoSans.className} text-[18px]`}>{children}</body>
+      <body className={notoSans.className}>{children}</body>
     </html>
   );
 }
