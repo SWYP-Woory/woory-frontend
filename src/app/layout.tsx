@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Noto_Sans_KR } from 'next/font/google';
 import './globals.css';
 
-const notoSans = Noto_Sans_KR({ subsets: ['latin'], weight: ['500'] });
+const notoSans = Noto_Sans_KR({ subsets: ['latin'], weight: ['400'] });
 
 export const metadata: Metadata = {
   title: 'Create Next App',
