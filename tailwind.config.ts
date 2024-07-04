@@ -24,6 +24,20 @@ const config: Config = {
       primary: '#1EA49A',
       secondary: '#FF95B9',
     },
+    fontSize: {
+      12: '1.2rem',
+      14: '1.4rem',
+      16: '1.6rem',
+      18: '1.8rem',
+      20: '2.0rem',
+      24: '2.4rem',
+    },
+    fontWeight: {
+      400: '400',
+      500: '500',
+      600: '600',
+      700: '700',
+    },
   },
   plugins: [],
 };
