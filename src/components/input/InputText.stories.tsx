@@ -12,7 +12,7 @@ type Story = StoryObj<typeof InputText>;
 
 export const Default: Story = {
   args: {
-    value: '엥',
+    value: '',
     hasLimit: true,
     maxLength: 10,
   },
