@@ -1,10 +1,19 @@
+'use client';
+
 import ActiveNotice from '@/../../public/notification/activeNotice.svg';
 import Notice from '@/../../public/notification/notice.svg';
+import { useState } from 'react';
 
-interface Props {
-  isActive: boolean;
-}
+export default function NoticeIcon() {
+  const [isActive, setIsActive] = useState(false);
 
-export default function NoticeIcon({ isActive }: Props) {
-  return isActive ? <ActiveNotice width="2.4rem" height="2.4rem" /> : <Notice width="2.4rem" height="2.4rem" />;
+  const handleClick = () => {
+    setIsActive(!isActive);
+  };
+
+  return isActive ? (
+    <ActiveNotice width="2.4rem" height="2.4rem" onClick={handleClick} />
+  ) : (
+    <Notice width="2.4rem" height="2.4rem" onClick={handleClick} />
+  );
 }
