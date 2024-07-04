@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 
-interface Prop {
-  value?: string;
+interface Props {
+  value: string;
   hasLimit?: boolean;
   maxLength: number;
   placeholder: string;
@@ -17,7 +17,7 @@ interface Prop {
  * @param placeholder
  */
 
-export default function InputText({ value = '', hasLimit = false, maxLength, placeholder }: Prop) {
+export default function InputText({ value = '', hasLimit = false, maxLength, placeholder }: Props) {
   const [inputValue, setInputValue] = useState<string>(value);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
