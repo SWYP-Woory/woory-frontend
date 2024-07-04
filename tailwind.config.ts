@@ -1,5 +1,16 @@
 import type { Config } from 'tailwindcss';
 
+const createPxEntries = (size: number) => {
+  return {
+    0: '0',
+    ...Array.from(Array(size + 1)).reduce((accumulator, _, i) => {
+      return { ...accumulator, [`${i * 4}`]: `${(i * 4) / 10}rem` };
+    }),
+  };
+};
+
+const PX_ENTRIES = createPxEntries(100);
+
 const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -24,6 +35,7 @@ const config: Config = {
       primary: '#1EA49A',
       secondary: '#FF95B9',
     },
+    spacing: PX_ENTRIES,
     fontSize: {
       12: '1.2rem',
       14: '1.4rem',
