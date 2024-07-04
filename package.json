@@ -13,6 +13,8 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@types/classnames": "^2.3.1",
+    "classnames": "^2.5.1",
     "next": "14.2.4",
     "prettier": "^3.3.2",
     "react": "^18",
