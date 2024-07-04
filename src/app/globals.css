@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  font-size: 62.5%;
+}
+
+@layer components {
+  .font-title {
+    @apply text-black font-700 text-22;
+  }
+  .font-body {
+    @apply text-black font-400 text-18;
+  }
+  .font-caption {
+    @apply text-black font-400 text-14;
+  }
+  .font-bodyBold {
+    @apply text-black font-700 text-18;
+  }
+}
