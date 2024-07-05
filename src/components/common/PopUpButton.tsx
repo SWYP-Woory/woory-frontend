@@ -23,5 +23,10 @@ export default function PopUpButton({ text, textColor, colorType, size }: Props)
       'w-[16.4rem] px-[6.5rem]': size === 'large',
     },
   );
-  return <button className={classes}>{text}</button>;
+
+  return (
+    <button type="button" className={classes}>
+      {text}
+    </button>
+  );
 }
