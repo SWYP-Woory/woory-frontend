@@ -1,4 +1,4 @@
-import BottomMenuBar from './BottomMenuBar';
+import BottomMenuBar from '@/components/common/bottomMenuBar/BottomMenuBar';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof BottomMenuBar> = {

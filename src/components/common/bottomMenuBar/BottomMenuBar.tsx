@@ -17,7 +17,7 @@ export default function BottomMenuBar() {
 
   return (
     <nav>
-      <div className="flex justify-evenly items-start pt-[1.3rem] bg-white w-[37.5rem] h-[7.2rem] ">
+      <div className="flex justify-evenly items-start pt-[1.3rem] bg-white w-[37.5rem] h-[4.8rem] ">
         <Link
           href="/"
           onClick={() => {
