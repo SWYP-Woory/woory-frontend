@@ -1,13 +1,9 @@
 import Checkbox from '@/components/checkbox/Checkbox';
 import { Meta, StoryObj } from '@storybook/react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 function Checkboxes() {
   const [isChecked, setIsChecked] = useState(false);
-
-  useEffect(() => {
-    setIsChecked(isChecked);
-  }, [isChecked]);
 
   return (
     <div className="flex text-12 gap-8">
