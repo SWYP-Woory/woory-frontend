@@ -1,3 +1,4 @@
+import AddButton from '@/components/icon/addButton/AddButton';
 import LeftArrowIcon from '@/components/icon/arrow/LeftArrowIcon';
 import RightArrowIcon from '@/components/icon/arrow/RightArrowIcon';
 import HeartIcon from '@/components/icon/bottomBar/HeartIcon';
@@ -99,8 +100,14 @@ function Icons() {
           <ThumbsIcon size="large" />
         </IconSort>
       </IconSection>
+
       <IconSection title="Link Icon">
         <LinkIcon />
+      </IconSection>
+
+      <IconSection title="Add Button">
+        <AddButton />
+        <AddButton isActive />
       </IconSection>
     </div>
   );
