@@ -1,3 +1,4 @@
+import AddButton from '@/components/icon/addButton/AddButton';
 import LeftArrowIcon from '@/components/icon/arrow/LeftArrowIcon';
 import RightArrowIcon from '@/components/icon/arrow/RightArrowIcon';
 import HeartIcon from '@/components/icon/bottomBar/HeartIcon';
@@ -8,6 +9,7 @@ import DeleteIcon from '@/components/icon/delete/DeleteIcon';
 import InfoIcon from '@/components/icon/info/InfoIcon';
 import KebabMenuIcon from '@/components/icon/kebabMenu/KebabMenuIcon';
 import LikeIcon from '@/components/icon/like/LikeIcon';
+import LinkIcon from '@/components/icon/link/LinkIcon';
 import NoticeIcon from '@/components/icon/notification/NoticeIcon';
 import GreyHeartIcon from '@/components/icon/reaction/GreyHeartIcon';
 import RcHeartIcon from '@/components/icon/reaction/RcHeartIcon';
@@ -97,6 +99,15 @@ function Icons() {
           <SurpriseIcon size="large" />
           <ThumbsIcon size="large" />
         </IconSort>
+      </IconSection>
+
+      <IconSection title="Link Icon">
+        <LinkIcon />
+      </IconSection>
+
+      <IconSection title="Add Button">
+        <AddButton />
+        <AddButton isActive />
       </IconSection>
     </div>
   );
