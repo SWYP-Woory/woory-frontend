@@ -1,7 +1,7 @@
 'use client';
 
-import ActiveNotice from '@/../../public/notification/activeNotice.svg';
-import Notice from '@/../../public/notification/notice.svg';
+import ActiveNotice from '@/assets/icons/notification/activeNotice.svg';
+import Notice from '@/assets/icons/notification/notice.svg';
 import { useState } from 'react';
 
 export default function NoticeIcon() {

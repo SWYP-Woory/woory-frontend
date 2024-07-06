@@ -1,6 +1,6 @@
 'use client';
 
-import KebabMenu from '@/../../public/kebabMenu/kebabMenu.svg';
+import KebabMenu from '@/assets/icons/kebabMenu/kebabMenu.svg';
 import { useState } from 'react';
 
 export default function KebabMenuIcon() {

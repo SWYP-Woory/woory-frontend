@@ -1,4 +1,4 @@
-import Smile from '@/../../public/reaction/smile.svg';
+import Smile from '@/assets/icons/reaction/smile.svg';
 
 interface Props {
   size: 'sm' | 'md';

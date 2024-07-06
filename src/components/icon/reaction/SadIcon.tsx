@@ -1,4 +1,4 @@
-import Sad from '@/../../public/reaction/sad.svg';
+import Sad from '@/assets/icons/reaction/sad.svg';
 
 interface Props {
   size: 'sm' | 'md';

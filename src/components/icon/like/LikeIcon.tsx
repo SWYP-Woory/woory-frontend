@@ -1,7 +1,7 @@
 'use client';
 
-import ActiveLike from '@/../../public/like/activeLike.svg';
-import Like from '@/../../public/like/like.svg';
+import ActiveLike from '@/assets/icons/like/activeLike.svg';
+import Like from '@/assets/icons/like/like.svg';
 import { useState } from 'react';
 
 export default function LikeIcon() {

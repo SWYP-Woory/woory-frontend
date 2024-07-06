@@ -1,4 +1,4 @@
-import Heart from '@/../../public/reaction/heart.svg';
+import Heart from '@/assets/icons/reaction/heart.svg';
 
 interface Props {
   size: 'sm' | 'md';

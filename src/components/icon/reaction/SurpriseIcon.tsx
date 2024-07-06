@@ -1,4 +1,4 @@
-import Surprise from '@/../../public/reaction/surprise.svg';
+import Surprise from '@/assets/icons/reaction/surprise.svg';
 
 interface Props {
   size: 'sm' | 'md';

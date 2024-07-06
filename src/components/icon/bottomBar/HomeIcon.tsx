@@ -1,5 +1,5 @@
-import ActivationHome from '@/../../public/bottomBar/activeHome.svg';
-import DeActivationHome from '@/../../public/bottomBar/home.svg';
+import ActivationHome from '@/assets/icons/bottomBar/activeHome.svg';
+import DeActivationHome from '@/assets/icons/bottomBar/home.svg';
 
 interface Props {
   isActive: boolean;

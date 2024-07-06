@@ -1,4 +1,4 @@
-import Thumbs from '@/../../public/reaction/thumbs.svg';
+import Thumbs from '@/assets/icons/reaction/thumbs.svg';
 
 interface Props {
   size: 'sm' | 'md';
