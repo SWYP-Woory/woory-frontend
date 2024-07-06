@@ -14,6 +14,6 @@ export const Default: Story = {
   args: {
     value: '',
     hasLimit: true,
-    maxLength: 10
-  }
-}
+    maxLength: 10,
+  },
+};

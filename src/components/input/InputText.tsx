@@ -9,15 +9,7 @@ interface Props {
   placeholder: string;
 }
 
-/**
- * InputText component
- * @param value: input의 기본값
- * @param hasLimit: 글자 수 제한 표시 여부
- * @param maxLength: 최대 글자 수
- * @param placeholder
- */
-
-export default function InputText({ value = '', hasLimit = false, maxLength, placeholder }: Props) {
+export default function InputText({ value, hasLimit = false, maxLength, placeholder }: Props) {
   const [inputValue, setInputValue] = useState<string>(value);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,9 +20,9 @@ export default function InputText({ value = '', hasLimit = false, maxLength, pla
   };
 
   return (
-    <div className="flex justify-end items-center w-[343px] h-[48px] relative">
+    <div className="flex justify-end items-center w-[34.3rem] h-[4.8rem] relative">
       <input
-        className="border border-solid border-midGrey rounded-[10px] py-[11px] pl-[16px] pr-[58px] 
+        className="border border-solid border-midGrey rounded-[1rem] py-[1.1rem] pl-[1.6rem] pr-[5.8rem] 
         w-full h-full font-body placeholder-textDisabled focus:outline-none"
         type="text"
         placeholder={placeholder}
@@ -39,7 +31,7 @@ export default function InputText({ value = '', hasLimit = false, maxLength, pla
         onChange={handleChange}
       />
       {hasLimit && (
-        <span className="absolute right-[8px] font-caption text-midGrey">
+        <span className="absolute right-[0.8rem] font-caption text-midGrey">
           ({inputValue.length}/{maxLength})
         </span>
       )}
