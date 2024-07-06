@@ -1,11 +1,11 @@
-import Heart from '@/../../public/reaction/heart.svg';
+import Heart from '@/assets/icons/reaction/heart.svg';
 
 interface Props {
-  size: 'sm' | 'md';
+  size: 'small' | 'large';
 }
 
 export default function RcHeartIcon({ size }: Props) {
-  const iconSize = size === 'sm' ? '2.4rem' : '3.0rem';
+  const iconSize = size === 'small' ? '2.4rem' : '3.0rem';
 
   return <Heart width={iconSize} height={iconSize} />;
 }

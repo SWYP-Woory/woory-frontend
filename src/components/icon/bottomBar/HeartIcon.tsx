@@ -1,5 +1,5 @@
-import ActivationHeart from '@/../../public/bottomBar/activeHeart.svg';
-import DeActivationHeart from '@/../../public/bottomBar/heart.svg';
+import ActivationHeart from '@/assets/icons/bottomBar/activeHeart.svg';
+import DeActivationHeart from '@/assets/icons/bottomBar/heart.svg';
 
 interface Props {
   isActive: boolean;

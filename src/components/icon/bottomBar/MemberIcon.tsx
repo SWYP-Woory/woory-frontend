@@ -1,5 +1,5 @@
-import ActivationMember from '@/../../public/bottomBar/activeMember.svg';
-import DeActivationMember from '@/../../public/bottomBar/member.svg';
+import ActivationMember from '@/assets/icons/bottomBar/activeMember.svg';
+import DeActivationMember from '@/assets/icons/bottomBar/member.svg';
 
 interface Props {
   isActive: boolean;

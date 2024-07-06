@@ -1,5 +1,5 @@
-import ActivationMyPage from '@/../../public/bottomBar/activeMypage.svg';
-import DeActivationMyPage from '@/../../public/bottomBar/mypage.svg';
+import ActivationMyPage from '@/assets/icons/bottomBar/activeMypage.svg';
+import DeActivationMyPage from '@/assets/icons/bottomBar/mypage.svg';
 
 interface Props {
   isActive: boolean;

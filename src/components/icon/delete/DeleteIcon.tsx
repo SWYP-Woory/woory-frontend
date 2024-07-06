@@ -1,6 +1,6 @@
 'use client';
 
-import Delete from '@/../../public/delete/delete.svg';
+import Delete from '@/assets/icons/delete/delete.svg';
 import { useState } from 'react';
 
 export default function DeleteIcon() {
