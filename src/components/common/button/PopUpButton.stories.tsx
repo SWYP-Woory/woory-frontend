@@ -1,4 +1,4 @@
-import PopUpButton from '@/components/common/popup/PopUpButton';
+import PopUpButton from '@/components/common/button/PopUpButton';
 import { Meta, StoryObj } from '@storybook/react';
 
 function PopUpButtons() {
