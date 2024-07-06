@@ -6,13 +6,15 @@ import { ReactNode } from 'react';
 interface Props {
   isChecked?: boolean;
   isDisabled?: boolean;
-  setIsChecked?: any;
+  setIsChecked?: (value: boolean) => {};
   children?: ReactNode;
 }
 
 export default function Checkbox({ isChecked, isDisabled, setIsChecked, children }: Props) {
   const handleClick = (value: boolean) => {
-    setIsChecked(value);
+    if (setIsChecked) {
+      setIsChecked(value);
+    }
   };
 
   if (isDisabled) {
