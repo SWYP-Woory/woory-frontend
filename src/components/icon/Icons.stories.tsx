@@ -65,17 +65,20 @@ function Icons() {
         </IconSort>
       </IconSection>
 
-      <IconSection title="Comment,KebabMenu,Like,Notice Icons (Click here)">
+      <IconSection title="Comment,KebabMenu,Like Icons (Click here)">
         <IconSort>
           <DeleteIcon />
           <KebabMenuIcon />
           <LikeIcon />
-          <NoticeIcon />
         </IconSort>
       </IconSection>
 
-      <IconSection title="Info Icons">
+      <IconSection title="Info, Notice Icons">
         <InfoIcon />
+        <IconSort>
+          <NoticeIcon isActive />
+          <NoticeIcon isActive={false} />
+        </IconSort>
       </IconSection>
 
       <IconSection title="Reaction Icons">
