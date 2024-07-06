@@ -7,21 +7,11 @@ import ThumbsIcon from '@/components/icon/reaction/ThumbsIcon';
 export default function ReactionMenu() {
   return (
     <div className="flex gap-16 justify-center items-center bg-white shadow-custom w-[24.6rem] h-[4.8rem] rounded-[3.0rem]">
-      <div className="">
-        <RcHeartIcon size="large" />
-      </div>
-      <div>
-        <ThumbsIcon size="large" />
-      </div>
-      <div>
-        <SmileIcon size="large" />
-      </div>
-      <div>
-        <SurpriseIcon size="large" />
-      </div>
-      <div>
-        <SadIcon size="large" />
-      </div>
+      <RcHeartIcon size="large" />
+      <ThumbsIcon size="large" />
+      <SmileIcon size="large" />
+      <SurpriseIcon size="large" />
+      <SadIcon size="large" />
     </div>
   );
 }
