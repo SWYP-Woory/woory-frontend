@@ -2,7 +2,7 @@ import ActiveNotice from '@/assets/icons/notification/activeNotice.svg';
 import Notice from '@/assets/icons/notification/notice.svg';
 
 interface Props {
-  isActive: boolean;
+  isActive?: boolean;
 }
 
 export default function NoticeIcon({ isActive }: Props) {

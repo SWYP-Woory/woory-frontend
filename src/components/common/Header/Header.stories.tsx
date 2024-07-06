@@ -8,14 +8,14 @@ function Header() {
     <div className="flex flex-col gap-12">
       <div className="flex flex-col gap-8">
         <h1 className="text-16 bg-white w-fit p-4">BasicHeader</h1>
-        <BasicHeader title="title" hasRightButton buttonType="완료" />
-        <BasicHeader title="title" hasRightButton buttonType="저장" />
+        <BasicHeader title="title" hasRightButton buttonType="complete" />
+        <BasicHeader title="title" hasRightButton buttonType="save" />
         <BasicHeader title="title" hasRightButton={false} />
       </div>
       <div className="flex flex-col gap-8">
         <h1 className="text-16 bg-white w-fit p-4">NoticeHeader </h1>
         <NotificationHeader title="title" isActive />
-        <NotificationHeader title="title" isActive={false} />
+        <NotificationHeader title="title" />
       </div>
       <div className="flex flex-col gap-8">
         <h1 className="text-16 bg-white w-fit p-4">ControlHeader</h1>
