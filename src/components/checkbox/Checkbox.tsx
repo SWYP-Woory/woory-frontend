@@ -1,12 +1,12 @@
 import ActiveCheckBoxIcon from '@/assets/icons/checkbox/active-checkbox.svg';
 import DefaultCheckBoxIcon from '@/assets/icons/checkbox/default-checkbox.svg';
 import DisabledCheckBoxIcon from '@/assets/icons/checkbox/disabled-checkbox.svg';
-import { ReactNode } from 'react';
+import { Dispatch, ReactNode, SetStateAction } from 'react';
 
 interface Props {
   isChecked?: boolean;
   isDisabled?: boolean;
-  setIsChecked?: (value: boolean) => {};
+  setIsChecked?: Dispatch<SetStateAction<boolean>>;
   children?: ReactNode;
 }
 
