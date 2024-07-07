@@ -12,6 +12,7 @@ import KebabMenuIcon from '@/components/icon/kebabMenu/KebabMenuIcon';
 import LikeIcon from '@/components/icon/like/LikeIcon';
 import LinkIcon from '@/components/icon/link/LinkIcon';
 import NoticeIcon from '@/components/icon/notification/NoticeIcon';
+import Profile from '@/components/icon/profile/Profile';
 import GreyHeartIcon from '@/components/icon/reaction/GreyHeartIcon';
 import RcHeartIcon from '@/components/icon/reaction/RcHeartIcon';
 import SadIcon from '@/components/icon/reaction/SadIcon';
@@ -42,6 +43,9 @@ function IconSection({ title, children }: IconSectionProps) {
     </div>
   );
 }
+
+const PROFILE_IMAGE =
+  'https://avatars.githubusercontent.com/u/49144662?s=400&u=903e697529c3b51f9c69bc3885c8f9be3d754028&v=4';
 
 function Icons() {
   return (
@@ -109,6 +113,13 @@ function Icons() {
       <IconSection title="Add Button">
         <AddButton />
         <AddButton isActive />
+      </IconSection>
+
+      <IconSection title="Profile">
+        <Profile size="small" />
+        <Profile size="large" />
+        <Profile size="small" profileImage={PROFILE_IMAGE} />
+        <Profile size="large" profileImage={PROFILE_IMAGE} />
       </IconSection>
 
       <IconSection title="Post Button">
