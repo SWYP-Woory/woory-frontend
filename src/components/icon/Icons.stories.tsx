@@ -1,3 +1,4 @@
+import PostButton from '@/components/common/button/PostButton';
 import AddButton from '@/components/icon/addButton/AddButton';
 import LeftArrowIcon from '@/components/icon/arrow/LeftArrowIcon';
 import RightArrowIcon from '@/components/icon/arrow/RightArrowIcon';
@@ -108,6 +109,10 @@ function Icons() {
       <IconSection title="Add Button">
         <AddButton />
         <AddButton isActive />
+      </IconSection>
+
+      <IconSection title="Post Button">
+        <PostButton />
       </IconSection>
     </div>
   );
