@@ -4,10 +4,9 @@ import HeartIcon from '@/components/icon/bottomBar/HeartIcon';
 import HomeIcon from '@/components/icon/bottomBar/HomeIcon';
 import MemberIcon from '@/components/icon/bottomBar/MemberIcon';
 import MyPageIcon from '@/components/icon/bottomBar/MyPageIcon';
+import { Page } from '@/type';
 import Link from 'next/link';
 import { useState } from 'react';
-
-type Page = 'home' | 'heart' | 'member' | 'myPage';
 
 export default function BottomMenuBar() {
   const [clickedIcon, setClickedIcon] = useState('home');
