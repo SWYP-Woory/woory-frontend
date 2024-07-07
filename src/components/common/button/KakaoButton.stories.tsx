@@ -19,4 +19,4 @@ export default meta;
 
 type Story = StoryObj<typeof KakaoButtons>;
 
-export const kakaoButtons: Story = {};
+export const Default: Story = {};

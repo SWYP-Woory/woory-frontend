@@ -1,9 +1,12 @@
 import type { Config } from 'tailwindcss';
 
 const createPxEntries = (size: number) => ({
-    0: '0',
-    ...Array.from(Array(size + 1)).reduce((accumulator, _, i) => ({ ...accumulator, [`${i * 4}`]: `${(i * 4) / 10}rem` })),
-  });
+  0: '0',
+  ...Array.from(Array(size + 1)).reduce((accumulator, _, i) => ({
+    ...accumulator,
+    [`${i * 4}`]: `${(i * 4) / 10}rem`,
+  })),
+});
 
 const PX_ENTRIES = createPxEntries(100);
 
@@ -49,6 +52,7 @@ const config: Config = {
     },
     boxShadow: {
       custom: '0px 6px 6px 0px rgba(34, 34, 34, 0.10)',
+      dropShadow: '0 2px 2px 0 rgba(34, 34, 34, 0.10)',
     },
   },
   plugins: [],
