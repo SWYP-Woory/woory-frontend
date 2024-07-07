@@ -11,6 +11,7 @@ import KebabMenuIcon from '@/components/icon/kebabMenu/KebabMenuIcon';
 import LikeIcon from '@/components/icon/like/LikeIcon';
 import LinkIcon from '@/components/icon/link/LinkIcon';
 import NoticeIcon from '@/components/icon/notification/NoticeIcon';
+import Profile from '@/components/icon/profile/Profile';
 import GreyHeartIcon from '@/components/icon/reaction/GreyHeartIcon';
 import RcHeartIcon from '@/components/icon/reaction/RcHeartIcon';
 import SadIcon from '@/components/icon/reaction/SadIcon';
@@ -108,6 +109,11 @@ function Icons() {
       <IconSection title="Add Button">
         <AddButton />
         <AddButton isActive />
+      </IconSection>
+
+      <IconSection title="Profile">
+        <Profile size="small" />
+        <Profile size="large" />
       </IconSection>
     </div>
   );
