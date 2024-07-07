@@ -1,4 +1,4 @@
-import PopUpButton from '../common/button/PopUpButton';
+import PopUpButton from '@/components/common/button/PopUpButton';
 
 interface Props {
   title: string;

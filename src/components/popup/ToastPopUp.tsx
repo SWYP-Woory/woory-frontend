@@ -1,4 +1,4 @@
-import InfoIcon from '../icon/info/InfoIcon';
+import InfoIcon from '@/components/icon/info/InfoIcon';
 
 export default function ToastPopUp() {
   return (
