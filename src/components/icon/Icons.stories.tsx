@@ -43,6 +43,9 @@ function IconSection({ title, children }: IconSectionProps) {
   );
 }
 
+const PROFILE_IMAGE =
+  'https://avatars.githubusercontent.com/u/49144662?s=400&u=903e697529c3b51f9c69bc3885c8f9be3d754028&v=4';
+
 function Icons() {
   return (
     <div className="flex flex-col gap-16">
@@ -114,6 +117,8 @@ function Icons() {
       <IconSection title="Profile">
         <Profile size="small" />
         <Profile size="large" />
+        <Profile size="small" profileImage={PROFILE_IMAGE} />
+        <Profile size="large" profileImage={PROFILE_IMAGE} />
       </IconSection>
     </div>
   );
