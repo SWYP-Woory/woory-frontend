@@ -1,7 +1,7 @@
 import Modal from '@/components/popup/Modal';
 import { Meta, StoryObj } from '@storybook/react';
 
-function Popup() {
+function PopUp() {
   return (
     <div className="flex gap-12">
       <Modal
@@ -23,14 +23,14 @@ function Popup() {
   );
 }
 
-const meta: Meta<typeof Popup> = {
-  title: 'Popup',
-  component: Popup,
+const meta: Meta<typeof PopUp> = {
+  title: 'PopUp',
+  component: PopUp,
 };
 
 export default meta;
 
-type Story = StoryObj<typeof Popup>;
+type Story = StoryObj<typeof PopUp>;
 
 export const Default: Story = {
   args: {},
