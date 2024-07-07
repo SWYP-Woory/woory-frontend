@@ -1,4 +1,3 @@
-import PostButton from '@/components/common/button/PostButton';
 import AddButton from '@/components/icon/addButton/AddButton';
 import LeftArrowIcon from '@/components/icon/arrow/LeftArrowIcon';
 import RightArrowIcon from '@/components/icon/arrow/RightArrowIcon';
@@ -120,10 +119,6 @@ function Icons() {
         <Profile size="large" />
         <Profile size="small" profileImage={PROFILE_IMAGE} />
         <Profile size="large" profileImage={PROFILE_IMAGE} />
-      </IconSection>
-
-      <IconSection title="Post Button">
-        <PostButton />
       </IconSection>
     </div>
   );
