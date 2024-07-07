@@ -4,11 +4,14 @@ import { useState } from 'react';
 
 function Checkboxes() {
   const [isChecked, setIsChecked] = useState(false);
+  const handleClick = () => {
+    setIsChecked((prev) => !prev);
+  };
 
   return (
     <div className="flex text-12 gap-8">
       <Checkbox isDisabled />
-      <Checkbox isChecked={isChecked} setIsChecked={setIsChecked}>
+      <Checkbox isChecked={isChecked} onClick={handleClick}>
         체크박스
       </Checkbox>
     </div>
