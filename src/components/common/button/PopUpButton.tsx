@@ -9,7 +9,7 @@ interface Props {
 
 export default function PopUpButton({ text, textColor, colorType, size }: Props) {
   const classes = classNames(
-    'flex justify-center text-18 h-[4.8rem] py-[1.1rem] font-500 rounded-2xl',
+    'flex justify-center items-center text-18 h-[4.8rem] font-500 rounded-2xl',
     {
       'text-midGrey': textColor === 'midGrey',
       'text-white': textColor === 'white',
@@ -19,8 +19,8 @@ export default function PopUpButton({ text, textColor, colorType, size }: Props)
       'bg-lightGrey': colorType === 'lightGrey',
     },
     {
-      'w-[13.6rem] px-[5.1rem]': size === 'small',
-      'w-[16.4rem] px-[6.5rem]': size === 'large',
+      'w-[13.6rem]': size === 'small',
+      'w-[16.4rem]': size === 'large',
     },
   );
 
