@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default function InputChat({ value, maxLength, placeholder, onChange }: Props) {
-  const [isFocused, setIsFocused] = useState(false);
+  const [isFocused, setIsFocused] = useState<boolean>(false);
   const isEntered = value.length !== 0;
 
   return (
@@ -32,7 +32,7 @@ export default function InputChat({ value, maxLength, placeholder, onChange }: P
         </span>
         {(isFocused || isEntered) && (
           <button type="button" aria-label="Send Button">
-            <SendIcon fill={`${isEntered ? '#1EA49A' : '#888888'}`} />
+            <SendIcon fill={isEntered ? '#1EA49A' : '#888888'} />
           </button>
         )}
       </div>
