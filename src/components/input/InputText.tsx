@@ -1,24 +1,12 @@
-'use client';
-
-import { useState } from 'react';
-
 interface Props {
   value: string;
   hasLimit?: boolean;
   maxLength: number;
   placeholder: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function InputText({ value, hasLimit = false, maxLength, placeholder }: Props) {
-  const [inputValue, setInputValue] = useState<string>(value);
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const input = event.target.value;
-    if (input.length <= maxLength) {
-      setInputValue(input);
-    }
-  };
-
+export default function InputText({ value, hasLimit = false, maxLength, placeholder, onChange }: Props) {
   return (
     <div className="flex justify-end items-center w-[34.3rem] h-[4.8rem] relative">
       <input
@@ -26,13 +14,13 @@ export default function InputText({ value, hasLimit = false, maxLength, placehol
         w-full h-full font-body placeholder-textDisabled focus:outline-none"
         type="text"
         placeholder={placeholder}
-        value={inputValue}
+        value={value}
         maxLength={maxLength}
-        onChange={handleChange}
+        onChange={onChange}
       />
       {hasLimit && (
         <span className="absolute right-[0.8rem] font-caption text-midGrey">
-          ({inputValue.length}/{maxLength})
+          ({value.length}/{maxLength})
         </span>
       )}
     </div>

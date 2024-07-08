@@ -4,13 +4,21 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
 function Inputs() {
-  const [inputValue, setInputValue] = useState<string>('');
+  const [inputTextValue, setInputTextValue] = useState<string>('Input');
+  const [inputChatValue, setInputChatValue] = useState<string>('');
   const maxLength = 10;
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const input = event.target.value;
     if (input.length <= maxLength) {
-      setInputValue(input);
+      setInputTextValue(input);
+    }
+  };
+
+  const handleChatChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const input = event.target.value;
+    if (input.length <= maxLength) {
+      setInputChatValue(input);
     }
   };
 
@@ -18,13 +26,30 @@ function Inputs() {
     <div className="grid grid-cols-2">
       <div className="flex flex-col gap-12">
         <h1 className="text-20">Input Text</h1>
-        <InputText value="Input" hasLimit={false} maxLength={maxLength} placeholder="txt_guide" />
-        <InputText value="Input" hasLimit maxLength={maxLength} placeholder="txt_guide" />
-        <InputText value="" hasLimit maxLength={maxLength} placeholder="txt_guide" />
+        <InputText
+          value="Input"
+          hasLimit={false}
+          maxLength={maxLength}
+          placeholder="txt_guide"
+          onChange={handleTextChange}
+        />
+        <InputText
+          value={inputTextValue}
+          hasLimit
+          maxLength={maxLength}
+          placeholder="txt_guide"
+          onChange={handleTextChange}
+        />
+        <InputText value="" hasLimit maxLength={maxLength} placeholder="txt_guide" onChange={handleTextChange} />
       </div>
       <div className="flex flex-col gap-12">
         <h1 className="text-20">Input Chat</h1>
-        <InputChat value={inputValue} maxLength={maxLength} placeholder="이야기를 적어주세요" onChange={handleChange} />
+        <InputChat
+          value={inputChatValue}
+          maxLength={maxLength}
+          placeholder="이야기를 적어주세요"
+          onChange={handleChatChange}
+        />
       </div>
     </div>
   );
