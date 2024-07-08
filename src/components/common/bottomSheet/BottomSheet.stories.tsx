@@ -3,8 +3,9 @@ import { Meta, StoryObj } from '@storybook/react';
 
 function BottomSheets() {
   return (
-    <div className="flex flex-col gap-16">
+    <div className="flex gap-16">
       <BottomSheet sheetType="home" buttonText="추가" />
+      <BottomSheet sheetType="inquiry" />
     </div>
   );
 }
