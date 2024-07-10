@@ -11,7 +11,7 @@ interface Props {
   isActive?: boolean;
 }
 
-const ReactionIconMap = {
+const REACTION_ICON_MAP = {
   heart: RcHeartIcon,
   smile: SmileIcon,
   sad: SadIcon,
@@ -20,7 +20,7 @@ const ReactionIconMap = {
 };
 
 export default function ReactionChip({ count, reactionType, isActive }: Props) {
-  const IconComponent = ReactionIconMap[reactionType];
+  const IconComponent = REACTION_ICON_MAP[reactionType];
 
   return (
     <button type="button" className="flex justify-evenly items-center bg-bgGrey w-[5.9rem] h-[3.2rem] rounded-[2.0rem]">
