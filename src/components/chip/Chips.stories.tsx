@@ -1,16 +1,20 @@
-import HeartChip from '@/components/chip/HeartChip';
+import AddReactionChip from '@/components/chip/AddReactionChip';
 import ReactionChip from '@/components/chip/ReactionChip';
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
 function Chips() {
-  const [isHeartClicked, setIsHeartClicked] = useState<boolean>(false);
-  const [isReactionClicked, setIsReactionClicked] = useState<boolean>(false);
+  const [isClicked, setIsClicked] = useState<boolean>(false);
+
+  const handleClick = () => {
+    setIsClicked((prev) => !prev);
+  };
 
   return (
     <div className="flex gap-12">
-      <HeartChip count={2} isClicked={isHeartClicked} setIsClicked={setIsHeartClicked} />
-      <ReactionChip isClicked={isReactionClicked} setIsClicked={setIsReactionClicked} />
+      <ReactionChip count={1} reactionType="sad" />
+      <ReactionChip count={2} reactionType="surprise" isActive />
+      <AddReactionChip isClicked={isClicked} onClick={handleClick} />
     </div>
   );
 }

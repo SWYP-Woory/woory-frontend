@@ -1,25 +1,31 @@
-import Reaction from '@/assets/icons/reaction/reaction.svg';
-import ReactionPlus from '@/assets/icons/reaction/reactionPlus.svg';
+import RcHeartIcon from '@/components/icon/reaction/RcHeartIcon';
+import SadIcon from '@/components/icon/reaction/SadIcon';
+import SmileIcon from '@/components/icon/reaction/SmileIcon';
+import SurpriseIcon from '@/components/icon/reaction/SurpriseIcon';
+import ThumbsIcon from '@/components/icon/reaction/ThumbsIcon';
+import { ReactionType } from '@/type';
 
 interface Props {
-  isClicked: boolean;
-  setIsClicked: React.Dispatch<React.SetStateAction<boolean>>;
+  count: number;
+  reactionType: ReactionType;
+  isActive?: boolean;
 }
 
-export default function ReactionChip({ isClicked, setIsClicked }: Props) {
-  const handleClick = () => {
-    setIsClicked((prev) => !prev);
-  };
+const ReactionIconMap = {
+  heart: RcHeartIcon,
+  smile: SmileIcon,
+  sad: SadIcon,
+  surprise: SurpriseIcon,
+  thumbs: ThumbsIcon,
+};
+
+export default function ReactionChip({ count, reactionType, isActive }: Props) {
+  const IconComponent = ReactionIconMap[reactionType];
 
   return (
-    <button
-      aria-label="Reaction Chip"
-      type="button"
-      className="flex justify-center gap-[0.2rem] items-center w-[4.0rem] h-[3.2rem] rounded-[2.0rem] bg-bgGrey"
-      onClick={handleClick}
-    >
-      <Reaction width="2.0rem" height="2.0rem" fill={isClicked ? '#1ea49a' : `#222222`} />
-      <ReactionPlus width="1.0rem" height="1.0rem" fill={isClicked ? '#1ea49a' : `#222222`} />
+    <button type="button" className="flex justify-evenly items-center bg-bgGrey w-[5.9rem] h-[3.2rem] rounded-[2.0rem]">
+      <IconComponent size="small" />
+      <div className={`${isActive ? 'text-primary' : 'text-black'} font-body`}>{count}</div>
     </button>
   );
 }
