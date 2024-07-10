@@ -1,14 +1,14 @@
-import GajangIcon from '@/assets/icons/profile/gajang.svg';
+import HouseholderIcon from '@/assets/icons/profile/householder.svg';
 import DefaultProfileImage from '@/components/icon/profile/DefaultProfileImage';
 import Image from 'next/image';
 
 interface Props {
   profileImage?: string;
   size: 'small' | 'large';
-  isGajang?: boolean;
+  isHouseholder?: boolean;
 }
 
-export default function Profile({ profileImage, size, isGajang }: Props) {
+export default function Profile({ profileImage, size, isHouseholder }: Props) {
   return (
     <div
       className={`flex relative items-center justify-center rounded-full bg-primary ${size === 'small' ? 'w-[4rem] h-[4rem]' : 'w-[5rem] h-[5rem]'}`}
@@ -24,9 +24,9 @@ export default function Profile({ profileImage, size, isGajang }: Props) {
       ) : (
         <DefaultProfileImage size={size} />
       )}
-      {isGajang && (
+      {isHouseholder && (
         <div className="z-10 absolute right-[-0.4rem] bottom-0">
-          <GajangIcon />
+          <HouseholderIcon />
         </div>
       )}
     </div>
