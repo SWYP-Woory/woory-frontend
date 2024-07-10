@@ -1,3 +1,4 @@
+import ImageDeleteIcon from '@/assets/icons/delete/imageDelete.svg';
 import AddButton from '@/components/icon/addButton/AddButton';
 import LeftArrowIcon from '@/components/icon/arrow/LeftArrowIcon';
 import RightArrowIcon from '@/components/icon/arrow/RightArrowIcon';
@@ -5,7 +6,8 @@ import HeartIcon from '@/components/icon/bottomBar/HeartIcon';
 import HomeIcon from '@/components/icon/bottomBar/HomeIcon';
 import MemberIcon from '@/components/icon/bottomBar/MemberIcon';
 import MyPageIcon from '@/components/icon/bottomBar/MyPageIcon';
-import DeleteIcon from '@/components/icon/delete/DeleteIcon';
+import CommentIcon from '@/components/icon/comment/CommentIcon';
+import MemberDeleteIcon from '@/components/icon/delete/MemberDeleteIcon';
 import InfoIcon from '@/components/icon/info/InfoIcon';
 import KebabMenuIcon from '@/components/icon/kebabMenu/KebabMenuIcon';
 import LikeIcon from '@/components/icon/like/LikeIcon';
@@ -71,20 +73,22 @@ function Icons() {
         </IconSort>
       </IconSection>
 
-      <IconSection title="Comment,KebabMenu,Like Icons (Click here)">
+      <IconSection title="MemberDeleteIcon,KebabMenu,Like Icons (Click here)">
         <IconSort>
-          <DeleteIcon />
+          <MemberDeleteIcon />
           <KebabMenuIcon />
           <LikeIcon />
         </IconSort>
       </IconSection>
 
-      <IconSection title="Info, Notice Icons">
+      <IconSection title="Info, Notice, ImageDeleteIcon Icons">
         <InfoIcon />
         <IconSort>
           <NoticeIcon isActive />
           <NoticeIcon isActive={false} />
         </IconSort>
+        <ImageDeleteIcon />
+        <CommentIcon />
       </IconSection>
 
       <IconSection title="Reaction Icons">

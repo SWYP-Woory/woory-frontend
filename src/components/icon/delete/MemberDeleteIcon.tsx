@@ -1,9 +1,9 @@
 'use client';
 
-import Delete from '@/assets/icons/delete/delete.svg';
+import Delete from '@/assets/icons/delete/memberDelete.svg';
 import { useState } from 'react';
 
-export default function DeleteIcon() {
+export default function MemberDeleteIcon() {
   const [isHovered, setIsHovered] = useState(false);
   const [isActive, setIsActive] = useState(false);
 
