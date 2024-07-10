@@ -116,9 +116,9 @@ function Icons() {
 
       <IconSection title="Profile">
         <Profile size="small" />
-        <Profile size="large" />
+        <Profile size="large" isGajang />
         <Profile size="small" profileImage={PROFILE_IMAGE} />
-        <Profile size="large" profileImage={PROFILE_IMAGE} />
+        <Profile size="large" profileImage={PROFILE_IMAGE} isGajang />
       </IconSection>
     </div>
   );
