@@ -1,3 +1,4 @@
+// todo: 알림함은 새로 의견을 나눈뒤 진행할 예정입니다.
 import { NotiType } from '@/type';
 import { getDiffTime } from '@/utils/getTime';
 
