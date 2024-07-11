@@ -7,7 +7,7 @@ interface Props {
 
 export default function HeartIcon({ isActive }: Props) {
   return isActive ? (
-    <ActivationHeart width="2.4rem" height="2.2rem" />
+    <ActivationHeart color="#1EA49A" width="2.4rem" height="2.2rem" />
   ) : (
     <DeActivationHeart width="2.4rem" height="2.2rem" />
   );
