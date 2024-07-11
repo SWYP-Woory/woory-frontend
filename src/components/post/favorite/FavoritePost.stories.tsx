@@ -17,6 +17,6 @@ export const Default: Story = {
   args: {
     imgUrl: IMAGE_URL,
     content: '오늘 먹은 점심 자랑하기',
-    date: new Date(),
+    postDate: new Date(),
   },
 };

@@ -1,14 +1,16 @@
 import defaultImage from '@/assets/icons/logo/logo_woory.svg';
 import DefaultPostImage from '@/components/post/DefaultPostImage';
+import { getTime } from '@/utils/getTime';
 import Image from 'next/image';
 
 interface Props {
   content: string;
   imgUrl?: string;
-  date: Date;
+  postDate: Date;
 }
 
-export default function FavoritePost({ content, imgUrl, date }: Props) {
+export default function FavoritePost({ content, imgUrl, postDate }: Props) {
+  const date = getTime(postDate);
   return (
     <div className="relative w-[37.5rem] h-[9.3rem] bg-white border-[1px]">
       <div className="flex absolute top-[1.6rem] left-[1.6rem] w-[6rem] h-[6rem] justify-center items-center rounded-2xl">
