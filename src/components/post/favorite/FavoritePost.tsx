@@ -1,7 +1,7 @@
 import HeartIcon from '@/assets/icons/bottomBar/activeHeart.svg';
 import defaultImage from '@/assets/icons/logo/logo_woory.svg';
 import DefaultPostImage from '@/components/post/DefaultPostImage';
-import { getTime } from '@/utils/getTime';
+import { getCalendarTime } from '@/utils/getTime';
 import Image from 'next/image';
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default function FavoritePost({ content, imgUrl, postDate }: Props) {
-  const date = getTime(postDate);
+  const date = getCalendarTime(postDate);
   return (
     <div className="relative w-[37.5rem] h-[9.3rem] bg-white">
       <div className="flex absolute top-[1.6rem] left-[1.6rem] w-[6rem] h-[6rem] justify-center items-center rounded-2xl">
