@@ -11,9 +11,10 @@ interface Props {
   reaction: string;
   content: string;
   postUrl?: string | StaticImageData;
+  isEdit?: boolean;
 }
 
-export default function DailyThread({ profileUrl, name, comment, reaction, content, postUrl }: Props) {
+export default function DailyThread({ profileUrl, name, comment, reaction, content, postUrl, isEdit }: Props) {
   return (
     <div className="flex gap-8 w-[37.5rem] min-h-[12.1rem] pl-16 pt-16 pb-[1.4rem] pr-[2.6rem] bg-white border-b border-bgGrey">
       <Profile profileImage={profileUrl} size="small" />
@@ -21,7 +22,7 @@ export default function DailyThread({ profileUrl, name, comment, reaction, conte
         <div>
           <div className="flex justify-between">
             <div className="font-bodyBold">{name}</div>
-            <KebabMenuIcon />
+            {isEdit && <KebabMenuIcon />}
           </div>
           <div className="font-body">{content}</div>
         </div>

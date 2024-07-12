@@ -23,7 +23,7 @@ export default function DailyView() {
   }, [currentDate]);
 
   return (
-    <div className="flex flex-col items-center  gap-24">
+    <div className="flex flex-col items-center gap-24">
       <DateController
         date={format(currentDate, 'yy.MM.dd')}
         prevHandler={prevDayHandler}
@@ -40,6 +40,7 @@ export default function DailyView() {
             reaction="1"
             content="강아지부터 챙겨"
             postUrl={postUrl}
+            isEdit
           />
         </div>
       </div>
