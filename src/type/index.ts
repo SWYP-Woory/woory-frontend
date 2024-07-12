@@ -18,3 +18,13 @@ export type CalenderDataType = {
   userId: number;
   calender: CalendarEventType[];
 };
+
+export type DailyThreadType = {
+  profileUrl: string;
+  name: string;
+  content: string;
+  comment: number;
+  reaction: number;
+  postUrl: string;
+  isEdit: number;
+};
