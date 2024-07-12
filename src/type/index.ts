@@ -11,7 +11,7 @@ export type NotiType = 'topic' | 'reaction' | 'post';
 export type CalendarEventType = {
   date: string;
   url: string;
-  isLiked: number;
+  isLiked: boolean;
 };
 
 export type CalenderDataType = {
@@ -26,5 +26,5 @@ export type DailyThreadType = {
   comment: number;
   reaction: number;
   postUrl: string;
-  isEdit: number;
+  isEdit: boolean;
 };

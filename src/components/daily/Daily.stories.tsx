@@ -13,7 +13,7 @@ const DUMMY_DATA = {
   comment: 1,
   reaction: 2,
   postUrl: POST_URL,
-  isEdit: 1,
+  isEdit: true,
 };
 
 const meta: Meta<typeof DailyView> = {

@@ -29,7 +29,7 @@ function renderDay(day: Date, currentDate: Date, events: CalendarEventType[]) {
       validation={isCurrentMonth}
       hasContent={!!calendarEvent}
       imageUrl={calendarEvent?.url}
-      isLiked={calendarEvent?.isLiked === 1}
+      isLiked={calendarEvent?.isLiked}
     />
   );
 }
