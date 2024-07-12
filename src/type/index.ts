@@ -7,3 +7,14 @@ export type BottomSheetType = 'home' | 'inquiry';
 export type ReactionType = 'heart' | 'smile' | 'sad' | 'surprise' | 'thumbs';
 
 export type NotiType = 'topic' | 'reaction' | 'post';
+
+export type CalendarEventType = {
+  date: string;
+  url: string;
+  isLiked: number;
+};
+
+export type CalenderDataType = {
+  userId: number;
+  calender: CalendarEventType[];
+};
