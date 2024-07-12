@@ -120,9 +120,9 @@ function Icons() {
 
       <IconSection title="Profile">
         <Profile size="small" />
-        <Profile size="large" isGajang />
+        <Profile size="large" isHouseholder />
         <Profile size="small" profileImage={PROFILE_IMAGE} />
-        <Profile size="large" profileImage={PROFILE_IMAGE} isGajang />
+        <Profile size="large" profileImage={PROFILE_IMAGE} isHouseholder />
       </IconSection>
     </div>
   );
