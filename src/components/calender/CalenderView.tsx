@@ -2,6 +2,7 @@
 
 import Calender from '@/components/calender/Calender';
 import DateController from '@/components/common/dateController/DateController';
+import { CalenderDataType } from '@/type';
 import {
   addDays,
   addMonths,
@@ -15,7 +16,11 @@ import {
 } from 'date-fns';
 import { useCallback, useMemo, useState } from 'react';
 
-export default function CalenderView() {
+interface Props {
+  data: CalenderDataType;
+}
+
+export default function CalenderView({ data }: Props) {
   const [currentDate, setCurrentDate] = useState(new Date());
   const monthStart = startOfMonth(currentDate); // 현재 달의 시작 날짜 (요일 포함)
   const monthEnd = endOfMonth(currentDate); // 현재 달의 마지막 날짜 (요일 포함)
@@ -47,7 +52,7 @@ export default function CalenderView() {
         prevHandler={prevMonthHandler}
         nextHandler={nextMonthHandler}
       />
-      <Calender createMonth={createMonth} currentDate={currentDate} />
+      <Calender createMonth={createMonth} currentDate={currentDate} data={data} />
     </section>
   );
 }

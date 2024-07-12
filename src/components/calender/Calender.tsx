@@ -1,6 +1,5 @@
-import imageUrl1 from '@/assets/images/picture1.jpg';
-import imageUrl2 from '@/assets/images/picture2.jpg';
 import Day from '@/components/calender/Day';
+import { CalendarEventType, CalenderDataType } from '@/type';
 import { format, getDate, getMonth, parseISO } from 'date-fns';
 
 const DAY_LIST = ['일', '월', '화', '수', '목', '금', '토'];
@@ -8,48 +7,17 @@ const DAY_LIST = ['일', '월', '화', '수', '목', '금', '토'];
 interface Props {
   createMonth: Date[];
   currentDate: Date;
+  data: CalenderDataType;
 }
 
-// api 호출
-const dummyData = {
-  userId: 1,
-  calender: [
-    {
-      date: '2024-07-12',
-      url: imageUrl1,
-      isLiked: 1,
-    },
-    {
-      date: '2024-07-16',
-      url: '',
-      isLiked: 1,
-    },
-    {
-      date: '2024-07-17',
-      url: '',
-      isLiked: 0,
-    },
-    {
-      date: '2024-07-27',
-      url: '',
-      isLiked: 1,
-    },
-    {
-      date: '2024-07-28',
-      url: imageUrl2,
-      isLiked: 0,
-    },
-  ],
-};
-
-function findEventForDate(date: Date, events: typeof dummyData.calender) {
+function findEventForDate(date: Date, events: CalendarEventType[]) {
   return events.find((event) => {
     const eventDate = parseISO(event.date);
     return getDate(date) === getDate(eventDate);
   });
 }
 
-function renderDay(day: Date, currentDate: Date, events: typeof dummyData.calender) {
+function renderDay(day: Date, currentDate: Date, events: CalendarEventType[]) {
   const isCurrentMonth = getMonth(day) === getMonth(currentDate);
   const formattedDay = format(day, 'd');
   const calendarEvent = findEventForDate(day, events);
@@ -66,7 +34,7 @@ function renderDay(day: Date, currentDate: Date, events: typeof dummyData.calend
   );
 }
 
-export default function Calender({ createMonth, currentDate }: Props) {
+export default function Calender({ createMonth, currentDate, data }: Props) {
   return (
     <div className="flex flex-col justify-between items-center w-[34.2rem] h-[45.4rem]">
       <div className="flex justify-between items-center w-[30.4rem] h-[2.6rem]">
@@ -75,7 +43,7 @@ export default function Calender({ createMonth, currentDate }: Props) {
         ))}
       </div>
       <div className="grid grid-cols-7 gap-x-[0.1rem] gap-y-8">
-        {createMonth.map((day) => renderDay(day, currentDate, dummyData.calender))}
+        {createMonth.map((day) => renderDay(day, currentDate, data.calender))}
       </div>
     </div>
   );

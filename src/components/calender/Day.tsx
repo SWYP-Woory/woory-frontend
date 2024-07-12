@@ -1,13 +1,12 @@
 import NoImageDay from '@/assets/icons/calendar/noImageDay.svg';
 import ActiveLike from '@/assets/icons/like/activeLike.svg';
-import type { StaticImageData } from 'next/image';
 import Image from 'next/image';
 
 interface Props {
   day: string;
   validation: boolean;
   hasContent?: boolean;
-  imageUrl?: StaticImageData | string;
+  imageUrl?: string;
   isLiked?: boolean;
 }
 
@@ -15,7 +14,11 @@ export default function Day({ day, validation, hasContent, imageUrl, isLiked }: 
   if (hasContent && validation) {
     return (
       <div className="flex justify-center items-center relative">
-        {imageUrl ? <Image alt="day" src={imageUrl} className="dayChip object-cover" /> : <NoImageDay />}
+        {imageUrl ? (
+          <Image alt="day" src={imageUrl} className="dayChip object-cover" width={48} height={76} />
+        ) : (
+          <NoImageDay />
+        )}
         <div className="absolute z-10">
           {isLiked ? (
             <ActiveLike width="2.0rem" height="1.8rem" />
