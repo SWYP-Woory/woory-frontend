@@ -1,7 +1,7 @@
 'use client';
 
 import Calender from '@/components/calender/Calender';
-import CalenderController from '@/components/calender/CalenderController';
+import DateController from '@/components/common/dateController/DateController';
 import { CalenderDataType } from '@/type';
 import {
   addDays,
@@ -9,6 +9,7 @@ import {
   differenceInCalendarDays,
   endOfMonth,
   endOfWeek,
+  format,
   startOfMonth,
   startOfWeek,
   subMonths,
@@ -46,10 +47,10 @@ export default function CalenderView({ data }: Props) {
 
   return (
     <section className="flex flex-col gap-24 items-center w-[34.2rem] bg-white">
-      <CalenderController
-        currentDate={currentDate}
-        prevMonthHandler={prevMonthHandler}
-        nextMonthHandler={nextMonthHandler}
+      <DateController
+        date={format(currentDate, 'yyyy.MM')}
+        prevHandler={prevMonthHandler}
+        nextHandler={nextMonthHandler}
       />
       <Calender createMonth={createMonth} currentDate={currentDate} data={data} />
     </section>
