@@ -18,7 +18,7 @@ export default function Checkbox({ isChecked, isDisabled, onClick, children }: P
   }
 
   return (
-    <label htmlFor="checkbox" className="flex cursor-pointer items-center">
+    <label htmlFor="checkbox" className="cursor-pointer">
       {isChecked ? (
         <button aria-label="checkbox-button" type="button" onClick={onClick}>
           <ActiveCheckBoxIcon width="2rem" height="2rem" />

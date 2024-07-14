@@ -1,4 +1,4 @@
-import SocialLoginButton from '@/components/common/button/SocialLoginButton';
+import SocialLoginButton from '@/app/(beforeLogin)/_components/SocialLoginButton';
 import { Meta, StoryObj } from '@storybook/react';
 
 function SocialLoginButtons() {

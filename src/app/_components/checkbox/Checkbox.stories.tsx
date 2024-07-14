@@ -1,4 +1,4 @@
-import Checkbox from '@/components/checkbox/Checkbox';
+import Checkbox from '@/app/_components/checkbox/Checkbox';
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
