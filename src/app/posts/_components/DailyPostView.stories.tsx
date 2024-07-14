@@ -3,6 +3,7 @@ import DailyPostView from '@/app/posts/_components/DailyPostView';
 import { DailyPostType } from '@/type';
 import { Meta, StoryObj } from '@storybook/react';
 
+const TOPIC = '내일 지구가 멸망한다면';
 const PROFILE_IMAGE =
   'https://avatars.githubusercontent.com/u/49144662?s=400&u=903e697529c3b51f9c69bc3885c8f9be3d754028&v=4';
 const POST_URL = 'https://cdn.smarttoday.co.kr/news/photo/202002/img_4656_0.jpg';
@@ -40,7 +41,7 @@ const DUMMY_DATA: DailyPostType = {
 function DailyPostViewTest() {
   return (
     <div className="w-[37.5rem] bg-white">
-      <DailyPostView data={DUMMY_DATA} />
+      <DailyPostView topic={TOPIC} data={DUMMY_DATA} />
       <Border />
     </div>
   );
