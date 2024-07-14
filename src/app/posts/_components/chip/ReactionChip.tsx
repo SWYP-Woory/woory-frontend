@@ -3,13 +3,9 @@ import SadIcon from '@/app/_components/icon/reaction/SadIcon';
 import SmileIcon from '@/app/_components/icon/reaction/SmileIcon';
 import SurpriseIcon from '@/app/_components/icon/reaction/SurpriseIcon';
 import ThumbsIcon from '@/app/_components/icon/reaction/ThumbsIcon';
-import { ReactionType } from '@/type';
+import { ReactionDataType } from '@/type';
 
-interface Props {
-  count: number;
-  reactionType: ReactionType;
-  isActive?: boolean;
-}
+interface Props extends ReactionDataType {}
 
 const REACTION_ICON_MAP = {
   heart: RcHeartIcon,

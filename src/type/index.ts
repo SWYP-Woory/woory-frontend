@@ -32,9 +32,12 @@ export type DailyThreadType = BasePostType & {
   reaction: number;
 };
 
+export type ReactionDataType = {
+  reactionType: ReactionType;
+  count: number;
+  isActive?: boolean;
+};
+
 export type DailyPostType = BasePostType & {
-  reactions: {
-    reaction: string;
-    count: number;
-  }[];
+  reactions: ReactionDataType[];
 };

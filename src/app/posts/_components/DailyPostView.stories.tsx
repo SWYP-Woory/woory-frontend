@@ -1,11 +1,12 @@
 import DailyPostView from '@/app/posts/_components/DailyPostView';
+import { DailyPostType } from '@/type';
 import { Meta, StoryObj } from '@storybook/react';
 
 const PROFILE_IMAGE =
   'https://avatars.githubusercontent.com/u/49144662?s=400&u=903e697529c3b51f9c69bc3885c8f9be3d754028&v=4';
 const POST_URL = 'https://cdn.smarttoday.co.kr/news/photo/202002/img_4656_0.jpg';
 
-const DUMMY_DATA = {
+const DUMMY_DATA: DailyPostType = {
   profileUrl: PROFILE_IMAGE,
   name: '아빠',
   content: '가족들과 함께 있기',
@@ -13,12 +14,24 @@ const DUMMY_DATA = {
   isEdit: true,
   reactions: [
     {
-      reaction: 'heart',
+      reactionType: 'heart',
       count: 2,
+      isActive: true,
     },
     {
-      reaction: 'smile',
+      reactionType: 'smile',
       count: 1,
+      isActive: false,
+    },
+    {
+      reactionType: 'thumbs',
+      count: 3,
+      isActive: true,
+    },
+    {
+      reactionType: 'surprise',
+      count: 3,
+      isActive: true,
     },
   ],
 };

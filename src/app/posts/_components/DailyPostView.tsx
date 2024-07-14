@@ -1,27 +1,24 @@
+import DailyPostImage from '@/app/_components/common/daily/DailyPostImage';
 import DailyUserTitle from '@/app/_components/common/daily/DailyUserTitle';
 import Profile from '@/app/_components/icon/profile/Profile';
+import ReactionSection from '@/app/posts/_components/ReactionSection';
 import { DailyPostType } from '@/type';
-import Image from 'next/image';
 
 interface Props {
   data: DailyPostType;
 }
 
-export default function DailyPost({ data }: Props) {
-  const { name, isEdit, postUrl } = data;
+export default function DailyPostView({ data }: Props) {
+  const { name, isEdit, postUrl, content, reactions } = data;
   return (
-    <div className="w-[37.5rem] h-full bg-white">
+    <div className="flex flex-col w-[37.5rem] h-full bg-white px-16 pt-24 pb-16 gap-16">
       <div className="flex items-center w-full gap-8">
         <Profile size="small" />
         <DailyUserTitle name={name} isEdit={isEdit} />
       </div>
-      <div>
-        {postUrl && (
-          <div className="relative w-full aspect-square">
-            <Image src={postUrl} alt="post" layout="fill" objectFit="cover" className="w-full h-full" />
-          </div>
-        )}
-      </div>
+      <div className="font-body">{content}</div>
+      <DailyPostImage postUrl={postUrl} />
+      <ReactionSection reactions={reactions} />
     </div>
   );
 }
