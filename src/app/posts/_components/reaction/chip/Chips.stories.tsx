@@ -1,5 +1,5 @@
-import AddReactionChip from '@/app/posts/_components/chip/AddReactionChip';
-import ReactionChip from '@/app/posts/_components/chip/ReactionChip';
+import AddReactionChip from '@/app/posts/_components/reaction/chip/AddReactionChip';
+import ReactionChip from '@/app/posts/_components/reaction/chip/ReactionChip';
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 

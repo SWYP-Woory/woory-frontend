@@ -41,3 +41,17 @@ export type ReactionDataType = {
 export type DailyPostType = BasePostType & {
   reactions: ReactionDataType[];
 };
+
+export interface ProfileType {
+  profileUrl: string;
+  name: string;
+  isEdit: boolean;
+}
+
+export type CommentListType = {
+  profile: ProfileType;
+  comment: string;
+  replies: CommentType[];
+};
+
+export type CommentType = Omit<CommentListType, 'replies'>;

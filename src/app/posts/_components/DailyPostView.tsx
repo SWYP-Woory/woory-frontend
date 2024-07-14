@@ -2,7 +2,7 @@ import DailyPostImage from '@/app/_components/common/daily/DailyPostImage';
 import DailyTopic from '@/app/_components/common/daily/DailyTopic';
 import DailyUserTitle from '@/app/_components/common/daily/DailyUserTitle';
 import Profile from '@/app/_components/icon/profile/Profile';
-import ReactionSection from '@/app/posts/_components/ReactionSection';
+import ReactionSection from '@/app/posts/_components/reaction/ReactionSection';
 import { DailyPostType } from '@/type';
 
 interface Props {
