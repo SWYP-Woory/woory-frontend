@@ -174,3 +174,4 @@ fabric.properties
 /.idea/prettier.xml
 
 *storybook.log
+/.idea/git_toolbox_blame.xml
