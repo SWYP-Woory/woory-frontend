@@ -1,9 +1,9 @@
+import DailyPostImage from '@/app/_components/common/daily/DailyPostImage';
 import DailyUserTitle from '@/app/_components/common/daily/DailyUserTitle';
 import CommentIcon from '@/app/_components/icon/comment/CommentIcon';
 import Profile from '@/app/_components/icon/profile/Profile';
 import GreyHeartIcon from '@/app/_components/icon/reaction/GreyHeartIcon';
 import { DailyThreadType } from '@/type';
-import Image from 'next/image';
 
 interface Props {
   data: DailyThreadType;
@@ -19,11 +19,7 @@ export default function DailyThread({ data }: Props) {
           <DailyUserTitle name={name} isEdit={isEdit} />
           <div className="font-body">{content}</div>
         </div>
-        {postUrl && (
-          <div className="relative w-full aspect-square">
-            <Image src={postUrl} alt="post" layout="fill" objectFit="cover" className="w-full h-full" />
-          </div>
-        )}
+        <DailyPostImage postUrl={postUrl} />
         <div className="flex w-[10.0rem] justify-between">
           <div className="flex items-center gap-8">
             <CommentIcon />
