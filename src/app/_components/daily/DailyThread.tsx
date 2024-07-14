@@ -1,5 +1,5 @@
+import DailyUserTitle from '@/app/_components/common/daily/DailyUserTitle';
 import CommentIcon from '@/app/_components/icon/comment/CommentIcon';
-import KebabMenuIcon from '@/app/_components/icon/kebabMenu/KebabMenuIcon';
 import Profile from '@/app/_components/icon/profile/Profile';
 import GreyHeartIcon from '@/app/_components/icon/reaction/GreyHeartIcon';
 import { DailyThreadType } from '@/type';
@@ -16,10 +16,7 @@ export default function DailyThread({ data }: Props) {
       <Profile profileImage={profileUrl} size="small" />
       <div className="flex flex-col gap-8 w-full">
         <div>
-          <div className="flex justify-between">
-            <div className="font-bodyBold">{name}</div>
-            {isEdit && <KebabMenuIcon />}
-          </div>
+          <DailyUserTitle name={name} isEdit={isEdit} />
           <div className="font-body">{content}</div>
         </div>
         {postUrl && (

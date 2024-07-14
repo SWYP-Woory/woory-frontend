@@ -1,8 +1,8 @@
 'use client';
 
+import DailyTopic from '@/app/_components/common/daily/DailyTopic';
 import DateController from '@/app/_components/common/dateController/DateController';
 import DailyThread from '@/app/_components/daily/DailyThread';
-import DailyTopic from '@/app/_components/daily/DailyTopic';
 import { DailyThreadType } from '@/type';
 import { addDays, format, subDays } from 'date-fns';
 import { useCallback, useState } from 'react';

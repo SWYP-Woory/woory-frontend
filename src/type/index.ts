@@ -19,12 +19,22 @@ export type CalenderDataType = {
   calender: CalendarEventType[];
 };
 
-export type DailyThreadType = {
+type BasePostType = {
   profileUrl: string;
   name: string;
   content: string;
-  comment: number;
-  reaction: number;
   postUrl: string;
   isEdit: boolean;
+};
+
+export type DailyThreadType = BasePostType & {
+  comment: number;
+  reaction: number;
+};
+
+export type DailyPostType = BasePostType & {
+  reactions: {
+    reaction: string;
+    count: number;
+  }[];
 };
