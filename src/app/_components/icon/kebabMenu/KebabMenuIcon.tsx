@@ -3,9 +3,13 @@
 import KebabMenu from '@/assets/icons/kebabMenu/kebabMenu.svg';
 import { useState } from 'react';
 
-export default function KebabMenuIcon() {
+interface Props {
+  isActive: boolean;
+  onClick: () => void;
+}
+
+export default function KebabMenuIcon({ isActive, onClick }: Props) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isActive, setIsActive] = useState(false);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -13,10 +17,6 @@ export default function KebabMenuIcon() {
 
   const handleMouseLeave = () => {
     setIsHovered(false);
-  };
-
-  const handleClick = () => {
-    setIsActive(!isActive);
   };
 
   let fill = '#888888';
@@ -27,13 +27,14 @@ export default function KebabMenuIcon() {
   }
 
   return (
-    <KebabMenu
-      width="0.4rem"
-      height="2.0rem"
-      fill={fill}
+    <button
+      type="button"
+      aria-label="kebabMenu"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onClick={handleClick}
-    />
+      onClick={onClick}
+    >
+      <KebabMenu width="0.4rem" height="2.0rem" fill={fill} />
+    </button>
   );
 }

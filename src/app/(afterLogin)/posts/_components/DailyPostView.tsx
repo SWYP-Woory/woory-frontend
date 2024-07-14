@@ -17,7 +17,7 @@ export default function DailyPostView({ topic, data }: Props) {
       <DailyTopic topic={topic} />
       <div className="flex items-center w-full gap-8">
         <Profile size="small" />
-        <DailyUserTitle name={name} isEdit={isEdit} />
+        <DailyUserTitle name={name} isEdit={isEdit} targetType="post" />
       </div>
       <div className="font-body">{content}</div>
       <DailyPostImage postUrl={postUrl} />
