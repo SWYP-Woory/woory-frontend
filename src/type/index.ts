@@ -42,11 +42,11 @@ export type DailyPostType = BasePostType & {
   reactions: ReactionDataType[];
 };
 
-export interface ProfileType {
+export type ProfileType = {
   profileUrl: string;
   name: string;
   isEdit: boolean;
-}
+};
 
 export type CommentListType = {
   profile: ProfileType;
