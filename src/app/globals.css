@@ -29,4 +29,7 @@
   .dayChip {
     @apply flex items-center justify-center w-[4.8rem] h-[7.6rem] bg-white rounded-[0.6rem] font-body;
   }
+  .modal-background {
+    @apply bg-modalBackground w-full h-full;
+  }
 }

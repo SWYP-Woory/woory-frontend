@@ -1,3 +1,5 @@
+import AgreementModal from '@/app/(beforeLogin)/_components/modal/AgreementModal';
+
 export default function PrivacyPolicy() {
-  return <div>개인정보 처리방침</div>;
+  return <AgreementModal />;
 }

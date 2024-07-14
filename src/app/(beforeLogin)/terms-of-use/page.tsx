@@ -1,3 +1,5 @@
+import AgreementModal from '@/app/(beforeLogin)/_components/modal/AgreementModal';
+
 export default function TermsOfUse() {
-  return <div>이용약관</div>;
+  return <AgreementModal />;
 }
