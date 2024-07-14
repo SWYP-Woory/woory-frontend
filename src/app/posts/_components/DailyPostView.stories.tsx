@@ -1,3 +1,4 @@
+import Border from '@/app/_components/common/border/Border';
 import DailyPostView from '@/app/posts/_components/DailyPostView';
 import { DailyPostType } from '@/type';
 import { Meta, StoryObj } from '@storybook/react';
@@ -36,17 +37,24 @@ const DUMMY_DATA: DailyPostType = {
   ],
 };
 
-const meta: Meta<typeof DailyPostView> = {
-  title: 'DailyPostView',
-  component: DailyPostView,
+function DailyPostViewTest() {
+  return (
+    <div className="w-[37.5rem] bg-white">
+      <DailyPostView data={DUMMY_DATA} />
+      <Border />
+    </div>
+  );
+}
+
+const meta: Meta<typeof DailyPostViewTest> = {
+  title: 'DailyPostViewTest',
+  component: DailyPostViewTest,
 };
 
 export default meta;
 
-type Story = StoryObj<typeof DailyPostView>;
+type Story = StoryObj<typeof DailyPostViewTest>;
 
 export const Default: Story = {
-  args: {
-    data: DUMMY_DATA,
-  },
+  args: {},
 };

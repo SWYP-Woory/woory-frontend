@@ -11,7 +11,7 @@ interface Props {
 export default function DailyPostView({ data }: Props) {
   const { name, isEdit, postUrl, content, reactions } = data;
   return (
-    <div className="flex flex-col w-[37.5rem] h-full bg-white px-16 pt-24 pb-16 gap-16">
+    <div className="flex flex-col w-full h-full bg-white px-16 pt-24 pb-16 gap-16">
       <div className="flex items-center w-full gap-8">
         <Profile size="small" />
         <DailyUserTitle name={name} isEdit={isEdit} />
