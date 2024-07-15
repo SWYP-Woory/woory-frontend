@@ -21,9 +21,9 @@ export default function WritePostPage() {
   };
 
   return (
-    <div className="w-full h-screen bg-white">
+    <div className="w-full min-h-screen bg-white">
       <ControlHeader isValid={inputText.length > 0} />
-      <div className="flex flex-col gap-24 pt-24 px-16">
+      <div className="flex flex-col items-center gap-24 py-24 px-16">
         <DailyTopic topic={TOPIC} />
         <InputText
           value={inputText}
@@ -32,8 +32,6 @@ export default function WritePostPage() {
           onChange={(e) => handleTextChange(e)}
           hasLimit
         />
-      </div>
-      <div className="flex justify-center mt-80">
         <ImageUpload />
       </div>
     </div>
