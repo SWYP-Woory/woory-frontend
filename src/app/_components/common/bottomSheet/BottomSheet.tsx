@@ -1,3 +1,4 @@
+import ModalBorder from '@/app/_components/common/border/ModalBorder';
 import BottomSheetButton from '@/app/_components/common/button/BottomSheetButton';
 import PopUpButton from '@/app/_components/common/button/PopUpButton';
 import Logo from '@/assets/icons/logo/logo_woory.svg';
@@ -11,7 +12,7 @@ interface Props {
 export default function BottomSheet({ sheetType, buttonText }: Props) {
   return (
     <div className="relative justify-center items-center w-[37.5rem] h-[34.1rem] bg-white rounded-t-[4rem]">
-      <div className="absolute top-[1.6rem] left-[17rem] bg-lightGrey w-[3.6rem] h-[0.5rem]" />
+      <ModalBorder />
       {buttonText && sheetType === 'home' ? (
         <>
           <div className="absolute top-[5.6rem] left-[10.8rem] px-[0.8rem] py-[1.1rem]">
