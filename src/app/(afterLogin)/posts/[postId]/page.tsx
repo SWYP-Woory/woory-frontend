@@ -73,8 +73,8 @@ const DUMMY_COMMENT = [
   {
     profile: {
       profileUrl: '',
-      name: '엄마',
-      isEdit: false,
+      name: '아빠',
+      isEdit: true,
     },
     comment: 'This is a comment',
     replies: [

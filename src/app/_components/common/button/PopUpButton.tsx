@@ -5,9 +5,10 @@ interface Props {
   textColor: 'midGrey' | 'white';
   colorType: 'primary' | 'lightGrey';
   size: 'small' | 'large';
+  onClick: () => void;
 }
 
-export default function PopUpButton({ text, textColor, colorType, size }: Props) {
+export default function PopUpButton({ text, textColor, colorType, size, onClick }: Props) {
   const classes = classNames(
     'flex justify-center items-center text-18 h-[4.8rem] font-500 rounded-2xl',
     {
@@ -25,7 +26,7 @@ export default function PopUpButton({ text, textColor, colorType, size }: Props)
   );
 
   return (
-    <button type="button" className={classes}>
+    <button type="button" className={classes} onClick={onClick}>
       {text}
     </button>
   );

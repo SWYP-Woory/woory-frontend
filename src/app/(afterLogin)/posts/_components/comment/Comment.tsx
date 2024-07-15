@@ -15,7 +15,7 @@ export default function Comment({ profile, comment, hasReply }: Props) {
         <Profile size="small" profileImage={profileUrl} />
         <div className="flex flex-col gap-8 flex-grow">
           <div>
-            <DailyUserTitle name={name} isEdit={isEdit} targetType="comment" />
+            <DailyUserTitle name={name} isEdit={isEdit} targetType={`${hasReply ? 'comment' : 'reply'}`} />
             <div className="font-body">{comment}</div>
           </div>
           {hasReply && <div className="font-caption w-fit text-midGrey underline">답글달기</div>}

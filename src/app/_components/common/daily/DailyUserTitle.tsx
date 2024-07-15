@@ -3,17 +3,17 @@
 import EditDeleteButton from '@/app/_components/common//button/EditDeleteButton';
 import KebabMenuIcon from '@/app/_components/icon/kebabMenu/KebabMenuIcon';
 import Modal from '@/app/_components/popup/Modal';
-import { COMMENT_CONTENT, POST_CONTENT } from '@/app/constants/modal';
+import { MODAL_TYPE_MAP } from '@/app/constants/modal';
 import { useState } from 'react';
 
 interface Props {
   name: string;
   isEdit: boolean;
-  targetType: 'post' | 'comment';
+  targetType: 'post' | 'comment' | 'reply';
 }
 
 export default function DailyUserTitle({ name, isEdit, targetType }: Props) {
-  const content = targetType === 'post' ? POST_CONTENT : COMMENT_CONTENT;
+  const content = MODAL_TYPE_MAP[targetType];
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -27,18 +27,31 @@ export default function DailyUserTitle({ name, isEdit, targetType }: Props) {
     setIsModalOpen(true);
   };
 
+  const handleCancelClick = () => {
+    setIsModalOpen(false);
+    setIsActive((prev) => !prev);
+  };
+
+  const handleDeleteConfirm = () => {};
+
   return (
     <div className="flex flex-grow justify-between items-center relative">
       <div className="font-bodyBold">{name}</div>
       {isEdit && <KebabMenuIcon isActive={isActive} onClick={handleKebabClick} />}
       {isActive && (
         <div className="absolute top-0 right-12 z-10">
-          <EditDeleteButton handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} />
+          <EditDeleteButton onEdit={handleEditClick} onDelete={handleDeleteClick} />
         </div>
       )}
       {isModalOpen && (
         <div className="absolute">
-          <Modal title="삭제하기" content={content} buttonText="삭제" />
+          <Modal
+            title="삭제하기"
+            content={content}
+            buttonText="삭제"
+            onCancel={handleCancelClick}
+            onExecute={handleDeleteConfirm}
+          />
         </div>
       )}
     </div>
