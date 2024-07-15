@@ -8,7 +8,7 @@ export default function ControlHeader({ isValid }: Props) {
       <button type="button" className="font-body">
         취소
       </button>
-      <button type="button" className={`font-body ${isValid ? 'text-black' : 'text-textDisabled'}`}>
+      <button type="button" disabled={!isValid} className={`font-body ${isValid ? 'text-black' : 'text-textDisabled'}`}>
         완료
       </button>
     </header>
