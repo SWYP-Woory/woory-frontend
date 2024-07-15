@@ -11,9 +11,8 @@ function Checkboxes() {
   return (
     <div className="flex text-12 gap-8">
       <Checkbox isDisabled />
-      <Checkbox isChecked={isChecked} onClick={handleClick}>
-        체크박스
-      </Checkbox>
+      <Checkbox isChecked={isChecked} onClick={handleClick} />
+      <span>체크박스</span>
     </div>
   );
 }

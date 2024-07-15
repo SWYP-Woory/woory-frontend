@@ -6,7 +6,7 @@
   font-size: 62.5%;
 
   body {
-    @apply m-0 mx-auto max-w-[375px];
+    @apply m-0 mx-auto max-w-[375px] max-h-[81.2rem];
   }
 }
 
@@ -28,5 +28,8 @@
   }
   .dayChip {
     @apply flex items-center justify-center w-[4.8rem] h-[7.6rem] bg-white rounded-[0.6rem] font-body;
+  }
+  .modal-background {
+    @apply bg-modalBackground w-full h-full;
   }
 }

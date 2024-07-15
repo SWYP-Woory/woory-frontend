@@ -33,6 +33,7 @@ const config: Config = {
       bgGrey: '#EEEEEE',
       primary: '#1EA49A',
       secondary: '#FF95B9',
+      modalBackground: 'rgba(34, 34, 34, 0.20)',
     },
     spacing: PX_ENTRIES,
     fontSize: {

@@ -1,15 +1,15 @@
 'use client';
 
 import SocialLoginButton from '@/app/(beforeLogin)/_components/SocialLoginButton';
-import { useState } from 'react';
+import { useTermsStore } from '@/app/_store/termsStore';
 
 export default function SocialLogin() {
-  const [isActive] = useState(false);
+  const isAgreed = useTermsStore((state) => state.isAgreed);
 
   return (
     <>
-      <SocialLoginButton socialDomain="kakao" isActive={isActive} />
-      <SocialLoginButton socialDomain="naver" isActive={isActive} />
+      <SocialLoginButton socialDomain="kakao" isActive={isAgreed} />
+      <SocialLoginButton socialDomain="naver" isActive={isAgreed} />
     </>
   );
 }
