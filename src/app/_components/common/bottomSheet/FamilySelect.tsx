@@ -8,12 +8,8 @@ interface Props {
 export default function FamilySelect({ data }: Props) {
   return (
     <div className="absolute top-[4.8rem] w-full flex flex-col">
-      {data ? (
-        data.map((familyData) => <FamilySelector familyData={familyData} key={familyData.id} />)
-      ) : (
-        <FamilySelector />
-      )}
-      <FamilySelector />
+      {data?.map((familyData) => <FamilySelector familyData={familyData} key={familyData.id} />)}
+      {!data || (data && data.length < 5) ? <FamilySelector /> : null}
     </div>
   );
 }
