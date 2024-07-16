@@ -62,3 +62,9 @@ export type FamilyMakeType = {
   familyName: string;
   imageUrl?: string;
 };
+
+export type FavoritePostType = {
+  content: string;
+  imgUrl: string;
+  postDate: Date;
+};

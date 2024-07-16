@@ -9,8 +9,8 @@ interface Props {
 }
 
 export default function LikeIcon({ isLiked }: Props) {
-  const [isHovered, setIsHovered] = useState(false);
-  const [isActive, setIsActive] = useState(isLiked);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
+  const [isActive, setIsActive] = useState<boolean>(isLiked || false);
 
   const handleMouseEnter = () => {
     setIsHovered(true);

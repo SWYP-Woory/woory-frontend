@@ -1,14 +1,11 @@
 import DefaultPostImage from '@/app/(afterLogin)/favorites/_components/DefaultPostImage';
 import LikeIcon from '@/app/_components/icon/like/LikeIcon';
 import defaultImage from '@/assets/icons/logo/logo_woory.svg';
+import { FavoritePostType } from '@/type';
 import { getCalendarTime } from '@/utils/getTime';
 import Image from 'next/image';
 
-interface Props {
-  content: string;
-  imgUrl?: string;
-  postDate: Date;
-}
+interface Props extends FavoritePostType {}
 
 export default function FavoritePost({ content, imgUrl, postDate }: Props) {
   const date = getCalendarTime(postDate);
