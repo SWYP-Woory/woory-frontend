@@ -1,6 +1,7 @@
 'use client';
 
 import { PrivacyPolicyDescription, TermsOfUseDescription } from '@/app/(beforeLogin)/_components/AgreementDescription';
+import ModalBackground from '@/app/(beforeLogin)/_components/modal/ModalBackground';
 import ModalBorder from '@/app/_components/common/border/ModalBorder';
 import BottomSheetButton from '@/app/_components/common/button/BottomSheetButton';
 import { useRouter } from 'next/navigation';
@@ -19,7 +20,7 @@ export default function AgreementModal({ agreementType }: Props) {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-modalBackground z-20">
+    <ModalBackground>
       <div className="fixed bottom-0 justify-center items-center w-[37.5rem] h-[73.2rem] bg-white rounded-t-[4rem] z-10 *:absolute">
         <ModalBorder />
         <h1 className="top-40 left-[11.4rem] text-center text-22 font-700 text-black">{title}</h1>
@@ -30,6 +31,6 @@ export default function AgreementModal({ agreementType }: Props) {
           <BottomSheetButton text="닫기" onClick={onClickClose} />
         </div>
       </div>
-    </div>
+    </ModalBackground>
   );
 }
