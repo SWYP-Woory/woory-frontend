@@ -11,7 +11,7 @@ export default function InputText({ value, hasLimit = false, maxLength, placehol
     <div className="flex justify-end items-center w-[34.3rem] h-[4.8rem] relative">
       <input
         className="border border-solid border-midGrey rounded-[1rem] py-[1.1rem] pl-[1.6rem] pr-[5.8rem] 
-        w-full h-full font-body placeholder-textDisabled focus:outline-none"
+        w-full h-full font-body placeholder-textDisabled focus:outline-none bg-white"
         type="text"
         placeholder={placeholder}
         value={value}

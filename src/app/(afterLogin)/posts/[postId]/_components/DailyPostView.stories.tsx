@@ -1,5 +1,5 @@
-import DailyPostView from '@/app/(afterLogin)/posts/_components/DailyPostView';
-import CommentView from '@/app/(afterLogin)/posts/_components/comment/CommentView';
+import DailyPostView from '@/app/(afterLogin)/posts/[postId]/_components/DailyPostView';
+import CommentView from '@/app/(afterLogin)/posts/[postId]/_components/comment/CommentView';
 import Border from '@/app/_components/common/border/Border';
 import { DailyPostType } from '@/type';
 import { Meta, StoryObj } from '@storybook/react';

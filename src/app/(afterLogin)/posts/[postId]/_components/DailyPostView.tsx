@@ -1,4 +1,4 @@
-import ReactionSection from '@/app/(afterLogin)/posts/_components/reaction/ReactionSection';
+import ReactionSection from '@/app/(afterLogin)/posts/[postId]/_components/reaction/ReactionSection';
 import DailyPostImage from '@/app/_components/common/daily/DailyPostImage';
 import DailyTopic from '@/app/_components/common/daily/DailyTopic';
 import DailyUserTitle from '@/app/_components/common/daily/DailyUserTitle';

@@ -1,8 +1,19 @@
+'use client';
+
+import { useInputStore } from '@/app/_store/inputStore';
+
 export default function ControlHeader() {
+  const { inputText } = useInputStore();
+  const isValid = inputText.length > 0;
+
   return (
     <header className="header justify-between px-[1.6rem]">
-      <div className="font-body">취소</div>
-      <div className="font-body">완료</div>
+      <button type="button" className="font-body">
+        취소
+      </button>
+      <button type="button" disabled={!isValid} className={`font-body ${isValid ? 'text-black' : 'text-textDisabled'}`}>
+        완료
+      </button>
     </header>
   );
 }

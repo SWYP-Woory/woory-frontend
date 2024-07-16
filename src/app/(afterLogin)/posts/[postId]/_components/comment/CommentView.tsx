@@ -1,4 +1,4 @@
-import Comment from '@/app/(afterLogin)/posts/_components/comment/Comment';
+import Comment from '@/app/(afterLogin)/posts/[postId]/_components/comment/Comment';
 import { CommentListType } from '@/type';
 
 interface Props {
