@@ -11,7 +11,8 @@
     "format:fix": "prettier --write --ignore-path .gitignore .",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "ts": "tsc --noEmit --incremental --watch"
   },
   "dependencies": {
     "@types/classnames": "^2.3.1",

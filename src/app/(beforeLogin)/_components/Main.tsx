@@ -4,7 +4,7 @@ import Logo from '@/assets/icons/logo/logo_woory.svg';
 
 export default function Main() {
   return (
-    <>
+    <div className="relative *:absolute">
       <div className="top-[18.1rem] left-[11.6rem] w-[14.4rem] h-[5.8rem]">
         <Logo />
       </div>
@@ -19,6 +19,6 @@ export default function Main() {
       <div className="flex flex-col gap-16 top-[58.6rem] left-16">
         <SocialLogin />
       </div>
-    </>
+    </div>
   );
 }

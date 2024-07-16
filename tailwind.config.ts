@@ -22,6 +22,16 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      keyframes: {
+        'bottom-sheet-up': {
+          '0%': { transform: 'translateY(420px)' },
+          '100%': { transform: 'translateY(0)' },
+        },
+        'bottom-sheet-down': {
+          '0%': { transform: 'translateY(0)' },
+          '100%': { transform: 'translateY(420px)' },
+        },
+      },
     },
     colors: {
       white: '#FDFDFD',
