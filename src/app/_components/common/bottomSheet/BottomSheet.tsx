@@ -7,11 +7,24 @@ interface Props {
   sheetType: BottomSheetType;
 }
 
+function BottomSheetByType({ sheetType }: Props) {
+  switch (sheetType) {
+    case 'home':
+      return <HomeShortcut />;
+    case 'inquiry':
+      return <ServiceInquiry />;
+    case 'familySelect':
+      return null;
+    default:
+      return null;
+  }
+}
+
 export default function BottomSheet({ sheetType }: Props) {
   return (
     <div className="relative justify-center items-center w-[37.5rem] h-[34.1rem] bg-white rounded-t-[4rem]">
       <ModalBorder />
-      {sheetType === 'home' ? <HomeShortcut /> : <ServiceInquiry />}
+      <BottomSheetByType sheetType={sheetType} />
     </div>
   );
 }
