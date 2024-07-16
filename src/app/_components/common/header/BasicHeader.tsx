@@ -10,8 +10,8 @@ interface Props {
 }
 
 export default function BasicHeader({ title, hasRightButton, buttonType }: Props) {
-  const { inputText } = useInputStore();
-  const isValid = inputText.length > 0;
+  const { inputFamilyText } = useInputStore();
+  const isValid = inputFamilyText.length > 0;
 
   const buttonLabels = {
     complete: '완료',
