@@ -14,7 +14,7 @@ function Profiles() {
       <Profile size="small" profileImage={PROFILE_IMAGE} />
       <Profile size="large" profileImage={PROFILE_IMAGE} isHouseholder />
       <FamilyProfile familyProfileImage={PROFILE_IMAGE} />
-      <FamilyProfile />
+      <FamilyProfile familyProfileImage={null} />
     </div>
   );
 }
