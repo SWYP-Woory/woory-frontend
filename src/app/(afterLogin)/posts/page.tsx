@@ -1,7 +1,7 @@
-import InputDailyContent from '@/app/(afterLogin)/posts/_components/InputDailyContent';
+import ImageUpload from '@/app/(afterLogin)/posts/_components/imageUpload/ImageUpload';
+import InputDailyContent from '@/app/(afterLogin)/posts/_components/input/InputDailyContent';
 import DailyTopic from '@/app/_components/common/daily/DailyTopic';
 import ControlHeader from '@/app/_components/common/header/ControlHeader';
-import ImageUpload from '@/app/_components/imageUpload/ImageUpload';
 
 const TOPIC = '오늘 먹은 점심 자랑하기';
 
