@@ -1,8 +1,8 @@
-import Logo from '@/assets/images/logo_woory_profile.jpeg';
+import Logo from '@/assets/images/logo_woory_profile.png';
 import Image from 'next/image';
 
 interface Props {
-  familyProfileImage?: string;
+  familyProfileImage: string | null;
 }
 
 export default function FamilyProfile({ familyProfileImage }: Props) {
@@ -14,6 +14,7 @@ export default function FamilyProfile({ familyProfileImage }: Props) {
         src={familyProfileImage || Logo}
         alt="프로필 이미지"
         fill
+        priority
         sizes="16rem"
         className="rounded-full object-cover"
       />
