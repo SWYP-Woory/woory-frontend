@@ -1,5 +1,5 @@
 import DailyUserTitle from '@/app/_components/common/daily/DailyUserTitle';
-import Profile from '@/app/_components/icon/profile/Profile';
+import Profile from '@/app/_components/common/profile/Profile';
 import { CommentType } from '@/type';
 
 interface Props extends CommentType {

@@ -1,4 +1,4 @@
-import DefaultProfileImage from '@/app/_components/icon/profile/DefaultProfileImage';
+import DefaultProfileImage from '@/app/_components/common/profile/DefaultProfileImage';
 import HouseholderIcon from '@/assets/icons/profile/householder.svg';
 import Image from 'next/image';
 
