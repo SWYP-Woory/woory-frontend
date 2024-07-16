@@ -4,9 +4,13 @@ import ActiveLike from '@/assets/icons/like/activeLike.svg';
 import Like from '@/assets/icons/like/like.svg';
 import { useState } from 'react';
 
-export default function LikeIcon() {
+interface Props {
+  isLiked?: boolean;
+}
+
+export default function LikeIcon({ isLiked }: Props) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(isLiked);
 
   const handleMouseEnter = () => {
     setIsHovered(true);

@@ -15,7 +15,7 @@ export default function BottomMenuBar() {
   };
 
   return (
-    <nav>
+    <nav className="sticky bottom-0">
       <div className="flex justify-evenly items-start pt-[1.3rem] bg-white w-[37.5rem] h-[4.8rem] border-bgGrey border-t">
         <Link
           href="/"
@@ -26,7 +26,7 @@ export default function BottomMenuBar() {
           <HomeIcon isActive={clickedIcon === 'home'} />
         </Link>
         <Link
-          href="/heart"
+          href="/favorites"
           onClick={() => {
             handleClick('heart');
           }}
@@ -34,7 +34,7 @@ export default function BottomMenuBar() {
           <HeartIcon isActive={clickedIcon === 'heart'} />
         </Link>
         <Link
-          href="/member"
+          href="/members"
           onClick={() => {
             handleClick('member');
           }}
