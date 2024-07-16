@@ -19,6 +19,7 @@ export default function FavoritePostView({ data }: Props) {
     );
   }
 
+  // 이부분이 문제입니다
   return data.map(({ content, imgUrl, postDate }) => (
     <FavoritePost content={content} imgUrl={imgUrl} postDate={postDate} />
   ));

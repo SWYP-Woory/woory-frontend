@@ -9,6 +9,56 @@ const DUMMY_DATA = [
     imgUrl: 'https://cdn.smarttoday.co.kr/news/photo/202002/img_4656_0.jpg',
     postDate: new Date(),
   },
+  {
+    content: '오늘 먹은 점심자랑하기',
+    imgUrl: 'https://cdn.smarttoday.co.kr/news/photo/202002/img_4656_0.jpg',
+    postDate: new Date(),
+  },
+  {
+    content: '오늘 먹은 점심자랑하기',
+    imgUrl: 'https://cdn.smarttoday.co.kr/news/photo/202002/img_4656_0.jpg',
+    postDate: new Date(),
+  },
+  {
+    content: '오늘 먹은 점심자랑하기',
+    imgUrl: 'https://cdn.smarttoday.co.kr/news/photo/202002/img_4656_0.jpg',
+    postDate: new Date(),
+  },
+  {
+    content: '오늘 먹은 점심자랑하기',
+    imgUrl: 'https://cdn.smarttoday.co.kr/news/photo/202002/img_4656_0.jpg',
+    postDate: new Date(),
+  },
+  {
+    content: '오늘 먹은 점심자랑하기',
+    imgUrl: 'https://cdn.smarttoday.co.kr/news/photo/202002/img_4656_0.jpg',
+    postDate: new Date(),
+  },
+  {
+    content: '오늘 먹은 점심자랑하기',
+    imgUrl: 'https://cdn.smarttoday.co.kr/news/photo/202002/img_4656_0.jpg',
+    postDate: new Date(),
+  },
+  {
+    content: '오늘 먹은 점심자랑하기',
+    imgUrl: 'https://cdn.smarttoday.co.kr/news/photo/202002/img_4656_0.jpg',
+    postDate: new Date(),
+  },
+  {
+    content: '오늘 먹은 점심자랑하기',
+    imgUrl: 'https://cdn.smarttoday.co.kr/news/photo/202002/img_4656_0.jpg',
+    postDate: new Date(),
+  },
+  {
+    content: '오늘 먹은 점심자랑하기',
+    imgUrl: 'https://cdn.smarttoday.co.kr/news/photo/202002/img_4656_0.jpg',
+    postDate: new Date(),
+  },
+  {
+    content: '오늘 먹은 점심자랑하기',
+    imgUrl: 'https://cdn.smarttoday.co.kr/news/photo/202002/img_4656_0.jpg',
+    postDate: new Date(),
+  },
 ];
 
 export default function FavoritesPage() {
