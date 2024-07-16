@@ -24,7 +24,7 @@ function BottomSheetByType({ sheetType, familyData }: Props) {
 
 export default function BottomSheet({ sheetType, familyData }: Props) {
   return (
-    <div className="relative justify-center items-center w-[37.5rem] h-[34.1rem] bg-white rounded-t-[4rem]">
+    <div className="fixed bottom-0 justify-center items-center w-[37.5rem] h-[34.1rem] bg-white rounded-t-[4rem]">
       <ModalBorder />
       <BottomSheetByType sheetType={sheetType} familyData={familyData} />
     </div>

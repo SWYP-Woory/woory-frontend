@@ -2,7 +2,7 @@ import BottomSheet from '@/app/_components/common/bottomSheet/BottomSheet';
 import { FamilyMakeType } from '@/type';
 import { Meta, StoryObj } from '@storybook/react';
 
-const FAMILY_DATA: FamilyMakeType[] = [
+const DUMMY_FAMILY_DATA: FamilyMakeType[] = [
   {
     id: 1,
     familyName: '우리집',
@@ -42,6 +42,6 @@ type Story = StoryObj<typeof BottomSheet>;
 export const Default: Story = {
   args: {
     sheetType: 'familySelect',
-    familyData: FAMILY_DATA,
+    familyData: DUMMY_FAMILY_DATA,
   },
 };
