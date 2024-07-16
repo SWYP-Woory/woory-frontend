@@ -78,11 +78,7 @@ export default function MemberPage() {
           />
         ))}
       </div>
-      {isClicked && (
-        <div className="fixed left-1/2 transform -translate-x-1/2 bottom-[12.8rem]">
-          <ToastPopUp />
-        </div>
-      )}
+      {isClicked && <ToastPopUp />}
       <BottomMenuBar />
     </>
   );
