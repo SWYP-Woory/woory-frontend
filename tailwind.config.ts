@@ -54,6 +54,7 @@ const config: Config = {
     boxShadow: {
       custom: '0px 6px 6px 0px rgba(34, 34, 34, 0.10)',
       dropShadow: '0 2px 2px 0 rgba(34, 34, 34, 0.10)',
+      borderShadow: '0 4px 24px 0 rgba(34, 34, 34, 0.08)',
     },
   },
   plugins: [],
