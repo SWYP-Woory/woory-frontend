@@ -63,43 +63,21 @@ const DUMMY_COMMENT = [
       },
     ],
   },
-  {
-    profile: {
-      profileUrl: '',
-      name: '엄마',
-      isEdit: false,
-    },
-    comment: 'This is a comment',
-    replies: [
-      {
-        profile: {
-          profileUrl: '',
-          name: '아빠',
-          isEdit: true,
-        },
-        comment: 'This is a reply',
-      },
-      {
-        profile: {
-          profileUrl: '',
-          name: '아들',
-          isEdit: false,
-        },
-        comment: 'This is a reply',
-      },
-    ],
-  },
 ];
 
 export default function PostPage() {
   return (
     <>
-      <div>
-        <BasicHeader title="게시글" />
-        <DailyPostView data={DUMMY_DATA} />
-        <Border />
+      <BasicHeader title="게시글" />
+      <div className="flex-grow flex flex-col">
+        <div className="flex-shrink-0">
+          <DailyPostView data={DUMMY_DATA} />
+          <Border />
+        </div>
+        <div className="flex flex-col flex-grow">
+          <CommentView data={DUMMY_COMMENT} />
+        </div>
       </div>
-      <CommentView data={DUMMY_COMMENT} />
       <InputComment />
     </>
   );
