@@ -7,7 +7,7 @@ interface Props {
 
 export default function Layout({ children, modal }: Props) {
   return (
-    <div className="relative min-h-screen shadow-borderShadow *:absolute">
+    <div className="min-h-screen shadow-borderShadow">
       {children}
       {modal}
     </div>
