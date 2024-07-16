@@ -11,7 +11,7 @@ export default function MemberProfile({ profileImage, name, isHouseholder, canDe
     <div className="flex justify-between items-center p-16 bg-white">
       <div className="flex items-center gap-8">
         <Profile profileImage={profileImage} size="large" isHouseholder={isHouseholder} />
-        <div className="font-body font-600">{name}</div>
+        <div className="font-body ">{name}</div>
       </div>
       {canDelete && (
         <button type="button" aria-label="delete">
