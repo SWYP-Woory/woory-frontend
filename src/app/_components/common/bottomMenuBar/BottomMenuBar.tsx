@@ -4,50 +4,28 @@ import HeartIcon from '@/app/_components/icon/bottomBar/HeartIcon';
 import HomeIcon from '@/app/_components/icon/bottomBar/HomeIcon';
 import MemberIcon from '@/app/_components/icon/bottomBar/MemberIcon';
 import MyPageIcon from '@/app/_components/icon/bottomBar/MyPageIcon';
-import { Page } from '@/type';
+import { getCalendarTime } from '@/utils/getTime';
 import Link from 'next/link';
-import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function BottomMenuBar() {
-  const [clickedIcon, setClickedIcon] = useState('home');
-  const handleClick = (value: Page) => {
-    setClickedIcon(value);
-  };
+  const pathName = usePathname();
+  const date = getCalendarTime(new Date());
 
   return (
     <nav className="sticky bottom-0">
       <div className="flex justify-evenly items-start pt-[1.3rem] bg-white w-[37.5rem] h-[4.8rem] border-bgGrey border-t">
-        <Link
-          href="/"
-          onClick={() => {
-            handleClick('home');
-          }}
-        >
-          <HomeIcon isActive={clickedIcon === 'home'} />
+        <Link href={`/daily/${date}`}>
+          <HomeIcon isActive={pathName.includes('daily')} />
         </Link>
-        <Link
-          href="/favorites"
-          onClick={() => {
-            handleClick('heart');
-          }}
-        >
-          <HeartIcon isActive={clickedIcon === 'heart'} />
+        <Link href="/favorites">
+          <HeartIcon isActive={pathName.includes('favorites')} />
         </Link>
-        <Link
-          href="/members"
-          onClick={() => {
-            handleClick('member');
-          }}
-        >
-          <MemberIcon isActive={clickedIcon === 'member'} />
+        <Link href="/members">
+          <MemberIcon isActive={pathName.includes('members')} />
         </Link>
-        <Link
-          href="/myPage"
-          onClick={() => {
-            handleClick('myPage');
-          }}
-        >
-          <MyPageIcon isActive={clickedIcon === 'myPage'} />
+        <Link href="/myPage">
+          <MyPageIcon isActive={pathName.includes('myPage')} />
         </Link>
       </div>
     </nav>

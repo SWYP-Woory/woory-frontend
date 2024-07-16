@@ -1,4 +1,4 @@
-import ImageUpload from '@/app/_components/imageUpload/ImageUpload';
+import ImageUpload from '@/app/(afterLogin)/posts/_components/imageUpload/ImageUpload';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof ImageUpload> = {
