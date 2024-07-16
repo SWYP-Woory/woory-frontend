@@ -5,5 +5,5 @@ interface Props {
 }
 
 export default function Layout({ children }: Props) {
-  return <div className="min-h-screen flex flex-col justify-between bg-white shadow-borderShadow">{children}</div>;
+  return <div className="min-h-screen flex flex-col relative bg-white shadow-borderShadow">{children}</div>;
 }
