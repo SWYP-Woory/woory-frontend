@@ -3,7 +3,7 @@
 import EditDeleteButton from '@/app/_components/common//button/EditDeleteButton';
 import KebabMenuIcon from '@/app/_components/icon/kebabMenu/KebabMenuIcon';
 import Modal from '@/app/_components/popup/Modal';
-import { MODAL_TYPE_MAP } from '@/app/constants/modal';
+import { MODAL_TYPE_MAP } from '@/app/_constants/modal';
 import { useState } from 'react';
 
 interface Props {
