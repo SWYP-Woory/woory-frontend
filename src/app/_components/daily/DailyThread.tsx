@@ -1,7 +1,7 @@
 import DailyPostImage from '@/app/_components/common/daily/DailyPostImage';
 import DailyUserTitle from '@/app/_components/common/daily/DailyUserTitle';
+import Profile from '@/app/_components/common/profile/Profile';
 import CommentIcon from '@/app/_components/icon/comment/CommentIcon';
-import Profile from '@/app/_components/icon/profile/Profile';
 import GreyHeartIcon from '@/app/_components/icon/reaction/GreyHeartIcon';
 import { DailyThreadType } from '@/type';
 
