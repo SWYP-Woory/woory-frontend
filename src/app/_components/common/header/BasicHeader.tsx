@@ -1,13 +1,18 @@
+'use client';
+
 import LeftArrowIcon from '@/app/_components/icon/arrow/LeftArrowIcon';
+import { useInputStore } from '@/app/_store/inputStore';
 
 interface Props {
   title: string;
   hasRightButton?: boolean;
   buttonType?: 'complete' | 'save';
-  isValid?: boolean;
 }
 
-export default function BasicHeader({ title, hasRightButton, buttonType, isValid }: Props) {
+export default function BasicHeader({ title, hasRightButton, buttonType }: Props) {
+  const { inputText } = useInputStore();
+  const isValid = inputText.length > 0;
+
   const buttonLabels = {
     complete: '완료',
     save: '저장',

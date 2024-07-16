@@ -1,5 +1,5 @@
 import FamilyImageUpload from '@/app/(beforeLogin)/family/_components/FamilyImageUpload';
-import FamilyName from '@/app/(beforeLogin)/family/_components/FamilyName';
+import FamilyNameInput from '@/app/(beforeLogin)/family/_components/FamilyNameInput';
 import BasicHeader from '@/app/_components/common/header/BasicHeader';
 
 export default function FamilyPage() {
@@ -9,7 +9,7 @@ export default function FamilyPage() {
       <FamilyImageUpload />
       <div className="mt-24 mx-24 w-[32.7rem] h-[0.1rem] bg-lightGrey" />
       <div className="mt-[5rem] mx-16">
-        <FamilyName />
+        <FamilyNameInput />
       </div>
     </div>
   );
