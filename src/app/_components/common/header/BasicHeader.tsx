@@ -2,7 +2,7 @@ import LeftArrowIcon from '@/app/_components/icon/arrow/LeftArrowIcon';
 
 interface Props {
   title: string;
-  hasRightButton: boolean;
+  hasRightButton?: boolean;
   buttonType?: 'complete' | 'save';
 }
 

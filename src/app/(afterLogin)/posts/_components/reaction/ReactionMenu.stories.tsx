@@ -1,4 +1,4 @@
-import ReactionMenu from '@/app/posts/_components/reaction/ReactionMenu';
+import ReactionMenu from '@/app/(afterLogin)/posts/_components/reaction/ReactionMenu';
 import { Meta, StoryObj } from '@storybook/react';
 
 function ReactionMenus() {

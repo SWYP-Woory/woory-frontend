@@ -15,9 +15,9 @@ export default function InputChat({ value, maxLength, placeholder, onChange }: P
   const isEntered = value.length !== 0;
 
   return (
-    <div className="flex justify-between items-center pl-[1.6rem] pr-[0.8rem] w-[34.3rem] h-[4.4rem] border border-solid bg-bgGrey border-lightGrey rounded-[1rem]">
+    <div className="flex justify-between items-center pl-[1.6rem] pr-[0.8rem] w-[34.3rem] h-[4.4rem] border border-solid bg-bgGrey border-lightGrey rounded-[1rem] overflow-hidden">
       <input
-        className="w-[22.4rem] h-[2.6rem] rounded-[1rem] font-body bg-bgGrey placeholder-textDisabled focus:outline-none"
+        className="w-[22.4rem] h-[2.6rem] font-body bg-bgGrey placeholder-textDisabled focus:outline-none"
         type="text"
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}

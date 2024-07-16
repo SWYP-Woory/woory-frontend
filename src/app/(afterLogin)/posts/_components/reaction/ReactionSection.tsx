@@ -1,8 +1,8 @@
 'use client';
 
-import ReactionMenu from '@/app/posts/_components/reaction/ReactionMenu';
-import AddReactionChip from '@/app/posts/_components/reaction/chip/AddReactionChip';
-import ReactionChip from '@/app/posts/_components/reaction/chip/ReactionChip';
+import ReactionMenu from '@/app/(afterLogin)/posts/_components/reaction/ReactionMenu';
+import AddReactionChip from '@/app/(afterLogin)/posts/_components/reaction/chip/AddReactionChip';
+import ReactionChip from '@/app/(afterLogin)/posts/_components/reaction/chip/ReactionChip';
 import { ReactionDataType } from '@/type';
 import { useState } from 'react';
 
