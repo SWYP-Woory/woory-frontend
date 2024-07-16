@@ -49,6 +49,8 @@ const PROFILE_IMAGE =
   'https://avatars.githubusercontent.com/u/49144662?s=400&u=903e697529c3b51f9c69bc3885c8f9be3d754028&v=4';
 
 function Icons() {
+  const handleClick = () => {};
+
   return (
     <div className="flex flex-col gap-16">
       <IconSection title="Arrow Icons">
@@ -76,7 +78,7 @@ function Icons() {
       <IconSection title="MemberDeleteIcon,KebabMenu,Like Icons (Click here)">
         <IconSort>
           <MemberDeleteIcon />
-          <KebabMenuIcon />
+          <KebabMenuIcon isActive onClick={handleClick} />
           <LikeIcon />
         </IconSort>
       </IconSection>

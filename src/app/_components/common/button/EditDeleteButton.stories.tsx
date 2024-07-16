@@ -2,9 +2,11 @@ import EditDeleteButton from '@/app/_components/common/button/EditDeleteButton';
 import { Meta, StoryObj } from '@storybook/react';
 
 function EditDeleteButtons() {
+  const handleEditDelete = () => {};
+
   return (
     <div className="flex gap-8">
-      <EditDeleteButton />
+      <EditDeleteButton onEdit={handleEditDelete} onDelete={handleEditDelete} />
     </div>
   );
 }

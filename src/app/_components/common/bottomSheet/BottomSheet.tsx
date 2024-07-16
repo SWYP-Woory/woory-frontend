@@ -10,6 +10,9 @@ interface Props {
 }
 
 export default function BottomSheet({ sheetType, buttonText }: Props) {
+  const handleCancelClick = () => {};
+  const handleShortcutClick = () => {};
+
   return (
     <div className="relative justify-center items-center w-[37.5rem] h-[34.1rem] bg-white rounded-t-[4rem]">
       <ModalBorder />
@@ -25,8 +28,20 @@ export default function BottomSheet({ sheetType, buttonText }: Props) {
             </h2>
           </div>
           <div className="absolute bottom-[3.2rem] left-[2rem] flex gap-[1rem]">
-            <PopUpButton text="취소" textColor="midGrey" colorType="lightGrey" size="large" />
-            <PopUpButton text={buttonText} textColor="white" colorType="primary" size="large" />
+            <PopUpButton
+              text="취소"
+              textColor="midGrey"
+              colorType="lightGrey"
+              size="large"
+              onClick={handleCancelClick}
+            />
+            <PopUpButton
+              text={buttonText}
+              textColor="white"
+              colorType="primary"
+              size="large"
+              onClick={handleShortcutClick}
+            />
           </div>
         </>
       ) : (

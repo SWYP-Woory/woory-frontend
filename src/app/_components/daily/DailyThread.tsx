@@ -9,6 +9,8 @@ interface Props {
   data: DailyThreadType;
 }
 
+const DUMMY_TARGET_TYPE = 'post';
+
 export default function DailyThread({ data }: Props) {
   const { profileUrl, name, comment, reaction, content, postUrl, isEdit } = data;
   return (
@@ -16,7 +18,7 @@ export default function DailyThread({ data }: Props) {
       <Profile profileImage={profileUrl} size="small" />
       <div className="flex flex-col gap-8 w-full">
         <div>
-          <DailyUserTitle name={name} isEdit={isEdit} />
+          <DailyUserTitle targetType={DUMMY_TARGET_TYPE} name={name} isEdit={isEdit} />
           <div className="font-body">{content}</div>
         </div>
         <DailyPostImage postUrl={postUrl} />
