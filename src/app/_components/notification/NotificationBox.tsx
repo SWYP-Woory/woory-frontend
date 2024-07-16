@@ -61,7 +61,7 @@ export default function NotificationBox({ notiType, topic, me, opponent, notiTim
         {notiTitle}
       </div>
       <div className="absolute top-[1.6rem] right-[1.6rem] font-500 text-midGrey text-14">{diffTime}</div>
-      <Notification notiType={notiType} topic={topic} me={me} opponent={opponent} notiTime={notiTime} />
+      <Notification notiType={notiType} topic={topic} me={me} opponent={opponent} />
     </div>
   );
 }
