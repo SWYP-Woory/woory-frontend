@@ -1,6 +1,6 @@
-import DailyPostView from '@/app/(afterLogin)/posts/_components/DailyPostView';
-import CommentView from '@/app/(afterLogin)/posts/_components/comment/CommentView';
-import InputComment from '@/app/(afterLogin)/posts/_components/input/InputComment';
+import DailyPostView from '@/app/(afterLogin)/posts/[postId]/_components/DailyPostView';
+import CommentView from '@/app/(afterLogin)/posts/[postId]/_components/comment/CommentView';
+import InputComment from '@/app/(afterLogin)/posts/[postId]/_components/input/InputComment';
 import Border from '@/app/_components/common/border/Border';
 import BasicHeader from '@/app/_components/common/header/BasicHeader';
 import { DailyPostType } from '@/type';

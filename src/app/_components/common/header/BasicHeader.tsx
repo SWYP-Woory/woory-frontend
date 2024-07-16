@@ -4,9 +4,10 @@ interface Props {
   title: string;
   hasRightButton?: boolean;
   buttonType?: 'complete' | 'save';
+  isValid?: boolean;
 }
 
-export default function BasicHeader({ title, hasRightButton, buttonType }: Props) {
+export default function BasicHeader({ title, hasRightButton, buttonType, isValid }: Props) {
   const buttonLabels = {
     complete: '완료',
     save: '저장',
@@ -14,12 +15,18 @@ export default function BasicHeader({ title, hasRightButton, buttonType }: Props
 
   return (
     <header className="header">
-      <div className="absolute left-[1.6rem]">
+      <button className="absolute left-[1.6rem]" type="button" aria-label="back">
         <LeftArrowIcon />
-      </div>
+      </button>
       <div className="font-title text-18">{title}</div>
       {hasRightButton && (
-        <div className="absolute right-[1.6rem] font-body"> {buttonType && buttonLabels[buttonType]}</div>
+        <button
+          type="button"
+          disabled={!isValid}
+          className={`absolute right-[1.6rem] font-body ${isValid ? 'text-black' : 'text-textDisabled'}`}
+        >
+          {buttonType && buttonLabels[buttonType]}
+        </button>
       )}
     </header>
   );
