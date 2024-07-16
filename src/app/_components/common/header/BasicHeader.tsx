@@ -4,7 +4,7 @@ interface Props {
   title: string;
   hasRightButton?: boolean;
   buttonType?: 'complete' | 'save';
-  isValid: boolean;
+  isValid?: boolean;
 }
 
 export default function BasicHeader({ title, hasRightButton, buttonType, isValid }: Props) {
