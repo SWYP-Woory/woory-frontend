@@ -37,7 +37,11 @@ export default function DailyUserTitle({ name, isEdit, targetType }: Props) {
   return (
     <div className="flex flex-grow justify-between items-center relative">
       <div className="font-bodyBold">{name}</div>
-      {isEdit && <KebabMenuIcon isActive={isActive} onClick={handleKebabClick} />}
+      {isEdit && (
+        <div className="pr-[1rem]">
+          <KebabMenuIcon isActive={isActive} onClick={handleKebabClick} />
+        </div>
+      )}
       {isActive && (
         <div className="absolute top-0 right-12 z-10">
           <EditDeleteButton onEdit={handleEditClick} onDelete={handleDeleteClick} />

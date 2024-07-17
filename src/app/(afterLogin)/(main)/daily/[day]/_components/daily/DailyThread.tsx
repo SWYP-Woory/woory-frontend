@@ -22,7 +22,7 @@ export default function DailyThread({ data }: Props) {
   }
   const { profileUrl, name, comment, reaction, content, postUrl, isEdit } = data;
   return (
-    <div className="flex gap-8 w-[37.5rem] min-h-[12.1rem] pl-16 pt-16 pb-[1.4rem] pr-[2.6rem] bg-white border-b border-bgGrey">
+    <div className="flex gap-8 w-[37.5rem] min-h-[12.1rem] px-16 pt-16 pb-[1.4rem] bg-white border-b border-bgGrey">
       <Profile profileImage={profileUrl} size="small" />
       <div className="flex flex-col gap-8 w-full">
         <div>

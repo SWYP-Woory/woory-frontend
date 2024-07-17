@@ -17,7 +17,7 @@ export default function Profile({ profileImage, size, isHouseholder }: Props) {
   });
 
   return (
-    <div className={`flex relative items-center justify-center rounded-full bg-primary ${sizeClass}`}>
+    <div className={`flex flex-shrink-0 relative items-center justify-center rounded-full bg-primary ${sizeClass}`}>
       {profileImage ? (
         <Image
           src={profileImage}
