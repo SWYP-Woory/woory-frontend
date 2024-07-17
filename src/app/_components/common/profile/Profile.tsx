@@ -30,7 +30,7 @@ export default function Profile({ profileImage, size, isHouseholder }: Props) {
         <DefaultProfileImage size={size} />
       )}
       {isHouseholder && (
-        <div className="z-10 absolute right-[-0.4rem] bottom-0">
+        <div className="absolute right-[-0.4rem] bottom-0">
           <HouseholderIcon />
         </div>
       )}

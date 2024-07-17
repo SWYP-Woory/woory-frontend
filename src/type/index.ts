@@ -69,6 +69,12 @@ export type FavoritePostType = {
   postDate: Date;
 };
 
+export type MemberType = {
+  profileImage: string;
+  name: string;
+  isHouseholder: boolean;
+};
+
 export type NotificationSettingType = {
   topic: boolean;
   post: boolean;
