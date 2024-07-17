@@ -68,3 +68,9 @@ export type FavoritePostType = {
   imgUrl: string;
   postDate: Date;
 };
+
+export type NotificationSettingType = {
+  topic: boolean;
+  post: boolean;
+  reaction: boolean;
+};

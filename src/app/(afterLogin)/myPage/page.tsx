@@ -8,13 +8,22 @@ import Border from '@/app/_components/common/border/Border';
 import BottomMenuBar from '@/app/_components/common/bottomMenuBar/BottomMenuBar';
 import NotificationHeader from '@/app/_components/common/header/NotificationHeader';
 
+const DUMMY_DATA = {
+  name: '아들',
+  notifications: {
+    topic: true,
+    post: false,
+    reaction: true,
+  },
+};
+
 export default function MyPage() {
   return (
     <>
       <NotificationHeader title="마이 페이지" />
-      <MyTitle name="아들" />
+      <MyTitle name={DUMMY_DATA.name} />
       <Border />
-      <NotificationSetting />
+      <NotificationSetting notifications={DUMMY_DATA.notifications} />
       <FamilySetting />
       <AddHome />
       <AccountSetting />
