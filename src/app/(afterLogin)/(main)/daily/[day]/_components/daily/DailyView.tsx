@@ -38,7 +38,7 @@ export default function DailyView() {
   ]);
 
   return (
-    <div className="flex flex-col items-center gap-24">
+    <div className="flex flex-col items-center min-h-screen gap-24">
       <DateController
         date={format(currentDate, 'yy.MM.dd')}
         prevHandler={prevDayHandler}
@@ -47,7 +47,13 @@ export default function DailyView() {
       <div className="flex flex-col items-center gap-8">
         <DailyTopic topic={topic} hasLike />
         <div>
-          {dailyThreads.length > 0 ? dailyThreads.map((data) => <DailyThread data={data} />) : <DailyNoThread />}
+          {dailyThreads.length > 0 ? (
+            dailyThreads.map((data) => <DailyThread data={data} />)
+          ) : (
+            <div className="pt-180">
+              <DailyNoThread />
+            </div>
+          )}
         </div>
       </div>
     </div>
