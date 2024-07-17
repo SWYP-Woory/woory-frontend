@@ -10,7 +10,7 @@ export default function NotificationSetting() {
   const handleReaction = () => {};
 
   return (
-    <div>
+    <div className="border-bgGrey border-b">
       <OptionTitle icon={<Notice width="2.4rem" height="2.4rem" />} title="알림설정" />
       <NotificationItem
         title="토픽 알림"
