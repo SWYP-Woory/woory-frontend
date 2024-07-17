@@ -5,7 +5,11 @@ import { useState } from 'react';
 function ToggleButton() {
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
-  return <ToggleSwitch isClicked={isClicked} setIsClicked={setIsClicked} />;
+  const handleClick = () => {
+    setIsClicked((prev) => !prev);
+  };
+
+  return <ToggleSwitch isActive={isClicked} onClick={handleClick} />;
 }
 
 const meta: Meta<typeof ToggleButton> = {
