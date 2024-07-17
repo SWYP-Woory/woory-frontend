@@ -1,4 +1,5 @@
 import DailyView from '@/app/(afterLogin)/(main)/daily/[day]/_components/daily/DailyView';
+import PostButton from '@/app/_components/common/button/PostButton';
 import UpperTabBar from '@/app/_components/upperTabBar/UpperTabBar';
 
 export default function DailyPage() {
@@ -10,6 +11,7 @@ export default function DailyPage() {
       <div className="mt-24">
         <DailyView />
       </div>
+      <PostButton />
     </>
   );
 }
