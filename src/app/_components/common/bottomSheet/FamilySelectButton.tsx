@@ -1,4 +1,4 @@
-import Profile from '@/app/_components/icon/profile/Profile';
+import Profile from '@/app/_components/common/profile/Profile';
 import { FamilyMakeType } from '@/type';
 
 interface Props {
