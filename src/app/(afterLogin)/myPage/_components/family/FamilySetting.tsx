@@ -1,3 +1,5 @@
+'use client';
+
 import OptionTitle from '@/app/(afterLogin)/myPage/_components/OptionTitle';
 import FamilyItem from '@/app/(afterLogin)/myPage/_components/family/FamilyItem';
 import FamilyIcon from '@/assets/icons/family/family.svg';

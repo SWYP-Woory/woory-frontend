@@ -1,4 +1,5 @@
 import MyTitle from '@/app/(afterLogin)/myPage/_components/MyTitle';
+import AddHome from '@/app/(afterLogin)/myPage/_components/addHome/AddHome';
 import FamilySetting from '@/app/(afterLogin)/myPage/_components/family/FamilySetting';
 import NotificationSetting from '@/app/(afterLogin)/myPage/_components/notification/NotificationSetting';
 import Border from '@/app/_components/common/border/Border';
@@ -12,6 +13,7 @@ export default function MyPage() {
       <Border />
       <NotificationSetting />
       <FamilySetting />
+      <AddHome />
     </>
   );
 }
