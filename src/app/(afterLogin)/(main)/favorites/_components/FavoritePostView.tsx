@@ -1,4 +1,4 @@
-import FavoritePost from '@/app/(afterLogin)/favorites/_components/FavoritePost';
+import FavoritePost from '@/app/(afterLogin)/(main)/favorites/_components/FavoritePost';
 import { FavoritePostType } from '@/type';
 
 interface Props {

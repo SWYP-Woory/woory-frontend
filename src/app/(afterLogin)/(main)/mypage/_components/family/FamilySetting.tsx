@@ -1,7 +1,7 @@
 'use client';
 
-import OptionTitle from '@/app/(afterLogin)/mypage/_components/OptionTitle';
-import FamilyItem from '@/app/(afterLogin)/mypage/_components/family/FamilyItem';
+import OptionTitle from '@/app/(afterLogin)/(main)/mypage/_components/OptionTitle';
+import FamilyItem from '@/app/(afterLogin)/(main)/mypage/_components/family/FamilyItem';
 import FamilyIcon from '@/assets/icons/family/family.svg';
 
 interface Props {

@@ -1,4 +1,4 @@
-import FavoritePost from '@/app/(afterLogin)/favorites/_components/FavoritePost';
+import FavoritePost from '@/app/(afterLogin)/(main)/favorites/_components/FavoritePost';
 import { Meta, StoryObj } from '@storybook/react';
 
 const IMAGE_URL =

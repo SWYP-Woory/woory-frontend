@@ -1,4 +1,4 @@
-import OptionTitle from '@/app/(afterLogin)/mypage/_components/OptionTitle';
+import OptionTitle from '@/app/(afterLogin)/(main)/mypage/_components/OptionTitle';
 import SettingIcon from '@/assets/icons/setting/setting.svg';
 
 export default function AccountSetting() {

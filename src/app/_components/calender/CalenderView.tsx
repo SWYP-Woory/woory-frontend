@@ -2,38 +2,21 @@
 
 import Calender from '@/app/_components/calender/Calender';
 import DateController from '@/app/_components/common/dateController/DateController';
+import { useDateControl } from '@/app/_hooks/useDateControl';
 import { CalenderDataType } from '@/type';
-import {
-  addDays,
-  addMonths,
-  differenceInCalendarDays,
-  endOfMonth,
-  endOfWeek,
-  format,
-  startOfMonth,
-  startOfWeek,
-  subMonths,
-} from 'date-fns';
-import { useCallback, useMemo, useState } from 'react';
+import { addDays, differenceInCalendarDays, endOfMonth, endOfWeek, format, startOfMonth, startOfWeek } from 'date-fns';
+import { useMemo } from 'react';
 
 interface Props {
   data: CalenderDataType;
 }
 
 export default function CalenderView({ data }: Props) {
-  const [currentDate, setCurrentDate] = useState(new Date());
+  const { currentDate, prevMonthHandler, nextMonthHandler } = useDateControl();
   const monthStart = startOfMonth(currentDate); // 현재 달의 시작 날짜 (요일 포함)
   const monthEnd = endOfMonth(currentDate); // 현재 달의 마지막 날짜 (요일 포함)
   const startDate = startOfWeek(monthStart); // 현재 달의 시작 날짜가 포함된 주의 시작 날짜
   const endDate = endOfWeek(monthEnd); // 현재 달의 마지막 날짜가 포함된 주의 끝 날짜
-
-  const nextMonthHandler = useCallback(() => {
-    setCurrentDate(addMonths(currentDate, 1));
-  }, [currentDate]);
-
-  const prevMonthHandler = useCallback(() => {
-    setCurrentDate(subMonths(currentDate, 1));
-  }, [currentDate]);
 
   const createMonth = useMemo(() => {
     const monthArray = [];
