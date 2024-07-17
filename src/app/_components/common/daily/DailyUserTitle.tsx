@@ -51,6 +51,7 @@ export default function DailyUserTitle({ name, isEdit, targetType }: Props) {
             buttonText="삭제"
             onCancel={handleCancelClick}
             onExecute={handleDeleteConfirm}
+            isSmall={targetType === 'reply'}
           />
         </div>
       )}
