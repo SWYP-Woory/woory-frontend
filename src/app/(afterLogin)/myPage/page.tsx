@@ -10,6 +10,7 @@ import NotificationHeader from '@/app/_components/common/header/NotificationHead
 
 const DUMMY_DATA = {
   name: '아들',
+  isHouseholder: true,
   notifications: {
     topic: true,
     post: false,
@@ -24,7 +25,7 @@ export default function MyPage() {
       <MyTitle name={DUMMY_DATA.name} />
       <Border />
       <NotificationSetting notifications={DUMMY_DATA.notifications} />
-      <FamilySetting />
+      <FamilySetting isHouseholder={DUMMY_DATA.isHouseholder} />
       <AddHome />
       <AccountSetting />
       <ServiceInfo />

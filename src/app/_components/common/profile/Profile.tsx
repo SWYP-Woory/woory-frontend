@@ -19,7 +19,13 @@ export default function Profile({ profileImage, size, isHouseholder }: Props) {
   return (
     <div className={`flex relative items-center justify-center rounded-full bg-primary ${sizeClass}`}>
       {profileImage ? (
-        <Image src={profileImage} alt="프로필 이미지" fill sizes="40px" className={`rounded-full object-cover `} />
+        <Image
+          src={profileImage}
+          alt="프로필 이미지"
+          fill
+          sizes="40px"
+          className={`rounded-full object-cover ${sizeClass}`}
+        />
       ) : (
         <DefaultProfileImage size={size} />
       )}
