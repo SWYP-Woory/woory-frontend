@@ -24,8 +24,8 @@ export default function BottomMenuBar() {
         <Link href="/members">
           <MemberIcon isActive={pathName.includes('members')} />
         </Link>
-        <Link href="/myPage">
-          <MyPageIcon isActive={pathName.includes('myPage')} />
+        <Link href="/mypage">
+          <MyPageIcon isActive={pathName.includes('mypage')} />
         </Link>
       </div>
     </nav>

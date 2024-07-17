@@ -1,10 +1,19 @@
 import DefaultSmallIcon from '@/assets/icons/profile/default-small.svg';
+import DefaultXLargeIcon from '@/assets/icons/profile/default-xLarge.svg';
 import DefaultLargeIcon from '@/assets/icons/profile/default.svg';
 
 interface Props {
-  size: 'small' | 'large';
+  size: 'small' | 'large' | 'xLarge';
 }
 
 export default function DefaultProfileImage({ size }: Props) {
-  return size === 'small' ? <DefaultSmallIcon /> : <DefaultLargeIcon />;
+  if (size === 'small') {
+    return <DefaultSmallIcon />;
+  }
+
+  if (size === 'large') {
+    return <DefaultLargeIcon />;
+  }
+
+  return <DefaultXLargeIcon />;
 }
