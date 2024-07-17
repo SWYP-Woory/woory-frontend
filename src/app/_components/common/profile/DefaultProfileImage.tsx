@@ -1,5 +1,4 @@
 import DefaultSmallIcon from '@/assets/icons/profile/default-small.svg';
-// import DefaultXLageIcon from '@/assets/icons/profile/default-xLarge.svg';
 import DefaultLargeIcon from '@/assets/icons/profile/default.svg';
 
 interface Props {
