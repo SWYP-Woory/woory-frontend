@@ -2,16 +2,14 @@ import Profile from '@/app/_components/common/profile/Profile';
 
 interface Props {
   name: string;
+  profileImage: string;
 }
 
-export default function MyTitle({ name }: Props) {
+export default function MyTitle({ name, profileImage }: Props) {
   return (
     <div className="flex flex-col justify-between w-full h-[17.6rem] px-16 pt-[2.4rem] pb-16">
       <div className="flex gap-16 items-center">
-        <Profile
-          size="xLarge"
-          profileImage="https://avatars.githubusercontent.com/u/49144662?s=400&u=903e697529c3b51f9c69bc3885c8f9be3d754028&v=4"
-        />
+        <Profile size="xLarge" profileImage={profileImage} />
         <div>
           <div className="font-title font-500">안녕하세요!</div>
           <div className="font-title">
