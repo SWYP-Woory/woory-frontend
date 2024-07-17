@@ -74,3 +74,9 @@ export type MemberType = {
   name: string;
   isHouseholder: boolean;
 };
+
+export type NotificationSettingType = {
+  topic: boolean;
+  post: boolean;
+  reaction: boolean;
+};

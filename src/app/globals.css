@@ -32,4 +32,7 @@
   .modal-background {
     @apply bg-modalBackground w-full h-full;
   }
+  .setting-button {
+    @apply w-full h-[5.8rem] font-body text-start p-16;
+  }
 }
