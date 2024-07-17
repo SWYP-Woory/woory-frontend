@@ -1,7 +1,7 @@
 'use client';
 
+import Profile from '@/app/_components/common/profile/Profile';
 import MemberDeleteIcon from '@/app/_components/icon/delete/MemberDeleteIcon';
-import Profile from '@/app/_components/icon/profile/Profile';
 import Modal from '@/app/_components/popup/Modal';
 import { MEMBER_DELETE_CONTENT } from '@/app/_constants/modal';
 import { MemberType } from '@/type';
