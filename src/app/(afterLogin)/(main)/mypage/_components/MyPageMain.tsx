@@ -1,14 +1,12 @@
 'use client';
 
-import MyTitle from '@/app/(afterLogin)/mypage/_components/MyTitle';
-import AccountSetting from '@/app/(afterLogin)/mypage/_components/account/AccountSetting';
-import AddHome from '@/app/(afterLogin)/mypage/_components/addHome/AddHome';
-import FamilySetting from '@/app/(afterLogin)/mypage/_components/family/FamilySetting';
-import NotificationSetting from '@/app/(afterLogin)/mypage/_components/notification/NotificationSetting';
-import ServiceInfo from '@/app/(afterLogin)/mypage/_components/service/ServiceInfo';
+import MyTitle from '@/app/(afterLogin)/(main)/mypage/_components/MyTitle';
+import AccountSetting from '@/app/(afterLogin)/(main)/mypage/_components/account/AccountSetting';
+import AddHome from '@/app/(afterLogin)/(main)/mypage/_components/addHome/AddHome';
+import FamilySetting from '@/app/(afterLogin)/(main)/mypage/_components/family/FamilySetting';
+import NotificationSetting from '@/app/(afterLogin)/(main)/mypage/_components/notification/NotificationSetting';
+import ServiceInfo from '@/app/(afterLogin)/(main)/mypage/_components/service/ServiceInfo';
 import Border from '@/app/_components/common/border/Border';
-import BottomMenuBar from '@/app/_components/common/bottomMenuBar/BottomMenuBar';
-import NotificationHeader from '@/app/_components/common/header/NotificationHeader';
 import ToastPopUp from '@/app/_components/popup/ToastPopUp';
 import { ModalTypeMap } from '@/app/_constants/modal';
 import { useEffect, useState } from 'react';
@@ -50,7 +48,6 @@ export default function MyPageMain() {
 
   return (
     <>
-      <NotificationHeader title="마이 페이지" />
       <MyTitle name={DUMMY_DATA.name} profileImage={DUMMY_DATA.profileImage} />
       <Border />
       <NotificationSetting notifications={DUMMY_DATA.notifications} />
@@ -59,7 +56,6 @@ export default function MyPageMain() {
       <AccountSetting targetType={targetType} />
       <ServiceInfo />
       {isClicked && <ToastPopUp />}
-      <BottomMenuBar />
     </>
   );
 }

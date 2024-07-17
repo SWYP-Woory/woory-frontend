@@ -14,8 +14,8 @@ function Header() {
       </div>
       <div className="flex flex-col gap-8">
         <h1 className="text-16 bg-white w-fit p-4">NoticeHeader </h1>
-        <NotificationHeader title="title" isActive />
-        <NotificationHeader title="title" />
+        <NotificationHeader />
+        <NotificationHeader />
       </div>
       <div className="flex flex-col gap-8">
         <h1 className="text-16 bg-white w-fit p-4">ControlHeader</h1>

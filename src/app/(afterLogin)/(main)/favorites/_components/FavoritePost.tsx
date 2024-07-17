@@ -1,4 +1,4 @@
-import DefaultPostImage from '@/app/(afterLogin)/favorites/_components/DefaultPostImage';
+import DefaultPostImage from '@/app/(afterLogin)/(main)/favorites/_components/DefaultPostImage';
 import LikeIcon from '@/app/_components/icon/like/LikeIcon';
 import defaultImage from '@/assets/icons/logo/logo_woory.svg';
 import { FavoritePostType } from '@/type';

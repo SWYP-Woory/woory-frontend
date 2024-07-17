@@ -1,8 +1,5 @@
-import FavoritePostView from '@/app/(afterLogin)/favorites/_components/FavoritePostView';
-import BottomMenuBar from '@/app/_components/common/bottomMenuBar/BottomMenuBar';
-import NotificationHeader from '@/app/_components/common/header/NotificationHeader';
+import FavoritePostView from '@/app/(afterLogin)/(main)/favorites/_components/FavoritePostView';
 
-const HEDER_TITLE = '마음함';
 const DUMMY_DATA = [
   {
     content: '오늘 먹은 점심자랑하기',
@@ -63,12 +60,8 @@ const DUMMY_DATA = [
 
 export default function FavoritesPage() {
   return (
-    <>
-      <NotificationHeader title={HEDER_TITLE} />
-      <div className="flex flex-col flex-grow py-[0.7rem]">
-        <FavoritePostView data={DUMMY_DATA} />
-      </div>
-      <BottomMenuBar />
-    </>
+    <div className="flex flex-col flex-grow py-[0.7rem]">
+      <FavoritePostView data={DUMMY_DATA} />
+    </div>
   );
 }

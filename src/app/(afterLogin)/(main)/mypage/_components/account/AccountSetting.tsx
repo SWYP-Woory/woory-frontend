@@ -1,4 +1,4 @@
-import OptionTitle from '@/app/(afterLogin)/mypage/_components/OptionTitle';
+import OptionTitle from '@/app/(afterLogin)/(main)/mypage/_components/OptionTitle';
 import Modal from '@/app/_components/popup/Modal';
 import { MODAL_TYPE_MAP } from '@/app/_constants/modal';
 import SettingIcon from '@/assets/icons/setting/setting.svg';

@@ -1,7 +1,7 @@
 'use client';
 
-import OptionTitle from '@/app/(afterLogin)/mypage/_components/OptionTitle';
-import NotificationItem from '@/app/(afterLogin)/mypage/_components/notification/NotificationItem';
+import OptionTitle from '@/app/(afterLogin)/(main)/mypage/_components/OptionTitle';
+import NotificationItem from '@/app/(afterLogin)/(main)/mypage/_components/notification/NotificationItem';
 import Notice from '@/assets/icons/notification/notice.svg';
 import { NotificationSettingType } from '@/type';
 
