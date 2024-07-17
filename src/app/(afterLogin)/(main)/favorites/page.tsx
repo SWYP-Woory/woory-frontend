@@ -1,5 +1,4 @@
 import FavoritePostView from '@/app/(afterLogin)/(main)/favorites/_components/FavoritePostView';
-import BottomMenuBar from '@/app/_components/common/bottomMenuBar/BottomMenuBar';
 
 const DUMMY_DATA = [
   {
@@ -61,11 +60,8 @@ const DUMMY_DATA = [
 
 export default function FavoritesPage() {
   return (
-    <>
-      <div className="flex flex-col flex-grow py-[0.7rem]">
+    <div className="flex flex-col flex-grow py-[0.7rem]">
         <FavoritePostView data={DUMMY_DATA} />
       </div>
-      <BottomMenuBar />
-    </>
   );
 }

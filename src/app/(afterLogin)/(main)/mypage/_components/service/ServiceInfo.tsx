@@ -1,4 +1,4 @@
-import OptionTitle from '@/app/(afterLogin)/mypage/_components/OptionTitle';
+import OptionTitle from '@/app/(afterLogin)/(main)/mypage/_components/OptionTitle';
 import ServiceInfoIcon from '@/assets/icons/info/serviceInfo.svg';
 
 export default function ServiceInfo() {
