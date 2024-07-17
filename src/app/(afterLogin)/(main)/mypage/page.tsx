@@ -19,7 +19,7 @@ const DUMMY_DATA = {
 
 export default function MyPage() {
   return (
-    <>
+    <div className="min-h-screen">
       <MyTitle name={DUMMY_DATA.name} profileImage={DUMMY_DATA.profileImage} />
       <Border />
       <NotificationSetting notifications={DUMMY_DATA.notifications} />
@@ -27,6 +27,6 @@ export default function MyPage() {
       <AddHome />
       <AccountSetting />
       <ServiceInfo />
-    </>
+    </div>
   );
 }
