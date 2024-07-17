@@ -3,7 +3,6 @@
 import MemberAdd from '@/app/(afterLogin)/(main)/members/_components/MemberAdd';
 import MemberProfile from '@/app/(afterLogin)/(main)/members/_components/MemberProfile';
 import MyProfile from '@/app/(afterLogin)/(main)/members/_components/MyProfile';
-import BottomMenuBar from '@/app/_components/common/bottomMenuBar/BottomMenuBar';
 import ToastPopUp from '@/app/_components/popup/ToastPopUp';
 import { useEffect, useState } from 'react';
 
@@ -78,7 +77,6 @@ export default function MemberMain() {
         ))}
       </div>
       {isClicked && <ToastPopUp />}
-      <BottomMenuBar />
     </>
   );
 }

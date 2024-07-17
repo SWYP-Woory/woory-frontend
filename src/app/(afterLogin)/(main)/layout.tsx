@@ -1,3 +1,4 @@
+import BottomMenuBar from '@/app/_components/common/bottomMenuBar/BottomMenuBar';
 import NotificationHeader from '@/app/_components/common/header/NotificationHeader';
 import { ReactNode } from 'react';
 
@@ -10,6 +11,7 @@ export default function Layout({ children }: Props) {
     <>
       <NotificationHeader />
       {children}
+      <BottomMenuBar />
     </>
   );
 }
