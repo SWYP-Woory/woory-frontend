@@ -3,9 +3,12 @@
 import Delete from '@/assets/icons/delete/memberDelete.svg';
 import { useState } from 'react';
 
-export default function MemberDeleteIcon() {
-  const [isHovered, setIsHovered] = useState(false);
-  const [isActive, setIsActive] = useState(false);
+interface Props {
+  isClicked: boolean;
+}
+
+export default function MemberDeleteIcon({ isClicked }: Props) {
+  const [isHovered, setIsHovered] = useState<boolean>(false);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -15,12 +18,8 @@ export default function MemberDeleteIcon() {
     setIsHovered(false);
   };
 
-  const handleClick = () => {
-    setIsActive(!isActive);
-  };
-
   let fill = '#888888';
-  if (isActive) {
+  if (isClicked) {
     fill = '#1EA49A';
   } else if (isHovered) {
     fill = '#666666';
@@ -33,7 +32,6 @@ export default function MemberDeleteIcon() {
       fill={fill}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onClick={handleClick}
     />
   );
 }

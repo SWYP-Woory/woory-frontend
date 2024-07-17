@@ -68,3 +68,9 @@ export type FavoritePostType = {
   imgUrl: string;
   postDate: Date;
 };
+
+export type MemberType = {
+  profileImage: string;
+  name: string;
+  isHouseholder: boolean;
+};
