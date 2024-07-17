@@ -3,9 +3,9 @@
 import DailyTopic from '@/app/_components/common/daily/DailyTopic';
 import DateController from '@/app/_components/common/dateController/DateController';
 import DailyThread from '@/app/_components/daily/DailyThread';
+import { useDateControl } from '@/app/_hooks/useDateControl';
 import { DailyThreadType } from '@/type';
-import { addDays, format, subDays } from 'date-fns';
-import { useCallback, useState } from 'react';
+import { format } from 'date-fns';
 
 interface Props {
   topic: string;
@@ -13,15 +13,7 @@ interface Props {
 }
 
 export default function DailyView({ topic, data }: Props) {
-  const [currentDate, setCurrentDate] = useState(new Date());
-
-  const nextDayHandler = useCallback(() => {
-    setCurrentDate(addDays(currentDate, 1));
-  }, [currentDate]);
-
-  const prevDayHandler = useCallback(() => {
-    setCurrentDate(subDays(currentDate, 1));
-  }, [currentDate]);
+  const { currentDate, prevDayHandler, nextDayHandler } = useDateControl();
 
   return (
     <div className="flex flex-col items-center gap-24">
