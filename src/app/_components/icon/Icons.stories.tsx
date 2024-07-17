@@ -73,7 +73,7 @@ function Icons() {
 
       <IconSection title="MemberDeleteIcon,KebabMenu,Like Icons (Click here)">
         <IconSort>
-          <MemberDeleteIcon />
+          <MemberDeleteIcon isClicked />
           <KebabMenuIcon isActive onClick={handleClick} />
           <LikeIcon />
         </IconSort>
