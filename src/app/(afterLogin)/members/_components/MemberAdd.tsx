@@ -11,7 +11,7 @@ export default function MemberAdd({ onClick }: Props) {
         <div className="flex items-center gap-8">
           <LinkIcon />
           <div className="flex flex-col">
-            <div className="font-body text-start">새멤버 초대하기</div>
+            <div className="font-body text-start">새 멤버 초대하기</div>
             <div className="font-caption text-midGrey ">링크를 받은 사람이 우리와 함께할 수 있어요</div>
           </div>
         </div>
