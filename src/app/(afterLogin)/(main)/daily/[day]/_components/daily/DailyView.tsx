@@ -1,5 +1,6 @@
 'use client';
 
+import DailyNoThread from '@/app/(afterLogin)/(main)/daily/[day]/_components/daily/DailyNoThread';
 import DailyThread from '@/app/(afterLogin)/(main)/daily/[day]/_components/daily/DailyThread';
 import DailyTopic from '@/app/_components/common/daily/DailyTopic';
 import DateController from '@/app/_components/common/dateController/DateController';
@@ -26,7 +27,15 @@ const DUMMY_DATA = {
 export default function DailyView() {
   const { currentDate, prevDayHandler, nextDayHandler } = useDateControl();
   const [topic] = useState<string>(DUMMY_TOPIC);
-  const [data] = useState<DailyThreadType>(DUMMY_DATA);
+  const [dailyThreads] = useState<DailyThreadType[]>([
+    DUMMY_DATA,
+    DUMMY_DATA,
+    DUMMY_DATA,
+    DUMMY_DATA,
+    DUMMY_DATA,
+    DUMMY_DATA,
+    DUMMY_DATA,
+  ]);
 
   return (
     <div className="flex flex-col items-center gap-24">
@@ -38,7 +47,7 @@ export default function DailyView() {
       <div className="flex flex-col items-center gap-8">
         <DailyTopic topic={topic} hasLike />
         <div>
-          <DailyThread data={data} />
+          {dailyThreads.length > 0 ? dailyThreads.map((data) => <DailyThread data={data} />) : <DailyNoThread />}
         </div>
       </div>
     </div>
