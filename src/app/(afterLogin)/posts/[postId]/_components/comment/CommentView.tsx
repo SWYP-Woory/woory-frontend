@@ -8,7 +8,7 @@ interface Props {
 export default function CommentView({ data }: Props) {
   if (data.length === 0) {
     return (
-      <div className="flex flex-col flex-grow justify-center items-center text-center w-full min-h-[15.0rem] font-body text-textDisabled">
+      <div className="flex flex-col flex-grow justify-center items-center text-center w-full min-h-[20.0rem] font-body text-textDisabled">
         아직 댓글이 없어요. <br />
         가장 먼저 댓글을 남겨보세요.
       </div>
