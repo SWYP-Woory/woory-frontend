@@ -6,6 +6,15 @@ export type ReactionType = 'heart' | 'smile' | 'sad' | 'surprise' | 'thumbs';
 
 export type NotiType = 'topic' | 'reaction' | 'post';
 
+export type NotificationDataType = {
+  isRead?: boolean;
+  notiType: NotiType;
+  topic?: string;
+  opponent?: string;
+  reactionNotiType?: ReactionNotiType;
+  notiTime: Date;
+};
+
 export type ReactionNotiType = 'comment' | 'reComment' | 'reaction';
 
 export type AccountDeletionType = 'householder' | 'member' | 'lastMember';
