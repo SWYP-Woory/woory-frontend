@@ -1,4 +1,4 @@
-import DailyView from '@/app/(afterLogin)/(main)/daily/[day]/_components/daily/DailyView';
+import DailyView from '@/app/(afterLogin)/(main)/home/daily/[day]/_components/daily/DailyView';
 import PostButton from '@/app/_components/common/button/PostButton';
 import UpperTabBar from '@/app/_components/upperTabBar/UpperTabBar';
 

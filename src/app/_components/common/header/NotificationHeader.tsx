@@ -5,7 +5,7 @@ import { useSelectedLayoutSegment } from 'next/navigation';
 
 const decideTitle = (segment: string | null) => {
   switch (segment) {
-    case 'daily':
+    case 'home':
       return '우리';
     case 'favorites':
       return '마음함';

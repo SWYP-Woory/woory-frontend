@@ -1,6 +1,4 @@
-export type TabType = '데일리' | '캘린더';
-
-export type Page = 'daily' | 'favorites' | 'members' | 'myPage';
+export type TabType = 'daily' | 'calendar';
 
 export type BottomSheetType = 'home' | 'inquiry' | 'familySelect';
 

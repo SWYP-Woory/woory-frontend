@@ -1,4 +1,4 @@
-import Day from '@/app/_components/calender/Day';
+import Day from '@/app/(afterLogin)/(main)/home/calendar/[month]/_components/calendar/Day';
 import { CalendarEventType, CalenderDataType } from '@/type';
 import { format, getDate, getMonth, parseISO } from 'date-fns';
 
@@ -34,7 +34,7 @@ function renderDay(day: Date, currentDate: Date, events: CalendarEventType[]) {
   );
 }
 
-export default function Calender({ createMonth, currentDate, data }: Props) {
+export default function Calendar({ createMonth, currentDate, data }: Props) {
   return (
     <div className="flex flex-col justify-between items-center w-[34.2rem] h-[45.4rem]">
       <div className="flex justify-between items-center w-[30.4rem] h-[2.6rem]">
