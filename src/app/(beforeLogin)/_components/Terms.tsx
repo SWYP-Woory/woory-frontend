@@ -15,7 +15,7 @@ export default function Terms() {
   };
 
   return (
-    <div className="flex items-start gap-8 w-[34rem]">
+    <div className="flex items-start gap-8 w-[34rem] pl-8">
       <div className="pt-[0.5rem]">
         <Checkbox isChecked={isChecked} onClick={handleClick} />
       </div>
