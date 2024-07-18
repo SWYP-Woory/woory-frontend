@@ -1,8 +1,8 @@
 import Notification from '@/app/(afterLogin)/notification/_components/notification/Notification';
-import { NotificationDataType } from '@/type';
+import { NotificationType } from '@/type';
 import { getDiffTime } from '@/utils/getTime';
 
-interface Props extends NotificationDataType {}
+interface Props extends NotificationType {}
 
 const NotiTitle = {
   topic: '오늘의 토픽',

@@ -6,13 +6,17 @@ export type ReactionType = 'heart' | 'smile' | 'sad' | 'surprise' | 'thumbs';
 
 export type NotiType = 'topic' | 'reaction' | 'post';
 
-export type NotificationDataType = {
+export type NotificationType = {
   isRead?: boolean;
   notiType: NotiType;
   topic?: string;
   opponent?: string;
   reactionNotiType?: ReactionNotiType;
   notiTime: Date;
+};
+
+export type NotificationDataType = NotificationType & {
+  id: number;
 };
 
 export type ReactionNotiType = 'comment' | 'reComment' | 'reaction';
