@@ -30,7 +30,7 @@ function PopUp() {
           onExecute={handleCancelExecute}
         />
       </div>
-      <ToastPopUp />
+      <ToastPopUp type="link" />
     </div>
   );
 }
