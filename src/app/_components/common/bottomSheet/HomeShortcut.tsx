@@ -14,7 +14,7 @@ export default function HomeShortcut() {
   };
 
   const handleAddClick = () => {
-    // 홈 화면 추가 로직 구현
+    // todo: 홈 화면 추가 로직 구현
     setIsModalOpen(false);
     setIsToastFloating(true);
   };

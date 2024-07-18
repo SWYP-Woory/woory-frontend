@@ -1,3 +1,5 @@
+import { ModalTypeMap } from '@/type';
+
 export const POST_CONTENT = `게시글을 삭제하면 
 해당 게시글과 댓글, 반응이  
 모두 사라집니다. 
@@ -35,16 +37,6 @@ export const LAST_MEMBER_ACCOUNT_DELETE_CONTENT = `탈퇴하면 이 가족의 �
 복구할 수 없습니다. 
 지금 탈퇴하시겠습니까?
 `;
-
-export type ModalTypeMap = {
-  [key: string]: string;
-  post: string;
-  comment: string;
-  reply: string;
-  householder: string;
-  lastMember: string;
-  member: string;
-};
 
 export const MODAL_TYPE_MAP: ModalTypeMap = {
   post: POST_CONTENT,

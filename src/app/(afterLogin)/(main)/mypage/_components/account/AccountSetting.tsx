@@ -1,9 +1,10 @@
 import OptionTitle from '@/app/(afterLogin)/(main)/mypage/_components/OptionTitle';
 import SettingIcon from '@/assets/icons/setting/setting.svg';
+import { AccountDeletionType } from '@/type';
 import Link from 'next/link';
 
 interface Props {
-  targetType: string;
+  targetType: AccountDeletionType;
 }
 
 export default function AccountSetting({ targetType }: Props) {

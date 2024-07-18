@@ -10,9 +10,9 @@ import Border from '@/app/_components/common/border/Border';
 import BottomSheet from '@/app/_components/common/bottomSheet/BottomSheet';
 import ModalBackground from '@/app/_components/common/modal/ModalBackground';
 import ToastPopUp from '@/app/_components/common/popup/ToastPopUp';
-import { ModalTypeMap } from '@/app/_constants/modal';
 import { useToast } from '@/app/_hooks/useToast';
 import { useModalStore } from '@/app/_store/modalStore';
+import { AccountDeletionType } from '@/type';
 
 const DUMMY_DATA = {
   name: '아들',
@@ -26,21 +26,26 @@ const DUMMY_DATA = {
   },
 };
 
-export default function MyPageMain() {
-  const { isLastMember, isHouseholder } = DUMMY_DATA;
-  const { isModalOpen, setIsModalOpen } = useModalStore();
-  const { isToastFloating } = useToast();
+const determineTargetType = (isLastMember: boolean, isHouseholder: boolean): AccountDeletionType => {
+  let targetType: AccountDeletionType = 'member';
 
-  const handleModal = () => {
-    setIsModalOpen(true);
-  };
-
-  let targetType: keyof ModalTypeMap = 'member';
   if (isLastMember) {
     targetType = 'lastMember';
   } else if (isHouseholder) {
     targetType = 'householder';
   }
+
+  return targetType;
+};
+export default function MyPageMain() {
+  const { isLastMember, isHouseholder } = DUMMY_DATA;
+  const { isModalOpen, setIsModalOpen } = useModalStore();
+  const { isToastFloating } = useToast();
+  const targetType = determineTargetType(isLastMember, isHouseholder);
+
+  const handleModal = () => {
+    setIsModalOpen(true);
+  };
 
   return (
     <div className="flex flex-col flex-grow">
