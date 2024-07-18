@@ -48,7 +48,7 @@ const DUMMY_DATA = {
 
 export default function MemberMain() {
   const { user, members } = DUMMY_DATA;
-  const { isToastFloating, setIsToastFloating } = useToast(1500);
+  const { isToastFloating, setIsToastFloating } = useToast();
 
   const handleMemberAdd = () => {
     setIsToastFloating(true);

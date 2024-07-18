@@ -29,7 +29,7 @@ const DUMMY_DATA = {
 export default function MyPageMain() {
   const { isLastMember, isHouseholder } = DUMMY_DATA;
   const { isModalOpen, setIsModalOpen } = useModalStore();
-  const { isToastFloating } = useToast(1500);
+  const { isToastFloating } = useToast();
 
   const handleModal = () => {
     setIsModalOpen(true);
