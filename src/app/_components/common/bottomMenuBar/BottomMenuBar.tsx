@@ -16,7 +16,7 @@ export default function BottomMenuBar() {
     <nav className="sticky bottom-0">
       <div className="flex justify-evenly items-start pt-[1.3rem] bg-white w-[37.5rem] h-[4.8rem] border-bgGrey border-t">
         <Link href={`/home/daily/${date}`}>
-          <HomeIcon isActive={pathName.includes('daily')} />
+          <HomeIcon isActive={pathName.includes('home')} />
         </Link>
         <Link href="/favorites">
           <HeartIcon isActive={pathName.includes('favorites')} />
