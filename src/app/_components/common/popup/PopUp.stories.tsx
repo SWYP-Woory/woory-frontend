@@ -1,5 +1,5 @@
-import Modal from '@/app/_components/popup/Modal';
-import ToastPopUp from '@/app/_components/popup/ToastPopUp';
+import Modal from '@/app/_components/common/modal/Modal';
+import ToastPopUp from '@/app/_components/common/popup/ToastPopUp';
 import { Meta, StoryObj } from '@storybook/react';
 
 function PopUp() {
@@ -30,7 +30,7 @@ function PopUp() {
           onExecute={handleCancelExecute}
         />
       </div>
-      <ToastPopUp />
+      <ToastPopUp type="link" />
     </div>
   );
 }

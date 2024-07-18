@@ -1,9 +1,9 @@
 'use client';
 
-import { PrivacyPolicyDescription, TermsOfUseDescription } from '@/app/(beforeLogin)/_components/AgreementDescription';
-import ModalBackground from '@/app/(beforeLogin)/_components/modal/ModalBackground';
 import ModalBorder from '@/app/_components/common/border/ModalBorder';
 import BottomSheetButton from '@/app/_components/common/button/BottomSheetButton';
+import { PrivacyPolicyDescription, TermsOfUseDescription } from '@/app/_components/common/modal/AgreementDescription';
+import ModalBackground from '@/app/_components/common/modal/ModalBackground';
 import { useRouter } from 'next/navigation';
 
 interface Props {

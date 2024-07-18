@@ -61,7 +61,7 @@ const DUMMY_DATA = [
 export default function FavoritesPage() {
   return (
     <div className="flex flex-col flex-grow py-[0.7rem]">
-        <FavoritePostView data={DUMMY_DATA} />
-      </div>
+      <FavoritePostView data={DUMMY_DATA} />
+    </div>
   );
 }

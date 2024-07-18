@@ -1,8 +1,12 @@
 import AddHomeIcon from '@/assets/icons/addHome/addHome.svg';
 
-export default function AddHome() {
+interface Props {
+  onClick: () => void;
+}
+
+export default function AddHome({ onClick }: Props) {
   return (
-    <button type="button" aria-label="addHome">
+    <button type="button" aria-label="add shortcut" onClick={onClick}>
       <div className="flex gap-[1.0rem] px-16 w-full h-[7.8rem] border-bgGrey border-b">
         <div className="pt-20">
           <AddHomeIcon />
