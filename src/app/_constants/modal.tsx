@@ -37,6 +37,7 @@ export const LAST_MEMBER_ACCOUNT_DELETE_CONTENT = `탈퇴하면 이 가족의 �
 `;
 
 export type ModalTypeMap = {
+  [key: string]: string;
   post: string;
   comment: string;
   reply: string;

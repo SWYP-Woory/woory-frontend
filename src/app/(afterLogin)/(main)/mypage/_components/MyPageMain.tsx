@@ -14,8 +14,8 @@ import { useClickToast } from '@/app/_hooks/useClickToast';
 const DUMMY_DATA = {
   name: '아들',
   profileImage: '',
-  isHouseholder: false,
-  isLastMember: true,
+  isHouseholder: true,
+  isLastMember: false,
   notifications: {
     topic: true,
     post: false,
