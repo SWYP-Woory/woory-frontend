@@ -1,7 +1,5 @@
 export type TabType = '데일리' | '캘린더';
 
-export type Page = 'daily' | 'favorites' | 'members' | 'myPage';
-
 export type BottomSheetType = 'home' | 'inquiry' | 'familySelect';
 
 export type ReactionType = 'heart' | 'smile' | 'sad' | 'surprise' | 'thumbs';
