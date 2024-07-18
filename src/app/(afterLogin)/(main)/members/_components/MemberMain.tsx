@@ -3,8 +3,8 @@
 import MemberAdd from '@/app/(afterLogin)/(main)/members/_components/MemberAdd';
 import MemberProfile from '@/app/(afterLogin)/(main)/members/_components/MemberProfile';
 import MyProfile from '@/app/(afterLogin)/(main)/members/_components/MyProfile';
-import ToastPopUp from '@/app/_components/popup/ToastPopUp';
-import { useEffect, useState } from 'react';
+import ToastPopUp from '@/app/_components/common/popup/ToastPopUp';
+import { useToast } from '@/app/_hooks/useToast';
 
 const DUMMY_DATA = {
   user: {
@@ -48,25 +48,17 @@ const DUMMY_DATA = {
 
 export default function MemberMain() {
   const { user, members } = DUMMY_DATA;
-  const [isClicked, setIsClicked] = useState<boolean>(false);
+  const { isToastFloating, setIsToastFloating } = useToast();
 
-  const handleClick = () => {
-    setIsClicked((prev) => !prev);
+  const handleMemberAdd = () => {
+    setIsToastFloating(true);
   };
-
-  useEffect(() => {
-    if (isClicked) {
-      setTimeout(() => {
-        setIsClicked(false);
-      }, 1500);
-    }
-  }, [isClicked]);
 
   return (
     <>
       <div className="flex-grow">
         <MyProfile data={user} />
-        <MemberAdd onClick={handleClick} />
+        <MemberAdd onClick={handleMemberAdd} />
         {members.map((member) => (
           <MemberProfile
             profileImage={member.profileImage}
@@ -76,7 +68,7 @@ export default function MemberMain() {
           />
         ))}
       </div>
-      {isClicked && <ToastPopUp />}
+      {isToastFloating && <ToastPopUp type="link" />}
     </>
   );
 }

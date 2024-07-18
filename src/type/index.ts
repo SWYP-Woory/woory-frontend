@@ -6,6 +6,8 @@ export type ReactionType = 'heart' | 'smile' | 'sad' | 'surprise' | 'thumbs';
 
 export type NotiType = 'topic' | 'reaction' | 'post';
 
+export type AccountDeletionType = 'householder' | 'member' | 'lastMember';
+
 export type CalendarEventType = {
   date: string;
   url: string;
@@ -77,4 +79,14 @@ export type NotificationSettingType = {
   topic: boolean;
   post: boolean;
   reaction: boolean;
+};
+
+export type ModalTypeMap = {
+  [key: string]: string;
+  post: string;
+  comment: string;
+  reply: string;
+  householder: string;
+  lastMember: string;
+  member: string;
 };
