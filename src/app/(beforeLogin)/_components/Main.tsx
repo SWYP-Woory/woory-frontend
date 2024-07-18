@@ -10,8 +10,10 @@ export default function Main() {
           <Logo />
         </div>
       </div>
-      <h1 className="w-[18.9rem] h-[9.6rem] text-22 font-700 text-center">
-        우리 가족과 일상을 재미있게 나누고
+      <h1 className="flex flex-col text-22 font-700 text-center">
+        우리 가족과 일상을
+        <br />
+        재미있게 나누고
         <br />
         간편히 간직해보세요
       </h1>

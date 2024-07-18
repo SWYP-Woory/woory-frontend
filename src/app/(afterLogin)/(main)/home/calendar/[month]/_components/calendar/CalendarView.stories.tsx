@@ -1,4 +1,4 @@
-import CalenderView from '@/app/_components/calender/CalenderView';
+import CalendarView from '@/app/(afterLogin)/(main)/home/calendar/[month]/_components/calendar/CalendarView';
 import { Meta, StoryObj } from '@storybook/react';
 
 const DUMMY_DATA = {
@@ -31,14 +31,14 @@ const DUMMY_DATA = {
     },
   ],
 };
-const meta: Meta<typeof CalenderView> = {
-  title: 'CalenderView',
-  component: CalenderView,
+const meta: Meta<typeof CalendarView> = {
+  title: 'CalendarView',
+  component: CalendarView,
 };
 
 export default meta;
 
-type Story = StoryObj<typeof CalenderView>;
+type Story = StoryObj<typeof CalendarView>;
 
 export const Default: Story = {
   args: { data: DUMMY_DATA },
