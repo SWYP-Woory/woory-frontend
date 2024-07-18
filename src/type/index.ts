@@ -6,6 +6,8 @@ export type ReactionType = 'heart' | 'smile' | 'sad' | 'surprise' | 'thumbs';
 
 export type NotiType = 'topic' | 'reaction' | 'post';
 
+export type ReactionNotiType = 'comment' | 'reComment' | 'reaction';
+
 export type AccountDeletionType = 'householder' | 'member' | 'lastMember';
 
 export type CalendarEventType = {
