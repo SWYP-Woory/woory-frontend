@@ -3,13 +3,19 @@
 import OptionTitle from '@/app/(afterLogin)/(main)/mypage/_components/OptionTitle';
 import FamilyItem from '@/app/(afterLogin)/(main)/mypage/_components/family/FamilyItem';
 import FamilyIcon from '@/assets/icons/family/family.svg';
+import { useRouter } from 'next/navigation';
 
 interface Props {
   isHouseholder: boolean;
 }
 
 export default function FamilySetting({ isHouseholder }: Props) {
-  const handleFamilySelect = () => {};
+  const router = useRouter();
+
+  const handleFamilySelect = () => {
+    router.push('/mypage/family-select');
+  };
+
   const handleFamilyEdit = () => {};
   return (
     <div className="border-bgGrey border-b">

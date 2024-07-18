@@ -35,7 +35,7 @@ export default function MyPageMain() {
   }
 
   return (
-    <>
+    <div className="flex flex-col flex-grow">
       <MyTitle name={DUMMY_DATA.name} profileImage={DUMMY_DATA.profileImage} />
       <Border />
       <NotificationSetting notifications={DUMMY_DATA.notifications} />
@@ -44,6 +44,6 @@ export default function MyPageMain() {
       <AccountSetting targetType={targetType} />
       <ServiceInfo />
       {isClicked && <ToastPopUp />}
-    </>
+    </div>
   );
 }
