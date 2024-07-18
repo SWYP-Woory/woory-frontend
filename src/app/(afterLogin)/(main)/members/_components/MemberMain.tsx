@@ -4,7 +4,7 @@ import MemberAdd from '@/app/(afterLogin)/(main)/members/_components/MemberAdd';
 import MemberProfile from '@/app/(afterLogin)/(main)/members/_components/MemberProfile';
 import MyProfile from '@/app/(afterLogin)/(main)/members/_components/MyProfile';
 import ToastPopUp from '@/app/_components/popup/ToastPopUp';
-import { useEffect, useState } from 'react';
+import { useClickToast } from '@/app/_hooks/useClickToast';
 
 const DUMMY_DATA = {
   user: {
@@ -48,19 +48,7 @@ const DUMMY_DATA = {
 
 export default function MemberMain() {
   const { user, members } = DUMMY_DATA;
-  const [isClicked, setIsClicked] = useState<boolean>(false);
-
-  const handleClick = () => {
-    setIsClicked((prev) => !prev);
-  };
-
-  useEffect(() => {
-    if (isClicked) {
-      setTimeout(() => {
-        setIsClicked(false);
-      }, 1500);
-    }
-  }, [isClicked]);
+  const { isClicked, handleClick } = useClickToast(1500);
 
   return (
     <>

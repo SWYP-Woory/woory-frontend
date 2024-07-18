@@ -9,7 +9,7 @@ import ServiceInfo from '@/app/(afterLogin)/(main)/mypage/_components/service/Se
 import Border from '@/app/_components/common/border/Border';
 import ToastPopUp from '@/app/_components/popup/ToastPopUp';
 import { ModalTypeMap } from '@/app/_constants/modal';
-import { useEffect, useState } from 'react';
+import { useClickToast } from '@/app/_hooks/useClickToast';
 
 const DUMMY_DATA = {
   name: '아들',
@@ -25,7 +25,7 @@ const DUMMY_DATA = {
 
 export default function MyPageMain() {
   const { isLastMember, isHouseholder } = DUMMY_DATA;
-  const [isClicked, setIsClicked] = useState<boolean>(false);
+  const { isClicked, handleClick } = useClickToast(1500);
 
   let targetType: keyof ModalTypeMap = 'member';
   if (isLastMember) {
@@ -33,18 +33,6 @@ export default function MyPageMain() {
   } else if (isHouseholder) {
     targetType = 'householder';
   }
-
-  const handleClick = () => {
-    setIsClicked((prev) => !prev);
-  };
-
-  useEffect(() => {
-    if (isClicked) {
-      setTimeout(() => {
-        setIsClicked(false);
-      }, 1500);
-    }
-  }, [isClicked]);
 
   return (
     <>
