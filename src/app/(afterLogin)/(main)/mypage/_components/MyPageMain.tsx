@@ -27,15 +27,14 @@ const DUMMY_DATA = {
 };
 
 const determineTargetType = (isLastMember: boolean, isHouseholder: boolean): AccountDeletionType => {
-  let targetType: AccountDeletionType = 'member';
-
   if (isLastMember) {
-    targetType = 'lastMember';
-  } else if (isHouseholder) {
-    targetType = 'householder';
+    return 'lastMember';
+  }
+  if (isHouseholder) {
+    return 'householder';
   }
 
-  return targetType;
+  return 'member';
 };
 export default function MyPageMain() {
   const { isLastMember, isHouseholder } = DUMMY_DATA;
