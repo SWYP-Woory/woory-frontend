@@ -64,7 +64,7 @@ export default function MemberMain() {
           />
         ))}
       </div>
-      {isClicked && <ToastPopUp />}
+      {isClicked && <ToastPopUp type="link" />}
     </>
   );
 }

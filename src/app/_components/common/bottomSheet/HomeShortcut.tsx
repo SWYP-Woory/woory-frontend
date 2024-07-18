@@ -1,9 +1,19 @@
+'use client';
+
 import PopUpButton from '@/app/_components/common/button/PopUpButton';
 import Logo from '@/assets/icons/logo/logo_woory.svg';
+import { useRouter } from 'next/navigation';
 
 export default function HomeShortcut() {
-  const handleCancelClick = () => {};
-  const handleShortcutClick = () => {};
+  const router = useRouter();
+
+  const handleCancelClick = () => {
+    router.back();
+  };
+
+  const handleAddClick = () => {
+    router.back();
+  };
 
   return (
     <>
@@ -18,7 +28,7 @@ export default function HomeShortcut() {
       </div>
       <div className="absolute bottom-[3.2rem] left-[2rem] flex gap-[1rem]">
         <PopUpButton text="취소" textColor="midGrey" colorType="lightGrey" size="large" onClick={handleCancelClick} />
-        <PopUpButton text="추가" textColor="white" colorType="primary" size="large" onClick={handleShortcutClick} />
+        <PopUpButton text="추가" textColor="white" colorType="primary" size="large" onClick={handleAddClick} />
       </div>
     </>
   );

@@ -25,7 +25,7 @@ const DUMMY_DATA = {
 
 export default function MyPageMain() {
   const { isLastMember, isHouseholder } = DUMMY_DATA;
-  const { isClicked, handleClick } = useClickToast(1500);
+  const { isClicked } = useClickToast(1500);
 
   let targetType: keyof ModalTypeMap = 'member';
   if (isLastMember) {
@@ -40,10 +40,10 @@ export default function MyPageMain() {
       <Border />
       <NotificationSetting notifications={DUMMY_DATA.notifications} />
       <FamilySetting isHouseholder={DUMMY_DATA.isHouseholder} />
-      <AddHome onClick={handleClick} />
+      <AddHome />
       <AccountSetting targetType={targetType} />
       <ServiceInfo />
-      {isClicked && <ToastPopUp />}
+      {isClicked && <ToastPopUp type="shortcut" />}
     </div>
   );
 }

@@ -13,7 +13,7 @@ export default function FamilySetting({ isHouseholder }: Props) {
   const router = useRouter();
 
   const handleFamilySelect = () => {
-    router.push('/mypage/family-select');
+    router.push('/mypage/family-select', { scroll: false });
   };
 
   const handleFamilyEdit = () => {};

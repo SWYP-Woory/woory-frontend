@@ -13,7 +13,7 @@ export default function AccountSetting({ targetType }: Props) {
       <button type="button" aria-label="logout" className="setting-button">
         로그아웃
       </button>
-      <Link href={{ pathname: '/mypage/account-deletion', query: { targetType } }}>
+      <Link href={{ pathname: '/mypage/account-deletion', query: { targetType } }} passHref scroll={false}>
         <div className="setting-button">회원탈퇴</div>
       </Link>
     </div>
