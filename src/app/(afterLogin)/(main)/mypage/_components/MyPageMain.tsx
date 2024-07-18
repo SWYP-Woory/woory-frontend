@@ -7,7 +7,7 @@ import FamilySetting from '@/app/(afterLogin)/(main)/mypage/_components/family/F
 import NotificationSetting from '@/app/(afterLogin)/(main)/mypage/_components/notification/NotificationSetting';
 import ServiceInfo from '@/app/(afterLogin)/(main)/mypage/_components/service/ServiceInfo';
 import Border from '@/app/_components/common/border/Border';
-import ToastPopUp from '@/app/_components/popup/ToastPopUp';
+import ToastPopUp from '@/app/_components/common/popup/ToastPopUp';
 import { ModalTypeMap } from '@/app/_constants/modal';
 import { useClickToast } from '@/app/_hooks/useClickToast';
 

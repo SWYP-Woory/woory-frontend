@@ -3,7 +3,7 @@
 import MemberAdd from '@/app/(afterLogin)/(main)/members/_components/MemberAdd';
 import MemberProfile from '@/app/(afterLogin)/(main)/members/_components/MemberProfile';
 import MyProfile from '@/app/(afterLogin)/(main)/members/_components/MyProfile';
-import ToastPopUp from '@/app/_components/popup/ToastPopUp';
+import ToastPopUp from '@/app/_components/common/popup/ToastPopUp';
 import { useClickToast } from '@/app/_hooks/useClickToast';
 
 const DUMMY_DATA = {

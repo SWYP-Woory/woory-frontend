@@ -1,5 +1,5 @@
 import OptionTitle from '@/app/(afterLogin)/(main)/mypage/_components/OptionTitle';
-import Modal from '@/app/_components/popup/Modal';
+import Modal from '@/app/_components/common/modal/Modal';
 import { MODAL_TYPE_MAP } from '@/app/_constants/modal';
 import SettingIcon from '@/assets/icons/setting/setting.svg';
 import { useState } from 'react';

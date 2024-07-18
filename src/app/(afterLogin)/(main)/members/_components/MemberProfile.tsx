@@ -1,8 +1,8 @@
 'use client';
 
+import Modal from '@/app/_components/common/modal/Modal';
 import Profile from '@/app/_components/common/profile/Profile';
 import MemberDeleteIcon from '@/app/_components/icon/delete/MemberDeleteIcon';
-import Modal from '@/app/_components/popup/Modal';
 import { MEMBER_DELETE_CONTENT } from '@/app/_constants/modal';
 import { MemberType } from '@/type';
 import { useState } from 'react';
