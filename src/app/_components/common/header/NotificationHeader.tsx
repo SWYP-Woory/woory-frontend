@@ -11,7 +11,7 @@ const decideTitle = (segment: string | null) => {
       return '마음함';
     case 'members':
       return '우리 멤버';
-    case 'my-page':
+    case 'mypage':
       return '마이페이지';
     default:
       return '';
