@@ -7,9 +7,12 @@ import FamilySetting from '@/app/(afterLogin)/(main)/mypage/_components/family/F
 import NotificationSetting from '@/app/(afterLogin)/(main)/mypage/_components/notification/NotificationSetting';
 import ServiceInfo from '@/app/(afterLogin)/(main)/mypage/_components/service/ServiceInfo';
 import Border from '@/app/_components/common/border/Border';
+import BottomSheet from '@/app/_components/common/bottomSheet/BottomSheet';
+import ModalBackground from '@/app/_components/common/modal/ModalBackground';
 import ToastPopUp from '@/app/_components/common/popup/ToastPopUp';
 import { ModalTypeMap } from '@/app/_constants/modal';
-import { useClickToast } from '@/app/_hooks/useClickToast';
+import { useToast } from '@/app/_hooks/useToast';
+import { useModalStore } from '@/app/_store/modalStore';
 
 const DUMMY_DATA = {
   name: '아들',
@@ -25,7 +28,12 @@ const DUMMY_DATA = {
 
 export default function MyPageMain() {
   const { isLastMember, isHouseholder } = DUMMY_DATA;
-  const { isClicked } = useClickToast(1500);
+  const { isModalOpen, setIsModalOpen } = useModalStore();
+  const { isToastFloating } = useToast(1500);
+
+  const handleModal = () => {
+    setIsModalOpen(true);
+  };
 
   let targetType: keyof ModalTypeMap = 'member';
   if (isLastMember) {
@@ -40,10 +48,15 @@ export default function MyPageMain() {
       <Border />
       <NotificationSetting notifications={DUMMY_DATA.notifications} />
       <FamilySetting isHouseholder={DUMMY_DATA.isHouseholder} />
-      <AddHome />
+      <AddHome onClick={handleModal} />
       <AccountSetting targetType={targetType} />
       <ServiceInfo />
-      {isClicked && <ToastPopUp type="shortcut" />}
+      {isModalOpen && (
+        <ModalBackground>
+          <BottomSheet sheetType="home" />
+        </ModalBackground>
+      )}
+      {isToastFloating && <ToastPopUp type="shortcut" />}
     </div>
   );
 }

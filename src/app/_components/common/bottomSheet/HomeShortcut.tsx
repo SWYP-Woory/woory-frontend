@@ -1,18 +1,22 @@
 'use client';
 
 import PopUpButton from '@/app/_components/common/button/PopUpButton';
+import { useModalStore } from '@/app/_store/modalStore';
+import { useToastStore } from '@/app/_store/toastStore';
 import Logo from '@/assets/icons/logo/logo_woory.svg';
-import { useRouter } from 'next/navigation';
 
 export default function HomeShortcut() {
-  const router = useRouter();
+  const { setIsModalOpen } = useModalStore();
+  const { setIsToastFloating } = useToastStore();
 
   const handleCancelClick = () => {
-    router.back();
+    setIsModalOpen(false);
   };
 
   const handleAddClick = () => {
-    router.back();
+    // 홈 화면 추가 로직 구현
+    setIsModalOpen(false);
+    setIsToastFloating(true);
   };
 
   return (
