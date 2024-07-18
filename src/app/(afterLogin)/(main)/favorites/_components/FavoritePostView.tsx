@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function FavoritePostView({ data }: Props) {
-  if (!data) {
+  if (data.length === 0) {
     return (
       <div className="flex flex-col justify-center items-center text-center w-full flex-grow font-body text-textDisabled">
         마음을 누른 글이 없어요. <br />
