@@ -9,7 +9,19 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['avatars.githubusercontent.com', 'cdn.smarttoday.co.kr'],
+    remotePatterns: [
+      // todo: 나중에 실제 이미지를 저장하고 있는 백엔드 서버를 가리켜야합니다.
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.smarttoday.co.kr',
+        pathname: '**',
+      },
+    ],
   },
 };
 
