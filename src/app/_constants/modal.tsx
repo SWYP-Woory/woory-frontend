@@ -38,6 +38,13 @@ export const LAST_MEMBER_ACCOUNT_DELETE_CONTENT = `탈퇴하면 이 가족의 �
 지금 탈퇴하시겠습니까?
 `;
 
+export const FAMILY_DELETE_CONTENT = `삭제하면 이 가족에 업로드 된
+글과 댓글 등의 
+모든 데이터가 삭제되며,
+복구할 수 없습니다.
+가족을 삭제하시겠습니까?
+`;
+
 export const MODAL_TYPE_MAP: ModalTypeMap = {
   post: POST_CONTENT,
   comment: COMMENT_CONTENT,
