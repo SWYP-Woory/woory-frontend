@@ -21,7 +21,7 @@ export default function ProfileImageUpload({ profileImage, inputType }: Props) {
   return (
     <>
       <div className="pt-40 px-[10.8rem]">
-        <BigProfile bigProfileImage={selectedImage} inputType={inputType} />
+        <BigProfile bigProfileImage={selectedImage!} inputType={inputType} />
       </div>
       <div className="pt-24 px-[10.8rem]">
         <PictureChangeButton onClick={handleUploadClick} />

@@ -4,7 +4,7 @@ import { InputTextType } from '@/type';
 import Image from 'next/image';
 
 interface Props {
-  bigProfileImage?: string | null;
+  bigProfileImage?: string;
   inputType: InputTextType;
 }
 
