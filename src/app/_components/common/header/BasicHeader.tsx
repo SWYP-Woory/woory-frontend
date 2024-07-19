@@ -20,13 +20,13 @@ export default function BasicHeader({ title, hasRightButton, buttonType }: Props
   const router = useRouter();
   const isValid = inputFamilyText.length > 0;
 
-  const handleLeftArrowClick = () => {
+  const handleBackClick = () => {
     router.back();
   };
 
   return (
     <header className="header">
-      <button className="absolute left-[1.6rem]" type="button" aria-label="back" onClick={handleLeftArrowClick}>
+      <button className="absolute left-[1.6rem]" type="button" aria-label="back" onClick={handleBackClick}>
         <LeftArrowIcon />
       </button>
       <div className="font-title text-18">{title}</div>
