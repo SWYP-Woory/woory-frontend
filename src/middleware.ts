@@ -13,8 +13,8 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    'family',
-    'family-select',
+    '/family',
+    '/family-select',
     '/notification',
     '/home/:path*',
     '/posts/:path*',

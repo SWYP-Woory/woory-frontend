@@ -1,5 +1,5 @@
-import FamilyImageUpload from '@/app/(beforeLogin)/family/_components/FamilyImageUpload';
-import FamilyNameInput from '@/app/(beforeLogin)/family/_components/FamilyNameInput';
+import FamilyImageUpload from '@/app/(afterLogin)/family/_components/FamilyImageUpload';
+import FamilyNameInput from '@/app/(afterLogin)/family/_components/FamilyNameInput';
 import BasicHeader from '@/app/_components/common/header/BasicHeader';
 
 export default function FamilyPage() {
