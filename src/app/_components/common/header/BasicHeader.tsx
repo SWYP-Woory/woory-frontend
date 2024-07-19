@@ -9,22 +9,28 @@ interface Props {
   hasRightButton?: boolean;
 }
 
-const decideInputText = (pathName: string, inputFamilyText: string, inputProfileText: string) => {
+const decideInputText = (
+  pathName: string,
+  inputFamilyText: string,
+  inputProfileText: string,
+  inputFamilyEditText: string,
+) => {
   if (pathName === '/profile') {
     return inputProfileText;
   }
   if (pathName === '/family') {
     return inputFamilyText;
   }
+  if (pathName === '/family-edit') {
+    return inputFamilyEditText;
+  }
   return '';
 };
 
 export default function BasicHeader({ title, hasRightButton }: Props) {
   const pathName = usePathname();
-
-  const { inputFamilyText, inputProfileText } = useInputStore();
-
-  const isValid = decideInputText(pathName, inputFamilyText, inputProfileText).length > 0;
+  const { inputFamilyText, inputProfileText, inputFamilyEditText } = useInputStore();
+  const isValid = decideInputText(pathName, inputFamilyText, inputProfileText, inputFamilyEditText).length > 0;
 
   return (
     <header className="header">
