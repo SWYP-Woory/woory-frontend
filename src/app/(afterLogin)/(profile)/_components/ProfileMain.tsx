@@ -1,5 +1,9 @@
+'use client';
+
 import NameInput from '@/app/(afterLogin)/(profile)/_components/NameInput';
+import ToastPopUp from '@/app/_components/common/popup/ToastPopUp';
 import ProfileImageUpload from '@/app/_components/common/profile/ProfileImageUpload';
+import { useToast } from '@/app/_hooks/useToast';
 import { InputTextType } from '@/type';
 
 interface Props {
@@ -9,6 +13,8 @@ interface Props {
 }
 
 export default function ProfileMain({ inputType, profileImage, value }: Props) {
+  const { isToastFloating } = useToast();
+
   return (
     <>
       <ProfileImageUpload profileImage={profileImage} inputType={inputType} />
@@ -17,6 +23,7 @@ export default function ProfileMain({ inputType, profileImage, value }: Props) {
         <h3 className="text-18 font-700 mb-8">이름</h3>
         <NameInput value={value} type={inputType} />
       </div>
+      {isToastFloating && <ToastPopUp type="imageSize" />}
     </>
   );
 }
