@@ -16,7 +16,10 @@ export default function FamilySetting({ isHouseholder }: Props) {
     router.push('/mypage/family-select', { scroll: false });
   };
 
-  const handleFamilyEdit = () => {};
+  const handleFamilyEdit = () => {
+    router.push('/family-edit');
+  };
+
   return (
     <div className="border-bgGrey border-b">
       <OptionTitle icon={<FamilyIcon />} title="가족 관리" />

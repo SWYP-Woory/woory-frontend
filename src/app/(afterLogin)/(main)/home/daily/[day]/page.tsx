@@ -1,5 +1,5 @@
 import DailyView from '@/app/(afterLogin)/(main)/home/daily/[day]/_components/daily/DailyView';
-import PostButton from '@/app/_components/common/button/PostButton';
+import PostButton from '@/app/(afterLogin)/(main)/home/daily/[day]/_components/daily/PostButton';
 import UpperTabBar from '@/app/_components/upperTabBar/UpperTabBar';
 
 export default function DailyPage() {
