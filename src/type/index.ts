@@ -6,6 +6,8 @@ export type ReactionType = 'heart' | 'smile' | 'sad' | 'surprise' | 'thumbs';
 
 export type NotiType = 'topic' | 'reaction' | 'post';
 
+export type InputTextType = 'family' | 'profile' | 'familyEdit';
+
 export type NotificationType = {
   isRead?: boolean;
   notiType: NotiType;

@@ -1,4 +1,4 @@
-import ToggleSwitch from '@/app/_components/switch/ToggleSwitch';
+import ToggleSwitch from '@/app/(afterLogin)/(main)/mypage/_components/switch/ToggleSwitch';
 
 interface Props {
   title: string;

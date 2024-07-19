@@ -23,5 +23,5 @@ export const useImageUpload = () => {
     setSelectedImage(null);
   };
 
-  return { fileInputRef, selectedImage, handleImageChange, handleUploadClick, handleDeleteClick };
+  return { fileInputRef, selectedImage, setSelectedImage, handleImageChange, handleUploadClick, handleDeleteClick };
 };
