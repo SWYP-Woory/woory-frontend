@@ -12,7 +12,7 @@ export const useToast = () => {
       return () => clearTimeout(timer);
     }
     return undefined;
-  }, [isToastFloating]);
+  }, [isToastFloating, setIsToastFloating]);
 
   return { isToastFloating, setIsToastFloating };
 };

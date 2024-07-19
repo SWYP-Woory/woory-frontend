@@ -15,7 +15,7 @@ export default function ProfileImageUpload({ profileImage, isProfile }: Props) {
 
   useEffect(() => {
     if (profileImage) setSelectedImage(profileImage);
-  }, []);
+  }, [profileImage, setSelectedImage]);
 
   return (
     <>
