@@ -12,5 +12,14 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/favorites', '/home/:path*', '/members', '/mypage/:path*', '/notification', '/posts/:path*'],
+  matcher: [
+    'family',
+    'family-select',
+    '/notification',
+    '/home/:path*',
+    '/posts/:path*',
+    '/favorites',
+    '/members',
+    '/mypage/:path*',
+  ],
 };
