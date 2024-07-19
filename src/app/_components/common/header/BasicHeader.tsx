@@ -2,7 +2,7 @@
 
 import LeftArrowIcon from '@/app/_components/icon/arrow/LeftArrowIcon';
 import { useInputStore } from '@/app/_store/inputStore';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 interface Props {
   title: string;
@@ -29,12 +29,17 @@ const decideInputText = (
 
 export default function BasicHeader({ title, hasRightButton }: Props) {
   const pathName = usePathname();
+  const router = useRouter();
   const { inputFamilyText, inputProfileText, inputFamilyEditText } = useInputStore();
   const isValid = decideInputText(pathName, inputFamilyText, inputProfileText, inputFamilyEditText).length > 0;
 
+  const handleBackClick = () => {
+    router.back();
+  };
+
   return (
     <header className="header">
-      <button className="absolute left-[1.6rem]" type="button" aria-label="back">
+      <button className="absolute left-[1.6rem]" type="button" aria-label="back" onClick={handleBackClick}>
         <LeftArrowIcon />
       </button>
       <div className="font-title text-18">{title}</div>
