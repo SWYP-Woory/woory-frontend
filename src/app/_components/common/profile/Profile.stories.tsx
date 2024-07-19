@@ -1,4 +1,4 @@
-import FamilyProfile from '@/app/_components/common/profile/FamilyProfile';
+import BigProfile from '@/app/_components/common/profile/BigProfile';
 import Profile from '@/app/_components/common/profile/Profile';
 import { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
@@ -13,8 +13,8 @@ function Profiles() {
       <Profile size="large" isHouseholder />
       <Profile size="small" profileImage={PROFILE_IMAGE} />
       <Profile size="large" profileImage={PROFILE_IMAGE} isHouseholder />
-      <FamilyProfile familyProfileImage={PROFILE_IMAGE} />
-      <FamilyProfile familyProfileImage={null} />
+      <BigProfile bigProfileImage={PROFILE_IMAGE} />
+      <BigProfile bigProfileImage={null} />
     </div>
   );
 }

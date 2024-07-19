@@ -2,21 +2,29 @@
 
 import LeftArrowIcon from '@/app/_components/icon/arrow/LeftArrowIcon';
 import { useInputStore } from '@/app/_store/inputStore';
+import { usePathname } from 'next/navigation';
 
 interface Props {
   title: string;
   hasRightButton?: boolean;
-  buttonType?: 'complete' | 'save';
 }
 
-export default function BasicHeader({ title, hasRightButton, buttonType }: Props) {
-  const { inputFamilyText } = useInputStore();
-  const isValid = inputFamilyText.length > 0;
+const decideInputText = (pathName: string, inputFamilyText: string, inputProfileText: string) => {
+  if (pathName === '/profile') {
+    return inputProfileText;
+  }
+  if (pathName === '/family') {
+    return inputFamilyText;
+  }
+  return '';
+};
 
-  const buttonLabels = {
-    complete: '완료',
-    save: '저장',
-  };
+export default function BasicHeader({ title, hasRightButton }: Props) {
+  const pathName = usePathname();
+
+  const { inputFamilyText, inputProfileText } = useInputStore();
+
+  const isValid = decideInputText(pathName, inputFamilyText, inputProfileText).length > 0;
 
   return (
     <header className="header">
@@ -30,7 +38,7 @@ export default function BasicHeader({ title, hasRightButton, buttonType }: Props
           disabled={!isValid}
           className={`absolute right-[1.6rem] font-body ${isValid ? 'text-black' : 'text-textDisabled'}`}
         >
-          {buttonType && buttonLabels[buttonType]}
+          저장
         </button>
       )}
     </header>
