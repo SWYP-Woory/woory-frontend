@@ -26,10 +26,10 @@ jobs:
           path: node_modules
           key: npm-packages-${{ hashFiles('**/package-lock.json') }}
 
-      - name: Install Dependencies # 캐시된게 없다면 npm install
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm install
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
 
-      - name: Build # next 프로젝트 빌드
-        run: |
-          npm run build:dev
+      - name: install dependencies and build
+        run: pnpm install && pnpm run build
