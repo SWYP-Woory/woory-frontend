@@ -1,6 +1,7 @@
 import { InputState } from '@/app/_store/inputStore';
+import { InputTextType } from '@/type';
 
-export const getInputHandlers = (type: 'family' | 'profile' | 'familyEdit', state: InputState) => {
+export const getInputHandlers = (type: InputTextType, state: InputState) => {
   switch (type) {
     case 'family':
       return {

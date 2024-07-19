@@ -11,7 +11,7 @@ interface Props {
 export default function ProfileMain({ inputType, profileImage, value }: Props) {
   return (
     <>
-      <ProfileImageUpload profileImage={profileImage} isProfile={inputType === 'profile'} />
+      <ProfileImageUpload profileImage={profileImage} inputType={inputType} />
       <div className="mt-24 mx-24 w-[32.7rem] h-[0.1rem] bg-lightGrey" />
       <div className="mt-24 mx-16">
         <h3 className="text-18 font-700 mb-8">이름</h3>

@@ -1,14 +1,15 @@
 import Profile from '@/assets/images/default_profile.png';
 import Logo from '@/assets/images/logo_woory_profile.png';
+import { InputTextType } from '@/type';
 import Image from 'next/image';
 
 interface Props {
-  bigProfileImage: string | null;
-  isProfile?: boolean;
+  bigProfileImage?: string | null;
+  inputType: InputTextType;
 }
 
-export default function BigProfile({ bigProfileImage, isProfile }: Props) {
-  const defaultImage = isProfile ? Profile : Logo;
+export default function BigProfile({ bigProfileImage, inputType }: Props) {
+  const defaultImage = inputType.includes('profile') ? Profile : Logo;
 
   return (
     <div

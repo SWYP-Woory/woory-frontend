@@ -13,8 +13,9 @@ function Profiles() {
       <Profile size="large" isHouseholder />
       <Profile size="small" profileImage={PROFILE_IMAGE} />
       <Profile size="large" profileImage={PROFILE_IMAGE} isHouseholder />
-      <BigProfile bigProfileImage={PROFILE_IMAGE} />
-      <BigProfile bigProfileImage={null} />
+      <BigProfile bigProfileImage={PROFILE_IMAGE} inputType="family" />
+      <BigProfile inputType="family" />
+      <BigProfile inputType="profile" />
     </div>
   );
 }

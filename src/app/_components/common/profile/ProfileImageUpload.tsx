@@ -3,14 +3,15 @@
 import PictureChangeButton from '@/app/_components/common/button/PictureChangeButton';
 import BigProfile from '@/app/_components/common/profile/BigProfile';
 import { useImageUpload } from '@/app/_hooks/useImageUpload';
+import { InputTextType } from '@/type';
 import { useEffect } from 'react';
 
 interface Props {
   profileImage?: string;
-  isProfile?: boolean;
+  inputType: InputTextType;
 }
 
-export default function ProfileImageUpload({ profileImage, isProfile }: Props) {
+export default function ProfileImageUpload({ profileImage, inputType }: Props) {
   const { selectedImage, setSelectedImage, handleUploadClick, fileInputRef, handleImageChange } = useImageUpload();
 
   useEffect(() => {
@@ -20,7 +21,7 @@ export default function ProfileImageUpload({ profileImage, isProfile }: Props) {
   return (
     <>
       <div className="pt-40 px-[10.8rem]">
-        <BigProfile bigProfileImage={selectedImage} isProfile={isProfile} />
+        <BigProfile bigProfileImage={selectedImage} inputType={inputType} />
       </div>
       <div className="pt-24 px-[10.8rem]">
         <PictureChangeButton onClick={handleUploadClick} />
