@@ -1,7 +1,7 @@
 'use client';
 
 import NoticeIcon from '@/app/_components/icon/notification/NoticeIcon';
-import { useSelectedLayoutSegment } from 'next/navigation';
+import { useRouter, useSelectedLayoutSegment } from 'next/navigation';
 
 const decideTitle = (segment: string | null) => {
   switch (segment) {
@@ -20,13 +20,18 @@ const decideTitle = (segment: string | null) => {
 
 export default function NotificationHeader() {
   const segment = useSelectedLayoutSegment();
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push('/notification');
+  };
 
   return (
     <header className="header">
       <div className="font-title text-18">{decideTitle(segment)}</div>
-      <div className="absolute right-[1.6rem]">
+      <button type="button" aria-label="notification" className="absolute right-[1.6rem]" onClick={handleClick}>
         <NoticeIcon isActive />
-      </div>
+      </button>
     </header>
   );
 }
