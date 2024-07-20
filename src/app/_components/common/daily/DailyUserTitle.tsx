@@ -43,7 +43,7 @@ export default function DailyUserTitle({ name, isEdit, targetType }: Props) {
         </div>
       )}
       {isActive && (
-        <div className="absolute top-0 right-12 z-10">
+        <div className="absolute top-0 right-24 z-10">
           <EditDeleteButton onEdit={handleEditClick} onDelete={handleDeleteClick} />
         </div>
       )}
