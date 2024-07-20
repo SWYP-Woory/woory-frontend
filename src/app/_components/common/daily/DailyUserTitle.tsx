@@ -10,9 +10,10 @@ interface Props {
   name: string;
   isEdit: boolean;
   targetType: 'post' | 'comment' | 'reply';
+  isLastReply?: boolean;
 }
 
-export default function DailyUserTitle({ name, isEdit, targetType }: Props) {
+export default function DailyUserTitle({ name, isEdit, targetType, isLastReply }: Props) {
   const content = MODAL_TYPE_MAP[targetType];
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -43,7 +44,7 @@ export default function DailyUserTitle({ name, isEdit, targetType }: Props) {
         </div>
       )}
       {isActive && (
-        <div className="absolute top-0 right-12 z-10">
+        <div className={`absolute ${isLastReply ? 'bottom-0' : 'top-0'} right-24 z-10`}>
           <EditDeleteButton onEdit={handleEditClick} onDelete={handleDeleteClick} />
         </div>
       )}

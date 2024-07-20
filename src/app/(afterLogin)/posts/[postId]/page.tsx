@@ -6,6 +6,7 @@ import BasicHeader from '@/app/_components/common/header/BasicHeader';
 import { DailyPostType } from '@/type';
 
 const DUMMY_DATA: DailyPostType = {
+  id: 1,
   profileUrl: 'https://avatars.githubusercontent.com/u/49144662?s=400&u=903e697529c3b51f9c69bc3885c8f9be3d754028&v=4',
   name: '아빠',
   content: '나무들이 좋다',
@@ -48,16 +49,16 @@ const DUMMY_COMMENT = [
       {
         profile: {
           profileUrl: '',
-          name: '아빠',
-          isEdit: true,
+          name: '아들',
+          isEdit: false,
         },
         comment: 'This is a reply',
       },
       {
         profile: {
           profileUrl: '',
-          name: '아들',
-          isEdit: false,
+          name: '아빠',
+          isEdit: true,
         },
         comment: 'This is a reply',
       },

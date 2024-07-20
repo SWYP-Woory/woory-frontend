@@ -21,8 +21,12 @@ export default function CommentView({ data }: Props) {
         className={`flex flex-col items-end gap-24 py-16 pl-16 pr-[2.6rem] bg-white ${data.length - 1 !== index && 'border-bgGrey border-b'}`}
       >
         <Comment profile={profile} comment={comment} hasReply />
-        {replies.map((reply) => (
-          <Comment profile={reply.profile} comment={reply.comment} />
+        {replies.map((reply, i) => (
+          <Comment
+            profile={reply.profile}
+            comment={reply.comment}
+            isLastReply={index === data.length - 1 && i === replies.length - 1}
+          />
         ))}
       </div>
     );

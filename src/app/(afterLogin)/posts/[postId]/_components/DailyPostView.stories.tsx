@@ -9,6 +9,7 @@ const PROFILE_IMAGE =
 const POST_URL = 'https://cdn.smarttoday.co.kr/news/photo/202002/img_4656_0.jpg';
 
 const DUMMY_DATA: DailyPostType = {
+  id: 1,
   topic: '내일 지구가 멸망한다면',
   profileUrl: PROFILE_IMAGE,
   name: '아빠',
