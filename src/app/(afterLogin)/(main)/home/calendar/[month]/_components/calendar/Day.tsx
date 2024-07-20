@@ -13,12 +13,8 @@ interface Props {
 export default function Day({ day, validation, hasContent, imageUrl, isLiked }: Props) {
   if (hasContent && validation) {
     return (
-      <div className="flex justify-center items-center relative">
-        {imageUrl ? (
-          <Image alt="day" src={imageUrl} className="dayChip object-cover" width={48} height={76} />
-        ) : (
-          <NoImageDay />
-        )}
+      <div className="flex justify-center items-center relative w-[4.8rem] h-[7.6rem]">
+        {imageUrl ? <Image alt="day" src={imageUrl} className="dayChip object-cover" fill /> : <NoImageDay />}
         <div className="absolute z-10">
           {isLiked ? (
             <ActiveLike width="2.0rem" height="1.8rem" />
