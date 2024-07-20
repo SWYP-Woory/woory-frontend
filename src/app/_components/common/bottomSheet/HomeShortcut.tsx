@@ -1,6 +1,7 @@
 'use client';
 
 import PopUpButton from '@/app/_components/common/button/PopUpButton';
+import { deleteCookies, getCookies, setCookies } from '@/app/_store/cookie/cookies';
 import { useModalStore } from '@/app/_store/modalStore';
 import { useToastStore } from '@/app/_store/toastStore';
 import Logo from '@/assets/icons/logo/logo_woory.svg';
@@ -15,6 +16,10 @@ export default function HomeShortcut() {
 
   const handleAddClick = () => {
     // todo: 홈 화면 추가 로직 구현
+    if (getCookies('add_home')) {
+      deleteCookies('add_home');
+    }
+    setCookies('add_home', 'yes');
     setIsModalOpen(false);
     setIsToastFloating(true);
   };
