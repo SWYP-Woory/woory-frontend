@@ -7,20 +7,18 @@ import ModalBackground from '@/app/_components/common/modal/ModalBackground';
 import ToastPopUp from '@/app/_components/common/popup/ToastPopUp';
 import UpperTabBar from '@/app/_components/upperTabBar/UpperTabBar';
 import { useToast } from '@/app/_hooks/useToast';
+import { getCookies } from '@/app/_store/cookie/cookies';
 import { useModalStore } from '@/app/_store/modalStore';
-import { RequestCookie } from 'next/dist/compiled/@edge-runtime/cookies';
 import { useEffect } from 'react';
 
-interface Props {
-  cookie?: RequestCookie;
-}
-
-export default function DailyMain({ cookie }: Props) {
+export default function DailyMain() {
   const { isModalOpen, setIsModalOpen } = useModalStore();
   const { isToastFloating } = useToast();
+  const cookie = getCookies('add_home');
 
   useEffect(() => {
-    if (!cookie || cookie.value !== 'yes') {
+    if (!cookie || cookie !== 'yes') {
+      console.log(cookie);
       setIsModalOpen(true);
     }
   }, []);
