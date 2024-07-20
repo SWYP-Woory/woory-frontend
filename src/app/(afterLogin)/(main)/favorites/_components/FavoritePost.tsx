@@ -11,15 +11,9 @@ export default function FavoritePost({ content, imgUrl, postDate }: Props) {
   const date = getCalendarTime(postDate);
   return (
     <div className="relative w-[37.5rem] h-[9.3rem] bg-white">
-      <div className="flex absolute top-[1.6rem] left-[1.6rem] w-[6rem] h-[6rem] justify-center items-center rounded-2xl">
+      <div className="flex absolute top-[1.6rem] left-[1.6rem] w-[6rem] h-[6rem] justify-center items-center">
         {imgUrl ? (
-          <Image
-            src={imgUrl || defaultImage}
-            fill
-            sizes="6rem"
-            alt="포스트 사진"
-            className="w-[6rem] h-[6rem] flex-shrink-0 rounded-2xl"
-          />
+          <Image src={imgUrl || defaultImage} fill alt="포스트 사진" className="object-cover rounded-2xl" />
         ) : (
           <DefaultPostImage />
         )}

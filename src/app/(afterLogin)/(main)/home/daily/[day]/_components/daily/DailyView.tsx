@@ -12,7 +12,7 @@ import { useState } from 'react';
 const DUMMY_TOPIC = '내일 지구가 멸망한다면';
 const PROFILE_IMAGE =
   'https://avatars.githubusercontent.com/u/49144662?s=400&u=903e697529c3b51f9c69bc3885c8f9be3d754028&v=4';
-const POST_URL = 'https://cdn.smarttoday.co.kr/news/photo/202002/img_4656_0.jpg';
+const POST_URL = 'https://cdn.smarttoday.co.kr/news/photo/202406/mn_52620_20240616152756_1.jpg';
 
 const DUMMY_DATA = {
   profileUrl: PROFILE_IMAGE,
