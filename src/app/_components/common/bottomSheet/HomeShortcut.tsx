@@ -5,17 +5,52 @@ import { deleteCookies, getCookies, setCookies } from '@/app/_store/cookie/cooki
 import { useModalStore } from '@/app/_store/modalStore';
 import { useToastStore } from '@/app/_store/toastStore';
 import Logo from '@/assets/icons/logo/logo_woory.svg';
+import { useEffect, useState } from 'react';
+
+// `beforeinstallprompt` 이벤트의 타입 정의
+interface BeforeInstallPromptEvent extends Event {
+  readonly prompt: () => Promise<void>;
+  readonly userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
+}
 
 export default function HomeShortcut() {
   const { setIsModalOpen } = useModalStore();
   const { setIsToastFloating } = useToastStore();
+  const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
+
+  console.log(deferredPrompt);
+  useEffect(() => {
+    const handler = (e: Event) => {
+      e.preventDefault();
+      const promptEvent = e as BeforeInstallPromptEvent;
+      setDeferredPrompt(promptEvent);
+      setIsModalOpen(true); // 모달 열기
+    };
+
+    window.addEventListener('beforeinstallprompt', handler);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handler);
+    };
+  }, [setIsModalOpen]);
 
   const handleCancelClick = () => {
+    setDeferredPrompt(null);
     setIsModalOpen(false);
   };
 
-  const handleAddClick = () => {
-    // todo: 홈 화면 추가 로직 구현
+  const handleAddClick = async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const choiceResult = await deferredPrompt.userChoice;
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+      setDeferredPrompt(null);
+    }
+
     if (getCookies('add_home')) {
       deleteCookies('add_home');
     }

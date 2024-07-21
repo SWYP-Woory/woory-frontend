@@ -1,11 +1,5 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "airbnb",
-    "airbnb-typescript",
-    "prettier",
-    "plugin:storybook/recommended"
-  ],
+  "extends": ["next/core-web-vitals", "airbnb", "airbnb-typescript", "prettier", "plugin:storybook/recommended"],
   "parserOptions": {
     "project": "./tsconfig.json"
   },
@@ -15,5 +9,6 @@
     "import/no-extraneous-dependencies": "off",
     "import/prefer-default-export": "off",
     "react/no-unescaped-entities": "off"
-  }
+  },
+  "ignorePatterns": ["public/*.js"]
 }
