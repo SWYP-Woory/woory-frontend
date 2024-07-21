@@ -29,7 +29,6 @@ const nextConfig = {
 
 const withPWA = nextPWA({
   dest: 'public',
-  disable: process.env.NODE_ENV === 'development', // 개발 모드에서 PWA 비활성화
 });
 
 export default withPWA(nextConfig);
