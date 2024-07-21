@@ -8,7 +8,7 @@ export default function DailyPostImage({ postUrl }: Props) {
   return (
     postUrl && (
       <div className="relative w-full aspect-square">
-        <Image src={postUrl} alt="post" fill className="object-cover" />
+        <Image src={postUrl} alt="post" fill sizes="295" className="object-cover" />
       </div>
     )
   );
