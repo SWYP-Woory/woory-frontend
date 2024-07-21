@@ -17,13 +17,11 @@ export default function HomeShortcut() {
   const { setIsModalOpen } = useModalStore();
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
 
-  console.log(deferredPrompt);
   useEffect(() => {
     const handler = (e: Event) => {
       e.preventDefault();
       const promptEvent = e as BeforeInstallPromptEvent;
       setDeferredPrompt(promptEvent);
-      setIsModalOpen(true); // 모달 열기
     };
 
     window.addEventListener('beforeinstallprompt', handler);
@@ -31,7 +29,7 @@ export default function HomeShortcut() {
     return () => {
       window.removeEventListener('beforeinstallprompt', handler);
     };
-  }, [setIsModalOpen]);
+  }, []);
 
   const handleCancelClick = () => {
     if (getCookies('add_home')) {
@@ -48,6 +46,7 @@ export default function HomeShortcut() {
       const choiceResult = await deferredPrompt.userChoice;
       if (choiceResult.outcome === 'accepted') {
         console.log('User accepted the install prompt');
+        openToast('shortcut');
       } else {
         console.log('User dismissed the install prompt');
       }
@@ -59,7 +58,6 @@ export default function HomeShortcut() {
     }
     setCookies('add_home', 'yes');
     setIsModalOpen(false);
-    openToast('shortcut');
   };
 
   return (
