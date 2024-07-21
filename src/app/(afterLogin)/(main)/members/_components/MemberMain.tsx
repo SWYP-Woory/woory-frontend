@@ -3,8 +3,7 @@
 import MemberAdd from '@/app/(afterLogin)/(main)/members/_components/MemberAdd';
 import MemberProfile from '@/app/(afterLogin)/(main)/members/_components/MemberProfile';
 import MyProfile from '@/app/(afterLogin)/(main)/members/_components/MyProfile';
-import ToastPopUp from '@/app/_components/common/popup/ToastPopUp';
-import { useToast } from '@/app/_hooks/useToast';
+import { openToast } from '@/utils/Toast';
 
 const DUMMY_DATA = {
   user: {
@@ -48,15 +47,13 @@ const DUMMY_DATA = {
 
 export default function MemberMain() {
   const { user, members } = DUMMY_DATA;
-  const { isToastFloating, setIsToastFloating } = useToast();
 
   const handleMemberAdd = () => {
-    setIsToastFloating(true);
+    openToast('link');
   };
 
   return (
-    <>
-      <div className="flex-grow">
+    <div className="flex-grow">
         <MyProfile data={user} />
         <MemberAdd onClick={handleMemberAdd} />
         {members.map((member) => (
@@ -68,7 +65,5 @@ export default function MemberMain() {
           />
         ))}
       </div>
-      {isToastFloating && <ToastPopUp type="link" />}
-    </>
   );
 }

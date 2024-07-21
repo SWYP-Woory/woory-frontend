@@ -1,5 +1,7 @@
 export type TabType = 'daily' | 'calendar';
 
+export type ToastType = 'link' | 'shortcut' | 'imageSize';
+
 export type BottomSheetType = 'home' | 'inquiry' | 'familySelect';
 
 export type ReactionType = 'heart' | 'smile' | 'sad' | 'surprise' | 'thumbs';
