@@ -18,7 +18,7 @@ export default function OAuth({ params }: Props) {
 
   const handleOAuth = async () => {
     try {
-      const { accessToken } = await getData({ path: `/auth/${params}?code=${code}` });
+      const { accessToken } = await getData({ path: `/auth/${params.provider}?code=${code}` });
       await setToken(accessToken);
     } catch (e) {
       console.error(e);
