@@ -5,7 +5,7 @@ export function middleware(request: NextRequest) {
   const cookieStore = cookies();
   const accessToken = cookieStore.get('AccessToken');
   if (!accessToken) {
-    return NextResponse.rewrite(new URL('/dest', request.url));
+    return NextResponse.rewrite(new URL('/', request.url));
   }
 
   return NextResponse.next();
