@@ -17,7 +17,7 @@ export default function DailyMain() {
   const cookie = getCookies('add_home');
 
   useEffect(() => {
-    if (!cookie || cookie !== 'yes') {
+    if (!cookie) {
       setIsModalOpen(true);
     }
   }, [cookie, setIsModalOpen]);
