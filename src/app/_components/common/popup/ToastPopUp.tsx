@@ -1,7 +1,8 @@
 import InfoIcon from '@/app/_components/icon/info/InfoIcon';
+import { ToastType } from '@/type';
 
 interface Props {
-  type: 'link' | 'shortcut' | 'imageSize';
+  type: ToastType;
 }
 
 const decideContent = (type: string) => {
@@ -19,7 +20,7 @@ const decideContent = (type: string) => {
 
 export default function ToastPopUp({ type }: Props) {
   return (
-    <div className="flex justify-centerk items-center gap-8 bg-lightGrey w-[23.6rem] h-[4.0rem] rounded-[2.0rem]">
+    <div className="flex justify-center items-center gap-8 bg-lightGrey w-[23.6rem] h-[4.0rem] rounded-[2.0rem]">
       <InfoIcon />
       <div className="font-caption leading-8">{decideContent(type)}</div>
     </div>
