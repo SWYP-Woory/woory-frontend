@@ -3,8 +3,8 @@
 import PopUpButton from '@/app/_components/common/button/PopUpButton';
 import { deleteCookies, getCookies, setCookies } from '@/app/_store/cookie/cookies';
 import { useModalStore } from '@/app/_store/modalStore';
-import { useToastStore } from '@/app/_store/toastStore';
 import Logo from '@/assets/icons/logo/logo_woory.svg';
+import { openToast } from '@/utils/Toast';
 import { useEffect, useState } from 'react';
 
 // `beforeinstallprompt` 이벤트의 타입 정의
@@ -15,7 +15,6 @@ interface BeforeInstallPromptEvent extends Event {
 
 export default function HomeShortcut() {
   const { setIsModalOpen } = useModalStore();
-  const { setIsToastFloating } = useToastStore();
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
 
   console.log(deferredPrompt);
@@ -60,7 +59,7 @@ export default function HomeShortcut() {
     }
     setCookies('add_home', 'yes');
     setIsModalOpen(false);
-    setIsToastFloating(true);
+    openToast('shortcut');
   };
 
   return (

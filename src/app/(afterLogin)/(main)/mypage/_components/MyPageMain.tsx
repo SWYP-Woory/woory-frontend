@@ -9,8 +9,6 @@ import ServiceInfo from '@/app/(afterLogin)/(main)/mypage/_components/service/Se
 import Border from '@/app/_components/common/border/Border';
 import BottomSheet from '@/app/_components/common/bottomSheet/BottomSheet';
 import ModalBackground from '@/app/_components/common/modal/ModalBackground';
-import ToastPopUp from '@/app/_components/common/popup/ToastPopUp';
-import { useToast } from '@/app/_hooks/useToast';
 import { useModalStore } from '@/app/_store/modalStore';
 import { AccountDeletionType } from '@/type';
 
@@ -39,7 +37,6 @@ const determineTargetType = (isLastMember: boolean, isHouseholder: boolean): Acc
 export default function MyPageMain() {
   const { isLastMember, isHouseholder } = DUMMY_DATA;
   const { isModalOpen, setIsModalOpen } = useModalStore();
-  const { isToastFloating } = useToast();
   const targetType = determineTargetType(isLastMember, isHouseholder);
 
   const handleModal = () => {
@@ -60,7 +57,6 @@ export default function MyPageMain() {
           <BottomSheet sheetType="home" />
         </ModalBackground>
       )}
-      {isToastFloating && <ToastPopUp type="shortcut" />}
     </div>
   );
 }
