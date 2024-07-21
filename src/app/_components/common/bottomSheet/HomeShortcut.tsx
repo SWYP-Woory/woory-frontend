@@ -35,6 +35,10 @@ export default function HomeShortcut() {
   }, [setIsModalOpen]);
 
   const handleCancelClick = () => {
+    if (getCookies('add_home')) {
+      deleteCookies('add_home');
+    }
+    setCookies('add_home', 'no');
     setDeferredPrompt(null);
     setIsModalOpen(false);
   };
