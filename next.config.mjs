@@ -1,3 +1,6 @@
+// next.config.mjs
+import nextPWA from 'next-pwa';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   webpack(config) {
@@ -10,7 +13,6 @@ const nextConfig = {
   },
   images: {
     remotePatterns: [
-      // todo: 나중에 실제 이미지를 저장하고 있는 백엔드 서버를 가리켜야합니다.
       {
         protocol: 'https',
         hostname: 'avatars.githubusercontent.com',
@@ -25,4 +27,8 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+const withPWA = nextPWA({
+  dest: 'public',
+});
+
+export default withPWA(nextConfig);
