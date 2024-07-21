@@ -5,7 +5,7 @@ interface Props {
   textColor: 'midGrey' | 'white';
   colorType: 'primary' | 'lightGrey';
   size: 'small' | 'large';
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export default function PopUpButton({ text, textColor, colorType, size, onClick }: Props) {

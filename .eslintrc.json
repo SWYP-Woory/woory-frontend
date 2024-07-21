@@ -8,7 +8,9 @@
     "react/require-default-props": "off",
     "import/no-extraneous-dependencies": "off",
     "import/prefer-default-export": "off",
-    "react/no-unescaped-entities": "off"
+    "react/no-unescaped-entities": "off",
+    "consistent-return": "off",
+    "no-console": "warn"
   },
   "ignorePatterns": ["public/*.js"]
 }

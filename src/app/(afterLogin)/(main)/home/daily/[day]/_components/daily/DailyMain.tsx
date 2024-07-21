@@ -18,10 +18,9 @@ export default function DailyMain() {
 
   useEffect(() => {
     if (!cookie || cookie !== 'yes') {
-      console.log(cookie);
       setIsModalOpen(true);
     }
-  }, []);
+  }, [cookie, setIsModalOpen]);
 
   return (
     <>
