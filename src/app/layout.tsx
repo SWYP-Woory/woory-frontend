@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Noto_Sans_KR } from 'next/font/google';
+import { Toaster } from 'react-hot-toast';
 
 const notoSans = Noto_Sans_KR({ subsets: ['latin'], weight: ['400'] });
 
@@ -16,7 +17,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={notoSans.className}>{children}</body>
+      <body className={notoSans.className}>
+        {children}
+        <Toaster
+          toastOptions={{
+            duration: 1500,
+            position: 'bottom-center',
+          }}
+          containerStyle={{
+            bottom: '12.8rem',
+          }}
+        />
+      </body>
     </html>
   );
 }

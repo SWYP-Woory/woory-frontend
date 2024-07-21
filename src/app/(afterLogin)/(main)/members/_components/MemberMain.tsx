@@ -4,7 +4,7 @@ import MemberAdd from '@/app/(afterLogin)/(main)/members/_components/MemberAdd';
 import MemberProfile from '@/app/(afterLogin)/(main)/members/_components/MemberProfile';
 import MyProfile from '@/app/(afterLogin)/(main)/members/_components/MyProfile';
 import ToastPopUp from '@/app/_components/common/popup/ToastPopUp';
-import { useToast } from '@/app/_hooks/useToast';
+import toast from 'react-hot-toast';
 
 const DUMMY_DATA = {
   user: {
@@ -48,10 +48,11 @@ const DUMMY_DATA = {
 
 export default function MemberMain() {
   const { user, members } = DUMMY_DATA;
-  const { isToastFloating, setIsToastFloating } = useToast();
+  // const { isToastFloating, setIsToastFloating } = useToast();
 
   const handleMemberAdd = () => {
-    setIsToastFloating(true);
+    console.log('member add');
+    toast.custom(<ToastPopUp type="link" />);
   };
 
   return (
@@ -68,7 +69,7 @@ export default function MemberMain() {
           />
         ))}
       </div>
-      {isToastFloating && <ToastPopUp type="link" />}
+      {/* {isToastFloating && <ToastPopUp type="link" />} */}
     </>
   );
 }
