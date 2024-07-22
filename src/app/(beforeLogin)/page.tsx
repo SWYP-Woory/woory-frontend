@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 
 export default function Home() {
   const cookieStore = cookies();
-  const accessToken = cookieStore.get('accessToken');
+  const accessToken = cookieStore.get('AccessToken');
 
   if (accessToken) {
     const today = getCalendarTime(new Date());

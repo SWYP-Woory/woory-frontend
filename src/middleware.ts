@@ -3,9 +3,9 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export function middleware(request: NextRequest) {
   const cookieStore = cookies();
-  const accessToken = cookieStore.get('accessToken');
+  const accessToken = cookieStore.get('AccessToken');
   if (!accessToken) {
-    return NextResponse.redirect(new URL('/', request.url));
+    return NextResponse.rewrite(new URL('/', request.url));
   }
 
   return NextResponse.next();

@@ -1,3 +1,5 @@
+import { DOMAIN } from '@/app/_constants/domain';
+
 type Fetch = typeof fetch;
 
 interface HandlerParams extends RequestInit {
@@ -9,7 +11,7 @@ interface HandlerParams extends RequestInit {
 
 type ApiHandler = (params: HandlerParams) => Promise<any>;
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_URL ?? '';
+const API_BASE_URL = DOMAIN ?? '';
 
 const makeHeader = (body: any) => {
   const isFormData = body instanceof FormData;
