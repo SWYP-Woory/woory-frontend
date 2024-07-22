@@ -31,6 +31,7 @@ export default function OAuth({ params }: Props) {
     handleOAuth();
   }, []);
 
+  // todo: 로그인 하는 경우 로딩 화면 보여주기
   return (
     <div>
       {params.provider}
