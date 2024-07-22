@@ -1,5 +1,7 @@
 'use client';
 
+import { getData } from '@/app/_api/api';
+import { apiRoutes } from '@/app/_api/apiRoutes';
 import Modal from '@/app/_components/common/modal/Modal';
 import { MODAL_TYPE_MAP } from '@/app/_constants/modal';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -15,7 +17,13 @@ export default function AccountDeletionContent() {
     router.back();
   };
 
-  const handleDeletionConfirm = () => {};
+  const handleDeletionConfirm = async () => {
+    try {
+      await getData({ path: apiRoutes.UserDeletion });
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   return (
     <div className="absolute">
