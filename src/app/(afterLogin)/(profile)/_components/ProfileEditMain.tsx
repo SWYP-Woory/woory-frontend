@@ -14,7 +14,7 @@ export default function ProfileEditMain() {
     (async () => {
       try {
         const groupId = getCookies('groupId');
-        const { data } = await getData({ path: `${apiRoutes.getFamily  }/${groupId}` });
+        const { data } = await getData({ path: `${apiRoutes.getFamily}/${groupId}` });
         const { groupName, groupImage: images } = data;
         setTitle(groupName);
         setProfileImage(images);
