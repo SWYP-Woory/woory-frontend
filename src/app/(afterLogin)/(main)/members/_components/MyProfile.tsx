@@ -6,6 +6,6 @@ interface Props {
 }
 
 export default function MyProfile({ data }: Props) {
-  const { profileImage, name, isHouseholder } = data;
-  return <MemberProfile profileImage={profileImage} name={name} isHouseholder={isHouseholder} />;
+  const { userId, profileUrl, userName, isHouseholder } = data;
+  return <MemberProfile userId={userId} profileUrl={profileUrl} userName={userName} isHouseholder={isHouseholder} />;
 }

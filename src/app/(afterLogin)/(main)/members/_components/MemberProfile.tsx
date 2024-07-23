@@ -11,7 +11,7 @@ interface Props extends MemberType {
   canDelete?: boolean;
 }
 
-export default function MemberProfile({ profileImage, name, isHouseholder, canDelete }: Props) {
+export default function MemberProfile({ userId, profileUrl, userName, isHouseholder, canDelete }: Props) {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const handleDeleteIcon = () => {
@@ -23,12 +23,13 @@ export default function MemberProfile({ profileImage, name, isHouseholder, canDe
   };
 
   const handleMemberDelete = () => {};
+  console.log(userId);
 
   return (
     <div className="flex justify-between items-center p-16 bg-white">
       <div className="flex items-center gap-8">
-        <Profile profileImage={profileImage} size="large" isHouseholder={isHouseholder} />
-        <div className="font-body ">{name}</div>
+        <Profile profileImage={profileUrl} size="large" isHouseholder={isHouseholder} />
+        <div className="font-body ">{userName}</div>
       </div>
       {canDelete && (
         <button type="button" aria-label="delete" onClick={handleDeleteIcon}>
