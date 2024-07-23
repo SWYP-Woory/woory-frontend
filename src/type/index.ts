@@ -105,6 +105,15 @@ export type MemberType = {
   isHouseholder: boolean;
 };
 
+export type UserDataType = {
+  userId: number;
+  userEmail?: string;
+  nickname: string;
+  profileImgLink: string;
+  isHouseholder: boolean;
+  isLastMember: boolean;
+};
+
 export type NotificationSettingType = {
   topic: boolean;
   post: boolean;
