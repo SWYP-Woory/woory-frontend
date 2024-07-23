@@ -15,8 +15,8 @@ export default function FamilySelectButton({ familyData }: Props) {
   const date = getCalendarTime(new Date());
 
   const handleFamilySelect = () => {
-    router.push(`/home/${familyData.groupId}/daily/${date}`);
     setCookies('groupId', familyData.groupId);
+    router.push(`/home/${familyData.groupId}/daily/${date}`);
   };
 
   return (
