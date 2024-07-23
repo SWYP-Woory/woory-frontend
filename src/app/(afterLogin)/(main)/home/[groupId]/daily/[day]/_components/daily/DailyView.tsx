@@ -5,9 +5,10 @@ import DailyThread from '@/app/(afterLogin)/(main)/home/[groupId]/daily/[day]/_c
 import DailyTopic from '@/app/_components/common/daily/DailyTopic';
 import DateController from '@/app/_components/common/dateController/DateController';
 import { useDateControl } from '@/app/_hooks/useDateControl';
+import { useTopicStore } from '@/app/_store/topicStore';
 import { DailyThreadType } from '@/type';
 import { format } from 'date-fns';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const DUMMY_TOPIC = '내일 지구가 멸망한다면';
 const PROFILE_IMAGE =
@@ -36,6 +37,27 @@ export default function DailyView() {
     DUMMY_DATA,
     DUMMY_DATA,
   ]);
+  const [firstTopicImage, setFirstTopicImage] = useState<string>('');
+
+  // 데일리에서 첫 이미지 찾기
+  const findFirstTopicImage = (threads: DailyThreadType[]): string => {
+    const find = threads.find((thread) => thread.postUrl);
+    return find?.postUrl || '';
+  };
+
+  useEffect(() => {
+    const image = findFirstTopicImage(dailyThreads);
+    setFirstTopicImage(image);
+  }, []);
+
+  // 데일리에서 topic, topicImage, topicDate 저장
+  const { setTopic, setTopicImage, setTopicDate } = useTopicStore();
+
+  useEffect(() => {
+    setTopic(topic);
+    setTopicImage(firstTopicImage);
+    setTopicDate(currentDate);
+  }, [topic, firstTopicImage, currentDate]);
 
   return (
     <div className="flex flex-col items-center min-h-screen gap-24">
