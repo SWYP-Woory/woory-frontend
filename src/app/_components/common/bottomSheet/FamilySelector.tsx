@@ -3,16 +3,16 @@ import FamilySelectButton from '@/app/_components/common/bottomSheet/FamilySelec
 import { FamilyMakeType } from '@/type';
 
 interface Props {
-  familyData?: FamilyMakeType;
+  data?: FamilyMakeType;
   index?: number;
 }
 
-export default function FamilySelector({ familyData, index }: Props) {
+export default function FamilySelector({ data, index }: Props) {
   return (
     <div
       className={`relative flex items-center w-full h-[5.8rem] cursor-pointer ${index !== 4 ? 'border-lightGrey border-b' : 'border-0'}`}
     >
-      {familyData ? <FamilySelectButton familyData={familyData} /> : <AddFamilySelectButton />}
+      {data ? <FamilySelectButton familyData={data} /> : <AddFamilySelectButton />}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import Calendar from '@/app/(afterLogin)/(main)/home/calendar/[month]/_components/calendar/Calendar';
+import Calendar from '@/app/(afterLogin)/(main)/home/[groupId]/calendar/[month]/_components/calendar/Calendar';
 import DateController from '@/app/_components/common/dateController/DateController';
 import { useDateControl } from '@/app/_hooks/useDateControl';
 import { CalenderDataType } from '@/type';

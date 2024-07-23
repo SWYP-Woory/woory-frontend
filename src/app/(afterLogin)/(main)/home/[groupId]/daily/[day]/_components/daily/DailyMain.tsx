@@ -1,7 +1,7 @@
 'use client';
 
-import DailyView from '@/app/(afterLogin)/(main)/home/daily/[day]/_components/daily/DailyView';
-import PostButton from '@/app/(afterLogin)/(main)/home/daily/[day]/_components/daily/PostButton';
+import DailyView from '@/app/(afterLogin)/(main)/home/[groupId]/daily/[day]/_components/daily/DailyView';
+import PostButton from '@/app/(afterLogin)/(main)/home/[groupId]/daily/[day]/_components/daily/PostButton';
 import BottomSheet from '@/app/_components/common/bottomSheet/BottomSheet';
 import ModalBackground from '@/app/_components/common/modal/ModalBackground';
 import UpperTabBar from '@/app/_components/upperTabBar/UpperTabBar';
