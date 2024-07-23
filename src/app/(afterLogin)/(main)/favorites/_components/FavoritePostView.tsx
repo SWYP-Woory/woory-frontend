@@ -1,12 +1,19 @@
 'use client';
 
 import FavoritePost from '@/app/(afterLogin)/(main)/favorites/_components/FavoritePost';
-import { getCookies } from '@/app/_store/cookie/cookies';
+import LocalStorage from '@/app/_store/localstorage/LocalStorage';
 import { FavoritePostType } from '@/type';
+import { useEffect, useState } from 'react';
 
 export default function FavoritePostView() {
-  const data: FavoritePostType[] = getCookies('favorites');
-  if (!data || data.length === 0) {
+  const [favoritePosts, setFavoritePosts] = useState<FavoritePostType[]>([]);
+
+  useEffect(() => {
+    const data = LocalStorage.getItem('favorites') || [];
+    setFavoritePosts([...data]);
+  }, []);
+
+  if (favoritePosts.length === 0) {
     return (
       <div className="flex flex-col justify-center items-center text-center w-full flex-grow font-body text-textDisabled">
         마음을 누른 글이 없어요. <br />
@@ -16,7 +23,7 @@ export default function FavoritePostView() {
     );
   }
 
-  return data.map(({ content, imgUrl, postDate }) => (
+  return favoritePosts.map(({ content, imgUrl, postDate }) => (
     <FavoritePost content={content} imgUrl={imgUrl} postDate={postDate} />
   ));
 }
