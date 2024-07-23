@@ -15,7 +15,7 @@ export default function FamilyDelete() {
   const handleDeletionConfirm = async () => {
     try {
       const groupId = getCookies('groupId');
-      await deleteData({ path: `${apiRoutes.deleteFamily  }/${groupId}` });
+      await deleteData({ path: `${apiRoutes.deleteFamily}/${groupId}` });
     } catch (e) {
       console.error(e);
     }

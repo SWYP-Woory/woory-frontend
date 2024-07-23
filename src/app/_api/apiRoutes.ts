@@ -4,6 +4,8 @@ export const apiRoutes = {
   UpdateFamily: '/v1/groups/update',
   getFamily: '/v1/groups/get/info',
   getFamilyList: '/v1/groups/my',
+  getMembers: '/v1/groups/get',
+  deleteMember: '/v1/groups/ban',
   deleteFamily: '/v1/groups/delete',
 
   // User

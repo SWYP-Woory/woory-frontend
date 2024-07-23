@@ -28,6 +28,11 @@ const nextConfig = {
         hostname: 'woory-bucket.s3.ap-northeast-2.amazonaws.com',
         pathname: '**',
       },
+      {
+        protocol: 'http',
+        hostname: 't1.kakaocdn.net',
+        pathname: '**',
+      },
     ],
   },
   async rewrites() {
