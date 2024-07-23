@@ -16,14 +16,14 @@ const API_BASE_URL = DOMAIN ?? '';
 
 const makeHeader = async (body: any) => {
   const accessToken = await getSession('AccessToken');
+  if (body instanceof FormData) {
+    return { headers: { Authorization: `Bearer ${accessToken}` }, body };
+  }
+
   const headers: HeadersInit = {
     'Content-Type': 'application/json',
     Authorization: `Bearer ${accessToken}`,
   };
-
-  if (body instanceof FormData) {
-    return { headers: { Authorization: `Bearer ${accessToken}` }, body };
-  }
 
   return { headers, body: body ? JSON.stringify(body) : undefined };
 };
