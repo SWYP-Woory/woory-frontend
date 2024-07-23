@@ -5,7 +5,7 @@ import { apiRoutes } from '@/app/_api/apiRoutes';
 import LeftArrowIcon from '@/app/_components/icon/arrow/LeftArrowIcon';
 import { useImageUpload } from '@/app/_hooks/useImageUpload';
 import { useInputStore } from '@/app/_store/inputStore';
-import { ProfileSaveType } from '@/type';
+import { getCalendarTime } from '@/utils/getTime';
 import { usePathname, useRouter } from 'next/navigation';
 
 interface Props {
@@ -57,19 +57,27 @@ export default function BasicHeader({ title, hasRightButton }: Props) {
   };
 
   const handleSaveData = async () => {
-    const { method, path } = decideApiRoute(pathName);
-    if (!method || !path) return;
+    try {
+      const { method, path } = decideApiRoute(pathName);
+      if (!method || !path) return;
 
-    const body: ProfileSaveType = selectedImage
-      ? { groupName: inputText, groupPhoto: selectedImage }
-      : { groupName: inputText };
+      const formData = new FormData();
+      formData.append('groupName', inputText);
+      if (selectedImage) {
+        formData.append('images', selectedImage);
+      }
 
-    console.log(body);
-
-    if (method === 'POST') {
-      await postData({ path, body });
-    } else if (method === 'PUT') {
-      await putData({ path, body });
+      let response;
+      if (method === 'POST') {
+        response = await postData({ path, body: formData });
+        const date = getCalendarTime(new Date());
+        router.push(`/home/${response?.groupId}/daily/${date}`);
+      } else if (method === 'PUT') {
+        await putData({ path, body: formData });
+        router.push('/mypage');
+      }
+    } catch (e) {
+      console.error(e);
     }
   };
 
