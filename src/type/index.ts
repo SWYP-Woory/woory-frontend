@@ -82,9 +82,9 @@ export type CommentListType = {
 export type CommentType = Omit<CommentListType, 'replies'>;
 
 export type FamilyMakeType = {
-  id: number;
-  familyName: string;
-  imageUrl?: string;
+  groupId: number;
+  groupName: string;
+  groupImage?: string;
 };
 
 export type FavoritePostType = {

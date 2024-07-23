@@ -17,14 +17,14 @@ export default function OAuth({ params }: Props) {
 
   const handleOAuth = async () => {
     try {
-      const { accessToken } = await fetch(`${process.env.NEXT_PUBLIC_URL  }/auth/${params.provider}?code=${code}`).then(
+      const { accessToken } = await fetch(`${process.env.NEXT_PUBLIC_URL}/auth/${params.provider}?code=${code}`).then(
         (response) => response.json(),
       );
       await setToken(accessToken);
     } catch (e) {
       console.error(e);
     } finally {
-      router.push('/');
+      router.push('/family-select');
     }
   };
 

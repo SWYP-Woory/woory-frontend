@@ -1,7 +1,7 @@
 'use client';
 
-import DailyNoThread from '@/app/(afterLogin)/(main)/home/daily/[day]/_components/daily/DailyNoThread';
-import DailyThread from '@/app/(afterLogin)/(main)/home/daily/[day]/_components/daily/DailyThread';
+import DailyNoThread from '@/app/(afterLogin)/(main)/home/[groupId]/daily/[day]/_components/daily/DailyNoThread';
+import DailyThread from '@/app/(afterLogin)/(main)/home/[groupId]/daily/[day]/_components/daily/DailyThread';
 import DailyTopic from '@/app/_components/common/daily/DailyTopic';
 import DateController from '@/app/_components/common/dateController/DateController';
 import { useDateControl } from '@/app/_hooks/useDateControl';
