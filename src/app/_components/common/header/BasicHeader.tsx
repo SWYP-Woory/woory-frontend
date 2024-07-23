@@ -4,8 +4,10 @@ import { postData, putData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
 import LeftArrowIcon from '@/app/_components/icon/arrow/LeftArrowIcon';
 import { useImageUpload } from '@/app/_hooks/useImageUpload';
+import { deleteCookies, getCookies, setCookies } from '@/app/_store/cookie/cookies';
+import { useImageUploadStore } from '@/app/_store/imageUploadStore';
 import { useInputStore } from '@/app/_store/inputStore';
-import { ProfileSaveType } from '@/type';
+import { getCalendarTime } from '@/utils/getTime';
 import { usePathname, useRouter } from 'next/navigation';
 
 interface Props {
@@ -39,7 +41,7 @@ const decideApiRoute = (pathName: string, groupId?: number) => {
     return { method: 'POST', path: apiRoutes.createFamily };
   }
   if (pathName === '/family-edit') {
-    return { method: 'PUT', path: `${apiRoutes.UpdateFamily}${groupId}` };
+    return { method: 'PUT', path: `${apiRoutes.UpdateFamily}/${groupId}` };
   }
   return { method: '', path: '' };
 };
@@ -48,6 +50,7 @@ export default function BasicHeader({ title, hasRightButton }: Props) {
   const pathName = usePathname();
   const router = useRouter();
   const { selectedImage } = useImageUpload();
+  const { reset } = useImageUploadStore();
   const { inputFamilyText, inputProfileText, inputFamilyEditText } = useInputStore();
   const inputText = decideInputText(pathName, inputFamilyText, inputProfileText, inputFamilyEditText);
   const isValid = inputText.length > 0;
@@ -57,19 +60,35 @@ export default function BasicHeader({ title, hasRightButton }: Props) {
   };
 
   const handleSaveData = async () => {
-    const { method, path } = decideApiRoute(pathName);
-    if (!method || !path) return;
+    try {
+      const currentGroupId = getCookies('groupId');
+      const { method, path } = decideApiRoute(pathName, currentGroupId);
+      if (!method || !path) return;
 
-    const body: ProfileSaveType = selectedImage
-      ? { groupName: inputText, groupPhoto: selectedImage }
-      : { groupName: inputText };
+      const formData = new FormData();
+      formData.append('groupName', inputText);
+      if (selectedImage) {
+        formData.append('images', selectedImage);
+      }
 
-    console.log(body);
-
-    if (method === 'POST') {
-      await postData({ path, body });
-    } else if (method === 'PUT') {
-      await putData({ path, body });
+      let response;
+      if (method === 'POST') {
+        response = await postData({ path, body: formData });
+        const date = getCalendarTime(new Date());
+        const groupId = response?.groupId;
+        if (currentGroupId) {
+          deleteCookies('groupId');
+        }
+        setCookies('groupId', groupId);
+        router.push(`/home/${groupId}/daily/${date}`);
+        reset();
+      } else if (method === 'PUT') {
+        await putData({ path, body: formData });
+        router.push('/mypage');
+        reset();
+      }
+    } catch (e) {
+      console.error(e);
     }
   };
 
