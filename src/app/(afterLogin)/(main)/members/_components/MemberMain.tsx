@@ -8,6 +8,7 @@ import { apiRoutes } from '@/app/_api/apiRoutes';
 import { getCookies } from '@/app/_store/cookie/cookies';
 import { MemberType, MembersDataType } from '@/type';
 import { openToast } from '@/utils/Toast';
+import { getCalendarTime } from '@/utils/getTime';
 import { useEffect, useState } from 'react';
 import { FadeLoader } from 'react-spinners';
 
@@ -23,7 +24,21 @@ export default function MemberMain() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleMemberAdd = () => {
-    openToast('link');
+    const baseUrl = window.location.origin;
+    const groupId = getCookies('groupId');
+    const date = getCalendarTime(new Date());
+
+    const url = new URL(`${baseUrl}/home/${groupId}/daily/${date}`);
+    url.searchParams.set('link', 'true');
+
+    navigator.clipboard
+      .writeText(url.toString())
+      .then(() => {
+        openToast('link');
+      })
+      .catch((err) => {
+        console.error('Failed to copy: ', err);
+      });
   };
 
   const fetchMembers = async () => {

@@ -12,7 +12,7 @@ import { useState } from 'react';
 
 interface Props extends MemberType {
   canDelete?: boolean;
-  fetchMembers: () => void;
+  fetchMembers?: () => void;
 }
 
 export default function MemberProfile({ userId, profileUrl, userName, isHouseholder, canDelete, fetchMembers }: Props) {
@@ -30,7 +30,9 @@ export default function MemberProfile({ userId, profileUrl, userName, isHousehol
     const groupId = getCookies('groupId');
     try {
       await postData({ path: `${apiRoutes.deleteMember}/${groupId}/user/${userId}` });
-      fetchMembers();
+      if (fetchMembers) {
+        fetchMembers();
+      }
     } catch (error) {
       console.error(error);
     }
