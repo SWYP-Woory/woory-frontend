@@ -10,7 +10,8 @@ export default function Home() {
 
   if (accessToken) {
     const today = getCalendarTime(new Date());
-    redirect(`/home/${groupId}/daily/${today}`);
+    if (groupId) redirect(`/home/${groupId}/daily/${today}`);
+    redirect(`/family-select`);
   }
   return <Main />;
 }
