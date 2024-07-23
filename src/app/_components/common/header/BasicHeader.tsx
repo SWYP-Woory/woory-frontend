@@ -4,7 +4,7 @@ import { postData, putData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
 import LeftArrowIcon from '@/app/_components/icon/arrow/LeftArrowIcon';
 import { useImageUpload } from '@/app/_hooks/useImageUpload';
-import { getCookies } from '@/app/_store/cookie/cookies';
+import { deleteCookies, getCookies, setCookies } from '@/app/_store/cookie/cookies';
 import { useInputStore } from '@/app/_store/inputStore';
 import { getCalendarTime } from '@/utils/getTime';
 import { usePathname, useRouter } from 'next/navigation';
@@ -59,8 +59,8 @@ export default function BasicHeader({ title, hasRightButton }: Props) {
 
   const handleSaveData = async () => {
     try {
-      const groupId = getCookies('groupId');
-      const { method, path } = decideApiRoute(pathName, groupId);
+      const currentGroupId = getCookies('groupId');
+      const { method, path } = decideApiRoute(pathName, currentGroupId);
       if (!method || !path) return;
 
       const formData = new FormData();
@@ -73,7 +73,12 @@ export default function BasicHeader({ title, hasRightButton }: Props) {
       if (method === 'POST') {
         response = await postData({ path, body: formData });
         const date = getCalendarTime(new Date());
-        router.push(`/home/${response?.groupId}/daily/${date}`);
+        const groupId = response?.groupId;
+        if (currentGroupId) {
+          deleteCookies('groupId');
+        }
+        setCookies('groupId', groupId);
+        router.push(`/home/${groupId}/daily/${date}`);
       } else if (method === 'PUT') {
         await putData({ path, body: formData });
         router.push('/mypage');
