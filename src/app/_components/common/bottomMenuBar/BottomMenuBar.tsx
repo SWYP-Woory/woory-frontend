@@ -11,11 +11,12 @@ import { usePathname } from 'next/navigation';
 export default function BottomMenuBar() {
   const pathName = usePathname();
   const date = getCalendarTime(new Date());
+  const groupId = localStorage.getItem('groupId');
 
   return (
     <nav className="sticky bottom-0">
       <div className="flex justify-evenly items-start pt-[1.3rem] bg-white w-[37.5rem] h-[4.8rem] border-bgGrey border-t">
-        <Link href={`/home/daily/${date}`}>
+        <Link href={`/home/${groupId}/daily/${date}`}>
           <HomeIcon isActive={pathName.includes('home')} />
         </Link>
         <Link href="/favorites">
