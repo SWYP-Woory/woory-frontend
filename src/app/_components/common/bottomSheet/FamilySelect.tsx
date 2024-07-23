@@ -8,11 +8,14 @@ import { useEffect, useState } from 'react';
 
 export default function FamilySelect() {
   const [familyData, setFamilyData] = useState<FamilyMakeType[]>([]);
-
   useEffect(() => {
     const getFamilyList = async () => {
-      const res = await getData({ path: apiRoutes.getFamilyList });
-      setFamilyData(res.data);
+      try {
+        const res = await getData({ path: apiRoutes.getFamilyList });
+        setFamilyData(res.data);
+      } catch (e) {
+        console.error(e);
+      }
     };
     getFamilyList();
   }, []);
