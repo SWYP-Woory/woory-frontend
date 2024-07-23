@@ -1,7 +1,11 @@
 'use client';
 
+import { postData, putData } from '@/app/_api/api';
+import { apiRoutes } from '@/app/_api/apiRoutes';
 import LeftArrowIcon from '@/app/_components/icon/arrow/LeftArrowIcon';
+import { useImageUpload } from '@/app/_hooks/useImageUpload';
 import { useInputStore } from '@/app/_store/inputStore';
+import { ProfileSaveType } from '@/type';
 import { usePathname, useRouter } from 'next/navigation';
 
 interface Props {
@@ -27,14 +31,46 @@ const decideInputText = (
   return '';
 };
 
+const decideApiRoute = (pathName: string, groupId?: number) => {
+  if (pathName === '/profile') {
+    return { method: 'PUT', path: apiRoutes.UpdateProfile };
+  }
+  if (pathName === '/family') {
+    return { method: 'POST', path: apiRoutes.createFamily };
+  }
+  if (pathName === '/family-edit') {
+    return { method: 'PUT', path: `${apiRoutes.UpdateFamily}${groupId}` };
+  }
+  return { method: '', path: '' };
+};
+
 export default function BasicHeader({ title, hasRightButton }: Props) {
   const pathName = usePathname();
   const router = useRouter();
+  const { selectedImage } = useImageUpload();
   const { inputFamilyText, inputProfileText, inputFamilyEditText } = useInputStore();
-  const isValid = decideInputText(pathName, inputFamilyText, inputProfileText, inputFamilyEditText).length > 0;
+  const inputText = decideInputText(pathName, inputFamilyText, inputProfileText, inputFamilyEditText);
+  const isValid = inputText.length > 0;
 
   const handleBackClick = () => {
     router.back();
+  };
+
+  const handleSaveData = async () => {
+    const { method, path } = decideApiRoute(pathName);
+    if (!method || !path) return;
+
+    const body: ProfileSaveType = selectedImage
+      ? { groupName: inputText, groupPhoto: selectedImage }
+      : { groupName: inputText };
+
+    console.log(body);
+
+    if (method === 'POST') {
+      await postData({ path, body });
+    } else if (method === 'PUT') {
+      await putData({ path, body });
+    }
   };
 
   return (
@@ -48,6 +84,7 @@ export default function BasicHeader({ title, hasRightButton }: Props) {
           type="button"
           disabled={!isValid}
           className={`absolute right-[1.6rem] font-body ${isValid ? 'text-black' : 'text-textDisabled'}`}
+          onClick={handleSaveData}
         >
           저장
         </button>

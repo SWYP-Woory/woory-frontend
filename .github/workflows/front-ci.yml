@@ -34,6 +34,11 @@ jobs:
           node-version: 18
           cache: 'pnpm'
 
+      - name: Generate Environment Variables File for Production
+        run: |
+          echo NEXT_PUBLIC_URL=${{ secrets.DEV_PUBLIC_API_URL }} >> .env
+          echo NEXT_PROXY_URL=${{ secrets.DEV_PUBLIC_PROXY_URL }} >> .env
+
       - name: Install dependencies
         run: pnpm install
 
