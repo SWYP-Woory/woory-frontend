@@ -1,4 +1,4 @@
-import DailyView from '@/app/(afterLogin)/(main)/home/daily/[day]/_components/daily/DailyView';
+import DailyView from '@/app/(afterLogin)/(main)/home/[groupId]/daily/[day]/_components/daily/DailyView';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof DailyView> = {

@@ -23,7 +23,7 @@ export default function OAuth({ params }: Props) {
     } catch (e) {
       console.error(e);
     } finally {
-      router.push('/');
+      router.push('/family-select');
     }
   };
 

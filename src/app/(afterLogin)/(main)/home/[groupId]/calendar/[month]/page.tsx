@@ -1,4 +1,4 @@
-import CalendarView from '@/app/(afterLogin)/(main)/home/calendar/[month]/_components/calendar/CalendarView';
+import CalendarView from '@/app/(afterLogin)/(main)/home/[groupId]/calendar/[month]/_components/calendar/CalendarView';
 import UpperTabBar from '@/app/_components/upperTabBar/UpperTabBar';
 
 export default function CalendarPage() {

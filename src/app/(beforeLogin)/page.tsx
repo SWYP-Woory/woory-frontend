@@ -6,10 +6,11 @@ import { redirect } from 'next/navigation';
 export default function Home() {
   const cookieStore = cookies();
   const accessToken = cookieStore.get('AccessToken');
+  const groupId = cookieStore.get('groupId')?.value;
 
   if (accessToken) {
     const today = getCalendarTime(new Date());
-    redirect(`/home/daily/${today}`);
+    redirect(`/home/${groupId}/daily/${today}`);
   }
   return <Main />;
 }
