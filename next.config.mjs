@@ -23,12 +23,17 @@ const nextConfig = {
         hostname: 'cdn.smarttoday.co.kr',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'woory-bucket.s3.ap-northeast-2.amazonaws.com',
+        pathname: '**',
+      },
     ],
   },
   async rewrites() {
     return [
       {
-        source: "/api/:path*",
+        source: '/api/:path*',
         destination: `${process.env.NEXT_PROXY_URL}/:path*`,
       },
     ];
