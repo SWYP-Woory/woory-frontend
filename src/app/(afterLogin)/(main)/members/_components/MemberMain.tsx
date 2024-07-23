@@ -5,12 +5,12 @@ import MemberProfile from '@/app/(afterLogin)/(main)/members/_components/MemberP
 import MyProfile from '@/app/(afterLogin)/(main)/members/_components/MyProfile';
 import { getData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
+import Loading from '@/app/_components/common/loading/Loading';
 import { getCookies } from '@/app/_store/cookie/cookies';
 import { MemberType, MembersDataType } from '@/type';
 import { openToast } from '@/utils/Toast';
 import { getCalendarTime } from '@/utils/getTime';
 import { useEffect, useState } from 'react';
-import { FadeLoader } from 'react-spinners';
 
 const defaultUser: MemberType = {
   userId: -1,
@@ -61,9 +61,7 @@ export default function MemberMain() {
   return (
     <div className="flex flex-col flex-grow">
       {isLoading ? (
-        <div className="flex justify-center items-center flex-grow">
-          <FadeLoader color="#1EA49A" />
-        </div>
+        <Loading />
       ) : (
         <>
           <MyProfile data={membersData?.user || defaultUser} />
