@@ -13,11 +13,9 @@ export default function ProfileEditMain() {
   useEffect(() => {
     (async () => {
       try {
-        // todo: groupId로 가족 선택 페이지
         const groupId = getCookies('groupId');
-        console.log(groupId);
-        const { data } = await getData({ path: apiRoutes.getFamilyList });
-        const { groupName, images } = data;
+        const { data } = await getData({ path: `${apiRoutes.getFamily  }/${groupId}` });
+        const { groupName, groupImage: images } = data;
         setTitle(groupName);
         setProfileImage(images);
       } catch (e) {

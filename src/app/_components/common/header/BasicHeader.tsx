@@ -5,6 +5,7 @@ import { apiRoutes } from '@/app/_api/apiRoutes';
 import LeftArrowIcon from '@/app/_components/icon/arrow/LeftArrowIcon';
 import { useImageUpload } from '@/app/_hooks/useImageUpload';
 import { deleteCookies, getCookies, setCookies } from '@/app/_store/cookie/cookies';
+import { useImageUploadStore } from '@/app/_store/imageUploadStore';
 import { useInputStore } from '@/app/_store/inputStore';
 import { getCalendarTime } from '@/utils/getTime';
 import { usePathname, useRouter } from 'next/navigation';
@@ -49,6 +50,7 @@ export default function BasicHeader({ title, hasRightButton }: Props) {
   const pathName = usePathname();
   const router = useRouter();
   const { selectedImage } = useImageUpload();
+  const { reset } = useImageUploadStore();
   const { inputFamilyText, inputProfileText, inputFamilyEditText } = useInputStore();
   const inputText = decideInputText(pathName, inputFamilyText, inputProfileText, inputFamilyEditText);
   const isValid = inputText.length > 0;
@@ -79,9 +81,11 @@ export default function BasicHeader({ title, hasRightButton }: Props) {
         }
         setCookies('groupId', groupId);
         router.push(`/home/${groupId}/daily/${date}`);
+        reset();
       } else if (method === 'PUT') {
         await putData({ path, body: formData });
         router.push('/mypage');
+        reset();
       }
     } catch (e) {
       console.error(e);
