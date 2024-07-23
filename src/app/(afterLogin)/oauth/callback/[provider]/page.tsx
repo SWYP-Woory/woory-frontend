@@ -1,6 +1,5 @@
 'use client';
 
-import { getAccessToken } from '@/app/_api/api';
 import { setToken } from '@/app/_store/cookie/session';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
@@ -18,7 +17,9 @@ export default function OAuth({ params }: Props) {
 
   const handleOAuth = async () => {
     try {
-      const { accessToken } = getAccessToken(`/auth/${params.provider}?code=${code}`);
+      const { accessToken } = await fetch(`${process.env.NEXT_PUBLIC_URL  }/auth/${params.provider}?code=${code}`).then(
+        (response) => response.json(),
+      );
       await setToken(accessToken);
     } catch (e) {
       console.error(e);

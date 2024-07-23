@@ -43,15 +43,6 @@ const fetchJSON = async (...params: Parameters<Fetch>) => {
   }
 };
 
-export const getAccessToken: any = async (url: string) => {
-  try {
-    const response = await fetch(API_BASE_URL + url);
-    return await response.json();
-  } catch (e) {
-    console.error(e);
-  }
-};
-
 export const getData: ApiHandler = async ({ path, queryKey, revalidate, ...init }) => {
   try {
     return await fetchJSON(path, { ...init, next: { revalidate, tags: queryKey } });
