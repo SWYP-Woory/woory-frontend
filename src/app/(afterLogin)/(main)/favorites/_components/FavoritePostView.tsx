@@ -9,7 +9,7 @@ export default function FavoritePostView() {
   const [favoritePosts, setFavoritePosts] = useState<FavoritePostType[]>([]);
 
   useEffect(() => {
-    const data = LocalStorage.getItem('favorites') || [];
+    const data = LocalStorage.getItemJson('favorites') || [];
     setFavoritePosts([...data]);
   }, []);
 

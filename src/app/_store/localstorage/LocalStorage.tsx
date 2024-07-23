@@ -12,6 +12,16 @@ export default class LocalStorage {
     return null;
   }
 
+  static getItemJson(key: string): any {
+    if (typeof window !== 'undefined') {
+      const items = localStorage.getItem(key);
+      if (items) {
+        return JSON.parse(items);
+      }
+    }
+    return null;
+  }
+
   static removeItem(key: string) {
     if (typeof window !== 'undefined') {
       localStorage.removeItem(key);
