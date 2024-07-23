@@ -2,6 +2,7 @@ export const apiRoutes = {
   // Family
   createFamily: '/v1/groups/create',
   UpdateFamily: '/v1/groups/update',
+  getFamily: '/v1/groups/get/info',
   getFamilyList: '/v1/groups/my',
   deleteFamily: '/v1/groups/delete',
 
