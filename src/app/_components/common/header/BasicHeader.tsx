@@ -4,6 +4,7 @@ import { postData, putData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
 import LeftArrowIcon from '@/app/_components/icon/arrow/LeftArrowIcon';
 import { useImageUpload } from '@/app/_hooks/useImageUpload';
+import { getCookies } from '@/app/_store/cookie/cookies';
 import { useInputStore } from '@/app/_store/inputStore';
 import { getCalendarTime } from '@/utils/getTime';
 import { usePathname, useRouter } from 'next/navigation';
@@ -39,7 +40,7 @@ const decideApiRoute = (pathName: string, groupId?: number) => {
     return { method: 'POST', path: apiRoutes.createFamily };
   }
   if (pathName === '/family-edit') {
-    return { method: 'PUT', path: `${apiRoutes.UpdateFamily}${groupId}` };
+    return { method: 'PUT', path: `${apiRoutes.UpdateFamily}/${groupId}` };
   }
   return { method: '', path: '' };
 };
@@ -58,7 +59,8 @@ export default function BasicHeader({ title, hasRightButton }: Props) {
 
   const handleSaveData = async () => {
     try {
-      const { method, path } = decideApiRoute(pathName);
+      const groupId = getCookies('groupId');
+      const { method, path } = decideApiRoute(pathName, groupId);
       if (!method || !path) return;
 
       const formData = new FormData();
