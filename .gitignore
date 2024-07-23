@@ -175,3 +175,7 @@ fabric.properties
 
 *storybook.log
 /.idea/git_toolbox_blame.xml
+
+# Ignore sw.js and workbox~~.js files
+sw.js
+workbox*.js

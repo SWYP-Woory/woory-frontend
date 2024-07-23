@@ -1,11 +1,12 @@
+import { useImageUploadStore } from '@/app/_store/imageUploadStore';
 import { openToast } from '@/utils/Toast';
-import { ChangeEvent, useRef, useState } from 'react';
+import { ChangeEvent, useRef } from 'react';
 
 const MAX_SIZE = 5 * 1024 * 1024;
 
 export const useImageUpload = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const { selectedImage, setSelectedImage } = useImageUploadStore();
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];

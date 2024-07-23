@@ -1,4 +1,5 @@
 import { DOMAIN } from '@/app/_constants/domain';
+import { getSession } from '@/app/_store/cookie/session';
 
 type Fetch = typeof fetch;
 
@@ -13,20 +14,29 @@ type ApiHandler = (params: HandlerParams) => Promise<any>;
 
 const API_BASE_URL = DOMAIN ?? '';
 
-const makeHeader = (body: any) => {
-  const isFormData = body instanceof FormData;
-  if (isFormData) {
-    return { body };
+const makeHeader = async (body: any) => {
+  const accessToken = await getSession('AccessToken');
+  const headers: HeadersInit = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${accessToken}`,
+  };
+
+  if (body instanceof FormData) {
+    return { headers: { Authorization: `Bearer ${accessToken}` }, body };
   }
-  return { headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) };
+
+  return { headers, body: body ? JSON.stringify(body) : undefined };
 };
 
 const fetchJSON = async (...params: Parameters<Fetch>) => {
   try {
-    const wrappedFetch = async () =>
-      fetch(API_BASE_URL + params[0], { ...params[1], ...(params[1]?.body ? makeHeader(params[1].body) : {}) }).then(
-        (resp) => resp.json(),
-      );
+    const wrappedFetch = async () => {
+      const [url, init] = params;
+      const { headers, body } = await makeHeader(init?.body);
+      const fullInit = { ...init, headers, body };
+      const response = await fetch(API_BASE_URL + url, fullInit);
+      return response.json();
+    };
     return await wrappedFetch();
   } catch (e) {
     console.error(e);
