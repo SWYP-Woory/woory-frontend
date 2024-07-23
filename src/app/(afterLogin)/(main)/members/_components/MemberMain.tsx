@@ -9,6 +9,7 @@ import { getCookies } from '@/app/_store/cookie/cookies';
 import { MemberType, MembersDataType } from '@/type';
 import { openToast } from '@/utils/Toast';
 import { useEffect, useState } from 'react';
+import { FadeLoader } from 'react-spinners';
 
 const defaultUser: MemberType = {
   userId: -1,
@@ -19,38 +20,52 @@ const defaultUser: MemberType = {
 
 export default function MemberMain() {
   const [membersData, setMembersData] = useState<MembersDataType>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleMemberAdd = () => {
     openToast('link');
   };
 
+  const fetchMembers = async () => {
+    try {
+      setIsLoading(true);
+      const groupId = getCookies('groupId');
+      const { data } = await getData({ path: `${apiRoutes.getMembers}/${groupId}` });
+      setMembersData(data);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const groupId = getCookies('groupId');
-    const getMembers = async () => {
-      try {
-        const res = await getData({ path: `${apiRoutes.getMembers}/${groupId}` });
-        setMembersData(res.data);
-      } catch (e) {
-        console.error(e);
-      }
-    };
-    getMembers();
+    fetchMembers();
   }, []);
 
   return (
-    <div className="flex-grow">
-      <MyProfile data={membersData?.user || defaultUser} />
-      <MemberAdd onClick={handleMemberAdd} />
-      {membersData?.members.map((member) => (
-        <MemberProfile
-          key={member.userId}
-          userId={member.userId}
-          profileUrl={member.profileUrl}
-          userName={member.userName}
-          isHouseholder={member.isHouseholder}
-          canDelete={membersData?.user.isHouseholder}
-        />
-      ))}
+    <div className="flex flex-col flex-grow">
+      {isLoading ? (
+        <div className="flex justify-center items-center flex-grow">
+          <FadeLoader color="#1EA49A" />
+        </div>
+      ) : (
+        <>
+          <MyProfile data={membersData?.user || defaultUser} />
+          <MemberAdd onClick={handleMemberAdd} />
+          {membersData?.members.map((member) => (
+            <MemberProfile
+              key={member.userId}
+              userId={member.userId}
+              profileUrl={member.profileUrl}
+              userName={member.userName}
+              isHouseholder={member.isHouseholder}
+              canDelete={membersData?.user.isHouseholder}
+              fetchMembers={fetchMembers}
+            />
+          ))}
+        </>
+      )}
     </div>
   );
 }
