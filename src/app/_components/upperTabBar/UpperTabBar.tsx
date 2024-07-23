@@ -1,6 +1,7 @@
 'use client';
 
 import TabButton from '@/app/_components/upperTabBar/TabButton';
+import { getCookies } from '@/app/_store/cookie/cookies';
 import { TabType } from '@/type';
 import { getCalendarTime } from '@/utils/getTime';
 import { format } from 'date-fns';
@@ -14,7 +15,7 @@ export default function UpperTabBar() {
   const [tabType, setTabType] = useState<TabType>(type);
   const date = getCalendarTime(new Date());
   const calendar = format(date, 'yyyy-MM');
-  const groupId = localStorage.getItem('groupId');
+  const groupId = getCookies('groupId');
 
   const handleClick = (value: TabType) => {
     setTabType(value);

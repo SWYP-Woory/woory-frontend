@@ -4,6 +4,7 @@ import HeartIcon from '@/app/_components/icon/bottomBar/HeartIcon';
 import HomeIcon from '@/app/_components/icon/bottomBar/HomeIcon';
 import MemberIcon from '@/app/_components/icon/bottomBar/MemberIcon';
 import MyPageIcon from '@/app/_components/icon/bottomBar/MyPageIcon';
+import { getCookies } from '@/app/_store/cookie/cookies';
 import { getCalendarTime } from '@/utils/getTime';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -11,7 +12,8 @@ import { usePathname } from 'next/navigation';
 export default function BottomMenuBar() {
   const pathName = usePathname();
   const date = getCalendarTime(new Date());
-  const groupId = localStorage.getItem('groupId');
+
+  const groupId = getCookies('groupId');
 
   return (
     <nav className="sticky bottom-0">

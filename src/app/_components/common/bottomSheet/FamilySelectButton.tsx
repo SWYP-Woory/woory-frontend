@@ -1,6 +1,7 @@
 'use client';
 
 import Profile from '@/app/_components/common/profile/Profile';
+import { setCookies } from '@/app/_store/cookie/cookies';
 import { FamilyMakeType } from '@/type';
 import { getCalendarTime } from '@/utils/getTime';
 import { useRouter } from 'next/navigation';
@@ -15,7 +16,7 @@ export default function FamilySelectButton({ familyData }: Props) {
 
   const handleFamilySelect = () => {
     router.push(`/home/${familyData.groupId}/daily/${date}`);
-    localStorage.setItem('groupId', familyData.groupId.toString());
+    setCookies('groupId', familyData.groupId);
   };
 
   return (
