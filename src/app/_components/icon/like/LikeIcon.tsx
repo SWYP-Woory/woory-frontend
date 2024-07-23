@@ -24,16 +24,20 @@ export default function LikeIcon({ isLiked }: Props) {
     setIsActive(!isActive);
   };
 
-  return isActive ? (
-    <ActiveLike width="2.0rem" height="1.8rem" onClick={handleClick} />
-  ) : (
-    <Like
-      width="2.0rem"
-      height="1.8rem"
-      fill={isHovered ? '#666666' : '#888888'}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onClick={handleClick}
-    />
+  return (
+    <div className="cursor-pointer">
+      {isActive ? (
+        <ActiveLike width="2.0rem" height="1.8rem" onClick={handleClick} />
+      ) : (
+        <Like
+          width="2.0rem"
+          height="1.8rem"
+          fill={isHovered ? '#666666' : '#888888'}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onClick={handleClick}
+        />
+      )}
+    </div>
   );
 }
