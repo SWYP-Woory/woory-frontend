@@ -15,6 +15,8 @@ export const config = {
   matcher: [
     '/family',
     '/family-select',
+    '/family-edit',
+    '/family-delete',
     '/notification',
     '/home/:path*',
     '/posts/:path*',
