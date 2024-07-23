@@ -51,10 +51,10 @@ export default function DailyView() {
   }, []);
 
   // 데일리에서 topic, topicImage, topicDate 저장
-  const { setTopic, setTopicImage, setTopicDate } = useTopicStore();
+  const { setTopicTitle, setTopicImage, setTopicDate } = useTopicStore();
 
   useEffect(() => {
-    setTopic(topic);
+    setTopicTitle(topic);
     setTopicImage(firstTopicImage);
     setTopicDate(currentDate);
   }, [topic, firstTopicImage, currentDate]);

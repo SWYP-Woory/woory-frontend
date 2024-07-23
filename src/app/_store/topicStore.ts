@@ -1,21 +1,21 @@
 import { create } from 'zustand';
 
 interface TopicState {
-  topic: string;
+  topicTitle: string;
   topicImage: string;
   topicDate: Date | null;
-  setTopic: (topic: string) => void;
+  setTopicTitle: (topic: string) => void;
   setTopicImage: (topicImage: string) => void;
   setTopicDate: (topicDate: Date) => void;
   reset: () => void;
 }
 
 export const useTopicStore = create<TopicState>((set) => ({
-  topic: '',
-  setTopic: (topic: string) => set((state) => ({ ...state, topicImage: topic })),
+  topicTitle: '',
+  setTopicTitle: (topicTitle: string) => set((state) => ({ ...state, topicTitle })),
   topicImage: '',
   setTopicImage: (topicImage) => set((state) => ({ ...state, topicImage })),
   topicDate: null,
   setTopicDate: (topicDate) => set((state) => ({ ...state, topicDate })),
-  reset: () => set({ topic: '', topicImage: '', topicDate: null }),
+  reset: () => set({ topicTitle: '', topicImage: '', topicDate: null }),
 }));
