@@ -9,8 +9,11 @@ export default function FavoritePostView() {
   const [favoritePosts, setFavoritePosts] = useState<FavoritePostType[]>([]);
 
   useEffect(() => {
-    const data = LocalStorage.getItemJson('favorites') || [];
-    setFavoritePosts([...data]);
+    const data: FavoritePostType[] = LocalStorage.getItemJson('favorites') || [];
+    if (data.length !== 0) {
+      data.sort((a, b) => new Date(b.postDate).getTime() - new Date(a.postDate).getTime());
+    }
+    setFavoritePosts(data);
   }, []);
 
   if (favoritePosts.length === 0) {
