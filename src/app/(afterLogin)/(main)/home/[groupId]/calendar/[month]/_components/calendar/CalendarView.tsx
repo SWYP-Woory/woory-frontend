@@ -48,23 +48,14 @@ export default function CalendarView() {
     fetchCalenderData();
   }, [currentDate]);
 
-  const handlePrevMonth = () => {
-    setCalenderData([]);
-    prevMonthHandler();
-  };
-
-  const handleNextMonth = () => {
-    setCalenderData([]);
-    nextMonthHandler();
-  };
   return isLoading ? (
     <Loading />
   ) : (
     <section className="flex flex-col gap-24 items-center w-[34.2rem] min-h-screen bg-white">
       <DateController
         date={format(currentDate, 'yyyy.MM')}
-        prevHandler={handlePrevMonth}
-        nextHandler={handleNextMonth}
+        prevHandler={prevMonthHandler}
+        nextHandler={nextMonthHandler}
       />
       {calendarData && <Calendar createMonth={createMonth} currentDate={currentDate} data={calendarData} />}
     </section>
