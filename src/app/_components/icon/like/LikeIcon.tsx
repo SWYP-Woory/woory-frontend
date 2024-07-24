@@ -5,6 +5,7 @@ import { useTopicStore } from '@/app/_store/topicStore';
 import ActiveLike from '@/assets/icons/like/activeLike.svg';
 import Like from '@/assets/icons/like/like.svg';
 import { getCalendarTime } from '@/utils/getTime';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 interface Props {
@@ -15,6 +16,7 @@ export default function LikeIcon({ isLiked }: Props) {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [isActive, setIsActive] = useState<boolean>(isLiked || false);
   const { topicTitle, topicImage, topicDate, reset } = useTopicStore();
+  const pathName = usePathname();
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -41,8 +43,10 @@ export default function LikeIcon({ isLiked }: Props) {
 
   const handleClick = () => {
     if (!isActive) {
-      handleTopic();
-      reset();
+      if (pathName !== '/favorites') {
+        handleTopic();
+        reset();
+      }
     }
     setIsActive(!isActive);
   };
