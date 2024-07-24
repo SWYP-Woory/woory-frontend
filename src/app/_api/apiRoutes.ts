@@ -13,4 +13,5 @@ export const apiRoutes = {
   UserLogout: '/v1/users/logout',
   UserDeletion: '/v1/users/delete',
   getUserData: '/v1/users/my',
+  profileUpdate: 'v1/users/update',
 };
