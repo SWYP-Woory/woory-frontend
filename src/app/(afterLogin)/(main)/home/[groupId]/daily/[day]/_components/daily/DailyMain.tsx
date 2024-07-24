@@ -9,12 +9,7 @@ import { getCookies } from '@/app/_store/cookie/cookies';
 import { useModalStore } from '@/app/_store/modalStore';
 import { useEffect } from 'react';
 
-interface Props {
-  groupId: number;
-  day: Date;
-}
-
-export default function DailyMain({ groupId, day }: Props) {
+export default function DailyMain() {
   const { isModalOpen, setIsModalOpen } = useModalStore();
   const cookie = getCookies('add_home');
 
@@ -30,7 +25,7 @@ export default function DailyMain({ groupId, day }: Props) {
         <UpperTabBar />
       </div>
       <div className="mt-24">
-        <DailyView groupId={groupId} day={day} />
+        <DailyView />
       </div>
       <PostButton />
       {isModalOpen && (

@@ -7,22 +7,22 @@ import { apiRoutes } from '@/app/_api/apiRoutes';
 import DailyTopic from '@/app/_components/common/daily/DailyTopic';
 import DateController from '@/app/_components/common/dateController/DateController';
 import { useDateControl } from '@/app/_hooks/useDateControl';
+import { getCookies } from '@/app/_store/cookie/cookies';
 import { DailyThreadType } from '@/type';
+import { getCalendarTime } from '@/utils/getTime';
 import { format } from 'date-fns';
 import { useEffect, useState } from 'react';
 
-interface Props {
-  groupId: number;
-  day: Date;
-}
-
-export default function DailyView({ groupId, day }: Props) {
+export default function DailyView() {
   const { currentDate, prevDayHandler, nextDayHandler } = useDateControl();
   const [topic] = useState<string>('');
   const [dailyThreads] = useState<DailyThreadType[]>([]);
 
   const handleLoad = async () => {
-    const { data } = await getData({ path: `${apiRoutes.getDaily}/${groupId}/get?day=${day}` });
+    const groupId = getCookies('groupId');
+    const { data } = await getData({
+      path: `${apiRoutes.getDaily}/${groupId}/get?day=${getCalendarTime(currentDate)}`,
+    });
     console.log(data);
   };
 
