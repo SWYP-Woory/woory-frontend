@@ -36,7 +36,7 @@ const decideInputText = (
 
 const decideApiRoute = (pathName: string, groupId?: number) => {
   if (pathName === '/profile') {
-    return { method: 'PUT', path: apiRoutes.UpdateProfile };
+    return { method: 'PUT', path: apiRoutes.profileUpdate };
   }
   if (pathName === '/family') {
     return { method: 'POST', path: apiRoutes.createFamily };
@@ -72,7 +72,7 @@ export default function BasicHeader({ title, hasRightButton }: Props) {
         name: inputText,
       };
 
-      if (selectedImage) {
+      if (selectedImage && !selectedImage.includes('woory-bucket')) {
         data.images = selectedImage;
       }
 
@@ -85,14 +85,14 @@ export default function BasicHeader({ title, hasRightButton }: Props) {
           deleteCookies('groupId');
         }
         setCookies('groupId', groupId);
+        router.push(`/home/${groupId}/daily/${date}`);
         imageReset();
         inputReset();
-        router.push(`/home/${groupId}/daily/${date}`);
       } else if (method === 'PUT') {
         await putData({ path, body: data });
+        router.push('/mypage');
         imageReset();
         inputReset();
-        router.push('/mypage');
       }
     } catch (e) {
       console.error(e);

@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function FamilyEditPage() {
   return (
-    <div className="relative min-h-screen">
+    <div className="flex flex-col relative min-h-screen">
       <BasicHeader title="가족 상태 수정" hasRightButton />
       <FamilyProfileEditMain />
       <Link href="/family-edit/family-delete" className="text-primary font-body absolute bottom-16 left-16">
