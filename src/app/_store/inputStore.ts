@@ -9,7 +9,7 @@ export interface InputState {
   setInputProfileText: (text: string) => void;
   inputFamilyEditText: string;
   setInputFamilyEditText: (text: string) => void;
-  reset: () => void;
+  inputReset: () => void;
 }
 
 export const useInputStore = create<InputState>((set) => ({
@@ -21,5 +21,5 @@ export const useInputStore = create<InputState>((set) => ({
   setInputProfileText: (text) => set({ inputProfileText: text }),
   inputFamilyEditText: '',
   setInputFamilyEditText: (text) => set({ inputFamilyEditText: text }),
-  reset: () => set({ inputText: '' }),
+  inputReset: () => set({ inputText: '', inputFamilyText: '', inputProfileText: '', inputFamilyEditText: '' }),
 }));

@@ -9,8 +9,8 @@ export const apiRoutes = {
   deleteFamily: '/v1/groups/delete',
 
   // User
-  UpdateProfile: '/v1/users/profile',
   UserLogout: '/v1/users/logout',
   UserDeletion: '/v1/users/delete',
   getUserData: '/v1/users/my',
+  profileUpdate: '/v1/users/update',
 };

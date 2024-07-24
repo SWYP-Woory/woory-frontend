@@ -110,7 +110,7 @@ export type UserDataType = {
   userEmail?: string;
   nickname: string;
   profileImgLink: string;
-  isHouseholder: boolean;
+  isHouseHolder: boolean;
   isLastMember: boolean;
 };
 
@@ -131,6 +131,6 @@ export type ModalTypeMap = {
 };
 
 export type ProfileSaveType = {
-  groupName: string;
-  groupPhoto?: string;
+  name: string;
+  images?: string;
 };
