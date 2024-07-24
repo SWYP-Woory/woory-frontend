@@ -7,6 +7,7 @@ import { useImageUpload } from '@/app/_hooks/useImageUpload';
 import { deleteCookies, getCookies, setCookies } from '@/app/_store/cookie/cookies';
 import { useImageUploadStore } from '@/app/_store/imageUploadStore';
 import { useInputStore } from '@/app/_store/inputStore';
+import { ProfileSaveType } from '@/type';
 import { getCalendarTime } from '@/utils/getTime';
 import { usePathname, useRouter } from 'next/navigation';
 
@@ -50,12 +51,14 @@ export default function BasicHeader({ title, hasRightButton }: Props) {
   const pathName = usePathname();
   const router = useRouter();
   const { selectedImage } = useImageUpload();
-  const { reset } = useImageUploadStore();
-  const { inputFamilyText, inputProfileText, inputFamilyEditText } = useInputStore();
+  const { imageReset } = useImageUploadStore();
+  const { inputReset, inputFamilyText, inputProfileText, inputFamilyEditText } = useInputStore();
   const inputText = decideInputText(pathName, inputFamilyText, inputProfileText, inputFamilyEditText);
   const isValid = inputText.length > 0;
 
   const handleBackClick = () => {
+    inputReset();
+    imageReset();
     router.back();
   };
 
@@ -65,27 +68,31 @@ export default function BasicHeader({ title, hasRightButton }: Props) {
       const { method, path } = decideApiRoute(pathName, currentGroupId);
       if (!method || !path) return;
 
-      const formData = new FormData();
-      formData.append('groupName', inputText);
+      const data: ProfileSaveType = {
+        name: inputText,
+      };
+
       if (selectedImage) {
-        formData.append('images', selectedImage);
+        data.images = selectedImage;
       }
 
       let response;
       if (method === 'POST') {
-        response = await postData({ path, body: formData });
+        response = await postData({ path, body: data });
         const date = getCalendarTime(new Date());
         const groupId = response?.groupId;
         if (currentGroupId) {
           deleteCookies('groupId');
         }
         setCookies('groupId', groupId);
+        imageReset();
+        inputReset();
         router.push(`/home/${groupId}/daily/${date}`);
-        reset();
       } else if (method === 'PUT') {
-        await putData({ path, body: formData });
+        await putData({ path, body: data });
+        imageReset();
+        inputReset();
         router.push('/mypage');
-        reset();
       }
     } catch (e) {
       console.error(e);

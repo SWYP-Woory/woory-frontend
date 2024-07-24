@@ -131,6 +131,6 @@ export type ModalTypeMap = {
 };
 
 export type ProfileSaveType = {
-  groupName: string;
-  groupPhoto?: string;
+  name: string;
+  images?: string;
 };

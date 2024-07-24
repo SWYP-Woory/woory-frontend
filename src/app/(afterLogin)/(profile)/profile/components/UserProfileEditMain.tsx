@@ -13,8 +13,8 @@ export default function UserProfileEditMain() {
     (async () => {
       try {
         const { data } = await getData({ path: `${apiRoutes.getUserData}` });
-        const { nickName, profileImgLink: images } = data;
-        setTitle(nickName);
+        const { nickname, profileImgLink: images } = data;
+        setTitle(nickname);
         setProfileImage(images);
       } catch (e) {
         console.error(e);

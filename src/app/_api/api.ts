@@ -21,10 +21,6 @@ const makeHeader = async (body: any) => {
     Authorization: `Bearer ${accessToken}`,
   };
 
-  if (body instanceof FormData) {
-    return { headers: { Authorization: `Bearer ${accessToken}` }, body };
-  }
-
   return { headers, body: body ? JSON.stringify(body) : undefined };
 };
 
