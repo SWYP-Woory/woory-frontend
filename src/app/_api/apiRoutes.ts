@@ -13,4 +13,8 @@ export const apiRoutes = {
   UserDeletion: '/v1/users/delete',
   getUserData: '/v1/users/my',
   profileUpdate: '/v1/users/update',
+
+  // Post
+  createPost: '/v1/contents/create',
+  getTopic: '/v1/contents/topic',
 };
