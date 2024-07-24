@@ -31,15 +31,11 @@ export type ReactionNotiType = 'comment' | 'reComment' | 'reaction';
 
 export type AccountDeletionType = 'householder' | 'member' | 'lastMember';
 
-export type CalendarEventType = {
-  date: string;
-  url: string;
-  isLiked: boolean;
-};
-
 export type CalenderDataType = {
-  userId: number;
-  calender: CalendarEventType[];
+  contentId: number;
+  contentText: string;
+  contentImgPath: string;
+  contentRegDate: string;
 };
 
 type BasePostType = {

@@ -1,46 +1,20 @@
 'use client';
 
 import Calendar from '@/app/(afterLogin)/(main)/home/[groupId]/calendar/[month]/_components/calendar/Calendar';
+import { getData } from '@/app/_api/api';
+import { apiRoutes } from '@/app/_api/apiRoutes';
 import DateController from '@/app/_components/common/dateController/DateController';
+import Loading from '@/app/_components/common/loading/Loading';
 import { useDateControl } from '@/app/_hooks/useDateControl';
+import { getCookies } from '@/app/_store/cookie/cookies';
 import { CalenderDataType } from '@/type';
 import { addDays, differenceInCalendarDays, endOfMonth, endOfWeek, format, startOfMonth, startOfWeek } from 'date-fns';
-import { useMemo, useState } from 'react';
-
-const DUMMY_DATA = {
-  userId: 1,
-  calender: [
-    {
-      date: '2024-07-12',
-      url: 'https://cdn.smarttoday.co.kr/news/photo/202002/img_4656_0.jpg',
-      isLiked: true,
-    },
-    {
-      date: '2024-07-16',
-      url: '',
-      isLiked: true,
-    },
-    {
-      date: '2024-07-17',
-      url: '',
-      isLiked: false,
-    },
-    {
-      date: '2024-07-27',
-      url: '',
-      isLiked: true,
-    },
-    {
-      date: '2024-07-28',
-      url: 'https://cdn.smarttoday.co.kr/news/photo/202002/img_4656_1.jpg',
-      isLiked: false,
-    },
-  ],
-};
+import { useEffect, useMemo, useState } from 'react';
 
 export default function CalendarView() {
   const { currentDate, prevMonthHandler, nextMonthHandler } = useDateControl();
-  const [calendarData] = useState<CalenderDataType>(DUMMY_DATA);
+  const [calendarData, setCalenderData] = useState<CalenderDataType[]>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const monthStart = startOfMonth(currentDate); // 현재 달의 시작 날짜 (요일 포함)
   const monthEnd = endOfMonth(currentDate); // 현재 달의 마지막 날짜 (요일 포함)
   const startDate = startOfWeek(monthStart); // 현재 달의 시작 날짜가 포함된 주의 시작 날짜
@@ -56,14 +30,43 @@ export default function CalendarView() {
     return monthArray;
   }, [startDate, endDate]);
 
-  return (
+  useEffect(() => {
+    const fetchCalenderData = async () => {
+      try {
+        setIsLoading(true);
+        const groupId = getCookies('groupId');
+        const { data } = await getData({
+          path: `${apiRoutes.getMonthPost}?groupId=${groupId}&param=${format(currentDate, 'yyyy-MM')}`,
+        });
+        setCalenderData(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchCalenderData();
+  }, [currentDate]);
+
+  const handlePrevMonth = () => {
+    setCalenderData([]);
+    prevMonthHandler();
+  };
+
+  const handleNextMonth = () => {
+    setCalenderData([]);
+    nextMonthHandler();
+  };
+  return isLoading ? (
+    <Loading />
+  ) : (
     <section className="flex flex-col gap-24 items-center w-[34.2rem] min-h-screen bg-white">
       <DateController
         date={format(currentDate, 'yyyy.MM')}
-        prevHandler={prevMonthHandler}
-        nextHandler={nextMonthHandler}
+        prevHandler={handlePrevMonth}
+        nextHandler={handleNextMonth}
       />
-      <Calendar createMonth={createMonth} currentDate={currentDate} data={calendarData} />
+      {calendarData && <Calendar createMonth={createMonth} currentDate={currentDate} data={calendarData} />}
     </section>
   );
 }
