@@ -18,7 +18,7 @@ export default function FamilySelectButton({ familyData }: Props) {
     if (getCookies('groupId')) {
       deleteCookies('groupId');
     }
-    setCookies('groupId', familyData.groupId);
+    setCookies('groupId', familyData.groupId, { path: '/' });
     router.push(`/home/${familyData.groupId}/daily/${date}`);
   };
 
