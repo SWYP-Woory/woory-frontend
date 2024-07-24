@@ -134,3 +134,16 @@ export type ProfileSaveType = {
   name: string;
   images?: string;
 };
+
+export type TopicDataType = {
+  topicId: number;
+  topicContent: string;
+  issueDate: string;
+};
+
+export type CreatePostType = {
+  groupId: number;
+  topicId: number;
+  contentText: string;
+  images?: string;
+};

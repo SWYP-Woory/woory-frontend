@@ -19,7 +19,7 @@ function Header() {
       </div>
       <div className="flex flex-col gap-8">
         <h1 className="text-16 bg-white w-fit p-4">ControlHeader</h1>
-        <ControlHeader />
+        <ControlHeader day="2024" topicId={0} />
       </div>
     </div>
   );
