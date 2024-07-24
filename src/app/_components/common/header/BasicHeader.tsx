@@ -84,7 +84,7 @@ export default function BasicHeader({ title, hasRightButton }: Props) {
         if (currentGroupId) {
           deleteCookies('groupId');
         }
-        setCookies('groupId', groupId);
+        setCookies('groupId', groupId, { path: '/' });
         router.push(`/home/${groupId}/daily/${date}`);
         imageReset();
         inputReset();
