@@ -17,11 +17,11 @@ import { getCookies } from '@/app/_store/cookie/cookies';
 import { AccountDeletionType, UserDataType } from '@/type';
 import { useEffect, useState } from 'react';
 
-const determineTargetType = (isLastMember: boolean, isHouseholder: boolean): AccountDeletionType => {
+const determineTargetType = (isLastMember: boolean, isHouseHolder: boolean): AccountDeletionType => {
   if (isLastMember) {
     return 'lastMember';
   }
-  if (isHouseholder) {
+  if (isHouseHolder) {
     return 'householder';
   }
 
