@@ -14,6 +14,9 @@ export const apiRoutes = {
   getUserData: '/v1/users/my',
   profileUpdate: '/v1/users/update',
 
+  // Daily
+  getDaily: '/v1/contents',
+
   // Post
   createPost: '/v1/contents/create',
   getTopic: '/v1/contents/topic',
