@@ -8,27 +8,41 @@ import DailyTopic from '@/app/_components/common/daily/DailyTopic';
 import DateController from '@/app/_components/common/dateController/DateController';
 import { useDateControl } from '@/app/_hooks/useDateControl';
 import { getCookies } from '@/app/_store/cookie/cookies';
-import { DailyThreadType } from '@/type';
+import { DailyDataType, DailyThreadType } from '@/type';
 import { getCalendarTime } from '@/utils/getTime';
 import { format } from 'date-fns';
 import { useEffect, useState } from 'react';
 
 export default function DailyView() {
   const { currentDate, prevDayHandler, nextDayHandler } = useDateControl();
-  const [topic] = useState<string>('');
+  const [topic, setTopic] = useState<string>('');
   const [dailyThreads] = useState<DailyThreadType[]>([]);
 
   const handleLoad = async () => {
     const groupId = getCookies('groupId');
-    const { data } = await getData({
+    const { data }: { data: DailyDataType } = await getData({
       path: `${apiRoutes.getDaily}/${groupId}/get?day=${getCalendarTime(currentDate)}`,
     });
-    console.log(data);
+    const { topicContent, contents } = data;
+    const newContents: DailyThreadType[] = contents.map((content) => ({
+      id: content.contentId,
+      profileUrl: content.profileUrl,
+      name: content.name,
+      comment: content.commentsCount,
+      reaction: content.countByReaction,
+      postUrl: content.contentImgPath,
+      content: content.contentText,
+      isEdit: content.isEdit,
+    }));
+
+    console.log(newContents);
+    setTopic(topicContent);
+    // setDailyThreads(newContents);
   };
 
   useEffect(() => {
     handleLoad();
-  }, []);
+  }, [currentDate]);
 
   return (
     <div className="flex flex-col items-center min-h-screen gap-24">
@@ -41,7 +55,7 @@ export default function DailyView() {
         <DailyTopic topic={topic} hasLike />
         <div>
           {dailyThreads.length > 0 ? (
-            dailyThreads.map((data) => <DailyThread data={data} />)
+            dailyThreads.map((data) => <DailyThread key={data.id} data={data} />)
           ) : (
             <div className="pt-180">
               <DailyNoThread />
