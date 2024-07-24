@@ -93,10 +93,25 @@ export type FavoritePostType = {
   postDate: Date;
 };
 
+export type MembersDataType = {
+  user: MemberType;
+  members: MemberType[];
+};
+
 export type MemberType = {
-  profileImage: string;
-  name: string;
+  userId: number;
+  profileUrl?: string;
+  userName: string;
   isHouseholder: boolean;
+};
+
+export type UserDataType = {
+  userId: number;
+  userEmail?: string;
+  nickname: string;
+  profileImgLink: string;
+  isHouseholder: boolean;
+  isLastMember: boolean;
 };
 
 export type NotificationSettingType = {
