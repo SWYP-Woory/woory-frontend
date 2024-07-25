@@ -8,6 +8,7 @@ import DailyTopic from '@/app/_components/common/daily/DailyTopic';
 import DateController from '@/app/_components/common/dateController/DateController';
 import { useDateControl } from '@/app/_hooks/useDateControl';
 import { getCookies } from '@/app/_store/cookie/cookies';
+import { useIsPostStore } from '@/app/_store/isPostStore';
 import { DailyDataType, DailyThreadType } from '@/type';
 import { getCalendarTime } from '@/utils/getTime';
 import { format } from 'date-fns';
@@ -15,21 +16,23 @@ import { useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 
 export default function DailyView() {
-  const { currentDate, setCurrentDate, prevDayHandler, nextDayHandler } = useDateControl();
-  const searchParams = useSearchParams();
-  const day = searchParams.get('day');
   const [topic, setTopic] = useState<string>('');
   const [dailyThreads, setDailyThreads] = useState<DailyThreadType[]>([]);
   const [initialized, setInitialized] = useState<boolean>(false);
   const [isPrevDay, setIsPrevDay] = useState(false);
   const [isNextDay, setIsNextDay] = useState(false);
 
+  const searchParams = useSearchParams();
+  const { currentDate, setCurrentDate, prevDayHandler, nextDayHandler } = useDateControl();
+  const { setIsPosted, setPostDate } = useIsPostStore();
+  const day = searchParams.get('day');
+
   const handleLoad = useCallback(async () => {
     const groupId = getCookies('groupId');
     const { data }: { data: DailyDataType } = await getData({
       path: `${apiRoutes.getDaily}/${groupId}/get?day=${getCalendarTime(currentDate)}`,
     });
-    const { topicContent, hasPrevDay, hasNextDay, contents } = data;
+    const { topicContent, hasPrevDay, hasNextDay, contents, isPosted } = data;
     const newContents: DailyThreadType[] = contents.map((content) => ({
       id: content.contentId,
       profileUrl: content.profileUrl,
@@ -45,6 +48,8 @@ export default function DailyView() {
     setIsPrevDay(hasPrevDay);
     setIsNextDay(hasNextDay);
     setDailyThreads(newContents);
+    setIsPosted(isPosted);
+    setPostDate(currentDate);
   }, [currentDate]);
 
   useEffect(() => {
