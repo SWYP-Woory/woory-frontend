@@ -19,7 +19,7 @@ export default function DateController({
   hasPrevDay,
   hasNextDay,
 }: Props) {
-  const arrowStyle = (condition: boolean) => {
+  const arrowStyle = (condition?: boolean) => {
     if (controllerType === 'daily') {
       if (!condition) {
         return 'hidden';
@@ -28,17 +28,14 @@ export default function DateController({
     return '';
   };
 
-  console.log('hasPrevDay', hasPrevDay);
-  console.log('hasNextDay', hasNextDay);
-
   return (
     <div className="flex items-center justify-between w-[28.0rem] h-[3.2rem]">
       <button type="button" aria-label="LeftArrowButton" onClick={prevHandler}>
-        <LeftArrowIcon arrowStyle={arrowStyle(hasPrevDay || true)} />
+        <LeftArrowIcon arrowStyle={arrowStyle(hasPrevDay)} />
       </button>
       <div className="font-title">{date}</div>
       <button type="button" aria-label="RightArrowButton" onClick={nextHandler}>
-        <RightArrowIcon arrowStyle={arrowStyle(hasNextDay || true)} />
+        <RightArrowIcon arrowStyle={arrowStyle(hasNextDay)} />
       </button>
     </div>
   );
