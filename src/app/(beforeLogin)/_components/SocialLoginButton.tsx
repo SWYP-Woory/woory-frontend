@@ -1,8 +1,13 @@
+'use client';
+
 import { CLIENT_KAKAO, CLIENT_NAVER } from '@/app/_constants/domain';
+import { deleteCookies, setCookies } from '@/app/_store/cookie/cookies';
 import kakaoImage from '@/assets/images/kakao-image.png';
 import naverImage from '@/assets/images/naver-image.png';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
 
 interface Props {
   socialDomain: 'kakao' | 'naver';
@@ -25,6 +30,16 @@ const SOCIAL = {
 };
 
 export default function SocialLoginButton({ socialDomain, isActive }: Props) {
+  const searchParams = useSearchParams();
+  const groupId = searchParams.get('groupId');
+
+  useEffect(() => {
+    if (groupId) {
+      deleteCookies('groupId');
+      setCookies('groupId', groupId, { path: '/' });
+    }
+  }, []);
+
   return (
     <Link href={SOCIAL[socialDomain].link}>
       <button
