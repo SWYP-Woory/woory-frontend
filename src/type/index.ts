@@ -1,6 +1,6 @@
 export type TabType = 'daily' | 'calendar';
 
-export type ToastType = 'link' | 'shortcut' | 'imageSize';
+export type ToastType = 'link' | 'shortcut' | 'imageSize' | 'post';
 
 export type BottomSheetType = 'home' | 'inquiry' | 'familySelect';
 
@@ -11,8 +11,6 @@ export type NotiType = 'topic' | 'reaction' | 'post';
 export type InputTextType = 'family' | 'profile' | 'familyEdit';
 
 export type ProfileSize = 'small' | 'large' | 'xLarge';
-
-export type ProfileImageType = 'family' | 'profile';
 
 export type NotificationType = {
   isRead?: boolean;
@@ -68,6 +66,9 @@ export type DailyDataType = {
   topicContent: string;
   topicId: number;
   issueDate: Date;
+  hasPrevDay: boolean;
+  hasNextDay: boolean;
+  isPosted: boolean;
   contents: ContentDataType[];
 };
 

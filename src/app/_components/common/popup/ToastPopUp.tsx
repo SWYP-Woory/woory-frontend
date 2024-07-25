@@ -13,6 +13,8 @@ const decideContent = (type: string) => {
       return '홈 화면에 추가되었습니다';
     case 'imageSize':
       return '사진 용량 초과 (5mb 이하 가능)';
+    case 'post':
+      return '하루 1개의 게시글 작성 가능';
     default:
       return '';
   }

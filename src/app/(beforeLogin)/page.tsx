@@ -1,17 +1,11 @@
 import Main from '@/app/(beforeLogin)/_components/Main';
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
+import RedirectHandler from '@/app/(beforeLogin)/_components/RedirectHandler';
 
 export default function Home() {
-  const cookieStore = cookies();
-  const accessToken = cookieStore.get('AccessToken');
-  const groupId = cookieStore.get('groupId')?.value;
-
-  if (accessToken) {
-    if (groupId) {
-      redirect(`/home/daily`);
-    }
-    redirect(`/family-select`);
-  }
-  return <Main />;
+  return (
+    <>
+      <RedirectHandler />
+      <Main />
+    </>
+  );
 }

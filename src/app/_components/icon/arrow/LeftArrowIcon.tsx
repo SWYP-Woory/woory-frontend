@@ -1,5 +1,9 @@
 import Left from '@/assets/icons/arrow/leftArrow.svg';
 
-export default function LeftArrowIcon() {
-  return <Left />;
+interface Props {
+  arrowStyle?: string;
+}
+
+export default function LeftArrowIcon({ arrowStyle = '' }: Props) {
+  return <Left className={`${arrowStyle}`} />;
 }
