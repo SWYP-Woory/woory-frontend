@@ -26,15 +26,28 @@ export default function DailyView() {
   const { currentDate, setCurrentDate, prevDayHandler, nextDayHandler } = useDateControl();
   const { setIsPosted, setPostDate } = useIsPostStore();
   const day = searchParams.get('day');
-  const inviteGroupId = searchParams.get('groupId');
+  const inviteLoginGroupId = searchParams.get('inviteGroupId');
 
   const handleLoad = useCallback(async () => {
-    const groupId = getCookies('groupId');
-    if (inviteGroupId && inviteGroupId !== groupId) {
+    let groupId = getCookies('groupId');
+    const inviteGroupId = getCookies('inviteGroupId');
+
+    // 로그인 링크 이후 회원가입
+    if (inviteLoginGroupId && Number(inviteLoginGroupId) !== groupId) {
+      const joinData = { groupId: inviteLoginGroupId };
+      await postData({ path: `${apiRoutes.joinFamily}/${inviteLoginGroupId}`, body: joinData });
+      deleteCookies('inviteGroupId');
+      deleteCookies('groupId');
+      setCookies('groupId', inviteLoginGroupId, { path: '/' });
+      groupId = inviteLoginGroupId;
+    } // 비로그인 링크 이후 회원가입
+    else if (inviteGroupId) {
       const joinData = { groupId: inviteGroupId };
       await postData({ path: `${apiRoutes.joinFamily}/${inviteGroupId}`, body: joinData });
+      deleteCookies('inviteGroupId');
       deleteCookies('groupId');
       setCookies('groupId', inviteGroupId, { path: '/' });
+      groupId = inviteGroupId;
     }
 
     const { data }: { data: DailyDataType } = await getData({
