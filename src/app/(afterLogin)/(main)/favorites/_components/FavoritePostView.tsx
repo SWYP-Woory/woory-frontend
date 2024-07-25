@@ -11,7 +11,7 @@ export default function FavoritePostView() {
   useEffect(() => {
     const data: FavoritePostType[] = LocalStorage.getItemJson('favorites') || [];
     if (data.length !== 0) {
-      data.sort((a, b) => new Date(b.postDate).getTime() - new Date(a.postDate).getTime());
+      data.sort((a, b) => new Date(b.topicDate).getTime() - new Date(a.topicDate).getTime());
     }
     setFavoritePosts(data);
   }, []);
@@ -26,7 +26,7 @@ export default function FavoritePostView() {
     );
   }
 
-  return favoritePosts.map(({ content, imgUrl, postDate }) => (
-    <FavoritePost content={content} imgUrl={imgUrl} postDate={postDate} />
+  return favoritePosts.map(({ topicId, topicTitle, topicImage, topicDate }) => (
+    <FavoritePost key={topicId} topicTitle={topicTitle} topicImage={topicImage} topicDate={topicDate} />
   ));
 }
