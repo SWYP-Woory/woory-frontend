@@ -2,12 +2,12 @@
 
 import DailyNoThread from '@/app/(afterLogin)/(main)/home/daily/_components/DailyNoThread';
 import DailyThread from '@/app/(afterLogin)/(main)/home/daily/_components/DailyThread';
-import { getData } from '@/app/_api/api';
+import { getData, postData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
 import DailyTopic from '@/app/_components/common/daily/DailyTopic';
 import DateController from '@/app/_components/common/dateController/DateController';
 import { useDateControl } from '@/app/_hooks/useDateControl';
-import { getCookies } from '@/app/_store/cookie/cookies';
+import { deleteCookies, getCookies, setCookies } from '@/app/_store/cookie/cookies';
 import { useIsPostStore } from '@/app/_store/isPostStore';
 import { DailyDataType, DailyThreadType } from '@/type';
 import { getCalendarTime } from '@/utils/getTime';
@@ -26,9 +26,17 @@ export default function DailyView() {
   const { currentDate, setCurrentDate, prevDayHandler, nextDayHandler } = useDateControl();
   const { setIsPosted, setPostDate } = useIsPostStore();
   const day = searchParams.get('day');
+  const inviteGroupId = searchParams.get('groupId');
 
   const handleLoad = useCallback(async () => {
     const groupId = getCookies('groupId');
+    if (inviteGroupId && inviteGroupId !== groupId) {
+      const joinData = { groupId: inviteGroupId };
+      await postData({ path: `${apiRoutes.joinFamily}/${inviteGroupId}`, body: joinData });
+      deleteCookies('groupId');
+      setCookies('groupId', inviteGroupId, { path: '/' });
+    }
+
     const { data }: { data: DailyDataType } = await getData({
       path: `${apiRoutes.getDaily}/${groupId}/get?day=${getCalendarTime(currentDate)}`,
     });
