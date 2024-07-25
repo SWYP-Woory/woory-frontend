@@ -8,6 +8,7 @@ import DailyTopic from '@/app/_components/common/daily/DailyTopic';
 import DateController from '@/app/_components/common/dateController/DateController';
 import { useDateControl } from '@/app/_hooks/useDateControl';
 import { getCookies } from '@/app/_store/cookie/cookies';
+import { useIsPostStore } from '@/app/_store/isPostStore';
 import { DailyDataType, DailyThreadType } from '@/type';
 import { getCalendarTime } from '@/utils/getTime';
 import { format } from 'date-fns';
@@ -17,13 +18,14 @@ export default function DailyView() {
   const { currentDate, prevDayHandler, nextDayHandler } = useDateControl();
   const [topic, setTopic] = useState<string>('');
   const [dailyThreads, setDailyThreads] = useState<DailyThreadType[]>([]);
+  const { setIsPosted } = useIsPostStore();
 
   const handleLoad = useCallback(async () => {
     const groupId = getCookies('groupId');
     const { data }: { data: DailyDataType } = await getData({
       path: `${apiRoutes.getDaily}/${groupId}/get?day=${getCalendarTime(currentDate)}`,
     });
-    const { topicContent, contents } = data;
+    const { topicContent, contents, isPosted } = data;
     const newContents: DailyThreadType[] = contents.map((content) => ({
       id: content.contentId,
       profileUrl: content.profileUrl,
@@ -37,6 +39,7 @@ export default function DailyView() {
 
     setTopic(topicContent);
     setDailyThreads(newContents);
+    setIsPosted(isPosted);
   }, [currentDate, prevDayHandler, nextDayHandler]);
 
   useEffect(() => {

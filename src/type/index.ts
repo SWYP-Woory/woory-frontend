@@ -67,6 +67,7 @@ export type DailyDataType = {
   topicId: number;
   issueDate: Date;
   contents: ContentDataType[];
+  isPosted: boolean;
 };
 
 export type ContentDataType = {
