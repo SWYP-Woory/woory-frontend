@@ -16,7 +16,7 @@ interface Props {
 export default function LikeIcon({ isLiked }: Props) {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [isActive, setIsActive] = useState<boolean>(isLiked || false);
-  const { topicId, topicTitle, topicImage, topicDate, reset } = useTopicStore();
+  const { topicId, topicTitle, topicImage, topicDate } = useTopicStore();
   const pathName = usePathname();
 
   const handleMouseEnter = () => {
@@ -47,7 +47,6 @@ export default function LikeIcon({ isLiked }: Props) {
     if (!isActive) {
       if (pathName !== '/favorites') {
         handleTopic();
-        reset();
       }
     }
     setIsActive(!isActive);
