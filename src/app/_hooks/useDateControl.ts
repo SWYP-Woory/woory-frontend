@@ -20,5 +20,5 @@ export const useDateControl = () => {
     setCurrentDate(addMonths(currentDate, 1));
   }, [currentDate]);
 
-  return { currentDate, prevDayHandler, nextDayHandler, prevMonthHandler, nextMonthHandler };
+  return { currentDate, setCurrentDate, prevDayHandler, nextDayHandler, prevMonthHandler, nextMonthHandler };
 };
