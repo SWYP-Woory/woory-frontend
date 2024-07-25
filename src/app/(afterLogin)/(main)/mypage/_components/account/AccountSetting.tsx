@@ -22,10 +22,9 @@ export default function AccountSetting({ targetType }: Props) {
       await getData({ path: apiRoutes.UserLogout });
       deleteCookies('groupId');
       logout();
+      router.replace('/');
     } catch (e) {
       console.error(e);
-    } finally {
-      router.replace('/');
     }
   };
 

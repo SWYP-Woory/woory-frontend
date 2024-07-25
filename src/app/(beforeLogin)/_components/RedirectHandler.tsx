@@ -12,9 +12,9 @@ export default function RedirectHandler() {
   useEffect(() => {
     if (accessToken) {
       if (groupId) {
-        router.push('/home/daily');
+        router.replace('/home/daily');
       } else {
-        router.push('/family-select');
+        router.replace('/family-select');
       }
     }
   }, [accessToken, groupId, router]);
