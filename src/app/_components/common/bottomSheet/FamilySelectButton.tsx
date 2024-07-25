@@ -3,7 +3,6 @@
 import Profile from '@/app/_components/common/profile/Profile';
 import { deleteCookies, getCookies, setCookies } from '@/app/_store/cookie/cookies';
 import { FamilyMakeType } from '@/type';
-import { getCalendarTime } from '@/utils/getTime';
 import { useRouter } from 'next/navigation';
 
 interface Props {
@@ -12,14 +11,13 @@ interface Props {
 
 export default function FamilySelectButton({ familyData }: Props) {
   const router = useRouter();
-  const date = getCalendarTime(new Date());
 
   const handleFamilySelect = () => {
     if (getCookies('groupId')) {
       deleteCookies('groupId');
     }
     setCookies('groupId', familyData.groupId, { path: '/' });
-    router.push(`/home/${familyData.groupId}/daily/${date}`);
+    router.push(`/home/daily`);
   };
 
   return (

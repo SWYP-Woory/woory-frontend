@@ -1,4 +1,4 @@
-import Day from '@/app/(afterLogin)/(main)/home/[groupId]/calendar/[month]/_components/calendar/Day';
+import Day from '@/app/(afterLogin)/(main)/home/calendar/_components/Day';
 import { CalenderDataType } from '@/type';
 import { getCalendarTime } from '@/utils/getTime';
 import { format, getDate, getMonth, parseISO } from 'date-fns';

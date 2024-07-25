@@ -8,7 +8,6 @@ import { apiRoutes } from '@/app/_api/apiRoutes';
 import { getCookies } from '@/app/_store/cookie/cookies';
 import { MemberType, MembersDataType } from '@/type';
 import { openToast } from '@/utils/Toast';
-import { getCalendarTime } from '@/utils/getTime';
 import { useEffect, useState } from 'react';
 
 const defaultUser: MemberType = {
@@ -24,10 +23,9 @@ export default function MemberMain() {
   const handleMemberAdd = () => {
     const baseUrl = window.location.origin;
     const groupId = getCookies('groupId');
-    const date = getCalendarTime(new Date());
 
-    const url = new URL(`${baseUrl}/home/${groupId}/daily/${date}`);
-    url.searchParams.set('link', 'true');
+    const url = new URL(`${baseUrl}/home/daily`);
+    url.searchParams.set('groupId', groupId);
 
     navigator.clipboard
       .writeText(url.toString())

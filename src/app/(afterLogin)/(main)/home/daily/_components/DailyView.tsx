@@ -1,7 +1,7 @@
 'use client';
 
-import DailyNoThread from '@/app/(afterLogin)/(main)/home/[groupId]/daily/[day]/_components/daily/DailyNoThread';
-import DailyThread from '@/app/(afterLogin)/(main)/home/[groupId]/daily/[day]/_components/daily/DailyThread';
+import DailyNoThread from '@/app/(afterLogin)/(main)/home/daily/_components/DailyNoThread';
+import DailyThread from '@/app/(afterLogin)/(main)/home/daily/_components/DailyThread';
 import { getData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
 import DailyTopic from '@/app/_components/common/daily/DailyTopic';
