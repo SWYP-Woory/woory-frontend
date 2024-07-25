@@ -25,7 +25,7 @@ export default function MemberMain() {
     const groupId = getCookies('groupId');
 
     const url = new URL(`${baseUrl}/home/daily`);
-    url.searchParams.set('groupId', groupId);
+    url.searchParams.set('inviteGroupId', groupId);
 
     navigator.clipboard
       .writeText(url.toString())
