@@ -31,12 +31,12 @@ const SOCIAL = {
 
 export default function SocialLoginButton({ socialDomain, isActive }: Props) {
   const searchParams = useSearchParams();
-  const groupId = searchParams.get('groupId');
+  const inviteGroupId = searchParams.get('inviteGroupId');
 
   useEffect(() => {
-    if (groupId) {
-      deleteCookies('groupId');
-      setCookies('groupId', groupId, { path: '/' });
+    if (inviteGroupId) {
+      deleteCookies('inviteGroupId');
+      setCookies('inviteGroupId', inviteGroupId, { path: '/' });
     }
   }, []);
 

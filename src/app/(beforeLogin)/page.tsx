@@ -5,10 +5,11 @@ import { getSession } from '@/app/_store/cookie/session';
 export default async function Home() {
   const accessToken = await getSession('AccessToken');
   const groupId = await getSession('groupId');
+  const inviteGroupId = await getSession('inviteGroupId');
 
   return (
     <>
-      <RedirectHandler accessToken={accessToken} groupId={groupId} />
+      <RedirectHandler accessToken={accessToken} groupId={groupId} inviteGroupId={inviteGroupId} />
       {!accessToken && <Main />}
     </>
   );
