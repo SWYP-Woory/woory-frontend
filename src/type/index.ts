@@ -12,8 +12,6 @@ export type InputTextType = 'family' | 'profile' | 'familyEdit';
 
 export type ProfileSize = 'small' | 'large' | 'xLarge';
 
-export type ProfileImageType = 'family' | 'profile';
-
 export type NotificationType = {
   isRead?: boolean;
   notiType: NotiType;
