@@ -106,7 +106,7 @@ export type UserDataType = {
   userEmail?: string;
   nickname: string;
   profileImgLink: string;
-  isHouseHolder: boolean;
+  isHouseholder: boolean;
   isLastMember: boolean;
 };
 
