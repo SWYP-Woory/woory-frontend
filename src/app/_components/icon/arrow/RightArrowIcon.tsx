@@ -1,9 +1,9 @@
 import Right from '@/assets/icons/arrow/rightArrow.svg';
 
 interface Props {
-  arrowStyle: string;
+  arrowStyle?: string;
 }
 
-export default function RightArrowIcon({ arrowStyle }: Props) {
+export default function RightArrowIcon({ arrowStyle = '' }: Props) {
   return <Right className={`${arrowStyle}`} />;
 }
