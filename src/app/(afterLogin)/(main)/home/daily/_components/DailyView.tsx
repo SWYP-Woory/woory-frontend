@@ -59,6 +59,7 @@ export default function DailyView() {
     setTopicTitle(topicContent);
     setTopicImage(storeFirstImage);
     setTopicDate(currentDate);
+    console.log(isLiked);
   }, [currentDate, prevDayHandler, nextDayHandler]);
 
   useEffect(() => {

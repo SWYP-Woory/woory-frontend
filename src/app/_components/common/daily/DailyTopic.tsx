@@ -3,7 +3,7 @@ import LikeIcon from '@/app/_components/icon/like/LikeIcon';
 interface Props {
   topic: string;
   hasLike?: boolean;
-  isLiked?: boolean;
+  isLiked: boolean;
 }
 
 export default function DailyTopic({ topic, hasLike, isLiked }: Props) {

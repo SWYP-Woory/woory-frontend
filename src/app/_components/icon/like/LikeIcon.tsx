@@ -7,16 +7,15 @@ import Like from '@/assets/icons/like/like.svg';
 import { TopicStoreType } from '@/type';
 import { getCalendarTime } from '@/utils/getTime';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface Props {
-  isLiked?: boolean;
+  isLiked: boolean;
 }
 
 export default function LikeIcon({ isLiked }: Props) {
-  console.log(isLiked);
   const [isHovered, setIsHovered] = useState<boolean>(false);
-  const [isActive, setIsActive] = useState<boolean>(isLiked || false);
+  const [isActive, setIsActive] = useState<boolean>(false);
   const { topicId, topicTitle, topicImage, topicDate } = useTopicStore();
   const pathName = usePathname();
 
@@ -62,6 +61,10 @@ export default function LikeIcon({ isLiked }: Props) {
     handleCancelFavoriteTopic();
     setIsActive(!isActive);
   };
+
+  useEffect(() => {
+    setIsActive(isLiked);
+  }, [isLiked]);
 
   return (
     <div className="cursor-pointer">
