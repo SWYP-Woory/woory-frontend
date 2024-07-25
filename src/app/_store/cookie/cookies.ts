@@ -6,4 +6,6 @@ export const setCookies: typeof cookies.set = (name, value, options) => cookies.
 
 export const getCookies: typeof cookies.get = (name: string) => cookies.get(name);
 
-export const deleteCookies: typeof cookies.remove = (name, options) => cookies.remove(name, options);
+export const deleteCookies: typeof cookies.remove = (name, options?) => {
+  cookies.remove(name, { ...options, path: '/' });
+};

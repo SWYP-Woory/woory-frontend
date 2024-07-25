@@ -21,13 +21,15 @@ export default function DailyView() {
   const [topic, setTopic] = useState<string>('');
   const [dailyThreads, setDailyThreads] = useState<DailyThreadType[]>([]);
   const [initialized, setInitialized] = useState<boolean>(false);
+  const [isPrevDay, setIsPrevDay] = useState(false);
+  const [isNextDay, setIsNextDay] = useState(false);
 
   const handleLoad = useCallback(async () => {
     const groupId = getCookies('groupId');
     const { data }: { data: DailyDataType } = await getData({
       path: `${apiRoutes.getDaily}/${groupId}/get?day=${getCalendarTime(currentDate)}`,
     });
-    const { topicContent, contents } = data;
+    const { topicContent, hasPrevDay, hasNextDay, contents } = data;
     const newContents: DailyThreadType[] = contents.map((content) => ({
       id: content.contentId,
       profileUrl: content.profileUrl,
@@ -40,6 +42,8 @@ export default function DailyView() {
     }));
 
     setTopic(topicContent);
+    setIsPrevDay(hasPrevDay);
+    setIsNextDay(hasNextDay);
     setDailyThreads(newContents);
   }, [currentDate]);
 
@@ -61,9 +65,12 @@ export default function DailyView() {
   return (
     <div className="flex flex-col items-center min-h-screen gap-24">
       <DateController
+        controllerType="daily"
         date={format(currentDate, 'yy.MM.dd')}
         prevHandler={prevDayHandler}
         nextHandler={nextDayHandler}
+        hasPrevDay={isPrevDay}
+        hasNextDay={isNextDay}
       />
       <div className="flex flex-col items-center gap-8">
         <DailyTopic topic={topic} hasLike />
