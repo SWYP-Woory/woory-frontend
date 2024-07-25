@@ -1,10 +1,9 @@
 'use client';
 
-import Calendar from '@/app/(afterLogin)/(main)/home/[groupId]/calendar/[month]/_components/calendar/Calendar';
+import Calendar from '@/app/(afterLogin)/(main)/home/calendar/_components/Calendar';
 import { getData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
 import DateController from '@/app/_components/common/dateController/DateController';
-import Loading from '@/app/_components/common/loading/Loading';
 import { useDateControl } from '@/app/_hooks/useDateControl';
 import { getCookies } from '@/app/_store/cookie/cookies';
 import { CalenderDataType } from '@/type';
@@ -14,7 +13,6 @@ import { useEffect, useMemo, useState } from 'react';
 export default function CalendarView() {
   const { currentDate, prevMonthHandler, nextMonthHandler } = useDateControl();
   const [calendarData, setCalenderData] = useState<CalenderDataType[]>();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const monthStart = startOfMonth(currentDate); // 현재 달의 시작 날짜 (요일 포함)
   const monthEnd = endOfMonth(currentDate); // 현재 달의 마지막 날짜 (요일 포함)
   const startDate = startOfWeek(monthStart); // 현재 달의 시작 날짜가 포함된 주의 시작 날짜
@@ -33,7 +31,6 @@ export default function CalendarView() {
   useEffect(() => {
     const fetchCalenderData = async () => {
       try {
-        setIsLoading(true);
         const groupId = getCookies('groupId');
         const { data } = await getData({
           path: `${apiRoutes.getMonthPost}?groupId=${groupId}&param=${format(currentDate, 'yyyy-MM')}`,
@@ -41,22 +38,24 @@ export default function CalendarView() {
         setCalenderData(data);
       } catch (error) {
         console.error(error);
-      } finally {
-        setIsLoading(false);
       }
     };
     fetchCalenderData();
   }, [currentDate]);
 
-  return isLoading ? (
-    <Loading />
-  ) : (
+  const handlePrev = () => {
+    setCalenderData([]);
+    prevMonthHandler();
+  };
+
+  const handleNext = () => {
+    setCalenderData([]);
+    nextMonthHandler();
+  };
+
+  return (
     <section className="flex flex-col gap-24 items-center w-[34.2rem] min-h-screen bg-white">
-      <DateController
-        date={format(currentDate, 'yyyy.MM')}
-        prevHandler={prevMonthHandler}
-        nextHandler={nextMonthHandler}
-      />
+      <DateController date={format(currentDate, 'yyyy.MM')} prevHandler={handlePrev} nextHandler={handleNext} />
       {calendarData && <Calendar createMonth={createMonth} currentDate={currentDate} data={calendarData} />}
     </section>
   );

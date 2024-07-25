@@ -1,4 +1,4 @@
-import PostButton from '@/app/(afterLogin)/(main)/home/[groupId]/daily/[day]/_components/daily/PostButton';
+import PostButton from '@/app/(afterLogin)/(main)/home/daily/_components/PostButton';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof PostButton> = {

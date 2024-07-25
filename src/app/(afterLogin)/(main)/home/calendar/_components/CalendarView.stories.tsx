@@ -1,4 +1,4 @@
-import CalendarView from '@/app/(afterLogin)/(main)/home/[groupId]/calendar/[month]/_components/calendar/CalendarView';
+import CalendarView from '@/app/(afterLogin)/(main)/home/calendar/_components/CalendarView';
 import { Meta, StoryObj } from '@storybook/react';
 
 const DUMMY_DATA = {

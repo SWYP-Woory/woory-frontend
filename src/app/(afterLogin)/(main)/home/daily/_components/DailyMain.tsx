@@ -1,10 +1,10 @@
 'use client';
 
-import DailyView from '@/app/(afterLogin)/(main)/home/[groupId]/daily/[day]/_components/daily/DailyView';
-import PostButton from '@/app/(afterLogin)/(main)/home/[groupId]/daily/[day]/_components/daily/PostButton';
+import DailyView from '@/app/(afterLogin)/(main)/home/daily/_components/DailyView';
+import PostButton from '@/app/(afterLogin)/(main)/home/daily/_components/PostButton';
 import BottomSheet from '@/app/_components/common/bottomSheet/BottomSheet';
 import ModalBackground from '@/app/_components/common/modal/ModalBackground';
-import UpperTabBar from '@/app/_components/upperTabBar/UpperTabBar';
+import UpperTabBar from '@/app/_components/common/upperTabBar/UpperTabBar';
 import { getCookies } from '@/app/_store/cookie/cookies';
 import { useModalStore } from '@/app/_store/modalStore';
 import { useEffect } from 'react';
