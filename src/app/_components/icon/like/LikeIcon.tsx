@@ -50,8 +50,10 @@ export default function LikeIcon({ topicId, isLiked }: Props) {
 
   const handleCancelFavoriteTopic = () => {
     if (isActive) {
+      console.log('취소 패치');
       const topics: TopicStoreType[] = LocalStorage.getItemJson('favorites') || [];
       const filteredTopics = topics.filter((topic) => topic.topicId !== topicId);
+      console.log('필터된 주제들', filteredTopics);
       LocalStorage.setItem('favorites', JSON.stringify(filteredTopics));
     }
   };

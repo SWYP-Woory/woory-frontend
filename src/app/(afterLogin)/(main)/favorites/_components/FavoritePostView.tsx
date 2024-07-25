@@ -27,6 +27,12 @@ export default function FavoritePostView() {
   }
 
   return favoritePosts.map(({ topicId, topicTitle, topicImage, topicDate }) => (
-    <FavoritePost key={topicId} topicTitle={topicTitle} topicImage={topicImage} topicDate={topicDate} />
+    <FavoritePost
+      key={topicId}
+      topicId={topicId}
+      topicTitle={topicTitle}
+      topicImage={topicImage}
+      topicDate={topicDate}
+    />
   ));
 }
