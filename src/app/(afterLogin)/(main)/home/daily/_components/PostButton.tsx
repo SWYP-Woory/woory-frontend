@@ -1,13 +1,21 @@
 'use client';
 
+import { useIsPostStore } from '@/app/_store/isPostStore';
 import PostIcon from '@/assets/icons/post/post.svg';
+import { openToast } from '@/utils/Toast';
 import { useRouter } from 'next/navigation';
 
 export default function PostButton() {
+  // const { currentDate } = useDateControl();
+  const { isPosted } = useIsPostStore();
   const router = useRouter();
 
   const handleClick = () => {
-    router.push('/posts');
+    if (isPosted) {
+      openToast('post');
+    } else {
+      router.push('/posts');
+    }
   };
 
   return (
