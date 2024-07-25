@@ -70,7 +70,6 @@ export type DailyDataType = {
   hasNextDay: boolean;
   isPosted: boolean;
   contents: ContentDataType[];
-  isPosted: boolean;
 };
 
 export type ContentDataType = {

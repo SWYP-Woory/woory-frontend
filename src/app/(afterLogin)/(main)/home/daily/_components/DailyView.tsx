@@ -24,7 +24,7 @@ export default function DailyView() {
 
   const searchParams = useSearchParams();
   const { currentDate, setCurrentDate, prevDayHandler, nextDayHandler } = useDateControl();
-  const { setIsPosted } = useIsPostStore();
+  const { setIsPosted, setPostDate } = useIsPostStore();
   const day = searchParams.get('day');
 
   const handleLoad = useCallback(async () => {
@@ -49,6 +49,7 @@ export default function DailyView() {
     setIsNextDay(hasNextDay);
     setDailyThreads(newContents);
     setIsPosted(isPosted);
+    setPostDate(currentDate);
   }, [currentDate]);
 
   useEffect(() => {
