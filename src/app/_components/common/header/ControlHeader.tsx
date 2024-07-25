@@ -10,11 +10,10 @@ import { CreatePostType } from '@/type';
 import { useRouter } from 'next/navigation';
 
 interface Props {
-  day: string;
   topicId: number;
 }
 
-export default function ControlHeader({ day, topicId }: Props) {
+export default function ControlHeader({ topicId }: Props) {
   const { imageReset } = useImageUploadStore();
   const { selectedImage } = useImageUpload();
   const { inputText, inputReset } = useInputStore();
@@ -41,7 +40,7 @@ export default function ControlHeader({ day, topicId }: Props) {
       } finally {
         imageReset();
         inputReset();
-        router.push(`/home/${groupId}/daily/${day}`);
+        router.push(`/home/daily`);
       }
     };
     createPost();
