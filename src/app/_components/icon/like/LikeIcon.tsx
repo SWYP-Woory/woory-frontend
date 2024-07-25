@@ -17,7 +17,7 @@ interface Props {
 export default function LikeIcon({ topicId, isLiked }: Props) {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [isActive, setIsActive] = useState<boolean>(false);
-  const { topicTitle, topicImage, topicDate } = useTopicStore();
+  const { setFavoriteTopicId, topicTitle, topicImage, topicDate } = useTopicStore();
   const pathName = usePathname();
 
   const handleMouseEnter = () => {
@@ -50,11 +50,10 @@ export default function LikeIcon({ topicId, isLiked }: Props) {
 
   const handleCancelFavoriteTopic = () => {
     if (isActive) {
-      console.log('취소 패치');
       const topics: TopicStoreType[] = LocalStorage.getItemJson('favorites') || [];
       const filteredTopics = topics.filter((topic) => topic.topicId !== topicId);
-      console.log('필터된 주제들', filteredTopics);
       LocalStorage.setItem('favorites', JSON.stringify(filteredTopics));
+      setFavoriteTopicId(topicId);
     }
   };
 

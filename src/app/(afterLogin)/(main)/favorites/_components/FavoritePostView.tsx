@@ -2,19 +2,26 @@
 
 import FavoritePost from '@/app/(afterLogin)/(main)/favorites/_components/FavoritePost';
 import LocalStorage from '@/app/_store/localstorage/LocalStorage';
+import { useTopicStore } from '@/app/_store/topicStore';
 import { FavoritePostType } from '@/type';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export default function FavoritePostView() {
   const [favoritePosts, setFavoritePosts] = useState<FavoritePostType[]>([]);
+  const { favoriteTopicId } = useTopicStore();
 
-  useEffect(() => {
+  const getFavoritePosts = useCallback(() => {
     const data: FavoritePostType[] = LocalStorage.getItemJson('favorites') || [];
+
     if (data.length !== 0) {
       data.sort((a, b) => new Date(b.topicDate).getTime() - new Date(a.topicDate).getTime());
     }
     setFavoritePosts(data);
-  }, []);
+  }, [favoriteTopicId]);
+
+  useEffect(() => {
+    getFavoritePosts();
+  }, [getFavoritePosts]);
 
   if (favoritePosts.length === 0) {
     return (
