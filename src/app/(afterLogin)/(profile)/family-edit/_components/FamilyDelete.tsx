@@ -3,9 +3,11 @@ import { apiRoutes } from '@/app/_api/apiRoutes';
 import Modal from '@/app/_components/common/modal/Modal';
 import { FAMILY_DELETE_CONTENT } from '@/app/_constants/modal';
 import { deleteCookies, getCookies } from '@/app/_store/cookie/cookies';
+import { useImageUploadStore } from '@/app/_store/imageUploadStore';
 import { useRouter } from 'next/navigation';
 
 export default function FamilyDelete() {
+  const { imageReset } = useImageUploadStore();
   const router = useRouter();
 
   const handleCancelClick = () => {
@@ -20,6 +22,7 @@ export default function FamilyDelete() {
       console.error(e);
     }
     deleteCookies('groupId');
+    imageReset();
     router.replace('/family-select');
   };
 

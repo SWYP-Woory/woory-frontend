@@ -35,7 +35,7 @@ export default function HomeShortcut() {
     if (getCookies('add_home')) {
       deleteCookies('add_home');
     }
-    setCookies('add_home', 'no');
+    setCookies('add_home', 'no', { path: '/' });
     setDeferredPrompt(null);
     setIsModalOpen(false);
   };
@@ -56,7 +56,7 @@ export default function HomeShortcut() {
     if (getCookies('add_home')) {
       deleteCookies('add_home');
     }
-    setCookies('add_home', 'yes');
+    setCookies('add_home', 'yes', { path: '/' });
     setIsModalOpen(false);
   };
 

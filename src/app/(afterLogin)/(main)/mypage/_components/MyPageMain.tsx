@@ -17,11 +17,11 @@ import { getCookies } from '@/app/_store/cookie/cookies';
 import { AccountDeletionType, UserDataType } from '@/type';
 import { useEffect, useState } from 'react';
 
-const determineTargetType = (isLastMember: boolean, isHouseholder: boolean): AccountDeletionType => {
+const determineTargetType = (isLastMember: boolean, isHouseHolder: boolean): AccountDeletionType => {
   if (isLastMember) {
     return 'lastMember';
   }
-  if (isHouseholder) {
+  if (isHouseHolder) {
     return 'householder';
   }
 
@@ -41,8 +41,8 @@ export default function MyPageMain() {
 
   useEffect(() => {
     if (userData) {
-      const { isLastMember, isHouseholder } = userData;
-      setTargetType(determineTargetType(isLastMember, isHouseholder));
+      const { isLastMember, isHouseHolder } = userData;
+      setTargetType(determineTargetType(isLastMember, isHouseHolder));
     }
   }, [userData]);
 
@@ -72,7 +72,7 @@ export default function MyPageMain() {
             <MyTitle name={userData.nickname} profileImage={userData.profileImgLink} />
             <Border />
             {/* <NotificationSetting notifications={DUMMY_DATA.notifications} /> */}
-            <FamilySetting isHouseholder={userData.isHouseholder} />
+            <FamilySetting isHouseHolder={userData.isHouseHolder} />
             {/* <AddHome onClick={handleModal} /> */}
             <AccountSetting targetType={targetType} />
             <ServiceInfo />

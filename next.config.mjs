@@ -33,6 +33,11 @@ const nextConfig = {
         hostname: 't1.kakaocdn.net',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 's3.ap-northeast-2.amazonaws.com',
+        pathname: '**',
+      },
     ],
   },
   async rewrites() {

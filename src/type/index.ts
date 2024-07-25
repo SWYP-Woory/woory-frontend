@@ -31,26 +31,23 @@ export type ReactionNotiType = 'comment' | 'reComment' | 'reaction';
 
 export type AccountDeletionType = 'householder' | 'member' | 'lastMember';
 
-export type CalendarEventType = {
-  date: string;
-  url: string;
-  isLiked: boolean;
-};
-
 export type CalenderDataType = {
-  userId: number;
-  calender: CalendarEventType[];
+  contentId: number;
+  contentText: string;
+  contentImgPath: string;
+  contentRegDate: string;
 };
 
 type BasePostType = {
   profileUrl: string;
   name: string;
   content: string;
-  postUrl: string;
+  postUrl?: string;
   isEdit: boolean;
 };
 
 export type DailyThreadType = BasePostType & {
+  id: number;
   comment: number;
   reaction: number;
 };
@@ -65,6 +62,25 @@ export type DailyPostType = BasePostType & {
   id: number;
   topic: string;
   reactions: ReactionDataType[];
+};
+
+export type DailyDataType = {
+  topicContent: string;
+  topicId: number;
+  issueDate: Date;
+  contents: ContentDataType[];
+};
+
+export type ContentDataType = {
+  profileUrl: string;
+  name: string;
+  contentId: number;
+  contentText: string;
+  contentImgPath?: string;
+  contentRegDate: Date;
+  commentsCount: number;
+  reactionCount: number;
+  isEdit: boolean;
 };
 
 export type ProfileType = {
@@ -110,7 +126,7 @@ export type UserDataType = {
   userEmail?: string;
   nickname: string;
   profileImgLink: string;
-  isHouseholder: boolean;
+  isHouseHolder: boolean;
   isLastMember: boolean;
 };
 
@@ -131,6 +147,19 @@ export type ModalTypeMap = {
 };
 
 export type ProfileSaveType = {
-  groupName: string;
-  groupPhoto?: string;
+  name: string;
+  images?: string;
+};
+
+export type TopicDataType = {
+  topicId: number;
+  topicContent: string;
+  issueDate: string;
+};
+
+export type CreatePostType = {
+  groupId: number;
+  topicId: number;
+  contentText: string;
+  images?: string;
 };

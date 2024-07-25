@@ -35,7 +35,7 @@ export default function ImageUpload() {
     >
       <Picture width="40" height="40" fill="#888888" />
       <div className="font-body text-textDisabled">사진 추가</div>
-      <input type="file" className="hidden" ref={fileInputRef} onChange={handleImageChange} />
+      <input type="file" className="hidden" ref={fileInputRef} onChange={handleImageChange} accept=".jpg,.jpeg,.png" />
     </button>
   );
 }
