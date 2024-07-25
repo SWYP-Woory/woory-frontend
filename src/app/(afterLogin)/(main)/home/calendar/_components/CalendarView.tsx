@@ -55,7 +55,12 @@ export default function CalendarView() {
 
   return (
     <section className="flex flex-col gap-24 items-center w-[34.2rem] min-h-screen bg-white">
-      <DateController date={format(currentDate, 'yyyy.MM')} prevHandler={handlePrev} nextHandler={handleNext} />
+      <DateController
+        controllerType="calendar"
+        date={format(currentDate, 'yyyy.MM')}
+        prevHandler={handlePrev}
+        nextHandler={handleNext}
+      />
       {calendarData && <Calendar createMonth={createMonth} currentDate={currentDate} data={calendarData} />}
     </section>
   );
