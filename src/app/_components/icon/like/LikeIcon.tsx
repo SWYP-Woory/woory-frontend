@@ -14,6 +14,7 @@ interface Props {
 }
 
 export default function LikeIcon({ isLiked }: Props) {
+  console.log(isLiked);
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [isActive, setIsActive] = useState<boolean>(isLiked || false);
   const { topicId, topicTitle, topicImage, topicDate } = useTopicStore();
@@ -27,28 +28,38 @@ export default function LikeIcon({ isLiked }: Props) {
     setIsHovered(false);
   };
 
-  const handleTopic = () => {
-    const data: TopicStoreType[] = LocalStorage.getItemJson('favorites') || [];
-    LocalStorage.setItem(
-      'favorites',
-      JSON.stringify([
-        ...data,
-        {
-          topicId,
-          topicTitle,
-          topicImage,
-          topicDate: topicDate ? getCalendarTime(topicDate) : null,
-        },
-      ]),
-    );
+  const handleFavoriteTopic = () => {
+    if (!isActive) {
+      if (pathName === '/home/daily') {
+        const data: TopicStoreType[] = LocalStorage.getItemJson('favorites') || [];
+        LocalStorage.setItem(
+          'favorites',
+          JSON.stringify([
+            ...data,
+            {
+              topicId,
+              topicTitle,
+              topicImage,
+              topicDate: topicDate ? getCalendarTime(topicDate) : null,
+            },
+          ]),
+        );
+      }
+    }
+  };
+
+  const handleCancelFavoriteTopic = () => {
+    // if (isActive) {
+    //   if (pathName === '/favorites') {
+    //
+    //
+    //   }
+    // }
   };
 
   const handleClick = () => {
-    if (!isActive) {
-      if (pathName !== '/favorites') {
-        handleTopic();
-      }
-    }
+    handleFavoriteTopic();
+    handleCancelFavoriteTopic();
     setIsActive(!isActive);
   };
 

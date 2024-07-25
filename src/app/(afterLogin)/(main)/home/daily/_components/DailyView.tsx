@@ -8,8 +8,9 @@ import DailyTopic from '@/app/_components/common/daily/DailyTopic';
 import DateController from '@/app/_components/common/dateController/DateController';
 import { useDateControl } from '@/app/_hooks/useDateControl';
 import { getCookies } from '@/app/_store/cookie/cookies';
+import LocalStorage from '@/app/_store/localstorage/LocalStorage';
 import { useTopicStore } from '@/app/_store/topicStore';
-import { DailyDataType, DailyThreadType } from '@/type';
+import { DailyDataType, DailyThreadType, TopicStoreType } from '@/type';
 import { getCalendarTime } from '@/utils/getTime';
 import { format } from 'date-fns';
 import { useCallback, useEffect, useState } from 'react';
@@ -18,6 +19,7 @@ export default function DailyView() {
   const { currentDate, prevDayHandler, nextDayHandler } = useDateControl();
   const [topic, setTopic] = useState<string>('');
   const [dailyThreads, setDailyThreads] = useState<DailyThreadType[]>([]);
+  const [isLiked, setIsLiked] = useState<boolean>(false);
   // 데일리에서 topic, topicImage, topicDate 저장
   const { setTopicId, setTopicTitle, setTopicImage, setTopicDate } = useTopicStore();
 
@@ -38,13 +40,15 @@ export default function DailyView() {
       isEdit: content.isEdit,
     }));
 
-    // const storageData:TopicStoreType[] = LocalStorage.getItemJson('favorites') || [];
-    // if (storageData.length !== 0) {
-    //   const find = storageData.some((data) => data.topicId === topicId);
-    //   if (find) {
-    //     setIsLiked(true);
-    //   }
-    // }
+    const storageData: TopicStoreType[] = LocalStorage.getItemJson('favorites') || [];
+    if (storageData.length !== 0) {
+      const find = storageData.some((storage) => storage.topicId === topicId);
+      if (find) {
+        setIsLiked(true);
+      } else {
+        setIsLiked(false);
+      }
+    }
 
     setTopic(topicContent);
     setDailyThreads(newContents);
@@ -61,8 +65,6 @@ export default function DailyView() {
     handleLoad();
   }, [handleLoad]);
 
-  useEffect(() => {}, []);
-
   return (
     <div className="flex flex-col items-center min-h-screen gap-24">
       <DateController
@@ -71,7 +73,7 @@ export default function DailyView() {
         nextHandler={nextDayHandler}
       />
       <div className="flex flex-col items-center gap-8">
-        <DailyTopic topic={topic} hasLike />
+        <DailyTopic topic={topic} hasLike isLiked={isLiked} />
         <div>
           {dailyThreads.length > 0 ? (
             dailyThreads.map((data) => <DailyThread key={data.id} data={data} />)
