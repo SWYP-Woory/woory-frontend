@@ -18,19 +18,20 @@ import { useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 
 export default function DailyView() {
+  const [dailyTopicId, setDailyTopicId] = useState(-1);
   const [topic, setTopic] = useState<string>('');
   const [dailyThreads, setDailyThreads] = useState<DailyThreadType[]>([]);
   const [initialized, setInitialized] = useState<boolean>(false);
   const [isPrevDay, setIsPrevDay] = useState(false);
   const [isNextDay, setIsNextDay] = useState(false);
+  const [isLiked, setIsLiked] = useState<boolean>(false);
 
   const searchParams = useSearchParams();
   const { currentDate, setCurrentDate, prevDayHandler, nextDayHandler } = useDateControl();
   const { setIsPosted, setPostDate } = useIsPostStore();
   const day = searchParams.get('day');
-  const [isLiked, setIsLiked] = useState<boolean>(false);
   // 데일리에서 topic, topicImage, topicDate 저장
-  const { setTopicId, setTopicTitle, setTopicImage, setTopicDate } = useTopicStore();
+  const { setTopicTitle, setTopicImage, setTopicDate } = useTopicStore();
 
   const handleLoad = useCallback(async () => {
     const groupId = getCookies('groupId');
@@ -52,13 +53,11 @@ export default function DailyView() {
     const storageData: TopicStoreType[] = LocalStorage.getItemJson('favorites') || [];
     if (storageData.length !== 0) {
       const find = storageData.some((storage) => storage.topicId === topicId);
-      if (find) {
-        setIsLiked(true);
-      } else {
-        setIsLiked(false);
-      }
+      setIsLiked(find);
+    } else {
+      setIsLiked(false);
     }
-
+    setDailyTopicId(topicId);
     setTopic(topicContent);
     setIsPrevDay(hasPrevDay);
     setIsNextDay(hasNextDay);
@@ -66,12 +65,11 @@ export default function DailyView() {
     setIsPosted(isPosted);
     setPostDate(currentDate);
 
+    // TopicStore 저장
     const storeFirstImage = newContents.find((content) => content.postUrl)?.postUrl || '';
-    setTopicId(topicId);
     setTopicTitle(topicContent);
     setTopicImage(storeFirstImage);
     setTopicDate(currentDate);
-    console.log(isLiked);
   }, [currentDate]);
 
   useEffect(() => {
@@ -100,7 +98,7 @@ export default function DailyView() {
         hasNextDay={isNextDay}
       />
       <div className="flex flex-col items-center gap-8">
-        <DailyTopic topic={topic} hasLike isLiked={isLiked} />
+        <DailyTopic topicId={dailyTopicId} topic={topic} hasLike isLiked={isLiked} />
         <div>
           {dailyThreads.length > 0 ? (
             dailyThreads.map((data) => <DailyThread key={data.id} data={data} />)

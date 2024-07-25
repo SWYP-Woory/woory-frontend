@@ -10,13 +10,14 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 interface Props {
+  topicId: number;
   isLiked: boolean;
 }
 
-export default function LikeIcon({ isLiked }: Props) {
+export default function LikeIcon({ topicId, isLiked }: Props) {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [isActive, setIsActive] = useState<boolean>(false);
-  const { topicId, topicTitle, topicImage, topicDate } = useTopicStore();
+  const { topicTitle, topicImage, topicDate } = useTopicStore();
   const pathName = usePathname();
 
   const handleMouseEnter = () => {
@@ -30,11 +31,11 @@ export default function LikeIcon({ isLiked }: Props) {
   const handleFavoriteTopic = () => {
     if (!isActive) {
       if (pathName === '/home/daily') {
-        const data: TopicStoreType[] = LocalStorage.getItemJson('favorites') || [];
+        const topics: TopicStoreType[] = LocalStorage.getItemJson('favorites') || [];
         LocalStorage.setItem(
           'favorites',
           JSON.stringify([
-            ...data,
+            ...topics,
             {
               topicId,
               topicTitle,
@@ -48,12 +49,11 @@ export default function LikeIcon({ isLiked }: Props) {
   };
 
   const handleCancelFavoriteTopic = () => {
-    // if (isActive) {
-    //   if (pathName === '/favorites') {
-    //
-    //
-    //   }
-    // }
+    if (isActive) {
+      const topics: TopicStoreType[] = LocalStorage.getItemJson('favorites') || [];
+      const filteredTopics = topics.filter((topic) => topic.topicId !== topicId);
+      LocalStorage.setItem('favorites', JSON.stringify(filteredTopics));
+    }
   };
 
   const handleClick = () => {
@@ -64,7 +64,7 @@ export default function LikeIcon({ isLiked }: Props) {
 
   useEffect(() => {
     setIsActive(isLiked);
-  }, [isLiked]);
+  }, [topicId, isLiked]);
 
   return (
     <div className="cursor-pointer">
