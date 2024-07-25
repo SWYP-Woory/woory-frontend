@@ -25,7 +25,7 @@ export default function OAuth({ params }: Props) {
     } catch (e) {
       console.error(e);
     } finally {
-      router.replace('/family-select');
+      router.replace('/');
     }
   };
 
