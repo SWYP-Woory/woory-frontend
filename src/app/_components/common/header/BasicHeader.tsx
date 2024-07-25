@@ -8,7 +8,6 @@ import { deleteCookies, getCookies, setCookies } from '@/app/_store/cookie/cooki
 import { useImageUploadStore } from '@/app/_store/imageUploadStore';
 import { useInputStore } from '@/app/_store/inputStore';
 import { ProfileSaveType } from '@/type';
-import { getCalendarTime } from '@/utils/getTime';
 import { usePathname, useRouter } from 'next/navigation';
 
 interface Props {
@@ -79,13 +78,12 @@ export default function BasicHeader({ title, hasRightButton }: Props) {
       let response;
       if (method === 'POST') {
         response = await postData({ path, body: data });
-        const date = getCalendarTime(new Date());
         const groupId = response?.groupId;
         if (currentGroupId) {
           deleteCookies('groupId');
         }
         setCookies('groupId', groupId, { path: '/' });
-        router.push(`/home/${groupId}/daily/${date}`);
+        router.push(`/home/daily`);
         imageReset();
         inputReset();
       } else if (method === 'PUT') {

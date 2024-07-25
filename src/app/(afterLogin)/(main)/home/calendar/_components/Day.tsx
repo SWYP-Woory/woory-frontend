@@ -1,4 +1,3 @@
-import { getCookies } from '@/app/_store/cookie/cookies';
 import NoImageDay from '@/assets/icons/calendar/noImageDay.svg';
 import ActiveLike from '@/assets/icons/like/activeLike.svg';
 import Image from 'next/image';
@@ -15,9 +14,13 @@ interface Props {
 
 export default function Day({ day, date, validation, hasContent, imageUrl, isLiked }: Props) {
   if (hasContent && validation) {
-    const groupId = getCookies('groupId');
     return (
-      <Link href={`/home/${groupId}/daily/${date}`}>
+      <Link
+        href={{
+          pathname: `/home/daily`,
+          query: { day: date },
+        }}
+      >
         <div className="flex justify-center items-center relative w-[4.8rem] h-[7.6rem]">
           {imageUrl ? (
             <Image alt="day" src={imageUrl} className="dayChip object-cover" fill sizes="80" />
