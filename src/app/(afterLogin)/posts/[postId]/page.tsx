@@ -13,6 +13,7 @@ const DUMMY_DATA: DailyPostType = {
   postUrl: 'https://cdn.smarttoday.co.kr/news/photo/202002/img_4656_0.jpg',
   isEdit: true,
   topic: '가장 좋아하는 사진',
+  topicId: 12,
   reactions: [
     {
       reactionType: 'heart',

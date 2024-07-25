@@ -58,6 +58,7 @@ export type ReactionDataType = {
 
 export type DailyPostType = BasePostType & {
   id: number;
+  topicId: number;
   topic: string;
   reactions: ReactionDataType[];
 };
