@@ -6,7 +6,6 @@ import { getData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
 import DailyTopic from '@/app/_components/common/daily/DailyTopic';
 import ControlHeader from '@/app/_components/common/header/ControlHeader';
-import Loading from '@/app/_components/common/loading/Loading';
 import { getCookies } from '@/app/_store/cookie/cookies';
 import { TopicDataType } from '@/type';
 import { getCalendarTime } from '@/utils/getTime';
@@ -14,28 +13,22 @@ import { useEffect, useState } from 'react';
 
 export default function WritePostMain() {
   const [topicData, setTopicData] = useState<TopicDataType>();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchTopic = async () => {
       try {
-        setIsLoading(true);
         const groupId = getCookies('groupId');
         const day = getCalendarTime(new Date());
         const { data } = await getData({ path: `${apiRoutes.getTopic}?groupId=${groupId}&day=${day}` });
         setTopicData(data);
       } catch (error) {
         console.error(error);
-      } finally {
-        setIsLoading(false);
       }
     };
     fetchTopic();
   }, []);
 
-  return isLoading ? (
-    <Loading />
-  ) : (
+  return (
     topicData && (
       <>
         <ControlHeader topicId={topicData.topicId} day={topicData.issueDate} />

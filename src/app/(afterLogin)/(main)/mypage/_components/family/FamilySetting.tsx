@@ -6,10 +6,10 @@ import FamilyIcon from '@/assets/icons/family/family.svg';
 import { useRouter } from 'next/navigation';
 
 interface Props {
-  isHouseHolder: boolean;
+  isHouseholder: boolean;
 }
 
-export default function FamilySetting({ isHouseHolder }: Props) {
+export default function FamilySetting({ isHouseholder }: Props) {
   const router = useRouter();
 
   const handleFamilySelect = () => {
@@ -28,7 +28,7 @@ export default function FamilySetting({ isHouseHolder }: Props) {
         content="다른 가족으로 이동하거나 가족을 새로 만들 수 있어요"
         onClick={handleFamilySelect}
       />
-      {isHouseHolder && (
+      {isHouseholder && (
         <FamilyItem
           title="가족 상태 수정"
           content="가족 프로필을 수정하거나 가족을 삭제할 수 있어요"
