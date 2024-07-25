@@ -4,6 +4,7 @@ import LocalStorage from '@/app/_store/localstorage/LocalStorage';
 import { useTopicStore } from '@/app/_store/topicStore';
 import ActiveLike from '@/assets/icons/like/activeLike.svg';
 import Like from '@/assets/icons/like/like.svg';
+import { TopicStoreType } from '@/type';
 import { getCalendarTime } from '@/utils/getTime';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
@@ -15,7 +16,7 @@ interface Props {
 export default function LikeIcon({ isLiked }: Props) {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [isActive, setIsActive] = useState<boolean>(isLiked || false);
-  const { topicTitle, topicImage, topicDate, reset } = useTopicStore();
+  const { topicId, topicTitle, topicImage, topicDate, reset } = useTopicStore();
   const pathName = usePathname();
 
   const handleMouseEnter = () => {
@@ -27,15 +28,16 @@ export default function LikeIcon({ isLiked }: Props) {
   };
 
   const handleTopic = () => {
-    const data = LocalStorage.getItemJson('favorites') || [];
+    const data: TopicStoreType[] = LocalStorage.getItemJson('favorites') || [];
     LocalStorage.setItem(
       'favorites',
       JSON.stringify([
         ...data,
         {
-          content: topicTitle,
-          imgUrl: topicImage,
-          postDate: getCalendarTime(topicDate!),
+          topicId,
+          topicTitle,
+          topicImage,
+          topicDate: topicDate ? getCalendarTime(topicDate) : null,
         },
       ]),
     );

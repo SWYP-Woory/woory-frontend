@@ -18,13 +18,15 @@ export default function DailyView() {
   const { currentDate, prevDayHandler, nextDayHandler } = useDateControl();
   const [topic, setTopic] = useState<string>('');
   const [dailyThreads, setDailyThreads] = useState<DailyThreadType[]>([]);
+  // 데일리에서 topic, topicImage, topicDate 저장
+  const { setTopicId, setTopicTitle, setTopicImage, setTopicDate } = useTopicStore();
 
   const handleLoad = useCallback(async () => {
     const groupId = getCookies('groupId');
     const { data }: { data: DailyDataType } = await getData({
       path: `${apiRoutes.getDaily}/${groupId}/get?day=${getCalendarTime(currentDate)}`,
     });
-    const { topicContent, contents } = data;
+    const { topicId, topicContent, contents } = data;
     const newContents: DailyThreadType[] = contents.map((content) => ({
       id: content.contentId,
       profileUrl: content.profileUrl,
@@ -36,34 +38,30 @@ export default function DailyView() {
       isEdit: content.isEdit,
     }));
 
+    // const storageData:TopicStoreType[] = LocalStorage.getItemJson('favorites') || [];
+    // if (storageData.length !== 0) {
+    //   const find = storageData.some((data) => data.topicId === topicId);
+    //   if (find) {
+    //     setIsLiked(true);
+    //   }
+    // }
+
     setTopic(topicContent);
     setDailyThreads(newContents);
+
+    // 데일리에서 첫 이미지 찾기
+    const storeFirstImage = newContents.find((content) => content.postUrl)?.postUrl || '';
+    setTopicId(topicId);
+    setTopicTitle(topicContent);
+    setTopicImage(storeFirstImage);
+    setTopicDate(currentDate);
   }, [currentDate, prevDayHandler, nextDayHandler]);
 
   useEffect(() => {
     handleLoad();
   }, [handleLoad]);
-  const [firstTopicImage, setFirstTopicImage] = useState<string>('');
 
-  // 데일리에서 첫 이미지 찾기
-  const findFirstTopicImage = (threads: DailyThreadType[]): string => {
-    const find = threads.find((thread) => thread.postUrl);
-    return find?.postUrl || '';
-  };
-
-  useEffect(() => {
-    const image = findFirstTopicImage(dailyThreads);
-    setFirstTopicImage(image);
-  }, []);
-
-  // 데일리에서 topic, topicImage, topicDate 저장
-  const { setTopicTitle, setTopicImage, setTopicDate } = useTopicStore();
-
-  useEffect(() => {
-    setTopicTitle(topic);
-    setTopicImage(firstTopicImage);
-    setTopicDate(currentDate);
-  }, [topic, firstTopicImage, currentDate]);
+  useEffect(() => {}, []);
 
   return (
     <div className="flex flex-col items-center min-h-screen gap-24">
