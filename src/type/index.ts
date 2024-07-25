@@ -42,11 +42,12 @@ type BasePostType = {
   profileUrl: string;
   name: string;
   content: string;
-  postUrl: string;
+  postUrl?: string;
   isEdit: boolean;
 };
 
 export type DailyThreadType = BasePostType & {
+  id: number;
   comment: number;
   reaction: number;
 };
@@ -61,6 +62,25 @@ export type DailyPostType = BasePostType & {
   id: number;
   topic: string;
   reactions: ReactionDataType[];
+};
+
+export type DailyDataType = {
+  topicContent: string;
+  topicId: number;
+  issueDate: Date;
+  contents: ContentDataType[];
+};
+
+export type ContentDataType = {
+  profileUrl: string;
+  name: string;
+  contentId: number;
+  contentText: string;
+  contentImgPath?: string;
+  contentRegDate: Date;
+  commentsCount: number;
+  reactionCount: number;
+  isEdit: boolean;
 };
 
 export type ProfileType = {
