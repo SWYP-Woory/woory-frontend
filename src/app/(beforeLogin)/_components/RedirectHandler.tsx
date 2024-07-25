@@ -1,13 +1,15 @@
 'use client';
 
-import { getCookies } from '@/app/_store/cookie/cookies';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
-export default function RedirectHandler() {
+interface Props {
+  accessToken: string;
+  groupId: string;
+}
+
+export default function RedirectHandler({ accessToken, groupId }: Props) {
   const router = useRouter();
-  const accessToken = getCookies('AccessToken');
-  const groupId = getCookies('groupId')?.value;
 
   useEffect(() => {
     if (accessToken) {
