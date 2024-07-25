@@ -16,15 +16,16 @@ import { useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 
 export default function DailyView() {
-  const { currentDate, setCurrentDate, prevDayHandler, nextDayHandler } = useDateControl();
-  const searchParams = useSearchParams();
-  const day = searchParams.get('day');
   const [topic, setTopic] = useState<string>('');
   const [dailyThreads, setDailyThreads] = useState<DailyThreadType[]>([]);
-  const { setIsPosted } = useIsPostStore();
   const [initialized, setInitialized] = useState<boolean>(false);
   const [isPrevDay, setIsPrevDay] = useState(false);
   const [isNextDay, setIsNextDay] = useState(false);
+
+  const searchParams = useSearchParams();
+  const { currentDate, setCurrentDate, prevDayHandler, nextDayHandler } = useDateControl();
+  const { setIsPosted } = useIsPostStore();
+  const day = searchParams.get('day');
 
   const handleLoad = useCallback(async () => {
     const groupId = getCookies('groupId');
