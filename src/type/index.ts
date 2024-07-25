@@ -83,7 +83,7 @@ export type ContentDataType = {
   contentImgPath?: string;
   contentRegDate: Date;
   commentsCount: number;
-  countByReaction: number;
+  reactionCount: number;
   isEdit: boolean;
 };
 

@@ -11,14 +11,14 @@ import { getCookies } from '@/app/_store/cookie/cookies';
 import { DailyDataType, DailyThreadType } from '@/type';
 import { getCalendarTime } from '@/utils/getTime';
 import { format } from 'date-fns';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export default function DailyView() {
   const { currentDate, prevDayHandler, nextDayHandler } = useDateControl();
   const [topic, setTopic] = useState<string>('');
-  const [dailyThreads] = useState<DailyThreadType[]>([]);
+  const [dailyThreads, setDailyThreads] = useState<DailyThreadType[]>([]);
 
-  const handleLoad = async () => {
+  const handleLoad = useCallback(async () => {
     const groupId = getCookies('groupId');
     const { data }: { data: DailyDataType } = await getData({
       path: `${apiRoutes.getDaily}/${groupId}/get?day=${getCalendarTime(currentDate)}`,
@@ -29,20 +29,19 @@ export default function DailyView() {
       profileUrl: content.profileUrl,
       name: content.name,
       comment: content.commentsCount,
-      reaction: content.countByReaction,
+      reaction: content.reactionCount,
       postUrl: content.contentImgPath,
       content: content.contentText,
       isEdit: content.isEdit,
     }));
 
-    console.log(newContents);
     setTopic(topicContent);
-    // setDailyThreads(newContents);
-  };
+    setDailyThreads(newContents);
+  }, [currentDate, prevDayHandler, nextDayHandler]);
 
   useEffect(() => {
     handleLoad();
-  }, [currentDate]);
+  }, [handleLoad]);
 
   return (
     <div className="flex flex-col items-center min-h-screen gap-24">
