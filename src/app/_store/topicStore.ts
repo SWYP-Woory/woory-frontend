@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { devtools } from 'zustand/middleware';
 
 interface TopicState {
   topicId: number | null;
@@ -12,14 +13,16 @@ interface TopicState {
   reset: () => void;
 }
 
-export const useTopicStore = create<TopicState>((set) => ({
-  topicId: null,
-  setTopicId: (topicId: number | null) => set((state) => ({ ...state, topicId })),
-  topicTitle: '',
-  setTopicTitle: (topicTitle: string) => set((state) => ({ ...state, topicTitle })),
-  topicImage: '',
-  setTopicImage: (topicImage) => set((state) => ({ ...state, topicImage })),
-  topicDate: null,
-  setTopicDate: (topicDate) => set((state) => ({ ...state, topicDate })),
-  reset: () => set({ topicId: null, topicTitle: '', topicImage: '', topicDate: null }),
-}));
+export const useTopicStore = create<TopicState>()(
+  devtools((set) => ({
+    topicId: null,
+    setTopicId: (topicId: number | null) => set((state) => ({ ...state, topicId })),
+    topicTitle: '',
+    setTopicTitle: (topicTitle: string) => set((state) => ({ ...state, topicTitle })),
+    topicImage: '',
+    setTopicImage: (topicImage) => set((state) => ({ ...state, topicImage })),
+    topicDate: null,
+    setTopicDate: (topicDate) => set((state) => ({ ...state, topicDate })),
+    reset: () => set({ topicId: null, topicTitle: '', topicImage: '', topicDate: null }),
+  })),
+);
