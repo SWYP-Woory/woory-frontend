@@ -1,4 +1,4 @@
-import UpperTabBar from '@/app/_components/upperTabBar/UpperTabBar';
+import UpperTabBar from '@/app/_components/common/upperTabBar/UpperTabBar';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof UpperTabBar> = {

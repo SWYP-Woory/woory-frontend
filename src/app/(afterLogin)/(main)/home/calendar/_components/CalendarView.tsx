@@ -1,6 +1,6 @@
 'use client';
 
-import Calendar from '@/app/(afterLogin)/(main)/home/[groupId]/calendar/[month]/_components/calendar/Calendar';
+import Calendar from '@/app/(afterLogin)/(main)/home/calendar/_components/Calendar';
 import { getData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
 import DateController from '@/app/_components/common/dateController/DateController';
@@ -43,13 +43,19 @@ export default function CalendarView() {
     fetchCalenderData();
   }, [currentDate]);
 
+  const handlePrev = () => {
+    setCalenderData([]);
+    prevMonthHandler();
+  };
+
+  const handleNext = () => {
+    setCalenderData([]);
+    nextMonthHandler();
+  };
+
   return (
     <section className="flex flex-col gap-24 items-center w-[34.2rem] min-h-screen bg-white">
-      <DateController
-        date={format(currentDate, 'yyyy.MM')}
-        prevHandler={prevMonthHandler}
-        nextHandler={nextMonthHandler}
-      />
+      <DateController date={format(currentDate, 'yyyy.MM')} prevHandler={handlePrev} nextHandler={handleNext} />
       {calendarData && <Calendar createMonth={createMonth} currentDate={currentDate} data={calendarData} />}
     </section>
   );
