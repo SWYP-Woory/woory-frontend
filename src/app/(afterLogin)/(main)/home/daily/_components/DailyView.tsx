@@ -11,12 +11,16 @@ import { getCookies } from '@/app/_store/cookie/cookies';
 import { DailyDataType, DailyThreadType } from '@/type';
 import { getCalendarTime } from '@/utils/getTime';
 import { format } from 'date-fns';
+import { useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 
 export default function DailyView() {
-  const { currentDate, prevDayHandler, nextDayHandler } = useDateControl();
+  const { currentDate, setCurrentDate, prevDayHandler, nextDayHandler } = useDateControl();
+  const searchParams = useSearchParams();
+  const day = searchParams.get('day');
   const [topic, setTopic] = useState<string>('');
   const [dailyThreads, setDailyThreads] = useState<DailyThreadType[]>([]);
+  const [initialized, setInitialized] = useState<boolean>(false);
   const [isPrevDay, setIsPrevDay] = useState(false);
   const [isNextDay, setIsNextDay] = useState(false);
 
@@ -41,11 +45,22 @@ export default function DailyView() {
     setIsPrevDay(hasPrevDay);
     setIsNextDay(hasNextDay);
     setDailyThreads(newContents);
-  }, [currentDate, prevDayHandler, nextDayHandler]);
+  }, [currentDate]);
 
   useEffect(() => {
-    handleLoad();
-  }, [handleLoad]);
+    if (day && !initialized) {
+      setCurrentDate(new Date(day));
+      setInitialized(true);
+    } else if (!day && !initialized) {
+      setInitialized(true);
+    }
+  }, [day, initialized, setCurrentDate]);
+
+  useEffect(() => {
+    if (initialized) {
+      handleLoad();
+    }
+  }, [initialized, handleLoad]);
 
   return (
     <div className="flex flex-col items-center min-h-screen gap-24">
