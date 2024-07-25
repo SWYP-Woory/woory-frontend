@@ -1,9 +1,11 @@
 'use client';
 
-import { getData } from '@/app/_api/api';
+import { deleteData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
 import Modal from '@/app/_components/common/modal/Modal';
 import { MODAL_TYPE_MAP } from '@/app/_constants/modal';
+import { deleteCookies } from '@/app/_store/cookie/cookies';
+import { logout } from '@/app/_store/cookie/session';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function AccountDeletionContent() {
@@ -19,7 +21,11 @@ export default function AccountDeletionContent() {
 
   const handleDeletionConfirm = async () => {
     try {
-      await getData({ path: apiRoutes.UserDeletion });
+      await deleteData({ path: apiRoutes.UserDeletion });
+      deleteCookies('add_home');
+      deleteCookies('groupId');
+      logout();
+      router.replace('/');
     } catch (e) {
       console.error(e);
     }
