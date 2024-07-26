@@ -20,20 +20,20 @@ export default function DailyPostView({ postId }: Props) {
   const [postData, setPostData] = useState<DailyPostType>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const fetchPostData = async () => {
-    try {
-      const { data } = await getData({ path: `${apiRoutes.getPost}/${postId}` });
-      setPostData(data);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchPostData = async () => {
+      try {
+        const { data } = await getData({ path: `${apiRoutes.getPost}/${postId}` });
+        setPostData(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
     fetchPostData();
-  }, []);
+  }, [postId]);
 
   return (
     <div className="flex flex-col w-full h-full bg-white px-16 pt-24 pb-16 gap-16">

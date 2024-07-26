@@ -1,4 +1,5 @@
 import { useImageUploadStore } from '@/app/_store/imageUploadStore';
+import { useImageDeletedStore } from '@/app/_store/isImageDeleted';
 import { openToast } from '@/utils/Toast';
 import { ChangeEvent, useRef } from 'react';
 
@@ -7,6 +8,7 @@ const MAX_SIZE = 5 * 1024 * 1024;
 export const useImageUpload = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const { selectedImage, setSelectedImage } = useImageUploadStore();
+  const { setIsDeleted } = useImageDeletedStore();
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -19,6 +21,7 @@ export const useImageUpload = () => {
         reader.onloadend = () => {
           setSelectedImage(reader.result as string);
         };
+        setIsDeleted(false);
         reader.readAsDataURL(file);
       }
     }

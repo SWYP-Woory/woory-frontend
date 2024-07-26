@@ -6,6 +6,7 @@ import { getData, postData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
 import DailyTopic from '@/app/_components/common/daily/DailyTopic';
 import DateController from '@/app/_components/common/dateController/DateController';
+import Loading from '@/app/_components/common/loading/Loading';
 import { useDateControl } from '@/app/_hooks/useDateControl';
 import { deleteCookies, getCookies, setCookies } from '@/app/_store/cookie/cookies';
 import { usePostDeletedStore } from '@/app/_store/isPostDeleted';
@@ -19,6 +20,7 @@ import { useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 
 export default function DailyView() {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [dailyTopicId, setDailyTopicId] = useState(-1);
   const [topic, setTopic] = useState<string>('');
   const [dailyThreads, setDailyThreads] = useState<DailyThreadType[]>([]);
@@ -107,11 +109,19 @@ export default function DailyView() {
 
   useEffect(() => {
     if (initialized) {
-      handleLoad();
+      try {
+        handleLoad();
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
     }
   }, [initialized, handleLoad, isDeleted]);
 
-  return (
+  return isLoading ? (
+    <Loading />
+  ) : (
     <div className="flex flex-col items-center min-h-screen gap-24">
       <DateController
         controllerType="daily"

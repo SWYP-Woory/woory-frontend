@@ -2,11 +2,18 @@
 
 import ImageDeleteIcon from '@/app/_components/icon/delete/ImageDeleteIcon';
 import { useImageUpload } from '@/app/_hooks/useImageUpload';
+import { useImageDeletedStore } from '@/app/_store/isImageDeleted';
 import Picture from '@/assets/icons/picture/picture.svg';
 import Image from 'next/image';
 
 export default function ImageUpload() {
   const { selectedImage, handleUploadClick, fileInputRef, handleImageChange, handleDeleteClick } = useImageUpload();
+  const { setIsDeleted } = useImageDeletedStore();
+
+  const handleImageDelete = () => {
+    handleDeleteClick();
+    setIsDeleted(true);
+  };
 
   if (selectedImage) {
     return (
@@ -19,7 +26,7 @@ export default function ImageUpload() {
           height={500}
           className="object-contain w-full h-auto"
         />
-        <button type="button" aria-label="delete" className="absolute top-8 right-[0.8rem]" onClick={handleDeleteClick}>
+        <button type="button" aria-label="delete" className="absolute top-8 right-[0.8rem]" onClick={handleImageDelete}>
           <ImageDeleteIcon />
         </button>
       </div>

@@ -45,7 +45,9 @@ export default function DailyUserTitle({ name, isEdit, targetType, contentId, re
     setIsActive((prev) => !prev);
   };
 
-  const handleEditClick = () => {};
+  const handleEditClick = () => {
+    router.push(`/posts?contentId=${contentId}`);
+  };
 
   const handleDeleteClick = () => {
     setIsModalOpen(true);

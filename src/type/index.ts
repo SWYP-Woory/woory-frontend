@@ -174,6 +174,11 @@ export type CreatePostType = {
   images?: string;
 };
 
+export type EditPostDataType = {
+  contentText: string;
+  images?: string;
+};
+
 export type TopicStoreType = {
   topicId?: number;
   topicTitle: string;
