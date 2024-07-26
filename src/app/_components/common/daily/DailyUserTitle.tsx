@@ -15,12 +15,12 @@ interface Props {
   name: string;
   isEdit: boolean;
   targetType: 'post' | 'comment' | 'reply';
-  contentId?: number;
+  postId?: number;
   regDate?: string;
   isLastReply?: boolean;
 }
 
-export default function DailyUserTitle({ name, isEdit, targetType, contentId, regDate, isLastReply }: Props) {
+export default function DailyUserTitle({ name, isEdit, targetType, postId, regDate, isLastReply }: Props) {
   const content = MODAL_TYPE_MAP[targetType];
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -30,7 +30,7 @@ export default function DailyUserTitle({ name, isEdit, targetType, contentId, re
 
   const deletePost = async () => {
     try {
-      await deleteData({ path: `${apiRoutes.deletePost}/${groupId}/${contentId}` });
+      await deleteData({ path: `${apiRoutes.deletePost}/${groupId}/${postId}` });
       setIsActive(false);
       setIsModalOpen(false);
       setIsDeleted(!isDeleted);
@@ -46,7 +46,7 @@ export default function DailyUserTitle({ name, isEdit, targetType, contentId, re
   };
 
   const handleEditClick = () => {
-    router.push(`/posts?contentId=${contentId}`);
+    router.push(`/posts?postId=${postId}`);
   };
 
   const handleDeleteClick = () => {

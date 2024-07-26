@@ -12,10 +12,10 @@ import { useRouter } from 'next/navigation';
 
 interface Props {
   topicId: number;
-  contentId: string;
+  postId: number;
 }
 
-export default function ControlHeader({ topicId, contentId }: Props) {
+export default function ControlHeader({ topicId, postId }: Props) {
   const { imageReset } = useImageUploadStore();
   const { selectedImage } = useImageUpload();
   const { inputText, inputReset } = useInputStore();
@@ -57,18 +57,18 @@ export default function ControlHeader({ topicId, contentId }: Props) {
         if (isDeleted) {
           editData.images = 'delete';
         }
-        await putData({ path: `${apiRoutes.editPost}/${groupId}/${contentId}`, body: editData });
+        await putData({ path: `${apiRoutes.editPost}/${groupId}/${postId}`, body: editData });
       } catch (error) {
         console.error(error);
       } finally {
         imageReset();
         inputReset();
         setIsDeleted(false);
-        router.replace(`/posts/${contentId}`);
+        router.replace(`/posts/${postId}`);
       }
     };
 
-    if (contentId) {
+    if (postId) {
       editPost();
     } else {
       createPost();

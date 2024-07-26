@@ -49,7 +49,7 @@ export default function DailyPostView({ postId }: Props) {
                 name={postData?.name}
                 isEdit={postData?.isEdit}
                 targetType="post"
-                contentId={postId}
+                postId={postId}
                 regDate={postData.contentRegDate}
               />
             </div>

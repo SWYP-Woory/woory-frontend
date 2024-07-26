@@ -20,7 +20,7 @@ export default function WritePostMain() {
   const { setSelectedImage } = useImageUpload();
 
   const searchParams = useSearchParams();
-  const contentId = searchParams.get('contentId');
+  const postId = searchParams.get('postId');
 
   useEffect(() => {
     const fetchTopic = async () => {
@@ -36,7 +36,7 @@ export default function WritePostMain() {
 
     const fetchEditPost = async () => {
       try {
-        const { data } = await getData({ path: `${apiRoutes.getEditPost}/${contentId}` });
+        const { data } = await getData({ path: `${apiRoutes.getEditPost}/${postId}` });
         setInputText(data.contentText);
         setSelectedImage(data.images);
       } catch (error) {
@@ -44,7 +44,7 @@ export default function WritePostMain() {
       }
     };
 
-    if (contentId) {
+    if (postId) {
       fetchEditPost();
     }
     fetchTopic();
@@ -53,7 +53,7 @@ export default function WritePostMain() {
   return (
     topicData && (
       <>
-        <ControlHeader topicId={topicData.topicId} contentId={contentId!} />
+        <ControlHeader topicId={topicData.topicId} postId={Number(postId)!} />
         <div className="flex flex-col items-center gap-24 py-24 px-16">
           <DailyTopic topicId={topicData.topicId} topic={topicData.topicContent} isLiked />
           <InputDailyContent />
