@@ -19,12 +19,12 @@ function findEventForDate(date: Date, events: CalenderDataType[]) {
   });
 }
 
-function renderDay(day: Date, currentDate: Date, events: CalenderDataType[], favoritesPosts: FavoritePostType[]) {
+function renderDay(day: Date, currentDate: Date, events: CalenderDataType[], favoritesPosts?: FavoritePostType[]) {
   const isCurrentMonth = getMonth(day) === getMonth(currentDate);
   const formattedDay = format(day, 'd');
   const calendarEvent = findEventForDate(day, events);
   const date = getCalendarTime(day);
-  const isLiked = favoritesPosts.find((favorite) => getCalendarTime(favorite.topicDate) === date);
+  const isLiked = favoritesPosts && favoritesPosts.find((favorite) => getCalendarTime(favorite.topicDate) === date);
 
   return (
     <Day
