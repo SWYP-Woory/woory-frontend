@@ -15,8 +15,8 @@ type Story = StoryObj<typeof FavoritePost>;
 
 export const Default: Story = {
   args: {
-    imgUrl: IMAGE_URL,
-    content: '오늘 먹은 점심 자랑하기',
-    postDate: new Date(),
+    topicTitle: IMAGE_URL,
+    topicImage: '',
+    topicDate: new Date(),
   },
 };

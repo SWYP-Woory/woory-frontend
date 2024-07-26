@@ -33,7 +33,7 @@ export default function WritePostMain() {
       <>
         <ControlHeader topicId={topicData.topicId} />
         <div className="flex flex-col items-center gap-24 py-24 px-16">
-          <DailyTopic topic={topicData.topicContent} />
+          <DailyTopic topicId={topicData.topicId} topic={topicData.topicContent} isLiked />
           <InputDailyContent />
           <ImageUpload />
         </div>

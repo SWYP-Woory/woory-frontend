@@ -7,7 +7,7 @@ interface Props {
 export default function DailyPostImage({ postUrl }: Props) {
   return postUrl ? (
     <div className="relative w-full aspect-square">
-      <Image src={postUrl} alt="post" fill sizes="295" className="object-cover" />
+      <Image src={postUrl} alt="post" fill priority sizes="295" className="object-cover" />
     </div>
   ) : null;
 }

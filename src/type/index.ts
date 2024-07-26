@@ -58,6 +58,7 @@ export type ReactionDataType = {
 
 export type DailyPostType = BasePostType & {
   id: number;
+  topicId: number;
   topic: string;
   reactions: ReactionDataType[];
 };
@@ -105,9 +106,10 @@ export type FamilyMakeType = {
 };
 
 export type FavoritePostType = {
-  content: string;
-  imgUrl: string;
-  postDate: Date;
+  topicId: number;
+  topicTitle: string;
+  topicImage: string;
+  topicDate: Date;
 };
 
 export type MembersDataType = {
@@ -163,4 +165,11 @@ export type CreatePostType = {
   topicId: number;
   contentText: string;
   images?: string;
+};
+
+export type TopicStoreType = {
+  topicId?: number;
+  topicTitle: string;
+  topicImage: string;
+  topicDate?: Date;
 };
