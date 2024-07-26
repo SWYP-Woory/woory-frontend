@@ -75,7 +75,7 @@ function Icons() {
         <IconSort>
           <MemberDeleteIcon isClicked />
           <KebabMenuIcon isActive onClick={handleClick} />
-          <LikeIcon />
+          <LikeIcon isLiked topicId={12} />
         </IconSort>
       </IconSection>
 
