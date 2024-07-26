@@ -8,11 +8,11 @@ import { ReactionDataType } from '@/type';
 interface Props extends ReactionDataType {}
 
 const REACTION_ICON_MAP = {
-  heart: RcHeartIcon,
-  smile: SmileIcon,
-  sad: SadIcon,
-  surprise: SurpriseIcon,
-  thumbs: ThumbsIcon,
+  LOVE: RcHeartIcon,
+  HAPPY: SmileIcon,
+  SAD: SadIcon,
+  WOW: SurpriseIcon,
+  LIKE: ThumbsIcon,
 };
 
 export default function ReactionChip({ count, reactionType, isActive }: Props) {

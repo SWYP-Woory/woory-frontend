@@ -23,7 +23,11 @@ export default function ReactionSection({ reactions }: Props) {
         <ReactionChip reactionType={reaction.reactionType} count={reaction.count} isActive={reaction.isActive} />
       ))}
       <AddReactionChip isClicked={isClicked} onClick={handleAddClicked} />
-      <div className="absolute top-[3.8rem] right-0">{isClicked && <ReactionMenu />}</div>
+      {isClicked && (
+        <div className={`absolute top-[3.8rem] ${reactions.length < 3 ? 'left-0' : 'right-0'} z-20`}>
+          <ReactionMenu />
+        </div>
+      )}
     </div>
   );
 }

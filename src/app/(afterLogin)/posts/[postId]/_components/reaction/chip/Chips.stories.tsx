@@ -12,8 +12,8 @@ function Chips() {
 
   return (
     <div className="flex gap-12">
-      <ReactionChip count={1} reactionType="sad" />
-      <ReactionChip count={2} reactionType="surprise" isActive />
+      <ReactionChip count={1} reactionType="LOVE" isActive={false} />
+      <ReactionChip count={2} reactionType="WOW" isActive />
       <AddReactionChip isClicked={isClicked} onClick={handleClick} />
     </div>
   );
