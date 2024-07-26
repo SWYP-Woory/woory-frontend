@@ -32,6 +32,7 @@ const DUMMY_COMMENT = [
     ],
   },
 ];
+
 interface Props {
   params: {
     postId: string;

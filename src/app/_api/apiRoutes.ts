@@ -23,4 +23,5 @@ export const apiRoutes = {
   getTopic: '/v1/contents/topic',
   getMonthPost: '/v1/contents/get/month',
   getPost: '/v1/contents/get',
+  deletePost: '/v1/contents/delete',
 };

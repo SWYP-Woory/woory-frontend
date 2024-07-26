@@ -48,6 +48,7 @@ export type DailyThreadType = BasePostType & {
   id: number;
   comment: number;
   reaction: number;
+  regDate: string;
 };
 
 export type ReactionDataType = {
@@ -65,6 +66,8 @@ export type DailyPostType = {
   name: string;
   profileUrl: string;
   userId: number;
+  topicContent: string;
+  topicId: number;
 };
 
 export type DailyDataType = {
