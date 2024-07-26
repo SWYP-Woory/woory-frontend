@@ -79,7 +79,7 @@ export default function DailyPostView({ postId }: Props) {
           </>
         )
       )}
-      {reactionData && <ReactionSection reactions={reactionData} />}
+      {reactionData && <ReactionSection reactions={reactionData} postId={postId} />}
     </div>
   );
 }

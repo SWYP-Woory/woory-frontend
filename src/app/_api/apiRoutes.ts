@@ -29,4 +29,5 @@ export const apiRoutes = {
 
   // Reaction
   getReaction: '/v1/contents/reaction',
+  addReaction: '/v1/contents/reaction',
 };
