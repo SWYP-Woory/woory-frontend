@@ -35,7 +35,7 @@ const DUMMY_COMMENT = [
 
 interface Props {
   params: {
-    postId: string;
+    postId: number;
   };
 }
 
@@ -45,7 +45,7 @@ export default function PostPage({ params }: Props) {
       <BasicHeader title="게시글" />
       <div className="flex-grow flex flex-col">
         <div className="flex-shrink-0">
-          <DailyPostView postId={Number(params.postId)} />
+          <DailyPostView postId={params.postId} />
           <Border />
         </div>
         <div className="flex flex-col flex-grow">
