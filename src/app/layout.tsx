@@ -8,7 +8,7 @@ const NotoSans = Noto_Sans_KR({ subsets: ['latin'], weight: ['400'] });
 const APP_NAME = 'WOORY';
 const APP_DEFAULT_TITLE = 'WOORY | 우리';
 const APP_TITLE_TEMPLATE = '%s | 우리';
-const APP_DESCRIPTION = '우리 가족끼리 나누는 일상, 우리 매일 다른 주제로 재미있고 간단하게 일상을 공유해보세요!';
+const APP_DESCRIPTION = '우리 가족끼리 나누는 일상, 우리. 매일 다른 주제로 재미있고 간단하게 일상을 공유해보세요!';
 
 export const metadata: Metadata = {
   title: APP_NAME,
