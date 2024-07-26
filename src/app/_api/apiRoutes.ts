@@ -22,4 +22,5 @@ export const apiRoutes = {
   createPost: '/v1/contents/create',
   getTopic: '/v1/contents/topic',
   getMonthPost: '/v1/contents/get/month',
+  getPost: '/v1/contents/get',
 };

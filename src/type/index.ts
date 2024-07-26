@@ -56,11 +56,15 @@ export type ReactionDataType = {
   isActive?: boolean;
 };
 
-export type DailyPostType = BasePostType & {
-  id: number;
-  topicId: number;
-  topic: string;
-  reactions: ReactionDataType[];
+export type DailyPostType = {
+  contentId: number;
+  contentImgPath?: string;
+  contentRegDate: string;
+  contentText: string;
+  isEdit: boolean;
+  name: string;
+  profileUrl: string;
+  userId: number;
 };
 
 export type DailyDataType = {
