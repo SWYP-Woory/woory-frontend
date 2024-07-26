@@ -1,28 +1,53 @@
 'use client';
 
+import { deleteData } from '@/app/_api/api';
+import { apiRoutes } from '@/app/_api/apiRoutes';
 import EditDeleteButton from '@/app/_components/common//button/EditDeleteButton';
 import Modal from '@/app/_components/common/modal/Modal';
 import KebabMenuIcon from '@/app/_components/icon/kebabMenu/KebabMenuIcon';
 import { MODAL_TYPE_MAP } from '@/app/_constants/modal';
+import { getCookies } from '@/app/_store/cookie/cookies';
+import { usePostDeletedStore } from '@/app/_store/isPostDeleted';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 interface Props {
   name: string;
   isEdit: boolean;
   targetType: 'post' | 'comment' | 'reply';
+  postId?: number;
+  regDate?: string;
   isLastReply?: boolean;
 }
 
-export default function DailyUserTitle({ name, isEdit, targetType, isLastReply }: Props) {
+export default function DailyUserTitle({ name, isEdit, targetType, postId, regDate, isLastReply }: Props) {
   const content = MODAL_TYPE_MAP[targetType];
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const router = useRouter();
+  const groupId = getCookies('groupId');
+  const { isDeleted, setIsDeleted } = usePostDeletedStore();
+
+  const deletePost = async () => {
+    try {
+      await deleteData({ path: `${apiRoutes.deletePost}/${groupId}/${postId}` });
+      setIsActive(false);
+      setIsModalOpen(false);
+      setIsDeleted(!isDeleted);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      router.replace(`/home/daily?day=${regDate}`);
+    }
+  };
 
   const handleKebabClick = () => {
     setIsActive((prev) => !prev);
   };
 
-  const handleEditClick = () => {};
+  const handleEditClick = () => {
+    router.push(`/posts?postId=${postId}`);
+  };
 
   const handleDeleteClick = () => {
     setIsModalOpen(true);
@@ -33,7 +58,9 @@ export default function DailyUserTitle({ name, isEdit, targetType, isLastReply }
     setIsActive((prev) => !prev);
   };
 
-  const handleDeleteConfirm = () => {};
+  const handleDeleteConfirm = () => {
+    if (targetType === 'post') deletePost();
+  };
 
   return (
     <div className="flex flex-grow justify-between items-center relative">
