@@ -29,10 +29,10 @@ export default function DailyView() {
   const searchParams = useSearchParams();
   const { currentDate, setCurrentDate, prevDayHandler, nextDayHandler } = useDateControl();
   const { setIsPosted, setPostDate } = useIsPostStore();
-  const day = searchParams.get('day');
-  const inviteLoginGroupId = searchParams.get('inviteGroupId');
   // 데일리에서 topic, topicImage, topicDate 저장
   const { setTopicTitle, setTopicImage, setTopicDate } = useTopicStore();
+  const day = searchParams.get('day');
+  const inviteLoginGroupId = searchParams.get('inviteGroupId');
 
   const handleLoad = useCallback(async () => {
     let groupId = getCookies('groupId');
