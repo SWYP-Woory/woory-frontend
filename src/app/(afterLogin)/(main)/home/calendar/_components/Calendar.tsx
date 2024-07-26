@@ -24,7 +24,9 @@ function renderDay(day: Date, currentDate: Date, events: CalenderDataType[], fav
   const formattedDay = format(day, 'd');
   const calendarEvent = findEventForDate(day, events);
   const date = getCalendarTime(day);
-  const isLiked = favoritesPosts && favoritesPosts.find((favorite) => getCalendarTime(favorite.topicDate) === date);
+  const isLiked = favoritesPosts
+    ? favoritesPosts.some((favorite) => getCalendarTime(favorite.topicDate) === date)
+    : false;
 
   return (
     <Day
@@ -34,7 +36,7 @@ function renderDay(day: Date, currentDate: Date, events: CalenderDataType[], fav
       validation={isCurrentMonth}
       hasContent={!!calendarEvent}
       imageUrl={calendarEvent?.contentImgPath}
-      isLiked={!!isLiked}
+      isLiked={isLiked}
     />
   );
 }
