@@ -11,9 +11,10 @@ import { useState } from 'react';
 interface Props {
   postId: number;
   reactions: ReactionDataType[];
+  fetchReaction: () => Promise<void>;
 }
 
-export default function ReactionSection({ reactions, postId }: Props) {
+export default function ReactionSection({ reactions, postId, fetchReaction }: Props) {
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
   const handleAddClicked = () => {
@@ -24,6 +25,8 @@ export default function ReactionSection({ reactions, postId }: Props) {
     try {
       const data = { contentId: postId, reaction };
       await postData({ path: apiRoutes.addReaction, body: data });
+      setIsClicked(false);
+      fetchReaction();
     } catch (error) {
       console.error(error);
     }

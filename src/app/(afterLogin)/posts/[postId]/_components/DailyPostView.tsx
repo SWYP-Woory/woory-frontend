@@ -43,8 +43,11 @@ export default function DailyPostView({ postId }: Props) {
 
   useEffect(() => {
     fetchPostData();
+  }, [fetchPostData]);
+
+  useEffect(() => {
     fetchReaction();
-  }, [fetchPostData, fetchReaction]);
+  }, [fetchReaction]);
 
   return (
     <div className="flex flex-col w-full h-full bg-white px-16 pt-24 pb-16 gap-16">
@@ -79,7 +82,7 @@ export default function DailyPostView({ postId }: Props) {
           </>
         )
       )}
-      {reactionData && <ReactionSection reactions={reactionData} postId={postId} />}
+      {reactionData && <ReactionSection reactions={reactionData} postId={postId} fetchReaction={fetchReaction} />}
     </div>
   );
 }
