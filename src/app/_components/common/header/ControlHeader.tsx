@@ -44,7 +44,7 @@ export default function ControlHeader({ topicId, contentId }: Props) {
       } finally {
         imageReset();
         inputReset();
-        router.push(`/home/daily`);
+        router.replace(`/home/daily`);
       }
     };
 
@@ -64,7 +64,7 @@ export default function ControlHeader({ topicId, contentId }: Props) {
         imageReset();
         inputReset();
         setIsDeleted(false);
-        router.push(`/posts/${contentId}`);
+        router.replace(`/posts/${contentId}`);
       }
     };
 
