@@ -2,12 +2,12 @@
 
 import DailyNoThread from '@/app/(afterLogin)/(main)/home/daily/_components/DailyNoThread';
 import DailyThread from '@/app/(afterLogin)/(main)/home/daily/_components/DailyThread';
-import { getData } from '@/app/_api/api';
+import { getData, postData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
 import DailyTopic from '@/app/_components/common/daily/DailyTopic';
 import DateController from '@/app/_components/common/dateController/DateController';
 import { useDateControl } from '@/app/_hooks/useDateControl';
-import { getCookies } from '@/app/_store/cookie/cookies';
+import { deleteCookies, getCookies, setCookies } from '@/app/_store/cookie/cookies';
 import { useIsPostStore } from '@/app/_store/isPostStore';
 import LocalStorage from '@/app/_store/localstorage/LocalStorage';
 import { useTopicStore } from '@/app/_store/topicStore';
@@ -30,11 +30,32 @@ export default function DailyView() {
   const { currentDate, setCurrentDate, prevDayHandler, nextDayHandler } = useDateControl();
   const { setIsPosted, setPostDate } = useIsPostStore();
   const day = searchParams.get('day');
+  const inviteLoginGroupId = searchParams.get('inviteGroupId');
   // 데일리에서 topic, topicImage, topicDate 저장
   const { setTopicTitle, setTopicImage, setTopicDate } = useTopicStore();
 
   const handleLoad = useCallback(async () => {
-    const groupId = getCookies('groupId');
+    let groupId = getCookies('groupId');
+    const inviteGroupId = getCookies('inviteGroupId');
+
+    // 로그인 링크 이후 회원가입
+    if (inviteLoginGroupId && Number(inviteLoginGroupId) !== groupId) {
+      const joinData = { groupId: inviteLoginGroupId };
+      await postData({ path: `${apiRoutes.joinFamily}/${inviteLoginGroupId}`, body: joinData });
+      deleteCookies('inviteGroupId');
+      deleteCookies('groupId');
+      setCookies('groupId', inviteLoginGroupId, { path: '/' });
+      groupId = inviteLoginGroupId;
+    } // 비로그인 링크 이후 회원가입
+    else if (inviteGroupId) {
+      const joinData = { groupId: inviteGroupId };
+      await postData({ path: `${apiRoutes.joinFamily}/${inviteGroupId}`, body: joinData });
+      deleteCookies('inviteGroupId');
+      deleteCookies('groupId');
+      setCookies('groupId', inviteGroupId, { path: '/' });
+      groupId = inviteGroupId;
+    }
+
     const { data }: { data: DailyDataType } = await getData({
       path: `${apiRoutes.getDaily}/${groupId}/get?day=${getCalendarTime(currentDate)}`,
     });

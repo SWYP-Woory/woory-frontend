@@ -1,11 +1,16 @@
 import Main from '@/app/(beforeLogin)/_components/Main';
 import RedirectHandler from '@/app/(beforeLogin)/_components/RedirectHandler';
+import { getSession } from '@/app/_store/cookie/session';
 
-export default function Home() {
+export default async function Home() {
+  const accessToken = await getSession('AccessToken');
+  const groupId = await getSession('groupId');
+  const inviteGroupId = await getSession('inviteGroupId');
+
   return (
     <>
-      <RedirectHandler />
-      <Main />
+      <RedirectHandler accessToken={accessToken} groupId={groupId} inviteGroupId={inviteGroupId} />
+      {!accessToken && <Main />}
     </>
   );
 }

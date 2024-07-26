@@ -1,7 +1,11 @@
 'use client';
 
-import SocialLoginButton from '@/app/(beforeLogin)/_components/SocialLoginButton';
 import { useTermsStore } from '@/app/_store/termsStore';
+import dynamic from 'next/dynamic';
+
+const SocialLoginButton = dynamic(() => import('@/app/(beforeLogin)/_components/SocialLoginButton'), {
+  ssr: false,
+});
 
 export default function SocialLogin() {
   const isAgreed = useTermsStore((state) => state.isAgreed);
