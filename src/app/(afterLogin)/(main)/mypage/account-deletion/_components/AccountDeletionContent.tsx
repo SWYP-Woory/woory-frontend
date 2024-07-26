@@ -24,7 +24,7 @@ export default function AccountDeletionContent() {
       await deleteData({ path: apiRoutes.UserDeletion });
       deleteCookies('add_home');
       deleteCookies('groupId');
-      logout();
+      await logout();
       router.replace('/');
     } catch (e) {
       console.error(e);

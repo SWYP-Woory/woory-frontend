@@ -21,7 +21,7 @@ export default function AccountSetting({ targetType }: Props) {
     try {
       await getData({ path: apiRoutes.UserLogout });
       deleteCookies('groupId');
-      logout();
+      await logout();
       router.replace('/');
     } catch (e) {
       console.error(e);

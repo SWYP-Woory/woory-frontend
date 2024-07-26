@@ -3,40 +3,6 @@ import CommentView from '@/app/(afterLogin)/posts/[postId]/_components/comment/C
 import InputComment from '@/app/(afterLogin)/posts/[postId]/_components/input/InputComment';
 import Border from '@/app/_components/common/border/Border';
 import BasicHeader from '@/app/_components/common/header/BasicHeader';
-import { DailyPostType } from '@/type';
-
-const DUMMY_DATA: DailyPostType = {
-  id: 1,
-  profileUrl: 'https://avatars.githubusercontent.com/u/49144662?s=400&u=903e697529c3b51f9c69bc3885c8f9be3d754028&v=4',
-  name: '아빠',
-  content: '나무들이 좋다',
-  postUrl: 'https://cdn.smarttoday.co.kr/news/photo/202002/img_4656_0.jpg',
-  isEdit: true,
-  topic: '가장 좋아하는 사진',
-  topicId: 12,
-  reactions: [
-    {
-      reactionType: 'heart',
-      count: 2,
-      isActive: true,
-    },
-    {
-      reactionType: 'smile',
-      count: 1,
-      isActive: false,
-    },
-    {
-      reactionType: 'thumbs',
-      count: 3,
-      isActive: true,
-    },
-    {
-      reactionType: 'surprise',
-      count: 3,
-      isActive: true,
-    },
-  ],
-};
 
 const DUMMY_COMMENT = [
   {
@@ -67,13 +33,19 @@ const DUMMY_COMMENT = [
   },
 ];
 
-export default function PostPage() {
+interface Props {
+  params: {
+    postId: number;
+  };
+}
+
+export default function PostPage({ params }: Props) {
   return (
     <>
       <BasicHeader title="게시글" />
       <div className="flex-grow flex flex-col">
         <div className="flex-shrink-0">
-          <DailyPostView data={DUMMY_DATA} />
+          <DailyPostView postId={params.postId} />
           <Border />
         </div>
         <div className="flex flex-col flex-grow">
