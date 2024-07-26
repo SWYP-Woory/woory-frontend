@@ -7,10 +7,9 @@ export default async function Home() {
   const groupId = await getSession('groupId');
   const inviteGroupId = await getSession('inviteGroupId');
 
-  return (
-    <>
-      <RedirectHandler accessToken={accessToken} groupId={groupId} inviteGroupId={inviteGroupId} />
-      {!accessToken && <Main />}
-    </>
-  );
+  if (accessToken) {
+    return <RedirectHandler accessToken={accessToken} groupId={groupId} inviteGroupId={inviteGroupId} />;
+  }
+
+  return <Main />;
 }

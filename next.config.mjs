@@ -15,16 +15,6 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'avatars.githubusercontent.com',
-        pathname: '**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'cdn.smarttoday.co.kr',
-        pathname: '**',
-      },
-      {
-        protocol: 'https',
         hostname: 'woory-bucket.s3.ap-northeast-2.amazonaws.com',
         pathname: '**',
       },
@@ -36,6 +26,11 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 's3.ap-northeast-2.amazonaws.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'phinf.pstatic.net',
         pathname: '**',
       },
     ],
