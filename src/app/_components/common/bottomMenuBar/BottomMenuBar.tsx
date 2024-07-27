@@ -12,18 +12,26 @@ export default function BottomMenuBar() {
 
   return (
     <nav className="sticky bottom-0">
-      <div className="flex justify-evenly items-start pt-[1.3rem] bg-white w-[37.5rem] h-[4.8rem] border-bgGrey border-t">
+      <div className="flex justify-center bg-white w-[37.5rem] h-[4.8rem] border-bgGrey border-t">
         <Link href="/home/daily">
-          <HomeIcon isActive={pathName.includes('home')} />
+          <div className="bottom-menu">
+            <HomeIcon isActive={pathName.includes('home')} />
+          </div>
         </Link>
         <Link href="/favorites">
-          <HeartIcon isActive={pathName.includes('favorites')} />
+          <div className="bottom-menu">
+            <HeartIcon isActive={pathName.includes('favorites')} />
+          </div>
         </Link>
         <Link href="/members">
-          <MemberIcon isActive={pathName.includes('members')} />
+          <div className="bottom-menu">
+            <MemberIcon isActive={pathName.includes('members')} />
+          </div>
         </Link>
         <Link href="/mypage">
-          <MyPageIcon isActive={pathName.includes('mypage')} />
+          <div className="bottom-menu">
+            <MyPageIcon isActive={pathName.includes('mypage')} />
+          </div>
         </Link>
       </div>
     </nav>
