@@ -5,7 +5,7 @@ import MemberProfile from '@/app/(afterLogin)/(main)/members/_components/MemberP
 import MyProfile from '@/app/(afterLogin)/(main)/members/_components/MyProfile';
 import { getData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
-import { getCookies } from '@/app/_store/cookie/cookies';
+import { deleteCookies, getCookies } from '@/app/_store/cookie/cookies';
 import { MemberType, MembersDataType } from '@/type';
 import { openToast } from '@/utils/Toast';
 import { useRouter } from 'next/navigation';
@@ -45,6 +45,7 @@ export default function MemberMain() {
       const { data, status } = await getData({ path: `${apiRoutes.getMembers}/${groupId}` });
 
       if (status === 404) {
+        deleteCookies('groupId');
         router.replace('/not-found');
       }
 
