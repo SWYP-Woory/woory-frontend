@@ -30,4 +30,8 @@ export const apiRoutes = {
   // Comment
   createComment: '/v1/comments/add',
   getComments: '/v1/comments',
+
+  // Reaction
+  getReaction: '/v1/contents/reaction',
+  addReaction: '/v1/contents/reaction',
 };
