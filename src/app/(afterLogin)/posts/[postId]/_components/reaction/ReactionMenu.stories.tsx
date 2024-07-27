@@ -2,9 +2,10 @@ import ReactionMenu from '@/app/(afterLogin)/posts/[postId]/_components/reaction
 import { Meta, StoryObj } from '@storybook/react';
 
 function ReactionMenus() {
+  const handleClick = () => {};
   return (
     <div className="flex gap-8">
-      <ReactionMenu />
+      <ReactionMenu onClick={handleClick} />
     </div>
   );
 }

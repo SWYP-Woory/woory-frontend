@@ -26,4 +26,8 @@ export const apiRoutes = {
   deletePost: '/v1/contents/delete',
   getEditPost: '/v1/contents/modify',
   editPost: '/v1/contents',
+
+  // Reaction
+  getReaction: '/v1/contents/reaction',
+  addReaction: '/v1/contents/reaction',
 };
