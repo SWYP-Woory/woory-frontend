@@ -8,6 +8,7 @@ import { apiRoutes } from '@/app/_api/apiRoutes';
 import { getCookies } from '@/app/_store/cookie/cookies';
 import { MemberType, MembersDataType } from '@/type';
 import { openToast } from '@/utils/Toast';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const defaultUser: MemberType = {
@@ -19,6 +20,7 @@ const defaultUser: MemberType = {
 
 export default function MemberMain() {
   const [membersData, setMembersData] = useState<MembersDataType>();
+  const router = useRouter();
 
   const handleMemberAdd = () => {
     const baseUrl = window.location.origin;
@@ -40,7 +42,12 @@ export default function MemberMain() {
   const fetchMembers = async () => {
     try {
       const groupId = getCookies('groupId');
-      const { data } = await getData({ path: `${apiRoutes.getMembers}/${groupId}` });
+      const { data, status } = await getData({ path: `${apiRoutes.getMembers}/${groupId}` });
+
+      if (status === 404) {
+        router.replace('/not-found');
+      }
+
       setMembersData(data);
     } catch (e) {
       console.error(e);
