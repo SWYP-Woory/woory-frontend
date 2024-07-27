@@ -1,9 +1,11 @@
 'use client';
 
-import { postData } from '@/app/_api/api';
+import { getData, postData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
+import { useCommentStore } from '@/app/_store/CommentStore';
 import { useInputCommentStore } from '@/app/_store/inputCommentStore';
 import SendIcon from '@/assets/icons/send/send.svg';
+import { CommentListType } from '@/type';
 import { useState } from 'react';
 
 interface Props {
@@ -16,7 +18,8 @@ interface Props {
 
 export default function InputChat({ postId, value, maxLength, placeholder, onChange }: Props) {
   const [isFocused, setIsFocused] = useState<boolean>(false);
-  const { setInputComment } = useInputCommentStore();
+  const { reset } = useInputCommentStore();
+  const { setComments } = useCommentStore();
   const isEntered = value.length !== 0;
 
   const handleCreateComment = async () => {
@@ -26,11 +29,13 @@ export default function InputChat({ postId, value, maxLength, placeholder, onCha
     };
 
     await postData({ path: `${apiRoutes.createComment}`, body });
+    const { data }: { data: CommentListType[] } = await getData({ path: `${apiRoutes.getComments}/${postId}` });
+    setComments(data);
   };
 
   const handleClick = () => {
     handleCreateComment();
-    setInputComment('');
+    reset();
   };
 
   return (
