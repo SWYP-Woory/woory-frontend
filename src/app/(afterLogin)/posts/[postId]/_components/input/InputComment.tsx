@@ -24,7 +24,7 @@ export default function InputComment({ postId, replyingCommentId, onReplyClick }
   };
 
   return (
-    <div className="flex sticky bottom-0 items-center justify-center w-full h-[6.0rem] border-bgGrey border-t bg-white">
+    <div className="flex sticky z-10 bottom-0 items-center justify-center w-full h-[6.0rem] border-bgGrey border-t bg-white">
       <InputChat
         postId={postId}
         value={inputData}
