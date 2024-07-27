@@ -7,9 +7,7 @@ interface Props extends CommentType {
   isLastReply?: boolean;
 }
 
-export default function Comment({ profile, comment, hasReply, isLastReply }: Props) {
-  const { profileUrl, name, isEdit } = profile;
-
+export default function Comment({ commentId, profileUrl, comment, name, edit, hasReply, isLastReply }: Props) {
   return (
     <div className={`${hasReply ? 'w-full' : 'w-[28.5rem]'}`}>
       <div className="flex gap-8">
@@ -18,7 +16,7 @@ export default function Comment({ profile, comment, hasReply, isLastReply }: Pro
           <div>
             <DailyUserTitle
               name={name}
-              isEdit={isEdit}
+              isEdit={edit}
               targetType={`${hasReply ? 'comment' : 'reply'}`}
               isLastReply={isLastReply}
             />
