@@ -3,6 +3,7 @@ import LikeIcon from '@/app/_components/icon/like/LikeIcon';
 import defaultImage from '@/assets/icons/logo/logo_woory.svg';
 import { getCalendarTime } from '@/utils/getTime';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface Props {
   topicId: number;
@@ -15,16 +16,20 @@ export default function FavoritePost({ topicId, topicTitle, topicImage, topicDat
   const date = getCalendarTime(topicDate);
   return (
     <div className="relative w-[37.5rem] h-[9.3rem] bg-white">
-      <div className="flex absolute top-[1.6rem] left-[1.6rem] w-[6rem] h-[6rem] justify-center items-center">
-        {topicImage ? (
-          <Image src={topicImage || defaultImage} fill alt="포스트 사진" className="object-cover rounded-2xl" />
-        ) : (
-          <DefaultPostImage />
-        )}
-      </div>
-      <div className="absolute top-[2.1rem] left-[9.2rem] w-[17.8rem] h-[2.6rem] text-18 font-500 text-black">
-        {topicTitle}
-      </div>
+      <Link href={`/home/daily?day=${topicDate}`}>
+        <div className="relative w-full h-full">
+          <div className="flex absolute top-[1.6rem] left-[1.6rem] w-[6rem] h-[6rem] justify-center items-center">
+            {topicImage ? (
+              <Image src={topicImage || defaultImage} fill alt="포스트 사진" className="object-cover rounded-2xl" />
+            ) : (
+              <DefaultPostImage />
+            )}
+          </div>
+          <div className="absolute top-[2.1rem] left-[9.2rem] w-[17.8rem] h-[2.6rem] text-18 font-500 text-black">
+            {topicTitle}
+          </div>
+        </div>
+      </Link>
       <div className="absolute bottom-[2.2rem] left-[9.2rem] text-textDisabled text-14 font-500">{date}</div>
       <div className="absolute cursor-pointer top-[3.7rem] right-[1.8rem]">
         <LikeIcon topicId={topicId} isLiked />
