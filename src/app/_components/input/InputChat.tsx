@@ -2,6 +2,7 @@
 
 import { postData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
+import { useInputCommentStore } from '@/app/_store/inputCommentStore';
 import SendIcon from '@/assets/icons/send/send.svg';
 import { useState } from 'react';
 
@@ -11,11 +12,11 @@ interface Props {
   maxLength: number;
   placeholder: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  setInputData: (input: string) => void;
 }
 
-export default function InputChat({ postId, value, maxLength, placeholder, onChange, setInputData }: Props) {
+export default function InputChat({ postId, value, maxLength, placeholder, onChange }: Props) {
   const [isFocused, setIsFocused] = useState<boolean>(false);
+  const { setInputComment } = useInputCommentStore();
   const isEntered = value.length !== 0;
 
   const handleCreateComment = async () => {
@@ -29,7 +30,7 @@ export default function InputChat({ postId, value, maxLength, placeholder, onCha
 
   const handleClick = () => {
     handleCreateComment();
-    setInputData('');
+    setInputComment('');
   };
 
   return (

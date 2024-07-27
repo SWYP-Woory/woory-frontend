@@ -1,27 +1,13 @@
 'use client';
 
 import Comment from '@/app/(afterLogin)/posts/[postId]/_components/comment/Comment';
-import { getData } from '@/app/_api/api';
-import { apiRoutes } from '@/app/_api/apiRoutes';
 import { CommentListType } from '@/type';
-import { useCallback, useEffect, useState } from 'react';
 
 interface Props {
-  postId: number;
+  comments: CommentListType[];
 }
 
-export default function CommentView({ postId }: Props) {
-  const [comments, setComments] = useState<CommentListType[]>([]);
-
-  const handleLoad = useCallback(async () => {
-    const { data }: { data: CommentListType[] } = await getData({ path: `${apiRoutes.getComments}/${postId}` });
-    setComments(data);
-  }, [postId]);
-
-  useEffect(() => {
-    handleLoad();
-  }, [handleLoad]);
-
+export default function CommentView({ comments }: Props) {
   if (comments.length === 0) {
     return (
       <div className="flex flex-col flex-grow justify-center items-center text-center w-full min-h-[20.0rem] font-body text-textDisabled">
