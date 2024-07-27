@@ -8,6 +8,7 @@ import KebabMenuIcon from '@/app/_components/icon/kebabMenu/KebabMenuIcon';
 import { MODAL_TYPE_MAP } from '@/app/_constants/modal';
 import { useCommentStore } from '@/app/_store/commentStore';
 import { getCookies } from '@/app/_store/cookie/cookies';
+import { useInputCommentStore } from '@/app/_store/inputCommentStore';
 import { usePostDeletedStore } from '@/app/_store/isPostDeletedStore';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -16,18 +17,29 @@ interface Props {
   name: string;
   isEdit: boolean;
   targetType: 'post' | 'comment' | 'reply';
-  commentText?: string;
   postId?: number;
   regDate?: string;
+  commentId?: number;
+  commentText?: string;
   isLastReply?: boolean;
 }
 
-export default function DailyUserTitle({ name, isEdit, targetType, commentText, postId, regDate, isLastReply }: Props) {
+export default function DailyUserTitle({
+  name,
+  isEdit,
+  targetType,
+  postId,
+  regDate,
+  commentId,
+  commentText,
+  isLastReply,
+}: Props) {
   const content = MODAL_TYPE_MAP[targetType];
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const { isDeleted, setIsDeleted } = usePostDeletedStore();
-  const { setCommentText, setCommentMethodType } = useCommentStore();
+  const { setInputComment } = useInputCommentStore();
+  const { setCommentId, setCommentMethod } = useCommentStore();
 
   const router = useRouter();
   const groupId = getCookies('groupId');
@@ -53,8 +65,10 @@ export default function DailyUserTitle({ name, isEdit, targetType, commentText, 
     if (content === 'post') {
       router.push(`/posts?postId=${postId}`);
     }
-    setCommentText(commentText || '');
-    setCommentMethodType('PUT');
+    setIsActive((prev) => !prev);
+    setCommentMethod('PUT');
+    setCommentId(commentId || -1);
+    setInputComment(commentText || '');
   };
 
   const handleDeleteClick = () => {

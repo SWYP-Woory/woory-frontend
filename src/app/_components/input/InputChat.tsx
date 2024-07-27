@@ -1,8 +1,9 @@
 'use client';
 
-import { getData, postData } from '@/app/_api/api';
+import { getData, postData, putData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
 import { useCommentListStore } from '@/app/_store/commentListStore';
+import { useCommentStore } from '@/app/_store/commentStore';
 import { useInputCommentStore } from '@/app/_store/inputCommentStore';
 import { useReplyCommentStore } from '@/app/_store/replyCommentStore';
 import SendIcon from '@/assets/icons/send/send.svg';
@@ -33,6 +34,7 @@ export default function InputChat({
   const { setComments } = useCommentListStore();
   const { parentCommentId, resetReply } = useReplyCommentStore();
   const inputRef = useRef<HTMLInputElement>(null);
+  const { commentId, commentMethodType, resetComment } = useCommentStore();
 
   const isEntered = value.length !== 0;
 
@@ -58,8 +60,23 @@ export default function InputChat({
     resetInputComment();
   };
 
+  const handlePutComment = async () => {
+    const body = {
+      newText: value,
+    };
+    await putData({ path: `${apiRoutes.putComment}/${commentId}`, body });
+    const { data }: { data: CommentListType[] } = await getData({ path: `${apiRoutes.getComments}/${postId}` });
+    setComments(data);
+  };
+
   const handleClick = () => {
-    handleCreateComment();
+    if (commentMethodType === 'PUT') {
+      handlePutComment();
+      resetComment();
+    } else {
+      handleCreateComment();
+    }
+    resetInputComment();
   };
 
   useEffect(() => {

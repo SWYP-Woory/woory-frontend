@@ -44,6 +44,7 @@ export default function Comment({
               name={name}
               isEdit={edit}
               targetType={`${hasReply ? 'comment' : 'reply'}`}
+              commentId={commentId}
               commentText={comment}
               isLastReply={isLastReply}
             />

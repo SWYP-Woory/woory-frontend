@@ -39,7 +39,7 @@ export default function CommentView({ comments, onReplyClick, replyingCommentId 
         />
         {replies.map((reply) => (
           <Comment
-            key={reply.commentId}
+            key={commentId}
             commentId={reply.commentId}
             profileUrl={reply.profileUrl}
             comment={reply.comment}
