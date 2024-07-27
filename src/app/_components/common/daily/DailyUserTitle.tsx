@@ -96,7 +96,7 @@ export default function DailyUserTitle({
     if (targetType === 'post') {
       deletePost();
     }
-    if (targetType === 'comment') {
+    if (targetType === 'comment' || targetType === 'reply') {
       deleteComment();
     }
   };
