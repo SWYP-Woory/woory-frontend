@@ -6,8 +6,10 @@ import EditDeleteButton from '@/app/_components/common//button/EditDeleteButton'
 import Modal from '@/app/_components/common/modal/Modal';
 import KebabMenuIcon from '@/app/_components/icon/kebabMenu/KebabMenuIcon';
 import { MODAL_TYPE_MAP } from '@/app/_constants/modal';
+import { useCommentStore } from '@/app/_store/commentStore';
 import { getCookies } from '@/app/_store/cookie/cookies';
-import { usePostDeletedStore } from '@/app/_store/isPostDeleted';
+import { useInputCommentStore } from '@/app/_store/inputCommentStore';
+import { usePostDeletedStore } from '@/app/_store/isPostDeletedStore';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -17,16 +19,30 @@ interface Props {
   targetType: 'post' | 'comment' | 'reply';
   postId?: number;
   regDate?: string;
+  commentId?: number;
+  commentText?: string;
   isLastReply?: boolean;
 }
 
-export default function DailyUserTitle({ name, isEdit, targetType, postId, regDate, isLastReply }: Props) {
+export default function DailyUserTitle({
+  name,
+  isEdit,
+  targetType,
+  postId,
+  regDate,
+  commentId,
+  commentText,
+  isLastReply,
+}: Props) {
   const content = MODAL_TYPE_MAP[targetType];
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const { isDeleted, setIsDeleted } = usePostDeletedStore();
+  const { setInputComment } = useInputCommentStore();
+  const { setCommentId, setCommentMethod } = useCommentStore();
+
   const router = useRouter();
   const groupId = getCookies('groupId');
-  const { isDeleted, setIsDeleted } = usePostDeletedStore();
 
   const deletePost = async () => {
     try {
@@ -46,7 +62,13 @@ export default function DailyUserTitle({ name, isEdit, targetType, postId, regDa
   };
 
   const handleEditClick = () => {
-    router.push(`/posts?postId=${postId}`);
+    if (content === 'post') {
+      router.push(`/posts?postId=${postId}`);
+    }
+    setIsActive((prev) => !prev);
+    setCommentMethod('PUT');
+    setCommentId(commentId || -1);
+    setInputComment(commentText || '');
   };
 
   const handleDeleteClick = () => {

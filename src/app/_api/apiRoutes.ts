@@ -27,6 +27,12 @@ export const apiRoutes = {
   getEditPost: '/v1/contents/modify',
   editPost: '/v1/contents',
 
+  // Comment
+  createComment: '/v1/comments/add',
+  createCommentReply: '/v1/comments/add/reply',
+  getComments: '/v1/comments',
+  putComment: '/v1/comments',
+
   // Reaction
   getReaction: '/v1/contents/reaction',
   addReaction: '/v1/contents/reaction',

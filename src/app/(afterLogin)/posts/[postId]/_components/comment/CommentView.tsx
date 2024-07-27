@@ -1,12 +1,14 @@
+'use client';
+
 import Comment from '@/app/(afterLogin)/posts/[postId]/_components/comment/Comment';
 import { CommentListType } from '@/type';
 
 interface Props {
-  data: CommentListType[];
+  comments: CommentListType[];
 }
 
-export default function CommentView({ data }: Props) {
-  if (data.length === 0) {
+export default function CommentView({ comments }: Props) {
+  if (comments.length === 0) {
     return (
       <div className="flex flex-col flex-grow justify-center items-center text-center w-full min-h-[20.0rem] font-body text-textDisabled">
         아직 댓글이 없어요. <br />
@@ -14,18 +16,24 @@ export default function CommentView({ data }: Props) {
       </div>
     );
   }
-  return data.map((commentList, index) => {
-    const { profile, comment, replies } = commentList;
+  return comments.map((commentList, index) => {
+    const { commentId, profileUrl, comment, name, replies, edit } = commentList;
+
     return (
       <div
-        className={`flex flex-col items-end gap-24 py-16 pl-16 pr-[2.6rem] bg-white ${data.length - 1 !== index && 'border-bgGrey border-b'}`}
+        className={`flex flex-col items-end gap-24 py-16 pl-16 pr-[2.6rem] bg-white ${comments.length - 1 !== index && 'border-bgGrey border-b'}`}
+        key={commentId}
       >
-        <Comment profile={profile} comment={comment} hasReply />
+        <Comment commentId={commentId} profileUrl={profileUrl} comment={comment} name={name} edit={edit} hasReply />
         {replies.map((reply, i) => (
           <Comment
-            profile={reply.profile}
+            key={commentId}
+            commentId={reply.commentId}
+            profileUrl={reply.profileUrl}
             comment={reply.comment}
-            isLastReply={index === data.length - 1 && i === replies.length - 1}
+            name={reply.name}
+            edit={reply.edit}
+            isLastReply={index === comments.length - 1 && i === replies.length - 1}
           />
         ))}
       </div>

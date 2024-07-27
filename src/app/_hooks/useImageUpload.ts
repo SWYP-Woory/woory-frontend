@@ -1,5 +1,5 @@
 import { useImageUploadStore } from '@/app/_store/imageUploadStore';
-import { useImageDeletedStore } from '@/app/_store/isImageDeleted';
+import { useImageDeletedStore } from '@/app/_store/isImageDeletedStore';
 import { openToast } from '@/utils/Toast';
 import { ChangeEvent, useRef } from 'react';
 

@@ -9,7 +9,7 @@ import DateController from '@/app/_components/common/dateController/DateControll
 import Loading from '@/app/_components/common/loading/Loading';
 import { useDateControl } from '@/app/_hooks/useDateControl';
 import { deleteCookies, getCookies, setCookies } from '@/app/_store/cookie/cookies';
-import { usePostDeletedStore } from '@/app/_store/isPostDeleted';
+import { usePostDeletedStore } from '@/app/_store/isPostDeletedStore';
 import { useIsPostStore } from '@/app/_store/isPostStore';
 import LocalStorage from '@/app/_store/localstorage/LocalStorage';
 import { useTopicStore } from '@/app/_store/topicStore';

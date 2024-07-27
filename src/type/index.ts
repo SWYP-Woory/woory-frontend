@@ -92,16 +92,13 @@ export type ContentDataType = {
   isEdit: boolean;
 };
 
-export type ProfileType = {
-  profileUrl: string;
-  name: string;
-  isEdit: boolean;
-};
-
 export type CommentListType = {
-  profile: ProfileType;
+  profileUrl: string;
+  commentId: number;
+  name: string;
   comment: string;
   replies: CommentType[];
+  edit: boolean;
 };
 
 export type CommentType = Omit<CommentListType, 'replies'>;

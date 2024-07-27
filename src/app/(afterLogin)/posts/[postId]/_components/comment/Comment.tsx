@@ -1,5 +1,8 @@
+'use client';
+
 import DailyUserTitle from '@/app/_components/common/daily/DailyUserTitle';
 import Profile from '@/app/_components/common/profile/Profile';
+import { useReplyCommentStore } from '@/app/_store/replyCommentStore';
 import { CommentType } from '@/type';
 
 interface Props extends CommentType {
@@ -7,8 +10,16 @@ interface Props extends CommentType {
   isLastReply?: boolean;
 }
 
-export default function Comment({ profile, comment, hasReply, isLastReply }: Props) {
-  const { profileUrl, name, isEdit } = profile;
+export default function Comment({ commentId, profileUrl, comment, name, edit, hasReply, isLastReply }: Props) {
+  const { parentCommentId, setParentCommentId, resetReply } = useReplyCommentStore();
+
+  const handleClick = () => {
+    if (parentCommentId === -1) {
+      setParentCommentId(commentId);
+    } else {
+      resetReply();
+    }
+  };
 
   return (
     <div className={`${hasReply ? 'w-full' : 'w-[28.5rem]'}`}>
@@ -18,13 +29,19 @@ export default function Comment({ profile, comment, hasReply, isLastReply }: Pro
           <div>
             <DailyUserTitle
               name={name}
-              isEdit={isEdit}
+              isEdit={edit}
               targetType={`${hasReply ? 'comment' : 'reply'}`}
+              commentId={commentId}
+              commentText={comment}
               isLastReply={isLastReply}
             />
             <div className="font-body">{comment}</div>
           </div>
-          {hasReply && <div className="font-caption w-fit text-midGrey underline">답글달기</div>}
+          {hasReply && (
+            <button type="button" className="font-caption w-fit text-midGrey underline" onClick={handleClick}>
+              답글달기
+            </button>
+          )}
         </div>
       </div>
     </div>

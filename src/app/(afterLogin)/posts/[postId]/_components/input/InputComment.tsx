@@ -1,13 +1,17 @@
 'use client';
 
 import InputChat from '@/app/_components/input/InputChat';
-import { useState } from 'react';
+import { useInputCommentStore } from '@/app/_store/inputCommentStore';
+
+interface Props {
+  postId: number;
+}
 
 const MAX_LENGTH = 10;
-const PLACEHOLDER = '아들님의 이야기를 적어주세요';
+const PLACEHOLDER = '당신의 이야기를 적어주세요';
 
-export default function InputComment() {
-  const [inputData, setInputData] = useState<string>('');
+export default function InputComment({ postId }: Props) {
+  const { inputComment: inputData, setInputComment: setInputData } = useInputCommentStore();
 
   const handleChatChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const input = event.target.value;
@@ -18,6 +22,7 @@ export default function InputComment() {
   return (
     <div className="flex sticky bottom-0 items-center justify-center w-full h-[6.0rem] border-bgGrey border-t bg-white">
       <InputChat
+        postId={postId}
         value={inputData}
         maxLength={MAX_LENGTH}
         placeholder={PLACEHOLDER}

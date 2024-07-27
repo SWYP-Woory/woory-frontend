@@ -45,6 +45,7 @@ function Inputs() {
       <div className="flex flex-col gap-12">
         <h1 className="text-20">Input Chat</h1>
         <InputChat
+          postId={0}
           value={inputChatValue}
           maxLength={maxLength}
           placeholder="이야기를 적어주세요"
