@@ -7,6 +7,9 @@ import { postData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
 import { ReactionDataType, ReactionType } from '@/type';
 import { useState } from 'react';
+import { FreeMode } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css';
 
 interface Props {
   postId: number;
@@ -33,23 +36,27 @@ export default function ReactionSection({ reactions, postId, fetchReaction }: Pr
   };
 
   return (
-    <div className="flex w-fit gap-8 relative">
-      {reactions.map((reaction) => (
-        <ReactionChip
-          reactionType={reaction.reactionType}
-          count={reaction.count}
-          isActive={reaction.isActive}
-          onClick={handleReactionChipClick}
-        />
-      ))}
+    <div className="flex w-full gap-8 relative">
       <div className="relative">
         <AddReactionChip isClicked={isClicked} onClick={handleAddClicked} />
         {isClicked && (
-          <div className={`absolute top-[3.8rem] ${reactions.length < 3 ? 'left-0' : 'right-0'} z-20`}>
+          <div className="absolute top-[4.0rem] left-0 z-20">
             <ReactionMenu onClick={handleReactionChipClick} />
           </div>
         )}
       </div>
+      <Swiper slidesPerView="auto" spaceBetween={8} freeMode modules={[FreeMode]} className="w-full h-full">
+        {reactions.map((reaction) => (
+          <SwiperSlide style={{ width: 'auto' }}>
+            <ReactionChip
+              reactionType={reaction.reactionType}
+              count={reaction.count}
+              isActive={reaction.isActive}
+              onClick={handleReactionChipClick}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 }
