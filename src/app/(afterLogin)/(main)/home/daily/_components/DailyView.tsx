@@ -12,6 +12,7 @@ import { deleteCookies, getCookies, setCookies } from '@/app/_store/cookie/cooki
 import { usePostDeletedStore } from '@/app/_store/isPostDeletedStore';
 import { useIsPostStore } from '@/app/_store/isPostStore';
 import LocalStorage from '@/app/_store/localstorage/LocalStorage';
+import { useToastStore } from '@/app/_store/toastStore';
 import { useTopicStore } from '@/app/_store/topicStore';
 import { DailyDataType, DailyThreadType, TopicStoreType } from '@/type';
 import { getCalendarTime } from '@/utils/getTime';
@@ -29,13 +30,15 @@ export default function DailyView() {
   const [isPrevDay, setIsPrevDay] = useState(false);
   const [isNextDay, setIsNextDay] = useState(false);
   const [isLiked, setIsLiked] = useState<boolean>(false);
-  const { isDeleted } = usePostDeletedStore();
 
-  const searchParams = useSearchParams();
+  const { isDeleted } = usePostDeletedStore();
   const { currentDate, setCurrentDate, prevDayHandler, nextDayHandler } = useDateControl();
   const { setIsPosted, setPostDate } = useIsPostStore();
   // 데일리에서 topic, topicImage, topicDate 저장
   const { setTopicTitle, setTopicImage, setTopicDate } = useTopicStore();
+  const { setIsOpenToast, setToastText } = useToastStore();
+
+  const searchParams = useSearchParams();
   const day = searchParams.get('day');
   const inviteLoginGroupId = searchParams.get('inviteGroupId');
 
@@ -64,9 +67,16 @@ export default function DailyView() {
     if (!groupId) {
       router.push('/not-found');
     }
-    const { data, status }: { data: DailyDataType; status: number } = await getData({
+    const { data, message, status }: { data: DailyDataType; message: string; status: number } = await getData({
       path: `${apiRoutes.getDaily}/${groupId}/get?day=${getCalendarTime(currentDate)}`,
     });
+
+    if (status === 400) {
+      setIsOpenToast(true);
+      setToastText(message);
+      router.replace('/family-select');
+    }
+
     if (status === 404) {
       deleteCookies('groupId');
       router.push('/not-found');
