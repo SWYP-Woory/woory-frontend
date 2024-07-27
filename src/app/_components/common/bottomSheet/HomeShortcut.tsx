@@ -53,18 +53,13 @@ export default function HomeShortcut() {
       deferredPrompt.prompt();
       const choiceResult = await deferredPrompt.userChoice;
       if (choiceResult.outcome === 'accepted') {
+        if (getCookies('add_home')) {
+          deleteCookies('add_home');
+        }
         setCookies('add_home', 'yes', { path: '/' });
         openToast('shortcut');
-      } else if (choiceResult.outcome === 'dismissed') {
-        if (isChecked) {
-          setCookies('add_home', 'never', { path: '/' });
-        }
       }
       setDeferredPrompt(null);
-    }
-
-    if (getCookies('add_home')) {
-      deleteCookies('add_home');
     }
 
     setIsModalOpen(false);
