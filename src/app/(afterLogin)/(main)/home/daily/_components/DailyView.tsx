@@ -16,10 +16,11 @@ import { useTopicStore } from '@/app/_store/topicStore';
 import { DailyDataType, DailyThreadType, TopicStoreType } from '@/type';
 import { getCalendarTime } from '@/utils/getTime';
 import { format } from 'date-fns';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 
 export default function DailyView() {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [dailyTopicId, setDailyTopicId] = useState(-1);
   const [topic, setTopic] = useState<string>('');
@@ -60,9 +61,12 @@ export default function DailyView() {
       groupId = inviteGroupId;
     }
 
-    const { data }: { data: DailyDataType } = await getData({
+    const { data, status }: { data: DailyDataType; status: number } = await getData({
       path: `${apiRoutes.getDaily}/${groupId}/get?day=${getCalendarTime(currentDate)}`,
     });
+    if (status === 404) {
+      router.push('/not-found');
+    }
     const { topicId, topicContent, hasPrevDay, hasNextDay, contents, isPosted } = data;
     const newContents: DailyThreadType[] = contents.map((content) => ({
       id: content.contentId,
