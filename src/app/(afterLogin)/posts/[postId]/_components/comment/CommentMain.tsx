@@ -4,7 +4,7 @@ import CommentView from '@/app/(afterLogin)/posts/[postId]/_components/comment/C
 import InputComment from '@/app/(afterLogin)/posts/[postId]/_components/input/InputComment';
 import { getData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
-import { useCommentStore } from '@/app/_store/CommentStore';
+import { useCommentListStore } from '@/app/_store/commentStore';
 import { CommentListType } from '@/type';
 import { useCallback, useEffect } from 'react';
 
@@ -13,7 +13,7 @@ interface Props {
 }
 
 export default function CommentMain({ postId }: Props) {
-  const { comments, setComments, reset } = useCommentStore();
+  const { comments, setComments, reset } = useCommentListStore();
 
   const handleLoad = useCallback(async () => {
     reset();

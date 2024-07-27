@@ -2,9 +2,9 @@
 
 import { getData, postData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
-import { useCommentStore } from '@/app/_store/CommentStore';
-import { useReplyStore } from '@/app/_store/ReplyStore';
+import { useCommentListStore } from '@/app/_store/commentStore';
 import { useInputCommentStore } from '@/app/_store/inputCommentStore';
+import { useReplyStore } from '@/app/_store/replyStore';
 import SendIcon from '@/assets/icons/send/send.svg';
 import { CommentListType } from '@/type';
 import { useState } from 'react';
@@ -20,7 +20,7 @@ interface Props {
 export default function InputChat({ postId, value, maxLength, placeholder, onChange }: Props) {
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const { resetInputComment } = useInputCommentStore();
-  const { setComments } = useCommentStore();
+  const { setComments } = useCommentListStore();
   const { parentCommentId, resetReply } = useReplyStore();
 
   const isEntered = value.length !== 0;

@@ -2,7 +2,7 @@
 
 import DailyUserTitle from '@/app/_components/common/daily/DailyUserTitle';
 import Profile from '@/app/_components/common/profile/Profile';
-import { useReplyStore } from '@/app/_store/ReplyStore';
+import { useReplyStore } from '@/app/_store/replyStore';
 import { CommentType } from '@/type';
 
 interface Props extends CommentType {
