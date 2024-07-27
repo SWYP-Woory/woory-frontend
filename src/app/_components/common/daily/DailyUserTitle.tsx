@@ -6,6 +6,7 @@ import EditDeleteButton from '@/app/_components/common//button/EditDeleteButton'
 import Modal from '@/app/_components/common/modal/Modal';
 import KebabMenuIcon from '@/app/_components/icon/kebabMenu/KebabMenuIcon';
 import { MODAL_TYPE_MAP } from '@/app/_constants/modal';
+import { useCommentStore } from '@/app/_store/commentStore';
 import { getCookies } from '@/app/_store/cookie/cookies';
 import { usePostDeletedStore } from '@/app/_store/isPostDeletedStore';
 import { useRouter } from 'next/navigation';
@@ -15,18 +16,21 @@ interface Props {
   name: string;
   isEdit: boolean;
   targetType: 'post' | 'comment' | 'reply';
+  commentText?: string;
   postId?: number;
   regDate?: string;
   isLastReply?: boolean;
 }
 
-export default function DailyUserTitle({ name, isEdit, targetType, postId, regDate, isLastReply }: Props) {
+export default function DailyUserTitle({ name, isEdit, targetType, commentText, postId, regDate, isLastReply }: Props) {
   const content = MODAL_TYPE_MAP[targetType];
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const { isDeleted, setIsDeleted } = usePostDeletedStore();
+  const { setCommentText, setCommentMethodType } = useCommentStore();
+
   const router = useRouter();
   const groupId = getCookies('groupId');
-  const { isDeleted, setIsDeleted } = usePostDeletedStore();
 
   const deletePost = async () => {
     try {
@@ -49,6 +53,8 @@ export default function DailyUserTitle({ name, isEdit, targetType, postId, regDa
     if (content === 'post') {
       router.push(`/posts?postId=${postId}`);
     }
+    setCommentText(commentText || '');
+    setCommentMethodType('PUT');
   };
 
   const handleDeleteClick = () => {
