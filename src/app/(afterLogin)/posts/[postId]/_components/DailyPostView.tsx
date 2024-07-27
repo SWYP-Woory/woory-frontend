@@ -10,6 +10,7 @@ import Loading from '@/app/_components/common/loading/Loading';
 import Profile from '@/app/_components/common/profile/Profile';
 import { DailyPostType, ReactionDataType } from '@/type';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 
 interface Props {
@@ -20,10 +21,14 @@ export default function DailyPostView({ postId }: Props) {
   const [postData, setPostData] = useState<DailyPostType>();
   const [reactionData, setReactionData] = useState<ReactionDataType[]>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const router = useRouter();
 
   const fetchPostData = useCallback(async () => {
     try {
-      const { data } = await getData({ path: `${apiRoutes.getPost}/${postId}` });
+      const { data, status } = await getData({ path: `${apiRoutes.getPost}/${postId}` });
+      if (status === 404) {
+        router.replace('/not-found');
+      }
       setPostData(data);
     } catch (error) {
       console.error(error);

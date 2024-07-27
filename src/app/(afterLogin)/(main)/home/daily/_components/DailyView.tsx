@@ -61,10 +61,14 @@ export default function DailyView() {
       groupId = inviteGroupId;
     }
 
+    if (!groupId) {
+      router.push('/not-found');
+    }
     const { data, status }: { data: DailyDataType; status: number } = await getData({
       path: `${apiRoutes.getDaily}/${groupId}/get?day=${getCalendarTime(currentDate)}`,
     });
     if (status === 404) {
+      deleteCookies('groupId');
       router.push('/not-found');
     }
     const { topicId, topicContent, hasPrevDay, hasNextDay, contents, isPosted } = data;
