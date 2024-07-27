@@ -11,10 +11,14 @@ interface Props extends CommentType {
 }
 
 export default function Comment({ commentId, profileUrl, comment, name, edit, hasReply, isLastReply }: Props) {
-  const { setParentCommentId } = useReplyCommentStore();
+  const { parentCommentId, setParentCommentId, resetReply } = useReplyCommentStore();
 
   const handleClick = () => {
-    setParentCommentId(commentId);
+    if (parentCommentId === -1) {
+      setParentCommentId(commentId);
+    } else {
+      resetReply();
+    }
   };
 
   return (
