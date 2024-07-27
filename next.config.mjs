@@ -24,6 +24,11 @@ const nextConfig = {
         pathname: '**',
       },
       {
+        protocol: 'http',
+        hostname: 'k.kakaocdn.net',
+        pathname: '**',
+      },
+      {
         protocol: 'https',
         hostname: 's3.ap-northeast-2.amazonaws.com',
         pathname: '**',
