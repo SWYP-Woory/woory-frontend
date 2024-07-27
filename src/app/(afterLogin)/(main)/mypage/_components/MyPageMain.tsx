@@ -9,11 +9,12 @@ import ServiceInfo from '@/app/(afterLogin)/(main)/mypage/_components/service/Se
 import { getData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
 import Border from '@/app/_components/common/border/Border';
-import { getCookies } from '@/app/_store/cookie/cookies';
+import { deleteCookies, getCookies } from '@/app/_store/cookie/cookies';
 // import BottomSheet from '@/app/_components/common/bottomSheet/BottomSheet';
 // import ModalBackground from '@/app/_components/common/modal/ModalBackground';
 // import { useModalStore } from '@/app/_store/modalStore';
 import { AccountDeletionType, UserDataType } from '@/type';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const determineTargetType = (isLastMember: boolean, isHouseholder: boolean): AccountDeletionType => {
@@ -30,6 +31,7 @@ const determineTargetType = (isLastMember: boolean, isHouseholder: boolean): Acc
 export default function MyPageMain() {
   const [userData, setUserData] = useState<UserDataType>();
   const [targetType, setTargetType] = useState<AccountDeletionType>('member');
+  const router = useRouter();
 
   // const { isModalOpen, setIsModalOpen } = useModalStore();
 
@@ -48,7 +50,14 @@ export default function MyPageMain() {
     const fetchMyPage = async () => {
       try {
         const groupId = getCookies('groupId');
-        const data = await getData({ path: `${apiRoutes.getUserData}/${groupId}` });
+        if (!groupId) {
+          router.replace('/not-found');
+        }
+        const { data, status } = await getData({ path: `${apiRoutes.getUserData}/${groupId}` });
+        if (status === 404) {
+          deleteCookies('groupId');
+          router.replace('/not-found');
+        }
         setUserData(data);
       } catch (error) {
         console.error(error);
