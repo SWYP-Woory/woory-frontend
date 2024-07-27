@@ -13,9 +13,10 @@ interface Props {
 }
 
 export default function CommentMain({ postId }: Props) {
-  const { comments, setComments } = useCommentStore();
+  const { comments, setComments, reset } = useCommentStore();
 
   const handleLoad = useCallback(async () => {
+    reset();
     const { data }: { data: CommentListType[] } = await getData({ path: `${apiRoutes.getComments}/${postId}` });
     setComments(data);
   }, [postId]);
