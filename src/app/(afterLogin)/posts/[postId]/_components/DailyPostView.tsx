@@ -81,7 +81,9 @@ export default function DailyPostView({ postId }: Props) {
                 }}
                 className="cursor-pointer"
               >
-                <DailyPostImage postUrl={postData?.contentImgPath} />
+                <div className="pr-16">
+                  <DailyPostImage postUrl={postData?.contentImgPath} />
+                </div>
               </Link>
             )}
           </>
