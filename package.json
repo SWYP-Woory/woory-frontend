@@ -27,6 +27,7 @@
     "react-hot-toast": "^2.4.1",
     "react-spinners": "^0.14.1",
     "storybook": "^8.1.11",
+    "swiper": "^11.1.8",
     "zustand": "^4.5.4"
   },
   "devDependencies": {

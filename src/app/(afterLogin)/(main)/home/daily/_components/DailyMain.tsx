@@ -24,7 +24,7 @@ export default function DailyMain() {
       <div className="mt-8 mx-16">
         <UpperTabBar />
       </div>
-      <div className="mt-24">
+      <div className="flex flex-col flex-grow mt-24">
         <DailyView />
       </div>
       <PostButton />
