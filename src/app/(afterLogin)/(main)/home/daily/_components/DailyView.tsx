@@ -46,74 +46,98 @@ export default function DailyView() {
     let groupId = getCookies('groupId');
     const inviteGroupId = getCookies('inviteGroupId');
 
+    // 회원가입 실패 플래그
+    let joinFailFlag = false;
+
     // 로그인 링크 이후 회원가입
     if (inviteLoginGroupId && Number(inviteLoginGroupId) !== groupId) {
       const joinData = { groupId: inviteLoginGroupId };
-      await postData({ path: `${apiRoutes.joinFamily}/${inviteLoginGroupId}`, body: joinData });
+      const { status, message } = await postData({
+        path: `${apiRoutes.joinFamily}/${inviteLoginGroupId}`,
+        body: joinData,
+      });
       deleteCookies('inviteGroupId');
       deleteCookies('groupId');
-      setCookies('groupId', inviteLoginGroupId, { path: '/' });
-      groupId = inviteLoginGroupId;
+
+      // 회원가입 실패
+      if (status === 400) {
+        joinFailFlag = true;
+        setIsOpenToast(true);
+        setToastText(message);
+        router.replace('/family-select');
+      } else {
+        setCookies('groupId', inviteLoginGroupId, { path: '/' });
+        groupId = inviteLoginGroupId;
+      }
     } // 비로그인 링크 이후 회원가입
     else if (inviteGroupId) {
       const joinData = { groupId: inviteGroupId };
-      await postData({ path: `${apiRoutes.joinFamily}/${inviteGroupId}`, body: joinData });
+      const { status, message } = await postData({ path: `${apiRoutes.joinFamily}/${inviteGroupId}`, body: joinData });
       deleteCookies('inviteGroupId');
       deleteCookies('groupId');
-      setCookies('groupId', inviteGroupId, { path: '/' });
-      groupId = inviteGroupId;
+
+      // 회원가입 실패
+      if (status === 400) {
+        joinFailFlag = true;
+        setIsOpenToast(true);
+        setToastText(message);
+        router.replace('/family-select');
+      } else {
+        setCookies('groupId', inviteGroupId, { path: '/' });
+        groupId = inviteGroupId;
+      }
     }
 
-    if (!groupId) {
-      router.push('/not-found');
-    }
-    const { data, message, status }: { data: DailyDataType; message: string; status: number } = await getData({
-      path: `${apiRoutes.getDaily}/${groupId}/get?day=${getCalendarTime(currentDate)}`,
-    });
+    // 회원가입 실패했다면 해당 요청 하지 않음
+    if (!joinFailFlag) {
+      const { data, message, status }: { data: DailyDataType; message: string; status: number } = await getData({
+        path: `${apiRoutes.getDaily}/${groupId}/get?day=${getCalendarTime(currentDate)}`,
+      });
 
-    if (status === 400) {
-      setIsOpenToast(true);
-      setToastText(message);
-      router.replace('/family-select');
-    }
+      if (status === 400) {
+        setIsOpenToast(true);
+        setToastText(message);
+        router.replace('/family-select');
+      }
 
-    if (status === 404) {
-      deleteCookies('groupId');
-      router.push('/not-found');
-    }
-    const { topicId, topicContent, hasPrevDay, hasNextDay, contents, isPosted } = data;
-    const newContents: DailyThreadType[] = contents.map((content) => ({
-      id: content.contentId,
-      profileUrl: content.profileUrl,
-      name: content.name,
-      comment: content.commentsCount,
-      reaction: content.reactionCount,
-      postUrl: content.contentImgPath,
-      content: content.contentText,
-      isEdit: content.isEdit,
-      regDate: getCalendarTime(content.contentRegDate),
-    }));
+      if (status === 404) {
+        deleteCookies('groupId');
+        router.push('/not-found');
+      }
+      const { topicId, topicContent, hasPrevDay, hasNextDay, contents, isPosted } = data;
+      const newContents: DailyThreadType[] = contents.map((content) => ({
+        id: content.contentId,
+        profileUrl: content.profileUrl,
+        name: content.name,
+        comment: content.commentsCount,
+        reaction: content.reactionCount,
+        postUrl: content.contentImgPath,
+        content: content.contentText,
+        isEdit: content.isEdit,
+        regDate: getCalendarTime(content.contentRegDate),
+      }));
 
-    const storageData: TopicStoreType[] = LocalStorage.getItemJson('favorites') || [];
-    if (storageData.length !== 0) {
-      const find = storageData.some((storage) => storage.topicId === topicId);
-      setIsLiked(find);
-    } else {
-      setIsLiked(false);
-    }
-    setDailyTopicId(topicId);
-    setTopic(topicContent);
-    setIsPrevDay(hasPrevDay);
-    setIsNextDay(hasNextDay);
-    setDailyThreads(newContents);
-    setIsPosted(isPosted);
-    setPostDate(currentDate);
+      const storageData: TopicStoreType[] = LocalStorage.getItemJson('favorites') || [];
+      if (storageData.length !== 0) {
+        const find = storageData.some((storage) => storage.topicId === topicId);
+        setIsLiked(find);
+      } else {
+        setIsLiked(false);
+      }
+      setDailyTopicId(topicId);
+      setTopic(topicContent);
+      setIsPrevDay(hasPrevDay);
+      setIsNextDay(hasNextDay);
+      setDailyThreads(newContents);
+      setIsPosted(isPosted);
+      setPostDate(currentDate);
 
-    // TopicStore 저장
-    const storeFirstImage = newContents.find((content) => content.postUrl)?.postUrl || '';
-    setTopicTitle(topicContent);
-    setTopicImage(storeFirstImage);
-    setTopicDate(currentDate);
+      // TopicStore 저장
+      const storeFirstImage = newContents.find((content) => content.postUrl)?.postUrl || '';
+      setTopicTitle(topicContent);
+      setTopicImage(storeFirstImage);
+      setTopicDate(currentDate);
+    }
   }, [currentDate]);
 
   useEffect(() => {
