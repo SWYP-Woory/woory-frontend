@@ -1,15 +1,17 @@
 'use client';
 
-import { deleteData } from '@/app/_api/api';
+import { deleteData, getData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
 import EditDeleteButton from '@/app/_components/common//button/EditDeleteButton';
 import Modal from '@/app/_components/common/modal/Modal';
 import KebabMenuIcon from '@/app/_components/icon/kebabMenu/KebabMenuIcon';
 import { MODAL_TYPE_MAP } from '@/app/_constants/modal';
+import { useCommentListStore } from '@/app/_store/commentListStore';
 import { useCommentStore } from '@/app/_store/commentStore';
 import { getCookies } from '@/app/_store/cookie/cookies';
 import { useInputCommentStore } from '@/app/_store/inputCommentStore';
 import { usePostDeletedStore } from '@/app/_store/isPostDeletedStore';
+import { CommentListType } from '@/type';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -40,6 +42,7 @@ export default function DailyUserTitle({
   const { isDeleted, setIsDeleted } = usePostDeletedStore();
   const { setInputComment } = useInputCommentStore();
   const { setCommentId, setCommentMethod } = useCommentStore();
+  const { setComments } = useCommentListStore();
 
   const router = useRouter();
   const groupId = getCookies('groupId');
@@ -55,6 +58,15 @@ export default function DailyUserTitle({
     } finally {
       router.replace(`/home/daily?day=${regDate}`);
     }
+  };
+
+  const deleteComment = async () => {
+    await deleteData({ path: `${apiRoutes.deleteComment}/${commentId}` });
+    setIsActive(false);
+    setIsActive(false);
+    setIsModalOpen(false);
+    const { data }: { data: CommentListType[] } = await getData({ path: `${apiRoutes.getComments}/${postId}` });
+    setComments(data);
   };
 
   const handleKebabClick = () => {
@@ -81,7 +93,12 @@ export default function DailyUserTitle({
   };
 
   const handleDeleteConfirm = () => {
-    if (targetType === 'post') deletePost();
+    if (targetType === 'post') {
+      deletePost();
+    }
+    if (targetType === 'comment' || targetType === 'reply') {
+      deleteComment();
+    }
   };
 
   return (

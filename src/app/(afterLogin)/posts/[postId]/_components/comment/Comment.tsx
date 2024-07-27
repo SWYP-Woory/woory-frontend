@@ -6,6 +6,7 @@ import { useReplyCommentStore } from '@/app/_store/replyCommentStore';
 import { CommentType } from '@/type';
 
 interface Props extends CommentType {
+  postId: number;
   hasReply?: boolean;
   isLastReply?: boolean;
   onReplyClick: (commentId: number) => void;
@@ -13,6 +14,7 @@ interface Props extends CommentType {
 }
 
 export default function Comment({
+  postId,
   commentId,
   profileUrl,
   comment,
@@ -41,6 +43,7 @@ export default function Comment({
         <div className="flex flex-col gap-8 flex-grow">
           <div>
             <DailyUserTitle
+              postId={postId}
               name={name}
               isEdit={edit}
               targetType={`${hasReply ? 'comment' : 'reply'}`}

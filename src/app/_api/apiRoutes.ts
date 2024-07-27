@@ -32,6 +32,7 @@ export const apiRoutes = {
   createCommentReply: '/v1/comments/add/reply',
   getComments: '/v1/comments',
   putComment: '/v1/comments',
+  deleteComment: '/v1/comments',
 
   // Reaction
   getReaction: '/v1/contents/reaction',
