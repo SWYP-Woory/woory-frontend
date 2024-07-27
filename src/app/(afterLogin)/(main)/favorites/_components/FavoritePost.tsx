@@ -25,12 +25,12 @@ export default function FavoritePost({ topicId, topicTitle, topicImage, topicDat
               <DefaultPostImage />
             )}
           </div>
-          <div className="absolute top-[2.1rem] left-[9.2rem] w-[17.8rem] h-[2.6rem] text-18 font-500 text-black">
+          <div className="absolute top-[2.1rem] left-[9.0rem] w-[23.5rem] text-18 font-500 text-black">
             {topicTitle}
           </div>
         </div>
+        <div className="absolute bottom-[2.2rem] left-[9.0rem] text-textDisabled text-14 font-500">{date}</div>
       </Link>
-      <div className="absolute bottom-[2.2rem] left-[9.2rem] text-textDisabled text-14 font-500">{date}</div>
       <div className="absolute cursor-pointer top-[3.7rem] right-[1.8rem]">
         <LikeIcon topicId={topicId} isLiked />
       </div>
