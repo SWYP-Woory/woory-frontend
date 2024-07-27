@@ -2,7 +2,7 @@
 
 import ImageDeleteIcon from '@/app/_components/icon/delete/ImageDeleteIcon';
 import { useImageUpload } from '@/app/_hooks/useImageUpload';
-import { useImageDeletedStore } from '@/app/_store/isImageDeleted';
+import { useImageDeletedStore } from '@/app/_store/isImageDeletedStore';
 import Picture from '@/assets/icons/picture/picture.svg';
 import Image from 'next/image';
 

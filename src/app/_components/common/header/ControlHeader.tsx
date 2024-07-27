@@ -6,7 +6,7 @@ import { useImageUpload } from '@/app/_hooks/useImageUpload';
 import { getCookies } from '@/app/_store/cookie/cookies';
 import { useImageUploadStore } from '@/app/_store/imageUploadStore';
 import { useInputStore } from '@/app/_store/inputStore';
-import { useImageDeletedStore } from '@/app/_store/isImageDeleted';
+import { useImageDeletedStore } from '@/app/_store/isImageDeletedStore';
 import { CreatePostType, EditPostDataType } from '@/type';
 import { useRouter } from 'next/navigation';
 
