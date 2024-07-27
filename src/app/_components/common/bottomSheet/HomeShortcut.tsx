@@ -17,6 +17,7 @@ interface BeforeInstallPromptEvent extends Event {
 export default function HomeShortcut() {
   const { setIsModalOpen } = useModalStore();
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
+  const [isChecked, setIsChecked] = useState<boolean>(false);
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -36,7 +37,13 @@ export default function HomeShortcut() {
     if (getCookies('add_home')) {
       deleteCookies('add_home');
     }
-    setCookies('add_home', 'no', { path: '/' });
+    if (isChecked) {
+      setCookies('add_home', 'never', { path: '/' });
+    } else {
+      const expiryDate = new Date();
+      expiryDate.setDate(expiryDate.getDate() + 7);
+      setCookies('add_home', 'no', { path: '/', expires: expiryDate });
+    }
     setDeferredPrompt(null);
     setIsModalOpen(false);
   };
@@ -46,10 +53,12 @@ export default function HomeShortcut() {
       deferredPrompt.prompt();
       const choiceResult = await deferredPrompt.userChoice;
       if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the install prompt');
+        setCookies('add_home', 'yes', { path: '/' });
         openToast('shortcut');
-      } else {
-        console.log('User dismissed the install prompt');
+      } else if (choiceResult.outcome === 'dismissed') {
+        if (isChecked) {
+          setCookies('add_home', 'never', { path: '/' });
+        }
       }
       setDeferredPrompt(null);
     }
@@ -57,8 +66,12 @@ export default function HomeShortcut() {
     if (getCookies('add_home')) {
       deleteCookies('add_home');
     }
-    setCookies('add_home', 'yes', { path: '/' });
+
     setIsModalOpen(false);
+  };
+
+  const handleNeverShow = () => {
+    setIsChecked((prev) => !prev);
   };
 
   return (
@@ -73,7 +86,7 @@ export default function HomeShortcut() {
         </h2>
         <div className="flex gap-8 justify-center items-center mt-12">
           <div className="pt-4">
-            <Checkbox />
+            <Checkbox isChecked={isChecked} onClick={handleNeverShow} />
           </div>
           <span className="font-body text-midGrey ">다시 보지 않기</span>
         </div>
