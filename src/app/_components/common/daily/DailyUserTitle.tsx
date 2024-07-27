@@ -53,6 +53,7 @@ export default function DailyUserTitle({ name, isEdit, targetType, commentText, 
     if (content === 'post') {
       router.push(`/posts?postId=${postId}`);
     }
+    setIsActive((prev) => !prev);
     setCommentText(commentText || '');
     setCommentMethodType('PUT');
   };
