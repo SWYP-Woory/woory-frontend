@@ -46,7 +46,9 @@ export default function DailyUserTitle({ name, isEdit, targetType, postId, regDa
   };
 
   const handleEditClick = () => {
-    router.push(`/posts?postId=${postId}`);
+    if (content === 'post') {
+      router.push(`/posts?postId=${postId}`);
+    }
   };
 
   const handleDeleteClick = () => {

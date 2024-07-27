@@ -2,7 +2,7 @@
 
 import DailyUserTitle from '@/app/_components/common/daily/DailyUserTitle';
 import Profile from '@/app/_components/common/profile/Profile';
-import { useReplyStore } from '@/app/_store/replyStore';
+import { useReplyCommentStore } from '@/app/_store/replyCommentStore';
 import { CommentType } from '@/type';
 
 interface Props extends CommentType {
@@ -11,7 +11,7 @@ interface Props extends CommentType {
 }
 
 export default function Comment({ commentId, profileUrl, comment, name, edit, hasReply, isLastReply }: Props) {
-  const { setParentCommentId } = useReplyStore();
+  const { setParentCommentId } = useReplyCommentStore();
 
   const handleClick = () => {
     setParentCommentId(commentId);
