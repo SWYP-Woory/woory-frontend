@@ -8,9 +8,21 @@ import { CommentType } from '@/type';
 interface Props extends CommentType {
   hasReply?: boolean;
   isLastReply?: boolean;
+  onReplyClick: (commentId: number) => void;
+  isReplying: boolean;
 }
 
-export default function Comment({ commentId, profileUrl, comment, name, edit, hasReply, isLastReply }: Props) {
+export default function Comment({
+  commentId,
+  profileUrl,
+  comment,
+  name,
+  edit,
+  hasReply,
+  isLastReply,
+  onReplyClick,
+  isReplying,
+}: Props) {
   const { parentCommentId, setParentCommentId, resetReply } = useReplyCommentStore();
 
   const handleClick = () => {
@@ -19,6 +31,7 @@ export default function Comment({ commentId, profileUrl, comment, name, edit, ha
     } else {
       resetReply();
     }
+    onReplyClick(commentId);
   };
 
   return (
@@ -37,7 +50,11 @@ export default function Comment({ commentId, profileUrl, comment, name, edit, ha
             <div className="font-body">{comment}</div>
           </div>
           {hasReply && (
-            <button type="button" className="font-caption w-fit text-midGrey underline" onClick={handleClick}>
+            <button
+              type="button"
+              className={`font-caption w-fit ${isReplying ? 'text-primary' : 'text-midGrey'} underline`}
+              onClick={handleClick}
+            >
               답글달기
             </button>
           )}
