@@ -8,7 +8,7 @@ import { useInputCommentStore } from '@/app/_store/inputCommentStore';
 import { useReplyCommentStore } from '@/app/_store/replyCommentStore';
 import SendIcon from '@/assets/icons/send/send.svg';
 import { CommentListType } from '@/type';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface Props {
   postId: number;
@@ -16,13 +16,24 @@ interface Props {
   maxLength: number;
   placeholder: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  replyingCommentId: number | null;
+  onReplyClick: (commentId: number | null) => void;
 }
 
-export default function InputChat({ postId, value, maxLength, placeholder, onChange }: Props) {
+export default function InputChat({
+  postId,
+  value,
+  maxLength,
+  placeholder,
+  onChange,
+  replyingCommentId,
+  onReplyClick,
+}: Props) {
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const { resetInputComment } = useInputCommentStore();
   const { setComments } = useCommentListStore();
   const { parentCommentId, resetReply } = useReplyCommentStore();
+  const inputRef = useRef<HTMLInputElement>(null);
   const { commentId, commentMethodType, resetComment } = useCommentStore();
 
   const isEntered = value.length !== 0;
@@ -43,8 +54,10 @@ export default function InputChat({ postId, value, maxLength, placeholder, onCha
       await postData({ path: `${apiRoutes.createCommentReply}`, body });
       resetReply();
     }
+    onReplyClick(null);
     const { data }: { data: CommentListType[] } = await getData({ path: `${apiRoutes.getComments}/${postId}` });
     setComments(data);
+    resetInputComment();
   };
 
   const handlePutComment = async () => {
@@ -66,9 +79,16 @@ export default function InputChat({ postId, value, maxLength, placeholder, onCha
     resetInputComment();
   };
 
+  useEffect(() => {
+    if (replyingCommentId !== null && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [replyingCommentId]);
+
   return (
     <div className="flex justify-between items-center pl-[1.6rem] pr-[0.8rem] w-[34.3rem] h-[4.4rem] border border-solid bg-bgGrey border-lightGrey rounded-[1rem] overflow-hidden">
       <input
+        ref={inputRef}
         className="w-[22.4rem] h-[2.6rem] font-body bg-bgGrey placeholder-textDisabled focus:outline-none"
         type="text"
         onFocus={() => setIsFocused(true)}

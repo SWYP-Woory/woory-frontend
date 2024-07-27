@@ -22,6 +22,8 @@ function Inputs() {
     }
   };
 
+  const handleClick = () => {};
+
   return (
     <div className="grid grid-cols-2">
       <div className="flex flex-col gap-12">
@@ -50,6 +52,8 @@ function Inputs() {
           maxLength={maxLength}
           placeholder="이야기를 적어주세요"
           onChange={handleChatChange}
+          replyingCommentId={0}
+          onReplyClick={handleClick}
         />
       </div>
     </div>
