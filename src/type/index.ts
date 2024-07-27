@@ -4,7 +4,7 @@ export type ToastType = 'link' | 'shortcut' | 'imageSize' | 'post';
 
 export type BottomSheetType = 'home' | 'inquiry' | 'familySelect';
 
-export type ReactionType = 'heart' | 'smile' | 'sad' | 'surprise' | 'thumbs';
+export type ReactionType = 'LOVE' | 'LIKE' | 'SAD' | 'WOW' | 'HAPPY';
 
 export type NotiType = 'topic' | 'reaction' | 'post';
 
@@ -54,7 +54,7 @@ export type DailyThreadType = BasePostType & {
 export type ReactionDataType = {
   reactionType: ReactionType;
   count: number;
-  isActive?: boolean;
+  isActive: boolean;
 };
 
 export type DailyPostType = {
