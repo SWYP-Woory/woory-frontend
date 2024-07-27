@@ -46,8 +46,8 @@ export default function ReactionSection({ reactions, postId, fetchReaction }: Pr
         )}
       </div>
       <Swiper slidesPerView="auto" spaceBetween={8} freeMode modules={[FreeMode]} className="w-full h-full">
-        {reactions.map((reaction) => (
-          <SwiperSlide style={{ width: 'auto' }}>
+        {reactions.map((reaction, index) => (
+          <SwiperSlide style={{ width: 'auto' }} className={`${index === reactions.length - 1 ? 'mr-16' : ''}`}>
             <ReactionChip
               reactionType={reaction.reactionType}
               count={reaction.count}

@@ -50,14 +50,14 @@ export default function DailyPostView({ postId }: Props) {
   }, [fetchReaction]);
 
   return (
-    <div className="flex flex-col w-full h-full bg-white px-16 pt-24 pb-16 gap-16">
+    <div className="flex flex-col w-full h-full bg-white pl-16 pt-24 pb-16 gap-16">
       {isLoading ? (
         <Loading />
       ) : (
         postData && (
           <>
             <DailyTopic topicId={postData.contentId} topic={postData.topicContent} isLiked />
-            <div className="flex items-center w-full gap-8 mt-8">
+            <div className="flex items-center w-full gap-8 mt-8 pr-16">
               <Profile size="small" profileImage={postData.profileUrl} />
               <DailyUserTitle
                 name={postData?.name}
