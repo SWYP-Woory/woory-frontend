@@ -3,7 +3,7 @@
 import { getData, postData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
 import { useCommentStore } from '@/app/_store/CommentStore';
-import { useIsReplyStore } from '@/app/_store/ReplyStore';
+import { useReplyStore } from '@/app/_store/ReplyStore';
 import { useInputCommentStore } from '@/app/_store/inputCommentStore';
 import SendIcon from '@/assets/icons/send/send.svg';
 import { CommentListType } from '@/type';
@@ -21,7 +21,7 @@ export default function InputChat({ postId, value, maxLength, placeholder, onCha
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const { resetInputComment } = useInputCommentStore();
   const { setComments } = useCommentStore();
-  const { parentCommentId, setParentCommentId } = useIsReplyStore();
+  const { parentCommentId, resetReply } = useReplyStore();
 
   const isEntered = value.length !== 0;
 
@@ -39,6 +39,7 @@ export default function InputChat({ postId, value, maxLength, placeholder, onCha
         commentText: value,
       };
       await postData({ path: `${apiRoutes.createCommentReply}`, body });
+      resetReply();
     }
     const { data }: { data: CommentListType[] } = await getData({ path: `${apiRoutes.getComments}/${postId}` });
     setComments(data);

@@ -6,7 +6,7 @@ interface ReplyState {
   resetReply: () => void;
 }
 
-export const useIsReplyStore = create<ReplyState>((set) => ({
+export const useReplyStore = create<ReplyState>((set) => ({
   parentCommentId: -1,
   setParentCommentId: (parentCommentId: number) => set({ parentCommentId }),
   resetReply: () => set({ parentCommentId: -1 }),

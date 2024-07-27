@@ -1,5 +1,8 @@
+'use client';
+
 import DailyUserTitle from '@/app/_components/common/daily/DailyUserTitle';
 import Profile from '@/app/_components/common/profile/Profile';
+import { useReplyStore } from '@/app/_store/ReplyStore';
 import { CommentType } from '@/type';
 
 interface Props extends CommentType {
@@ -8,6 +11,12 @@ interface Props extends CommentType {
 }
 
 export default function Comment({ commentId, profileUrl, comment, name, edit, hasReply, isLastReply }: Props) {
+  const { setParentCommentId } = useReplyStore();
+
+  const handleClick = () => {
+    setParentCommentId(commentId);
+  };
+
   return (
     <div className={`${hasReply ? 'w-full' : 'w-[28.5rem]'}`}>
       <div className="flex gap-8">
@@ -22,7 +31,11 @@ export default function Comment({ commentId, profileUrl, comment, name, edit, ha
             />
             <div className="font-body">{comment}</div>
           </div>
-          {hasReply && <div className="font-caption w-fit text-midGrey underline">답글달기</div>}
+          {hasReply && (
+            <button type="button" className="font-caption w-fit text-midGrey underline" onClick={handleClick}>
+              답글달기
+            </button>
+          )}
         </div>
       </div>
     </div>
