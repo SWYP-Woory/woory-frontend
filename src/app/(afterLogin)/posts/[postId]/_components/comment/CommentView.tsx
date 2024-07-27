@@ -6,7 +6,7 @@ import { CommentListType } from '@/type';
 interface Props {
   postId: number;
   comments: CommentListType[];
-  onReplyClick: (commentId: number) => void;
+  onReplyClick: (commentId: number | null) => void;
   replyingCommentId: number | null;
 }
 

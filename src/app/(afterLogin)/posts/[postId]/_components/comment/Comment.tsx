@@ -9,7 +9,7 @@ interface Props extends CommentType {
   postId: number;
   hasReply?: boolean;
   isLastReply?: boolean;
-  onReplyClick: (commentId: number) => void;
+  onReplyClick: (commentId: number | null) => void;
   isReplying: boolean;
 }
 
@@ -33,7 +33,11 @@ export default function Comment({
     } else {
       resetReply();
     }
-    onReplyClick(commentId);
+    if (isReplying) {
+      onReplyClick(null);
+    } else {
+      onReplyClick(commentId);
+    }
   };
 
   return (

@@ -10,7 +10,8 @@ interface Props {
 }
 
 const MAX_LENGTH = 10;
-const PLACEHOLDER = '당신의 이야기를 적어주세요';
+const COMMENT_PLACEHOLDER = '댓글을 달아주세요';
+const REPLY_PLACEHOLDER = '답댓글을 달아주세요';
 
 export default function InputComment({ postId, replyingCommentId, onReplyClick }: Props) {
   const { inputComment: inputData, setInputComment: setInputData } = useInputCommentStore();
@@ -28,7 +29,7 @@ export default function InputComment({ postId, replyingCommentId, onReplyClick }
         postId={postId}
         value={inputData}
         maxLength={MAX_LENGTH}
-        placeholder={PLACEHOLDER}
+        placeholder={replyingCommentId ? REPLY_PLACEHOLDER : COMMENT_PLACEHOLDER}
         onChange={handleChatChange}
         replyingCommentId={replyingCommentId}
         onReplyClick={onReplyClick}
