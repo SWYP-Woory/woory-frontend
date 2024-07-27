@@ -3,6 +3,7 @@
 import { getData, postData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
 import { useCommentStore } from '@/app/_store/CommentStore';
+import { useIsReplyStore } from '@/app/_store/ReplyStore';
 import { useInputCommentStore } from '@/app/_store/inputCommentStore';
 import SendIcon from '@/assets/icons/send/send.svg';
 import { CommentListType } from '@/type';
@@ -18,24 +19,34 @@ interface Props {
 
 export default function InputChat({ postId, value, maxLength, placeholder, onChange }: Props) {
   const [isFocused, setIsFocused] = useState<boolean>(false);
-  const { reset } = useInputCommentStore();
+  const { resetInputComment } = useInputCommentStore();
   const { setComments } = useCommentStore();
+  const { parentCommentId, setParentCommentId } = useIsReplyStore();
+
   const isEntered = value.length !== 0;
 
   const handleCreateComment = async () => {
-    const body = {
-      contentId: postId,
-      commentText: value,
-    };
-
-    await postData({ path: `${apiRoutes.createComment}`, body });
+    if (parentCommentId === -1) {
+      const body = {
+        contentId: postId,
+        commentText: value,
+      };
+      await postData({ path: `${apiRoutes.createComment}`, body });
+    } else {
+      const body = {
+        contentId: postId,
+        parentCommentId,
+        commentText: value,
+      };
+      await postData({ path: `${apiRoutes.createCommentReply}`, body });
+    }
     const { data }: { data: CommentListType[] } = await getData({ path: `${apiRoutes.getComments}/${postId}` });
     setComments(data);
   };
 
   const handleClick = () => {
     handleCreateComment();
-    reset();
+    resetInputComment();
   };
 
   return (

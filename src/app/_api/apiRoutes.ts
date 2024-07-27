@@ -29,6 +29,7 @@ export const apiRoutes = {
 
   // Comment
   createComment: '/v1/comments/add',
+  createCommentReply: '/v1/comments/add/reply',
   getComments: '/v1/comments',
 
   // Reaction
