@@ -27,7 +27,7 @@ export default function DailyUserTitle({ name, isEdit, targetType, commentText, 
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const { isDeleted, setIsDeleted } = usePostDeletedStore();
-  const { setCommentText } = useCommentStore();
+  const { setCommentText, setCommentMethodType } = useCommentStore();
 
   const router = useRouter();
   const groupId = getCookies('groupId');
@@ -54,6 +54,7 @@ export default function DailyUserTitle({ name, isEdit, targetType, commentText, 
       router.push(`/posts?postId=${postId}`);
     }
     setCommentText(commentText || '');
+    setCommentMethodType('PUT');
   };
 
   const handleDeleteClick = () => {
