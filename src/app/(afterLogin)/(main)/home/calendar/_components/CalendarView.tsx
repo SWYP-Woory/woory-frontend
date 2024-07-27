@@ -8,9 +8,11 @@ import { useDateControl } from '@/app/_hooks/useDateControl';
 import { getCookies } from '@/app/_store/cookie/cookies';
 import { CalenderDataType } from '@/type';
 import { addDays, differenceInCalendarDays, endOfMonth, endOfWeek, format, startOfMonth, startOfWeek } from 'date-fns';
+import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
 
 export default function CalendarView() {
+  const router = useRouter();
   const { currentDate, prevMonthHandler, nextMonthHandler } = useDateControl();
   const [calendarData, setCalenderData] = useState<CalenderDataType[]>();
   const monthStart = startOfMonth(currentDate); // 현재 달의 시작 날짜 (요일 포함)
@@ -32,9 +34,14 @@ export default function CalendarView() {
     const fetchCalenderData = async () => {
       try {
         const groupId = getCookies('groupId');
-        const { data } = await getData({
+        const { data, status } = await getData({
           path: `${apiRoutes.getMonthPost}?groupId=${groupId}&param=${format(currentDate, 'yyyy-MM')}`,
         });
+
+        if (status === 404) {
+          router.replace('/not-found');
+        }
+
         setCalenderData(data);
       } catch (error) {
         console.error(error);

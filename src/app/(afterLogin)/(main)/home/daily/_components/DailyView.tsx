@@ -16,10 +16,11 @@ import { useTopicStore } from '@/app/_store/topicStore';
 import { DailyDataType, DailyThreadType, TopicStoreType } from '@/type';
 import { getCalendarTime } from '@/utils/getTime';
 import { format } from 'date-fns';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 
 export default function DailyView() {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [dailyTopicId, setDailyTopicId] = useState(-1);
   const [topic, setTopic] = useState<string>('');
@@ -60,9 +61,12 @@ export default function DailyView() {
       groupId = inviteGroupId;
     }
 
-    const { data }: { data: DailyDataType } = await getData({
+    const { data, status }: { data: DailyDataType; status: number } = await getData({
       path: `${apiRoutes.getDaily}/${groupId}/get?day=${getCalendarTime(currentDate)}`,
     });
+    if (status === 404) {
+      router.push('/not-found');
+    }
     const { topicId, topicContent, hasPrevDay, hasNextDay, contents, isPosted } = data;
     const newContents: DailyThreadType[] = contents.map((content) => ({
       id: content.contentId,
@@ -122,7 +126,7 @@ export default function DailyView() {
   return isLoading ? (
     <Loading />
   ) : (
-    <div className="flex flex-col items-center min-h-screen gap-24">
+    <div className="flex flex-col flex-grow items-center gap-24">
       <DateController
         controllerType="daily"
         date={format(currentDate, 'yy.MM.dd')}
@@ -131,13 +135,13 @@ export default function DailyView() {
         hasPrevDay={isPrevDay}
         hasNextDay={isNextDay}
       />
-      <div className="flex flex-col items-center gap-8">
+      <div className="flex flex-col flex-grow items-center gap-8">
         <DailyTopic topicId={dailyTopicId} topic={topic} hasLike isLiked={isLiked} />
-        <div>
+        <div className="flex flex-col flex-grow">
           {dailyThreads.length > 0 ? (
             dailyThreads.map((data) => <DailyThread key={data.id} data={data} />)
           ) : (
-            <div className="pt-180">
+            <div className="flex flex-col justify-end flex-grow">
               <DailyNoThread />
             </div>
           )}
