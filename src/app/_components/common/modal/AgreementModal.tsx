@@ -21,11 +21,11 @@ export default function AgreementModal({ agreementType }: Props) {
 
   return (
     <ModalBackground>
-      <div className="fixed bottom-0 justify-center items-center w-[37.5rem] h-[73.2rem] bg-white rounded-t-[4rem] z-10 *:absolute">
+      <div className="fixed flex flex-col bottom-0 justify-center items-center w-[37.5rem] h-4/5 bg-white rounded-t-[4rem] z-10">
         <ModalBorder />
-        <h1 className="top-40 left-[11.4rem] text-center text-22 font-700 text-black">{title}</h1>
-        <div className="top-[8.8rem] h-[54.8rem] px-16 overflow-y-scroll text-14 text-midGrey">{description}</div>
-        <div className="top-[65.2rem] left-16">
+        <h1 className="pt-40 flex justify-center text-center text-22 font-700 text-black">{title}</h1>
+        <div className="pt-16 h-4/5 px-16 overflow-y-scroll text-14 text-midGrey">{description}</div>
+        <div className="pt-16 pb-32 px-16">
           <BottomSheetButton text="닫기" onClick={onClickClose} />
         </div>
       </div>
