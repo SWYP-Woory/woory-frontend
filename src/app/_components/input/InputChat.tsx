@@ -11,9 +11,10 @@ interface Props {
   maxLength: number;
   placeholder: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  setInputData: (input: string) => void;
 }
 
-export default function InputChat({ postId, value, maxLength, placeholder, onChange }: Props) {
+export default function InputChat({ postId, value, maxLength, placeholder, onChange, setInputData }: Props) {
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const isEntered = value.length !== 0;
 
@@ -28,6 +29,7 @@ export default function InputChat({ postId, value, maxLength, placeholder, onCha
 
   const handleClick = () => {
     handleCreateComment();
+    setInputData('');
   };
 
   return (

@@ -27,6 +27,7 @@ export default function InputComment({ postId }: Props) {
         maxLength={MAX_LENGTH}
         placeholder={PLACEHOLDER}
         onChange={(e) => handleChatChange(e)}
+        setInputData={setInputData}
       />
     </div>
   );
