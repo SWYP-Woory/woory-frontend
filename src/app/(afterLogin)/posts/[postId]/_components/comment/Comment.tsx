@@ -31,6 +31,7 @@ export default function Comment({ commentId, profileUrl, comment, name, edit, ha
               name={name}
               isEdit={edit}
               targetType={`${hasReply ? 'comment' : 'reply'}`}
+              commentText={comment}
               isLastReply={isLastReply}
             />
             <div className="font-body">{comment}</div>

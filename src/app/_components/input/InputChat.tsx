@@ -2,7 +2,7 @@
 
 import { getData, postData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
-import { useCommentListStore } from '@/app/_store/commentStore';
+import { useCommentListStore } from '@/app/_store/commentListStore';
 import { useInputCommentStore } from '@/app/_store/inputCommentStore';
 import { useReplyCommentStore } from '@/app/_store/replyCommentStore';
 import SendIcon from '@/assets/icons/send/send.svg';

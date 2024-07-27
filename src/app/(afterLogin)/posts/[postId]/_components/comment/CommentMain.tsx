@@ -4,7 +4,7 @@ import CommentView from '@/app/(afterLogin)/posts/[postId]/_components/comment/C
 import InputComment from '@/app/(afterLogin)/posts/[postId]/_components/input/InputComment';
 import { getData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
-import { useCommentListStore } from '@/app/_store/commentStore';
+import { useCommentListStore } from '@/app/_store/commentListStore';
 import { CommentListType } from '@/type';
 import { useCallback, useEffect } from 'react';
 

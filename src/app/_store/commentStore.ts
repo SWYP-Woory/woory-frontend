@@ -1,14 +1,13 @@
-import { CommentListType } from '@/type';
 import { create } from 'zustand';
 
-interface CommentListState {
-  comments: CommentListType[];
-  setComments: (comments: CommentListType[]) => void;
+interface CommentState {
+  commentText: string;
+  setCommentText: (commentText: string) => void;
   reset: () => void;
 }
 
-export const useCommentListStore = create<CommentListState>((set) => ({
-  comments: [],
-  setComments: (comments: CommentListType[]) => set({ comments }),
-  reset: () => set({ comments: [] }),
+export const useCommentStore = create<CommentState>((set) => ({
+  commentText: '',
+  setCommentText: (commentText: string) => set({ commentText }),
+  reset: () => set({ commentText: '' }),
 }));
