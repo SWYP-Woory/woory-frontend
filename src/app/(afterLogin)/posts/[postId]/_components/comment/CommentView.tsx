@@ -4,12 +4,13 @@ import Comment from '@/app/(afterLogin)/posts/[postId]/_components/comment/Comme
 import { CommentListType } from '@/type';
 
 interface Props {
+  postId: number;
   comments: CommentListType[];
   onReplyClick: (commentId: number) => void;
   replyingCommentId: number | null;
 }
 
-export default function CommentView({ comments, onReplyClick, replyingCommentId }: Props) {
+export default function CommentView({ postId, comments, onReplyClick, replyingCommentId }: Props) {
   if (comments.length === 0) {
     return (
       <div className="flex flex-col flex-grow justify-center items-center text-center w-full min-h-[20.0rem] font-body text-textDisabled">
@@ -28,6 +29,7 @@ export default function CommentView({ comments, onReplyClick, replyingCommentId 
         key={commentId}
       >
         <Comment
+          postId={postId}
           commentId={commentId}
           profileUrl={profileUrl}
           comment={comment}
@@ -40,6 +42,7 @@ export default function CommentView({ comments, onReplyClick, replyingCommentId 
         {replies.map((reply) => (
           <Comment
             key={commentId}
+            postId={postId}
             commentId={reply.commentId}
             profileUrl={reply.profileUrl}
             comment={reply.comment}

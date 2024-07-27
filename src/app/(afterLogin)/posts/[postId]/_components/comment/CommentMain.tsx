@@ -33,7 +33,12 @@ export default function CommentMain({ postId }: Props) {
   return (
     <>
       <div className="flex flex-col flex-grow">
-        <CommentView comments={comments} replyingCommentId={replyingCommentId} onReplyClick={handleReplyClick} />
+        <CommentView
+          postId={postId}
+          comments={comments}
+          replyingCommentId={replyingCommentId}
+          onReplyClick={handleReplyClick}
+        />
       </div>
       <InputComment postId={postId} replyingCommentId={replyingCommentId} onReplyClick={handleReplyClick} />
     </>
