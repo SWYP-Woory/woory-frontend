@@ -24,9 +24,7 @@ export default function AgreementModal({ agreementType }: Props) {
       <div className="fixed bottom-0 justify-center items-center w-[37.5rem] h-[73.2rem] bg-white rounded-t-[4rem] z-10 *:absolute">
         <ModalBorder />
         <h1 className="top-40 left-[11.4rem] text-center text-22 font-700 text-black">{title}</h1>
-        <div className="top-[8.8rem] left-16 w-[33.5rem] h-[54.8rem] overflow-y-scroll text-14 text-midGrey">
-          {description}
-        </div>
+        <div className="top-[8.8rem] h-[54.8rem] px-16 overflow-y-scroll text-14 text-midGrey">{description}</div>
         <div className="top-[65.2rem] left-16">
           <BottomSheetButton text="닫기" onClick={onClickClose} />
         </div>
