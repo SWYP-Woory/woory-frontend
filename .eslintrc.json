@@ -11,7 +11,9 @@
     "import/prefer-default-export": "off",
     "react/no-unescaped-entities": "off",
     "consistent-return": "off",
-    "no-console": "warn"
+    "no-console": "warn",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "warn"
   },
   "ignorePatterns": ["public/*.js"]
 }

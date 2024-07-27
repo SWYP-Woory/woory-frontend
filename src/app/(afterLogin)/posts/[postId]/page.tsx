@@ -1,37 +1,7 @@
 import DailyPostView from '@/app/(afterLogin)/posts/[postId]/_components/DailyPostView';
-import CommentView from '@/app/(afterLogin)/posts/[postId]/_components/comment/CommentView';
-import InputComment from '@/app/(afterLogin)/posts/[postId]/_components/input/InputComment';
+import CommentMain from '@/app/(afterLogin)/posts/[postId]/_components/comment/CommentMain';
 import Border from '@/app/_components/common/border/Border';
 import BasicHeader from '@/app/_components/common/header/BasicHeader';
-
-const DUMMY_COMMENT = [
-  {
-    profile: {
-      profileUrl: '',
-      name: '엄마',
-      isEdit: false,
-    },
-    comment: 'This is a comment',
-    replies: [
-      {
-        profile: {
-          profileUrl: '',
-          name: '아들',
-          isEdit: false,
-        },
-        comment: 'This is a reply',
-      },
-      {
-        profile: {
-          profileUrl: '',
-          name: '아빠',
-          isEdit: true,
-        },
-        comment: 'This is a reply',
-      },
-    ],
-  },
-];
 
 interface Props {
   params: {
@@ -48,11 +18,8 @@ export default function PostPage({ params }: Props) {
           <DailyPostView postId={params.postId} />
           <Border />
         </div>
-        <div className="flex flex-col flex-grow">
-          <CommentView data={DUMMY_COMMENT} />
-        </div>
+        <CommentMain postId={params.postId} />
       </div>
-      <InputComment />
     </>
   );
 }

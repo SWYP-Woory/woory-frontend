@@ -7,7 +7,7 @@ import Modal from '@/app/_components/common/modal/Modal';
 import KebabMenuIcon from '@/app/_components/icon/kebabMenu/KebabMenuIcon';
 import { MODAL_TYPE_MAP } from '@/app/_constants/modal';
 import { getCookies } from '@/app/_store/cookie/cookies';
-import { usePostDeletedStore } from '@/app/_store/isPostDeleted';
+import { usePostDeletedStore } from '@/app/_store/isPostDeletedStore';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -46,7 +46,9 @@ export default function DailyUserTitle({ name, isEdit, targetType, postId, regDa
   };
 
   const handleEditClick = () => {
-    router.push(`/posts?postId=${postId}`);
+    if (content === 'post') {
+      router.push(`/posts?postId=${postId}`);
+    }
   };
 
   const handleDeleteClick = () => {
