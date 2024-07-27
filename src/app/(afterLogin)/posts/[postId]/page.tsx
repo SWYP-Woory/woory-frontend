@@ -49,10 +49,10 @@ export default function PostPage({ params }: Props) {
           <Border />
         </div>
         <div className="flex flex-col flex-grow">
-          <CommentView data={DUMMY_COMMENT} />
+          <CommentView data={DUMMY_COMMENT} postId={params.postId} />
         </div>
       </div>
-      <InputComment />
+      <InputComment postId={params.postId} />
     </>
   );
 }

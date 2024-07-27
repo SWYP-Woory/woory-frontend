@@ -8,7 +8,6 @@ import DailyTopic from '@/app/_components/common/daily/DailyTopic';
 import DailyUserTitle from '@/app/_components/common/daily/DailyUserTitle';
 import Loading from '@/app/_components/common/loading/Loading';
 import Profile from '@/app/_components/common/profile/Profile';
-import { usePostStore } from '@/app/_store/postStore';
 import { DailyPostType } from '@/type';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -20,14 +19,12 @@ interface Props {
 export default function DailyPostView({ postId }: Props) {
   const [postData, setPostData] = useState<DailyPostType>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const { setPostId } = usePostStore();
 
   useEffect(() => {
     const fetchPostData = async () => {
       try {
         const { data }: { data: DailyPostType } = await getData({ path: `${apiRoutes.getPost}/${postId}` });
         setPostData(data);
-        setPostId(data.contentId);
       } catch (error) {
         console.error(error);
       } finally {

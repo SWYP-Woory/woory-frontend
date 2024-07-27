@@ -2,10 +2,11 @@ import Comment from '@/app/(afterLogin)/posts/[postId]/_components/comment/Comme
 import { CommentListType } from '@/type';
 
 interface Props {
+  postId: number;
   data: CommentListType[];
 }
 
-export default function CommentView({ data }: Props) {
+export default function CommentView({ postId, data }: Props) {
   if (data.length === 0) {
     return (
       <div className="flex flex-col flex-grow justify-center items-center text-center w-full min-h-[20.0rem] font-body text-textDisabled">
@@ -16,6 +17,7 @@ export default function CommentView({ data }: Props) {
   }
   return data.map((commentList, index) => {
     const { profile, comment, replies } = commentList;
+    console.log(postId);
     return (
       <div
         className={`flex flex-col items-end gap-24 py-16 pl-16 pr-[2.6rem] bg-white ${data.length - 1 !== index && 'border-bgGrey border-b'}`}
