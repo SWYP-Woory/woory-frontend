@@ -1,17 +1,17 @@
 import { create } from 'zustand';
 
 interface CommentState {
-  commentText: string;
-  setCommentText: (commentText: string) => void;
-  commentMethodType: 'PUT' | 'DELETE' | null;
-  setCommentMethodType: (commentMethodType: 'PUT' | 'DELETE' | null) => void;
+  commentId: number;
+  setCommentId: (commentId: number) => void;
+  commentMethodType: 'PUT' | null;
+  setCommentMethod: (commentMethodType: 'PUT' | null) => void;
   reset: () => void;
 }
 
 export const useCommentStore = create<CommentState>((set) => ({
-  commentText: '',
-  setCommentText: (commentText: string) => set({ commentText }),
+  commentId: -1,
+  setCommentId: (commentId: number) => set({ commentId }),
   commentMethodType: null,
-  setCommentMethodType: (commentMethodType) => set({ commentMethodType }),
-  reset: () => set({ commentText: '', commentMethodType: null }),
+  setCommentMethod: (commentMethodType: 'PUT' | null) => set({ commentMethodType }),
+  reset: () => set({ commentId: -1, commentMethodType: null }),
 }));
