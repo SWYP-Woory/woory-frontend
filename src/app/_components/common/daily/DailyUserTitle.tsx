@@ -2,7 +2,7 @@
 
 import { deleteData, getData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
-import EditDeleteButton from '@/app/_components/common//button/EditDeleteButton';
+import EditDeleteButton from '@/app/_components/common/button/EditDeleteButton';
 import Modal from '@/app/_components/common/modal/Modal';
 import KebabMenuIcon from '@/app/_components/icon/kebabMenu/KebabMenuIcon';
 import { MODAL_TYPE_MAP } from '@/app/_constants/modal';
@@ -11,6 +11,7 @@ import { useCommentStore } from '@/app/_store/commentStore';
 import { getCookies } from '@/app/_store/cookie/cookies';
 import { useInputCommentStore } from '@/app/_store/inputCommentStore';
 import { usePostDeletedStore } from '@/app/_store/isPostDeletedStore';
+import { useKebabMenuStore } from '@/app/_store/kebabStore';
 import { CommentListType } from '@/type';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -37,7 +38,6 @@ export default function DailyUserTitle({
   isLastReply,
 }: Props) {
   const content = MODAL_TYPE_MAP[targetType];
-  const [isActive, setIsActive] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const { isDeleted, setIsDeleted } = usePostDeletedStore();
   const { setInputComment } = useInputCommentStore();
@@ -47,10 +47,12 @@ export default function DailyUserTitle({
   const router = useRouter();
   const groupId = getCookies('groupId');
 
+  const { activeId, setActiveId, resetActiveId } = useKebabMenuStore();
+
   const deletePost = async () => {
     try {
       await deleteData({ path: `${apiRoutes.deletePost}/${groupId}/${postId}` });
-      setIsActive(false);
+      resetActiveId();
       setIsModalOpen(false);
       setIsDeleted(!isDeleted);
     } catch (error) {
@@ -62,22 +64,25 @@ export default function DailyUserTitle({
 
   const deleteComment = async () => {
     await deleteData({ path: `${apiRoutes.deleteComment}/${commentId}` });
-    setIsActive(false);
-    setIsActive(false);
+    resetActiveId();
     setIsModalOpen(false);
     const { data }: { data: CommentListType[] } = await getData({ path: `${apiRoutes.getComments}/${postId}` });
     setComments(data);
   };
 
   const handleKebabClick = () => {
-    setIsActive((prev) => !prev);
+    if (activeId === commentId) {
+      resetActiveId();
+    } else {
+      setActiveId(commentId!);
+    }
   };
 
   const handleEditClick = () => {
     if (targetType === 'post') {
       router.push(`/posts?postId=${postId}`);
     }
-    setIsActive((prev) => !prev);
+    resetActiveId();
     setCommentMethod('PUT');
     setCommentId(commentId || -1);
     setInputComment(commentText || '');
@@ -89,7 +94,7 @@ export default function DailyUserTitle({
 
   const handleCancelClick = () => {
     setIsModalOpen(false);
-    setIsActive((prev) => !prev);
+    resetActiveId();
   };
 
   const handleDeleteConfirm = () => {
@@ -106,11 +111,11 @@ export default function DailyUserTitle({
       <div className="font-bodyBold">{name}</div>
       {isEdit && (
         <div className="pr-[1rem]">
-          <KebabMenuIcon isActive={isActive} onClick={handleKebabClick} />
+          <KebabMenuIcon isActive={activeId === commentId} onClick={handleKebabClick} />
         </div>
       )}
-      {isActive && (
-        <div className={`absolute ${isLastReply ? 'bottom-0' : 'top-0'} right-24 z-10`}>
+      {activeId === commentId && (
+        <div className={`absolute ${isLastReply ? 'bottom-0' : 'top-0'} right-24 z-20`}>
           <EditDeleteButton onEdit={handleEditClick} onDelete={handleDeleteClick} />
         </div>
       )}
