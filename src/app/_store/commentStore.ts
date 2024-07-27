@@ -5,7 +5,7 @@ interface CommentState {
   setCommentId: (commentId: number) => void;
   commentMethodType: 'PUT' | null;
   setCommentMethod: (commentMethodType: 'PUT' | null) => void;
-  reset: () => void;
+  resetComment: () => void;
 }
 
 export const useCommentStore = create<CommentState>((set) => ({
@@ -13,5 +13,5 @@ export const useCommentStore = create<CommentState>((set) => ({
   setCommentId: (commentId: number) => set({ commentId }),
   commentMethodType: null,
   setCommentMethod: (commentMethodType: 'PUT' | null) => set({ commentMethodType }),
-  reset: () => set({ commentId: -1, commentMethodType: null }),
+  resetComment: () => set({ commentId: -1, commentMethodType: null }),
 }));
