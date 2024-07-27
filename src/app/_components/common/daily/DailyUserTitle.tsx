@@ -74,7 +74,7 @@ export default function DailyUserTitle({
   };
 
   const handleEditClick = () => {
-    if (content === 'post') {
+    if (targetType === 'post') {
       router.push(`/posts?postId=${postId}`);
     }
     setIsActive((prev) => !prev);
