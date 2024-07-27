@@ -28,7 +28,7 @@ export default function CommentView({ comments }: Props) {
         {replies.map((reply, i) => (
           <Comment
             key={commentId}
-            commentId={commentId}
+            commentId={reply.commentId}
             profileUrl={reply.profileUrl}
             comment={reply.comment}
             name={reply.name}
