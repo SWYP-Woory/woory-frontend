@@ -25,7 +25,13 @@ export default function ProfileImageUpload({ profileImage, inputType }: Props) {
       </div>
       <div className="pt-24 px-[10.8rem]">
         <PictureChangeButton onClick={handleUploadClick} />
-        <input type="file" className="hidden" ref={fileInputRef} onChange={handleImageChange} />
+        <input
+          type="file"
+          className="hidden"
+          ref={fileInputRef}
+          onChange={handleImageChange}
+          accept=".jpg,.jpeg,.png"
+        />
       </div>
     </>
   );
