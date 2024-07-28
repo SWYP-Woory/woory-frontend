@@ -1,13 +1,17 @@
-import create from 'zustand';
+import { create } from 'zustand';
 
 interface KebabMenuState {
-  activeId: number | null;
-  setActiveId: (id: number) => void;
+  postActiveId: number | null;
+  setPostActiveId: (postActiveId: number | null) => void;
+  commentActiveId: number | null;
+  setCommentActiveId: (commentActiveId: number | null) => void;
   resetActiveId: () => void;
 }
 
 export const useKebabMenuStore = create<KebabMenuState>((set) => ({
-  activeId: null,
-  setActiveId: (id) => set({ activeId: id }),
-  resetActiveId: () => set({ activeId: null }),
+  postActiveId: null,
+  setPostActiveId: (postActiveId: number | null) => set({ postActiveId }),
+  commentActiveId: null,
+  setCommentActiveId: (commentActiveId: number | null) => set({ commentActiveId }),
+  resetActiveId: () => set({ postActiveId: null, commentActiveId: null }),
 }));

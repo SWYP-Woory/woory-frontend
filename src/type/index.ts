@@ -2,6 +2,8 @@ export type TabType = 'daily' | 'calendar';
 
 export type ToastType = 'link' | 'shortcut' | 'imageSize' | 'post' | 'error';
 
+export type DailyPostTitleType = 'post' | 'comment' | 'reply';
+
 export type BottomSheetType = 'home' | 'inquiry' | 'familySelect';
 
 export type ReactionType = 'LOVE' | 'LIKE' | 'SAD' | 'WOW' | 'HAPPY';
