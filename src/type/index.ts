@@ -1,6 +1,6 @@
 export type TabType = 'daily' | 'calendar';
 
-export type ToastType = 'link' | 'shortcut' | 'imageSize' | 'post';
+export type ToastType = 'link' | 'shortcut' | 'imageSize' | 'post' | 'error';
 
 export type BottomSheetType = 'home' | 'inquiry' | 'familySelect';
 
