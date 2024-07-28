@@ -6,7 +6,7 @@ import { getData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
 import { useCommentListStore } from '@/app/_store/commentListStore';
 import { CommentListType } from '@/type';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 
 interface Props {
   postId: number;
@@ -14,7 +14,6 @@ interface Props {
 
 export default function CommentMain({ postId }: Props) {
   const { comments, setComments, reset } = useCommentListStore();
-  const [replyingCommentId, setReplyingCommentId] = useState<number | null>(null);
 
   const handleLoad = useCallback(async () => {
     reset();
@@ -26,21 +25,12 @@ export default function CommentMain({ postId }: Props) {
     handleLoad();
   }, [handleLoad]);
 
-  const handleReplyClick = (commentId: number | null) => {
-    setReplyingCommentId(commentId);
-  };
-
   return (
     <>
       <div className="flex flex-col flex-grow">
-        <CommentView
-          postId={postId}
-          comments={comments}
-          replyingCommentId={replyingCommentId}
-          onReplyClick={handleReplyClick}
-        />
+        <CommentView postId={postId} comments={comments} />
       </div>
-      <InputComment postId={postId} replyingCommentId={replyingCommentId} onReplyClick={handleReplyClick} />
+      <InputComment postId={postId} />
     </>
   );
 }

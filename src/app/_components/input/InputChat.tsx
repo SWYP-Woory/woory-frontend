@@ -16,19 +16,9 @@ interface Props {
   maxLength: number;
   placeholder: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  replyingCommentId: number | null;
-  onReplyClick: (commentId: number | null) => void;
 }
 
-export default function InputChat({
-  postId,
-  value,
-  maxLength,
-  placeholder,
-  onChange,
-  replyingCommentId,
-  onReplyClick,
-}: Props) {
+export default function InputChat({ postId, value, maxLength, placeholder, onChange }: Props) {
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const { resetInputComment } = useInputCommentStore();
   const { setComments } = useCommentListStore();
@@ -39,7 +29,7 @@ export default function InputChat({
   const isEntered = value.length !== 0;
 
   const handleCreateComment = async () => {
-    if (parentCommentId === -1) {
+    if (!parentCommentId) {
       const body = {
         contentId: postId,
         commentText: value,
@@ -54,7 +44,7 @@ export default function InputChat({
       await postData({ path: `${apiRoutes.createCommentReply}`, body });
       resetReply();
     }
-    onReplyClick(null);
+    resetReply();
     const { data }: { data: CommentListType[] } = await getData({ path: `${apiRoutes.getComments}/${postId}` });
     setComments(data);
     resetInputComment();
@@ -80,10 +70,10 @@ export default function InputChat({
   };
 
   useEffect(() => {
-    if (replyingCommentId !== null && inputRef.current) {
+    if (parentCommentId !== null && inputRef.current) {
       inputRef.current.focus();
     }
-  }, [replyingCommentId]);
+  }, [parentCommentId]);
 
   return (
     <div className="flex justify-between items-center pl-[1.6rem] pr-[0.8rem] w-[34.3rem] h-[4.4rem] border border-solid bg-bgGrey border-lightGrey rounded-[1rem] overflow-hidden">
