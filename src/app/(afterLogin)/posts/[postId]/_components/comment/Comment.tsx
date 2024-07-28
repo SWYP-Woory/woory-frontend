@@ -9,34 +9,16 @@ interface Props extends CommentType {
   postId: number;
   hasReply?: boolean;
   isLastReply?: boolean;
-  onReplyClick: (commentId: number | null) => void;
-  isReplying: boolean;
 }
 
-export default function Comment({
-  postId,
-  commentId,
-  profileUrl,
-  comment,
-  name,
-  edit,
-  hasReply,
-  isLastReply,
-  onReplyClick,
-  isReplying,
-}: Props) {
+export default function Comment({ postId, commentId, profileUrl, comment, name, edit, hasReply, isLastReply }: Props) {
   const { parentCommentId, setParentCommentId, resetReply } = useReplyCommentStore();
 
   const handleClick = () => {
-    if (parentCommentId === -1) {
-      setParentCommentId(commentId);
-    } else {
+    if (parentCommentId === commentId) {
       resetReply();
-    }
-    if (isReplying) {
-      onReplyClick(null);
     } else {
-      onReplyClick(commentId);
+      setParentCommentId(commentId);
     }
   };
 
@@ -60,7 +42,7 @@ export default function Comment({
           {hasReply && (
             <button
               type="button"
-              className={`font-caption w-fit ${isReplying ? 'text-primary' : 'text-midGrey'} underline`}
+              className={`font-caption w-fit ${parentCommentId === commentId ? 'text-primary' : 'text-midGrey'} underline`}
               onClick={handleClick}
             >
               답글달기

@@ -1,13 +1,13 @@
 import { create } from 'zustand';
 
 interface ReplyCommentState {
-  parentCommentId: number;
-  setParentCommentId: (parentCommentId: number) => void;
+  parentCommentId: number | null;
+  setParentCommentId: (parentCommentId: number | null) => void;
   resetReply: () => void;
 }
 
 export const useReplyCommentStore = create<ReplyCommentState>((set) => ({
-  parentCommentId: -1,
-  setParentCommentId: (parentCommentId: number) => set({ parentCommentId }),
-  resetReply: () => set({ parentCommentId: -1 }),
+  parentCommentId: null,
+  setParentCommentId: (parentCommentId: number | null) => set({ parentCommentId }),
+  resetReply: () => set({ parentCommentId: null }),
 }));

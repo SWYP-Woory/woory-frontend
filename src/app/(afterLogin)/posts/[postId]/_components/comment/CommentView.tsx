@@ -6,11 +6,9 @@ import { CommentListType } from '@/type';
 interface Props {
   postId: number;
   comments: CommentListType[];
-  onReplyClick: (commentId: number | null) => void;
-  replyingCommentId: number | null;
 }
 
-export default function CommentView({ postId, comments, onReplyClick, replyingCommentId }: Props) {
+export default function CommentView({ postId, comments }: Props) {
   if (comments.length === 0) {
     return (
       <div className="flex flex-col flex-grow justify-center items-center text-center w-full min-h-[20.0rem] font-body text-textDisabled">
@@ -36,8 +34,6 @@ export default function CommentView({ postId, comments, onReplyClick, replyingCo
           name={name}
           edit={edit}
           hasReply
-          onReplyClick={onReplyClick}
-          isReplying={replyingCommentId === commentId}
         />
         {replies.map((reply) => (
           <Comment
@@ -49,8 +45,6 @@ export default function CommentView({ postId, comments, onReplyClick, replyingCo
             name={reply.name}
             edit={reply.edit}
             isLastReply={index === comments.length - 1 && reply.commentId === commentList.commentId}
-            onReplyClick={onReplyClick}
-            isReplying={replyingCommentId === reply.commentId}
           />
         ))}
       </div>
