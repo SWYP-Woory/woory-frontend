@@ -11,6 +11,7 @@ import { useDateControl } from '@/app/_hooks/useDateControl';
 import { deleteCookies, getCookies, setCookies } from '@/app/_store/cookie/cookies';
 import { usePostDeletedStore } from '@/app/_store/isPostDeletedStore';
 import { useIsPostStore } from '@/app/_store/isPostStore';
+import { useKebabMenuStore } from '@/app/_store/kebabStore';
 import LocalStorage from '@/app/_store/localstorage/LocalStorage';
 import { useToastStore } from '@/app/_store/toastStore';
 import { useTopicStore } from '@/app/_store/topicStore';
@@ -37,6 +38,7 @@ export default function DailyView() {
   // 데일리에서 topic, topicImage, topicDate 저장
   const { setTopicTitle, setTopicImage, setTopicDate } = useTopicStore();
   const { setIsOpenToast, setToastText } = useToastStore();
+  const { resetActiveId } = useKebabMenuStore();
 
   const searchParams = useSearchParams();
   const day = searchParams.get('day');
@@ -157,6 +159,7 @@ export default function DailyView() {
   useEffect(() => {
     if (initialized) {
       try {
+        resetActiveId();
         handleLoad();
       } catch (error) {
         console.error(error);

@@ -1,5 +1,3 @@
-'use client';
-
 import DailyView from '@/app/(afterLogin)/(main)/home/daily/_components/DailyView';
 import PostButton from '@/app/(afterLogin)/(main)/home/daily/_components/PostButton';
 // import BottomSheet from '@/app/_components/common/bottomSheet/BottomSheet';
