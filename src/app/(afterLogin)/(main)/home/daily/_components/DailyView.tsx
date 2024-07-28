@@ -88,6 +88,11 @@ export default function DailyView() {
       }
     }
 
+    if (groupId === 'undefined') {
+      deleteCookies('groupId');
+      router.replace('/not-found');
+    }
+
     // 회원가입 실패했다면 해당 요청 하지 않음
     if (!joinFailFlag) {
       const { data, message, status }: { data: DailyDataType; message: string; status: number } = await getData({
