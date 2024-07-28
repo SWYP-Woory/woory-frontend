@@ -12,14 +12,14 @@ import { getCookies } from '@/app/_store/cookie/cookies';
 import { useInputCommentStore } from '@/app/_store/inputCommentStore';
 import { usePostDeletedStore } from '@/app/_store/isPostDeletedStore';
 import { useKebabMenuStore } from '@/app/_store/kebabStore';
-import { CommentListType } from '@/type';
+import { CommentListType, DailyPostTitleType } from '@/type';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 interface Props {
   name: string;
   isEdit: boolean;
-  targetType: 'post' | 'comment' | 'reply';
+  targetType: DailyPostTitleType;
   postId?: number;
   regDate?: string;
   commentId?: number;
@@ -43,11 +43,10 @@ export default function DailyUserTitle({
   const { setInputComment } = useInputCommentStore();
   const { setCommentId, setCommentMethod } = useCommentStore();
   const { setComments } = useCommentListStore();
+  const { postActiveId, setPostActiveId, commentActiveId, setCommentActiveId, resetActiveId } = useKebabMenuStore();
 
   const router = useRouter();
   const groupId = getCookies('groupId');
-
-  const { activeId, setActiveId, resetActiveId } = useKebabMenuStore();
 
   const deletePost = async () => {
     try {
@@ -71,11 +70,29 @@ export default function DailyUserTitle({
   };
 
   const handleKebabClick = () => {
-    if (activeId === commentId) {
-      resetActiveId();
-    } else {
-      setActiveId(commentId!);
+    if (targetType === 'post') {
+      if (postActiveId === postId) {
+        resetActiveId();
+      } else {
+        setPostActiveId(postId!);
+        setCommentActiveId(null);
+      }
     }
+    if (targetType === 'comment' || targetType === 'reply') {
+      if (commentActiveId === commentId) {
+        resetActiveId();
+      } else {
+        setCommentActiveId(commentId!);
+        setPostActiveId(null);
+      }
+    }
+  };
+
+  const isOpenEditDeleteButton = () => {
+    if (targetType === 'post') {
+      return postActiveId === postId;
+    }
+    return commentActiveId === commentId;
   };
 
   const handleEditClick = () => {
@@ -111,10 +128,10 @@ export default function DailyUserTitle({
       <div className="font-bodyBold">{name}</div>
       {isEdit && (
         <div className="pr-[1rem]">
-          <KebabMenuIcon isActive={activeId === commentId} onClick={handleKebabClick} />
+          <KebabMenuIcon isActive={isOpenEditDeleteButton()} onClick={handleKebabClick} />
         </div>
       )}
-      {activeId === commentId && (
+      {isOpenEditDeleteButton() && (
         <div className={`absolute ${isLastReply ? 'bottom-0' : 'top-0'} right-24 z-20`}>
           <EditDeleteButton onEdit={handleEditClick} onDelete={handleDeleteClick} />
         </div>
