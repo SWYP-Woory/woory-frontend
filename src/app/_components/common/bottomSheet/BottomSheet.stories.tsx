@@ -4,7 +4,6 @@ import { Meta, StoryObj } from '@storybook/react';
 function BottomSheets() {
   return (
     <div className="inset-0 fixed flex flex-col gap-16 bg-modalBackground min-h-screen">
-      <BottomSheet sheetType="home" />
       <BottomSheet sheetType="inquiry" />
       <BottomSheet sheetType="familySelect" />
     </div>

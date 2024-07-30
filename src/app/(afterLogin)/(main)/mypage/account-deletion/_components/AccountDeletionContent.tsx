@@ -22,7 +22,6 @@ export default function AccountDeletionContent() {
   const handleDeletionConfirm = async () => {
     try {
       await deleteData({ path: apiRoutes.UserDeletion });
-      deleteCookies('add_home');
       deleteCookies('groupId');
       await logout();
       router.replace('/');
