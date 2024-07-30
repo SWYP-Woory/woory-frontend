@@ -1,22 +1,23 @@
+'use client';
+
 import DailyView from '@/app/(afterLogin)/(main)/home/daily/_components/DailyView';
 import PostButton from '@/app/(afterLogin)/(main)/home/daily/_components/PostButton';
-// import BottomSheet from '@/app/_components/common/bottomSheet/BottomSheet';
-// import ModalBackground from '@/app/_components/common/modal/ModalBackground';
+import BottomSheet from '@/app/_components/common/bottomSheet/BottomSheet';
+import ModalBackground from '@/app/_components/common/modal/ModalBackground';
 import UpperTabBar from '@/app/_components/common/upperTabBar/UpperTabBar';
-
-// import { getCookies } from '@/app/_store/cookie/cookies';
-// import { useModalStore } from '@/app/_store/modalStore';
-// import { useEffect } from 'react';
+import { getCookies } from '@/app/_store/cookie/cookies';
+import { useModalStore } from '@/app/_store/modalStore';
+import { useEffect } from 'react';
 
 export default function DailyMain() {
-  // const { isModalOpen, setIsModalOpen } = useModalStore();
-  // const cookie = getCookies('add_home');
+  const { isModalOpen, setIsModalOpen } = useModalStore();
+  const cookie = getCookies('add_home');
 
-  // useEffect(() => {
-  //   if (!cookie) {
-  //     setIsModalOpen(true);
-  //   }
-  // }, [cookie, setIsModalOpen]);
+  useEffect(() => {
+    if (!cookie) {
+      setIsModalOpen(true);
+    }
+  }, [cookie, setIsModalOpen]);
 
   return (
     <>
@@ -27,11 +28,11 @@ export default function DailyMain() {
         <DailyView />
       </div>
       <PostButton />
-      {/* {isModalOpen && (
+      {isModalOpen && (
         <ModalBackground>
           <BottomSheet sheetType="home" />
         </ModalBackground>
-      )} */}
+      )}
     </>
   );
 }

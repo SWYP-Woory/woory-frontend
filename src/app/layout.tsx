@@ -1,4 +1,5 @@
 import './globals.css';
+import ServiceWorkerRegistrar from '@/ServiceWorkerRegistrar';
 import type { Metadata } from 'next';
 import { Noto_Sans_KR } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
@@ -51,6 +52,7 @@ export default function RootLayout({
             bottom: '12.8rem',
           }}
         />
+        <ServiceWorkerRegistrar />
       </body>
     </html>
   );
