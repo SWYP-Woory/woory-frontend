@@ -177,5 +177,4 @@ fabric.properties
 /.idea/git_toolbox_blame.xml
 
 # Ignore sw.js and workbox~~.js files
-sw.js
 workbox*.js
