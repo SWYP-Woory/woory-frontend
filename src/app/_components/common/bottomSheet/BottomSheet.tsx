@@ -1,6 +1,5 @@
 import ModalBorder from '@/app/_components/common/border/ModalBorder';
 import FamilySelect from '@/app/_components/common/bottomSheet/FamilySelect';
-import HomeShortcut from '@/app/_components/common/bottomSheet/HomeShortcut';
 import ServiceInquiry from '@/app/_components/common/bottomSheet/ServiceInquiry';
 import { BottomSheetType } from '@/type';
 
@@ -10,8 +9,6 @@ interface Props {
 
 function BottomSheetByType({ sheetType }: Props) {
   switch (sheetType) {
-    case 'home':
-      return <HomeShortcut />;
     case 'inquiry':
       return <ServiceInquiry />;
     case 'familySelect':
