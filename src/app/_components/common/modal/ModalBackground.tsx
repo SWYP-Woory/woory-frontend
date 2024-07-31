@@ -15,7 +15,7 @@ export default function ModalBackground({ isClosed, children, onClose }: Props) 
 
   return (
     <div
-      className={`fixed inset-0 flex items-center justify-center modal-background ${isClosed ? 'modal-background-fade-out' : 'modal-background-fade-In'} z-20`}
+      className={`fixed inset-0 flex items-center justify-center modal-background ${isClosed ? 'fade-out' : 'modal-background-fade-In'} z-20`}
       onClick={handleClick}
       role="presentation"
     >
