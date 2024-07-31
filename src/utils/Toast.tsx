@@ -3,5 +3,5 @@ import { ToastType } from '@/type';
 import toast from 'react-hot-toast';
 
 export const openToast = (type: ToastType, errorMessage?: string) => {
-  toast.custom(<ToastPopUp type={type} errorMessage={errorMessage} />);
+  toast.custom((t) => <ToastPopUp type={type} errorMessage={errorMessage} isVisible={t.visible} />);
 };

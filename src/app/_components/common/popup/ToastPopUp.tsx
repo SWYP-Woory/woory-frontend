@@ -4,6 +4,7 @@ import { ToastType } from '@/type';
 interface Props {
   type: ToastType;
   errorMessage?: string;
+  isVisible: boolean;
 }
 
 const decideContent = (type: string, errorMessage?: string) => {
@@ -23,9 +24,12 @@ const decideContent = (type: string, errorMessage?: string) => {
   }
 };
 
-export default function ToastPopUp({ type, errorMessage }: Props) {
+export default function ToastPopUp({ type, errorMessage, isVisible }: Props) {
   return (
-    <div className="flex justify-center items-center gap-8 bg-lightGrey w-[23.6rem] h-[4.0rem] rounded-[2.0rem]">
+    <div
+      className={`flex justify-center items-center gap-8 bg-lightGrey w-[23.6rem] h-[4.0rem] rounded-[2.0rem] 
+      ${isVisible ? 'toast-slide-up' : 'toast-slide-down'}`}
+    >
       <InfoIcon />
       <div className="font-caption leading-8">{decideContent(type, errorMessage)}</div>
     </div>

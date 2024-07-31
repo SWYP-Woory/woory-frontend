@@ -50,6 +50,12 @@
   .bottomSheet-slide-down {
     animation: slideDown 0.2s ease-in-out forwards;
   }
+  .toast-slide-up {
+    animation: slideUp 0.2s ease-out;
+  }
+  .toast-slide-down {
+    animation: slideDown 0.2s ease-out forwards;
+  }
 }
 @keyframes fadeIn {
   from {
@@ -72,17 +78,21 @@
 @keyframes slideUp {
   from {
     transform: translateY(100%);
+    opacity: 0;
   }
   to {
     transform: translateY(0);
+    opacity: 1;
   }
 }
 
 @keyframes slideDown {
   from {
     transform: translateY(0);
+    opacity: 1;
   }
   to {
     transform: translateY(100%);
+    opacity: 0;
   }
 }
