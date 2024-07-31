@@ -38,4 +38,51 @@
   .bottom-menu {
     @apply flex justify-center items-center w-[8.8rem] h-full;
   }
+  .modal-background-fade-In {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  .modal-background-fade-out {
+    animation: fadeOut 0.4s ease-in-out;
+  }
+  .bottomSheet-slide-up {
+    animation: slideUp 0.3s ease-in-out;
+  }
+  .bottomSheet-slide-down {
+    animation: slideDown 0.2s ease-in-out forwards;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
 }
