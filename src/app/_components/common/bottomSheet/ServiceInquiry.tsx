@@ -1,14 +1,12 @@
 'use client';
 
 import BottomSheetButton from '@/app/_components/common/button/BottomSheetButton';
-import { useRouter } from 'next/navigation';
 
-export default function ServiceInquiry() {
-  const router = useRouter();
-  const handleClick = () => {
-    router.back();
-  };
+interface Props {
+  onClose: () => void;
+}
 
+export default function ServiceInquiry({ onClose }: Props) {
   return (
     <>
       <div className="absolute top-[4rem] left-[11.2rem] h-[3.2rem]">
@@ -28,7 +26,7 @@ export default function ServiceInquiry() {
         </div>
       </div>
       <div className="absolute bottom-[3.2rem] left-[1.6rem]">
-        <BottomSheetButton text="확인" onClick={handleClick} />
+        <BottomSheetButton text="확인" onClick={onClose} />
       </div>
     </>
   );
