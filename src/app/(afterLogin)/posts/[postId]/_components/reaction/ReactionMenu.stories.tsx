@@ -5,7 +5,7 @@ function ReactionMenus() {
   const handleClick = () => {};
   return (
     <div className="flex gap-8">
-      <ReactionMenu onClick={handleClick} />
+      <ReactionMenu onClick={handleClick} isClicked />
     </div>
   );
 }

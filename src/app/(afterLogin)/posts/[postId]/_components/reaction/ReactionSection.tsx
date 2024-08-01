@@ -36,14 +36,12 @@ export default function ReactionSection({ reactions, postId, fetchReaction }: Pr
   };
 
   return (
-    <div className="flex w-full gap-8 relative">
+    <div className="flex w-full gap-8 relative ">
       <div className="relative">
         <AddReactionChip isClicked={isClicked} onClick={handleAddClicked} />
-        {isClicked && (
-          <div className="absolute top-[4.0rem] left-0 z-20">
-            <ReactionMenu onClick={handleReactionChipClick} />
-          </div>
-        )}
+        <div className="absolute top-[4.0rem] left-0 z-20">
+          <ReactionMenu onClick={handleReactionChipClick} isClicked={isClicked} />
+        </div>
       </div>
       <Swiper slidesPerView="auto" spaceBetween={8} freeMode modules={[FreeMode]} className="w-full h-full">
         {reactions.map((reaction, index) => (
