@@ -8,6 +8,7 @@ export const apiRoutes = {
   getMembers: '/v1/groups/get',
   deleteMember: '/v1/groups/ban',
   deleteFamily: '/v1/groups/delete',
+  getFamilyName: '/v1/groups',
 
   // User
   UserLogout: '/v1/users/logout',
