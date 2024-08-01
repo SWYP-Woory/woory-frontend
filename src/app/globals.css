@@ -59,6 +59,9 @@
   .scale-up {
     animation: scaleUp 0.3s ease-out;
   }
+  .checkbox-button:hover svg path {
+    fill: #666666;
+  }
 }
 @keyframes fadeIn {
   from {

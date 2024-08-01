@@ -24,8 +24,8 @@ export default function Checkbox({ isChecked, isDisabled, onClick, children }: P
           <ActiveCheckBoxIcon width="2rem" height="2rem" />
         </button>
       ) : (
-        <button aria-label="checkbox-button" type="button" onClick={onClick}>
-          <DefaultCheckBoxIcon width="2rem" height="2rem" />
+        <button aria-label="checkbox-button" type="button" onClick={onClick} className="checkbox-button">
+          <DefaultCheckBoxIcon width="2rem" height="2rem" fill="#888888" />
         </button>
       )}
       {children}
