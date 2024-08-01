@@ -4,7 +4,7 @@ import ModalBorder from '@/app/_components/common/border/ModalBorder';
 import FamilySelect from '@/app/_components/common/bottomSheet/FamilySelect';
 import ServiceInquiry from '@/app/_components/common/bottomSheet/ServiceInquiry';
 import ModalBackground from '@/app/_components/common/modal/ModalBackground';
-import { useModalClosed } from '@/app/_hooks/useModaltClosed';
+import { useModalClosed } from '@/app/_hooks/useModal';
 import { BottomSheetType } from '@/type';
 import { usePathname } from 'next/navigation';
 
