@@ -44,7 +44,7 @@ export default function RootLayout({
         {children}
         <Toaster
           toastOptions={{
-            duration: 1500,
+            duration: 3000,
             position: 'bottom-center',
           }}
           containerStyle={{
