@@ -4,7 +4,7 @@ import ModalBorder from '@/app/_components/common/border/ModalBorder';
 import BottomSheetButton from '@/app/_components/common/button/BottomSheetButton';
 import { PrivacyPolicyDescription, TermsOfUseDescription } from '@/app/_components/common/modal/AgreementDescription';
 import ModalBackground from '@/app/_components/common/modal/ModalBackground';
-import { useModalClosed } from '@/app/_hooks/useModaltClosed';
+import { useModalClosed } from '@/app/_hooks/useModal';
 
 interface Props {
   agreementType: 'termsOfUse' | 'privacyPolicy';
