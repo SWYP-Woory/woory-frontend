@@ -44,6 +44,7 @@ export default function SocialLoginButton({ socialDomain, isActive }: Props) {
     <Link href={SOCIAL[socialDomain].link}>
       <button
         type="button"
+        disabled={!isActive}
         className={`${isActive ? 'border bg-white' : 'border-lightGrey bg-lightGrey cursor-not-allowed'} flex w-[34.3rem] h-[4.8rem] py-[1.1rem] px-[8.7rem] justify-center items-center rounded-2xl p-4 gap-4`}
       >
         <Image
