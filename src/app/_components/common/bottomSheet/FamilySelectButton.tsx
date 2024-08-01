@@ -2,6 +2,7 @@
 
 import Profile from '@/app/_components/common/profile/Profile';
 import { deleteCookies, getCookies, setCookies } from '@/app/_store/cookie/cookies';
+import FamilySelectIcon from '@/assets/icons/profile/family-select-profile.svg';
 import { FamilyMakeType } from '@/type';
 import { useRouter } from 'next/navigation';
 
@@ -26,6 +27,7 @@ export default function FamilySelectButton({ familyData }: Props) {
         <Profile size="small" profileImage={familyData.groupImage} isFamilyProfile />
         <h3 className="text-18 text-black font-500">{familyData.groupName}</h3>
       </div>
+      <FamilySelectIcon className="absolute top-16 right-16" />
     </button>
   );
 }
