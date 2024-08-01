@@ -11,8 +11,6 @@ const decideContent = (type: string, errorMessage?: string) => {
   switch (type) {
     case 'link':
       return '링크가 복사되었습니다';
-    case 'shortcut':
-      return '홈 화면에 추가되었습니다';
     case 'imageSize':
       return '사진 용량 초과 (5mb 이하 가능)';
     case 'post':
@@ -31,7 +29,9 @@ export default function ToastPopUp({ type, errorMessage, isVisible }: Props) {
       ${isVisible ? 'toast-slide-up' : 'toast-slide-down'}`}
     >
       <InfoIcon />
-      <div className="font-caption leading-8">{decideContent(type, errorMessage)}</div>
+      <div className={`font-caption leading-8 ${type !== 'error' ? 'w-fit' : 'w-[17rem]'} text-center`}>
+        {decideContent(type, errorMessage)}
+      </div>
     </div>
   );
 }

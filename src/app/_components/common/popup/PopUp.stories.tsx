@@ -7,7 +7,7 @@ function PopUp() {
 
   return (
     <div className="flex flex-col gap-16">
-      <div className="flex gap-12">
+      {/* <div className="flex gap-12">
         <Modal
           title="탈퇴 하기"
           content="탈퇴하면 현재 계정으로 작성한 이야기, 댓글 등을 수정하거나 삭제할 수 없습니다. 지금 탈퇴하시겠습니까?"
@@ -29,8 +29,13 @@ function PopUp() {
           onCancel={handleCancelExecute}
           onExecute={handleCancelExecute}
         />
-      </div>
-      <ToastPopUp type="link" isVisible />
+      </div> */}
+      <ToastPopUp
+        type="error"
+        errorMessage="그룹 생성일 이전의 토픽은
+조회할 수 없습니다."
+        isVisible
+      />
     </div>
   );
 }
