@@ -33,9 +33,9 @@ export type AccountDeletionType = 'householder' | 'member' | 'lastMember';
 
 export type CalenderDataType = {
   contentId: number;
-  contentText: string;
-  contentImgPath: string;
+  contentImgPath?: string;
   contentRegDate: string;
+  isFavorite: boolean;
 };
 
 type BasePostType = {
@@ -79,6 +79,7 @@ export type DailyDataType = {
   hasPrevDay: boolean;
   hasNextDay: boolean;
   isPosted: boolean;
+  isFavorite: boolean;
   contents: ContentDataType[];
 };
 
@@ -113,9 +114,9 @@ export type FamilyMakeType = {
 
 export type FavoritePostType = {
   topicId: number;
-  topicTitle: string;
-  topicImage: string;
-  topicDate: Date;
+  topicText: string;
+  contentImg?: string;
+  issueDate: Date;
 };
 
 export type MembersDataType = {
@@ -176,11 +177,4 @@ export type CreatePostType = {
 export type EditPostDataType = {
   contentText: string;
   images?: string;
-};
-
-export type TopicStoreType = {
-  topicId?: number;
-  topicTitle: string;
-  topicImage: string;
-  topicDate?: Date;
 };

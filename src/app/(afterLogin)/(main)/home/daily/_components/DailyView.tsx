@@ -12,10 +12,8 @@ import { deleteCookies, getCookies, setCookies } from '@/app/_store/cookie/cooki
 import { usePostDeletedStore } from '@/app/_store/isPostDeletedStore';
 import { useIsPostStore } from '@/app/_store/isPostStore';
 import { useKebabMenuStore } from '@/app/_store/kebabStore';
-import LocalStorage from '@/app/_store/localstorage/LocalStorage';
 import { useToastStore } from '@/app/_store/toastStore';
-import { useTopicStore } from '@/app/_store/topicStore';
-import { DailyDataType, DailyThreadType, TopicStoreType } from '@/type';
+import { DailyDataType, DailyThreadType } from '@/type';
 import { getCalendarTime } from '@/utils/getTime';
 import { format } from 'date-fns';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -35,8 +33,7 @@ export default function DailyView() {
   const { isDeleted } = usePostDeletedStore();
   const { currentDate, setCurrentDate, prevDayHandler, nextDayHandler } = useDateControl();
   const { setIsPosted, setPostDate } = useIsPostStore();
-  // 데일리에서 topic, topicImage, topicDate 저장
-  const { setTopicTitle, setTopicImage, setTopicDate } = useTopicStore();
+
   const { setIsOpenToast, setToastText } = useToastStore();
   const { resetActiveId } = useKebabMenuStore();
 
@@ -111,7 +108,7 @@ export default function DailyView() {
         deleteCookies('groupId');
         router.push('/not-found');
       }
-      const { topicId, topicContent, hasPrevDay, hasNextDay, contents, isPosted } = data;
+      const { topicId, topicContent, hasPrevDay, hasNextDay, contents, isPosted, isFavorite } = data;
       const newContents: DailyThreadType[] = contents.map((content) => ({
         id: content.contentId,
         profileUrl: content.profileUrl,
@@ -124,13 +121,6 @@ export default function DailyView() {
         regDate: getCalendarTime(content.contentRegDate),
       }));
 
-      const storageData: TopicStoreType[] = LocalStorage.getItemJson('favorites') || [];
-      if (storageData.length !== 0) {
-        const find = storageData.some((storage) => storage.topicId === topicId);
-        setIsLiked(find);
-      } else {
-        setIsLiked(false);
-      }
       setDailyTopicId(topicId);
       setTopic(topicContent);
       setIsPrevDay(hasPrevDay);
@@ -138,12 +128,7 @@ export default function DailyView() {
       setDailyThreads(newContents);
       setIsPosted(isPosted);
       setPostDate(currentDate);
-
-      // TopicStore 저장
-      const storeFirstImage = newContents.find((content) => content.postUrl)?.postUrl || '';
-      setTopicTitle(topicContent);
-      setTopicImage(storeFirstImage);
-      setTopicDate(currentDate);
+      setIsLiked(isFavorite);
     }
   }, [currentDate]);
 
