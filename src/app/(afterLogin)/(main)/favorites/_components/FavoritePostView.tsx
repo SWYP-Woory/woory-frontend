@@ -1,27 +1,15 @@
 'use client';
 
 import FavoritePost from '@/app/(afterLogin)/(main)/favorites/_components/FavoritePost';
-import LocalStorage from '@/app/_store/localstorage/LocalStorage';
-import { useTopicStore } from '@/app/_store/topicStore';
-import { FavoritePostType } from '@/type';
-import { useCallback, useEffect, useState } from 'react';
+import { useFavoritePostsStore } from '@/app/_store/favoritePostsStore';
+import { useEffect } from 'react';
 
 export default function FavoritePostView() {
-  const [favoritePosts, setFavoritePosts] = useState<FavoritePostType[]>([]);
-  const { favoriteTopicId } = useTopicStore();
-
-  const getFavoritePosts = useCallback(() => {
-    const data: FavoritePostType[] = LocalStorage.getItemJson('favorites') || [];
-
-    if (data.length !== 0) {
-      data.sort((a, b) => new Date(b.topicDate).getTime() - new Date(a.topicDate).getTime());
-    }
-    setFavoritePosts(data);
-  }, [favoriteTopicId]);
+  const { favoritePosts, fetchFavoritePosts } = useFavoritePostsStore();
 
   useEffect(() => {
-    getFavoritePosts();
-  }, [getFavoritePosts]);
+    fetchFavoritePosts();
+  }, [fetchFavoritePosts]);
 
   if (favoritePosts.length === 0) {
     return (
@@ -33,13 +21,7 @@ export default function FavoritePostView() {
     );
   }
 
-  return favoritePosts.map(({ topicId, topicTitle, topicImage, topicDate }) => (
-    <FavoritePost
-      key={topicId}
-      topicId={topicId}
-      topicTitle={topicTitle}
-      topicImage={topicImage}
-      topicDate={topicDate}
-    />
+  return favoritePosts.map(({ topicId, topicText, contentImg, issueDate }) => (
+    <FavoritePost key={topicId} topicId={topicId} topicText={topicText} contentImg={contentImg} issueDate={issueDate} />
   ));
 }

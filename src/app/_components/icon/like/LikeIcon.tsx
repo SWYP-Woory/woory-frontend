@@ -1,11 +1,8 @@
 'use client';
 
-import LocalStorage from '@/app/_store/localstorage/LocalStorage';
-import { useTopicStore } from '@/app/_store/topicStore';
+import { useFavoritePostsStore } from '@/app/_store/favoritePostsStore';
 import ActiveLike from '@/assets/icons/like/activeLike.svg';
 import Like from '@/assets/icons/like/like.svg';
-import { TopicStoreType } from '@/type';
-import { getCalendarTime } from '@/utils/getTime';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -15,10 +12,10 @@ interface Props {
 }
 
 export default function LikeIcon({ topicId, isLiked }: Props) {
+  const pathName = usePathname();
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [isActive, setIsActive] = useState<boolean>(false);
-  const { setFavoriteTopicId, topicTitle, topicImage, topicDate } = useTopicStore();
-  const pathName = usePathname();
+  const { fetchFavoritePosts, toggleFavorite } = useFavoritePostsStore();
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -28,38 +25,11 @@ export default function LikeIcon({ topicId, isLiked }: Props) {
     setIsHovered(false);
   };
 
-  const handleFavoriteTopic = () => {
-    if (!isActive) {
-      if (pathName === '/home/daily') {
-        const topics: TopicStoreType[] = LocalStorage.getItemJson('favorites') || [];
-        LocalStorage.setItem(
-          'favorites',
-          JSON.stringify([
-            ...topics,
-            {
-              topicId,
-              topicTitle,
-              topicImage,
-              topicDate: topicDate ? getCalendarTime(topicDate) : null,
-            },
-          ]),
-        );
-      }
-    }
-  };
-
-  const handleCancelFavoriteTopic = () => {
-    if (isActive) {
-      const topics: TopicStoreType[] = LocalStorage.getItemJson('favorites') || [];
-      const filteredTopics = topics.filter((topic) => topic.topicId !== topicId);
-      LocalStorage.setItem('favorites', JSON.stringify(filteredTopics));
-      setFavoriteTopicId(topicId);
-    }
-  };
-
   const handleClick = () => {
-    handleFavoriteTopic();
-    handleCancelFavoriteTopic();
+    toggleFavorite(topicId);
+    if (pathName === '/favorites') {
+      fetchFavoritePosts();
+    }
     setIsActive(!isActive);
   };
 

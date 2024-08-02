@@ -1,6 +1,5 @@
 import Day from '@/app/(afterLogin)/(main)/home/calendar/_components/Day';
-import LocalStorage from '@/app/_store/localstorage/LocalStorage';
-import { CalenderDataType, FavoritePostType } from '@/type';
+import { CalenderDataType } from '@/type';
 import { getCalendarTime } from '@/utils/getTime';
 import { format, getDate, getMonth, parseISO } from 'date-fns';
 
@@ -19,15 +18,11 @@ function findEventForDate(date: Date, events: CalenderDataType[]) {
   });
 }
 
-function renderDay(day: Date, currentDate: Date, events: CalenderDataType[], favoritesPosts?: FavoritePostType[]) {
+function renderDay(day: Date, currentDate: Date, events: CalenderDataType[]) {
   const isCurrentMonth = getMonth(day) === getMonth(currentDate);
   const formattedDay = format(day, 'd');
   const calendarEvent = findEventForDate(day, events);
   const date = getCalendarTime(day);
-  const isLiked = favoritesPosts
-    ? favoritesPosts.some((favorite) => getCalendarTime(favorite.topicDate) === date)
-    : false;
-
   return (
     <Day
       key={formattedDay + day.toString()}
@@ -36,13 +31,12 @@ function renderDay(day: Date, currentDate: Date, events: CalenderDataType[], fav
       validation={isCurrentMonth}
       hasContent={!!calendarEvent}
       imageUrl={calendarEvent?.contentImgPath}
-      isLiked={isLiked}
+      isLiked={calendarEvent?.isFavorite}
     />
   );
 }
 
 export default function Calendar({ createMonth, currentDate, data }: Props) {
-  const favoritesPosts = LocalStorage.getItemJson('favorites');
   return (
     <div className="flex flex-col justify-between items-center w-[34.2rem] h-[45.4rem]">
       <div className="flex justify-between items-center w-[30.4rem] h-[2.6rem]">
@@ -53,7 +47,7 @@ export default function Calendar({ createMonth, currentDate, data }: Props) {
         ))}
       </div>
       <div className="grid grid-cols-7 gap-x-[0.1rem] gap-y-8">
-        {createMonth.map((day) => renderDay(day, currentDate, data, favoritesPosts))}
+        {createMonth.map((day) => renderDay(day, currentDate, data))}
       </div>
     </div>
   );
