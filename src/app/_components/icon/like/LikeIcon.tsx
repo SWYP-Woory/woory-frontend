@@ -1,10 +1,13 @@
 'use client';
 
+import { getData, postData } from '@/app/_api/api';
+import { apiRoutes } from '@/app/_api/apiRoutes';
+import { getCookies } from '@/app/_store/cookie/cookies';
 import { useFavoritePostsStore } from '@/app/_store/favoritePostsStore';
 import ActiveLike from '@/assets/icons/like/activeLike.svg';
 import Like from '@/assets/icons/like/like.svg';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 interface Props {
   topicId: number;
@@ -15,7 +18,18 @@ export default function LikeIcon({ topicId, isLiked }: Props) {
   const pathName = usePathname();
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [isActive, setIsActive] = useState<boolean>(false);
-  const { fetchFavoritePosts, toggleFavorite } = useFavoritePostsStore();
+  const { setFavoritePosts } = useFavoritePostsStore();
+
+  const toggleFavorite = useCallback(async () => {
+    const groupId = getCookies('groupId');
+    await postData({ path: `${apiRoutes.favorites}/${groupId}/favorites/${topicId}` });
+  }, [topicId]);
+
+  const fetchFavoritePosts = useCallback(async () => {
+    const groupId = getCookies('groupId');
+    const { data } = await getData({ path: `${apiRoutes.favorites}/${groupId}/favorites` });
+    setFavoritePosts(data);
+  }, []);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -26,7 +40,7 @@ export default function LikeIcon({ topicId, isLiked }: Props) {
   };
 
   const handleClick = () => {
-    toggleFavorite(topicId);
+    toggleFavorite();
     if (pathName === '/favorites') {
       fetchFavoritePosts();
     }

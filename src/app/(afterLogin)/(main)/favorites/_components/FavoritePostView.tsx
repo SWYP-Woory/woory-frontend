@@ -1,15 +1,23 @@
 'use client';
 
 import FavoritePost from '@/app/(afterLogin)/(main)/favorites/_components/FavoritePost';
+import { getData } from '@/app/_api/api';
+import { apiRoutes } from '@/app/_api/apiRoutes';
+import { getCookies } from '@/app/_store/cookie/cookies';
 import { useFavoritePostsStore } from '@/app/_store/favoritePostsStore';
 import { useEffect } from 'react';
 
 export default function FavoritePostView() {
-  const { favoritePosts, fetchFavoritePosts } = useFavoritePostsStore();
+  const { favoritePosts, setFavoritePosts } = useFavoritePostsStore();
 
   useEffect(() => {
+    const fetchFavoritePosts = async () => {
+      const groupId = getCookies('groupId');
+      const { data } = await getData({ path: `${apiRoutes.favorites}/${groupId}/favorites` });
+      setFavoritePosts(data);
+    };
     fetchFavoritePosts();
-  }, [fetchFavoritePosts]);
+  }, [setFavoritePosts]);
 
   if (favoritePosts.length === 0) {
     return (
