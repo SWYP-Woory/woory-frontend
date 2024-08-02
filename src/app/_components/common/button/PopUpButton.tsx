@@ -16,8 +16,8 @@ export default function PopUpButton({ text, textColor, colorType, size, onClick 
       'text-white': textColor === 'white',
     },
     {
-      'bg-primary active:bg-primaryDark': colorType === 'primary',
-      'bg-bgGrey active:bg-lightGrey': colorType === 'bgGrey',
+      'bg-primary hover:bg-primaryDark active:bg-primaryDark': colorType === 'primary',
+      'bg-bgGrey hover:bg-lightGrey active:bg-lightGrey': colorType === 'bgGrey',
     },
     {
       'w-[13.6rem]': size === 'small',
