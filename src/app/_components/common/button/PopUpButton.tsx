@@ -3,7 +3,7 @@ import classNames from 'classnames';
 interface Props {
   text: string;
   textColor: 'midGrey' | 'white';
-  colorType: 'primary' | 'lightGrey';
+  colorType: 'primary' | 'bgGrey';
   size: 'small' | 'large';
   onClick?: () => void;
 }
@@ -16,8 +16,8 @@ export default function PopUpButton({ text, textColor, colorType, size, onClick 
       'text-white': textColor === 'white',
     },
     {
-      'bg-primary': colorType === 'primary',
-      'bg-lightGrey': colorType === 'lightGrey',
+      'bg-primary active:bg-primaryDark': colorType === 'primary',
+      'bg-bgGrey active:bg-lightGrey': colorType === 'bgGrey',
     },
     {
       'w-[13.6rem]': size === 'small',
