@@ -2,8 +2,9 @@
 
 import { getData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
+import NoticeIcon from '@/app/_components/icon/notification/NoticeIcon';
 import { getCookies } from '@/app/_store/cookie/cookies';
-// import NoticeIcon from '@/app/_components/icon/notification/NoticeIcon';
+import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -38,11 +39,6 @@ const decideTitle = async (segment: string | null, setTitle: (title: string) => 
 export default function NotificationHeader() {
   const segment = useSelectedLayoutSegment();
   const [title, setTitle] = useState<string>('');
-  // const router = useRouter();
-
-  // const handleClick = () => {
-  //   router.push('/notification');
-  // };
 
   useEffect(() => {
     decideTitle(segment, setTitle);
@@ -51,9 +47,14 @@ export default function NotificationHeader() {
   return (
     <header className="header">
       <div className="font-title text-18">{title}</div>
-      {/* <button type="button" aria-label="notification" className="absolute right-[1.6rem]" onClick={handleClick}>
-        <NoticeIcon isActive />
-      </button> */}
+      <Link
+        href="/notification"
+        className="absolute right-[1.6rem] w-[2.4rem] h-[2.4rem] bg-white rounded-md hover:bg-bgGrey active:bg-lightGrey"
+      >
+        <div className="pt-[0.1rem]">
+          <NoticeIcon isActive />
+        </div>
+      </Link>
     </header>
   );
 }
