@@ -4,8 +4,8 @@ interface Props {
   title: string;
   content: string;
   buttonText: string;
-  onCancel: () => void;
-  onExecute: () => void;
+  onCancel: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onExecute: (e: React.MouseEvent<HTMLButtonElement>) => void;
   isSmall?: boolean;
 }
 

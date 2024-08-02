@@ -1,6 +1,6 @@
 interface Props {
-  onEdit: () => void;
-  onDelete: () => void;
+  onEdit: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onDelete: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default function EditDeleteButton({ onEdit, onDelete }: Props) {

@@ -96,7 +96,8 @@ export default function DailyUserTitle({
     return commentActiveId === commentId;
   };
 
-  const handleEditClick = () => {
+  const handleEditClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     if (targetType === 'post') {
       router.push(`/posts?postId=${postId}`);
     }
@@ -106,16 +107,19 @@ export default function DailyUserTitle({
     setInputComment(commentText || '');
   };
 
-  const handleDeleteClick = () => {
+  const handleDeleteClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     setIsModalOpen(true);
   };
 
-  const handleCancelClick = () => {
+  const handleCancelClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     setIsModalOpen(false);
     resetActiveId();
   };
 
-  const handleDeleteConfirm = () => {
+  const handleDeleteConfirm = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     if (targetType === 'post') {
       deletePost();
     }

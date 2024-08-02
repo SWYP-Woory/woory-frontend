@@ -5,7 +5,7 @@ interface Props {
   textColor: 'midGrey' | 'white';
   colorType: 'primary' | 'bgGrey';
   size: 'small' | 'large';
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default function PopUpButton({ text, textColor, colorType, size, onClick }: Props) {
