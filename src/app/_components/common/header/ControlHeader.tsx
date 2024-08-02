@@ -77,13 +77,13 @@ export default function ControlHeader({ topicId, postId }: Props) {
 
   return (
     <header className="header justify-between px-[1.6rem]">
-      <button type="button" className="font-body" onClick={handleCancel}>
+      <button type="button" className="font-body hover:underline" onClick={handleCancel}>
         취소
       </button>
       <button
         type="button"
         disabled={!isValid}
-        className={`font-body ${isValid ? 'text-black' : 'text-textDisabled'}`}
+        className={`font-body ${isValid ? 'text-black hover:underline' : 'text-textDisabled'} `}
         onClick={handleComplete}
       >
         완료

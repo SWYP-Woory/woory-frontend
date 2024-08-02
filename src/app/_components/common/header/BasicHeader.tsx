@@ -107,7 +107,7 @@ export default function BasicHeader({ title, hasRightButton }: Props) {
         <button
           type="button"
           disabled={!isValid}
-          className={`absolute right-[1.6rem] font-body ${isValid ? 'text-black' : 'text-textDisabled'}`}
+          className={`absolute right-[1.6rem] font-body ${isValid ? 'text-black hover:underline' : 'text-textDisabled'}`}
           onClick={handleSaveData}
         >
           저장
