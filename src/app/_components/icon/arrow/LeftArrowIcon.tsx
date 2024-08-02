@@ -5,5 +5,9 @@ interface Props {
 }
 
 export default function LeftArrowIcon({ arrowStyle = '' }: Props) {
-  return <Left className={`${arrowStyle}`} />;
+  return (
+    <div className="flex justify-center items-center w-[2.4rem] h-[2.4rem] group">
+      <Left className={`${arrowStyle} fill-black group-hover:fill-midGrey group-active:fill-darkGrey`} />
+    </div>
+  );
 }
