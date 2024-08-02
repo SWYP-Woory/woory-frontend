@@ -15,8 +15,8 @@ type Story = StoryObj<typeof FavoritePost>;
 
 export const Default: Story = {
   args: {
-    topicTitle: IMAGE_URL,
-    topicImage: '',
-    topicDate: new Date(),
+    contentImg: IMAGE_URL,
+    topicText: '',
+    issueDate: new Date(),
   },
 };
