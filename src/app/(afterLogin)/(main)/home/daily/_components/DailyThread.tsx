@@ -4,7 +4,7 @@ import Profile from '@/app/_components/common/profile/Profile';
 import CommentIcon from '@/app/_components/icon/comment/CommentIcon';
 import GreyHeartIcon from '@/app/_components/icon/reaction/GreyHeartIcon';
 import { DailyThreadType } from '@/type';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 interface Props {
   data: DailyThreadType;
@@ -12,14 +12,20 @@ interface Props {
 
 export default function DailyThread({ data }: Props) {
   const { id, regDate, profileUrl, name, comment, reaction, content, postUrl, isEdit } = data;
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/posts/${id}`);
+  };
+
   return (
-    <div className="flex gap-8 w-[37.5rem] min-h-[12.1rem] px-16 pt-16 pb-[1.4rem] bg-white border-b border-bgGrey">
-      <Profile profileImage={profileUrl} size="small" />
-      <div className="flex flex-col w-full">
-        <DailyUserTitle targetType="post" name={name} isEdit={isEdit} postId={id} regDate={regDate} />
-        <Link href={`/posts/${id}`} className="flex flex-col gap-16 w-full">
+    <button type="button" onClick={handleClick}>
+      <div className="flex gap-8 w-[37.5rem] min-h-[12.1rem] px-16 pt-16 pb-[1.4rem] bg-white border-b border-bgGrey">
+        <Profile profileImage={profileUrl} size="small" />
+        <div className="flex flex-col w-full">
+          <DailyUserTitle targetType="post" name={name} isEdit={isEdit} postId={id} regDate={regDate} />
           <div className="flex flex-col gap-8 ">
-            <div className="font-body">{content}</div>
+            <div className="font-body text-left">{content}</div>
             <div className="flex flex-col gap-16">
               {postUrl && <DailyPostImage postUrl={postUrl} />}
               <div className="flex w-[10.0rem] justify-between">
@@ -34,8 +40,8 @@ export default function DailyThread({ data }: Props) {
               </div>
             </div>
           </div>
-        </Link>
+        </div>
       </div>
-    </div>
+    </button>
   );
 }

@@ -37,7 +37,7 @@ export default function ImageUpload() {
     <button
       type="button"
       aria-label="ImageUploadButton"
-      className="flex flex-col gap-8 items-center justify-center size-[10.0rem] rounded-[2.0rem] bg-bgGrey mt-76"
+      className="flex flex-col gap-8 items-center justify-center size-[10.0rem] rounded-[2.0rem] bg-bgGrey active:bg-lightGrey hover:bg-lightGrey mt-76"
       onClick={handleUploadClick}
     >
       <Picture width="40" height="40" fill="#888888" />

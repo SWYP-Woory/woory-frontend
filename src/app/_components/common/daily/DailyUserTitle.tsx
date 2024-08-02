@@ -69,7 +69,8 @@ export default function DailyUserTitle({
     setComments(data);
   };
 
-  const handleKebabClick = () => {
+  const handleKebabClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     if (targetType === 'post') {
       if (postActiveId === postId) {
         resetActiveId();
@@ -95,7 +96,8 @@ export default function DailyUserTitle({
     return commentActiveId === commentId;
   };
 
-  const handleEditClick = () => {
+  const handleEditClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     if (targetType === 'post') {
       router.push(`/posts?postId=${postId}`);
     }
@@ -105,16 +107,19 @@ export default function DailyUserTitle({
     setInputComment(commentText || '');
   };
 
-  const handleDeleteClick = () => {
+  const handleDeleteClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     setIsModalOpen(true);
   };
 
-  const handleCancelClick = () => {
+  const handleCancelClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     setIsModalOpen(false);
     resetActiveId();
   };
 
-  const handleDeleteConfirm = () => {
+  const handleDeleteConfirm = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     if (targetType === 'post') {
       deletePost();
     }
@@ -126,11 +131,7 @@ export default function DailyUserTitle({
   return (
     <div className="flex flex-grow justify-between items-center relative">
       <div className="font-bodyBold">{name}</div>
-      {isEdit && (
-        <div className="pr-[1rem]">
-          <KebabMenuIcon isActive={isOpenEditDeleteButton()} onClick={handleKebabClick} />
-        </div>
-      )}
+      {isEdit && <KebabMenuIcon isActive={isOpenEditDeleteButton()} onClick={handleKebabClick} />}
       {isOpenEditDeleteButton() && (
         <div className={`absolute ${isLastReply ? 'bottom-0' : 'top-0'} right-24 z-20`}>
           <EditDeleteButton onEdit={handleEditClick} onDelete={handleDeleteClick} />

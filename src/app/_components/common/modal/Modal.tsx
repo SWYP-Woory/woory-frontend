@@ -4,8 +4,8 @@ interface Props {
   title: string;
   content: string;
   buttonText: string;
-  onCancel: () => void;
-  onExecute: () => void;
+  onCancel: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onExecute: (e: React.MouseEvent<HTMLButtonElement>) => void;
   isSmall?: boolean;
 }
 
@@ -20,7 +20,7 @@ export default function Modal({ title, content, buttonText, onCancel, onExecute,
           {content}
         </div>
         <div className="flex gap-[1.0rem]">
-          <PopUpButton text="취소" textColor="midGrey" colorType="lightGrey" size="small" onClick={onCancel} />
+          <PopUpButton text="취소" textColor="midGrey" colorType="bgGrey" size="small" onClick={onCancel} />
           <PopUpButton text={buttonText} textColor="white" colorType="primary" size="small" onClick={onExecute} />
         </div>
       </div>

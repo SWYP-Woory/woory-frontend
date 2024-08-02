@@ -3,9 +3,9 @@ import classNames from 'classnames';
 interface Props {
   text: string;
   textColor: 'midGrey' | 'white';
-  colorType: 'primary' | 'lightGrey';
+  colorType: 'primary' | 'bgGrey';
   size: 'small' | 'large';
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default function PopUpButton({ text, textColor, colorType, size, onClick }: Props) {
@@ -16,8 +16,8 @@ export default function PopUpButton({ text, textColor, colorType, size, onClick 
       'text-white': textColor === 'white',
     },
     {
-      'bg-primary': colorType === 'primary',
-      'bg-lightGrey': colorType === 'lightGrey',
+      'bg-primary hover:bg-primaryDark active:bg-primaryDark': colorType === 'primary',
+      'bg-bgGrey hover:bg-lightGrey active:bg-lightGrey': colorType === 'bgGrey',
     },
     {
       'w-[13.6rem]': size === 'small',

@@ -16,8 +16,8 @@ function PopUpButtons() {
       <section>
         <h2 className="text-12">MidGrey Button</h2>
         <div className="flex gap-4">
-          <PopUpButton onClick={handleClick} text="취소" textColor="midGrey" colorType="lightGrey" size="small" />
-          <PopUpButton onClick={handleClick} text="취소" textColor="midGrey" colorType="lightGrey" size="large" />
+          <PopUpButton onClick={handleClick} text="취소" textColor="midGrey" colorType="bgGrey" size="small" />
+          <PopUpButton onClick={handleClick} text="취소" textColor="midGrey" colorType="bgGrey" size="large" />
         </div>
       </section>
     </div>

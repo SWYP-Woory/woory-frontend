@@ -48,7 +48,7 @@ export default function WritePostMain() {
       fetchEditPost();
     }
     fetchTopic();
-  }, []);
+  }, [postId, setInputText, setSelectedImage]);
 
   return (
     topicData && (
