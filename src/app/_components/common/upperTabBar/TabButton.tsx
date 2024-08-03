@@ -14,7 +14,7 @@ export default function TabButton({ tabType, isClicked, onClick }: Props) {
   return (
     <button
       type="button"
-      className={`cursor-pointer w-[16.8rem] h-[2.8rem] text-18 font-500 ${isClicked ? 'text-black rounded-xl bg-white shadow-dropShadow' : 'text-textDisabled'} shrink-0`}
+      className={`cursor-pointer w-[16.8rem] h-[2.8rem] text-18 font-500 ${isClicked ? 'text-black rounded-xl bg-white shadow-dropShadow' : 'text-textDisabled hover:text-midGrey active:text-darkGrey'} shrink-0`}
       onClick={handleClick}
     >
       {tabType === 'daily' ? '데일리' : '캘린더'}
