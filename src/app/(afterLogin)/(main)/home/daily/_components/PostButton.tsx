@@ -29,7 +29,7 @@ export default function PostButton() {
     <button
       aria-label="Post Button"
       type="button"
-      className={`${postStyle(postDate)} fixed bottom-72 left-1/2 transform translate-x-[10.4rem] flex justify-center items-center rounded-full w-[5.6rem] h-[5.6rem] cursor-pointer bg-secondary`}
+      className={`${postStyle(postDate)} fixed bottom-72 left-1/2 transform translate-x-[10.4rem] flex justify-center items-center rounded-full w-[5.6rem] h-[5.6rem] cursor-pointer bg-secondary hover:bg-secondaryDark active:bg-secondaryDarkSet`}
       onClick={handleClick}
     >
       <PostIcon />
