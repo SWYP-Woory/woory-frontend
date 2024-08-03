@@ -65,6 +65,18 @@
   .send-button:active svg circle {
     fill: #1b8981;
   }
+  .delete-image-button:hover svg .imageDelete_svg__x_mark {
+    fill: #888888;
+  }
+  .delete-image-button:active svg .imageDelete_svg__x_mark {
+    fill: #666666;
+  }
+  .back-image-button:hover svg path {
+    fill: #EEEEEE;
+  }
+  .back-image-button:active svg path {
+    fill: #DDDDDD;
+  }
 }
 @keyframes fadeIn {
   from {
