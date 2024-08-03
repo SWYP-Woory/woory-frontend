@@ -23,7 +23,8 @@ export default function ReactionChip({ count, reactionType, isActive, onClick }:
   return (
     <button
       type="button"
-      className="flex justify-evenly items-center bg-bgGrey w-[5.9rem] h-[3.2rem] rounded-[2.0rem]"
+      className={`flex justify-evenly items-center w-[5.9rem] h-[3.2rem] rounded-[2.0rem]
+      ${isActive ? 'bg-primaryLight border-2 border-primary hover:bg-primaryMedium' : 'bg-bgGrey'}`}
       onClick={() => onClick(reactionType)}
     >
       <IconComponent size="small" />
