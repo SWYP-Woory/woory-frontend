@@ -69,6 +69,12 @@ export default function InputChat({ postId, value, maxLength, placeholder, onCha
     resetInputComment();
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleClick();
+    }
+  };
+
   useEffect(() => {
     if (parentCommentId !== null && inputRef.current) {
       inputRef.current.focus();
@@ -83,6 +89,7 @@ export default function InputChat({ postId, value, maxLength, placeholder, onCha
         type="text"
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
+        onKeyDown={handleKeyDown}
         onChange={onChange}
         placeholder={placeholder}
         value={value}
