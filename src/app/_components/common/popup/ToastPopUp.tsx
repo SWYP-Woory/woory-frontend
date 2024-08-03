@@ -25,11 +25,11 @@ const decideContent = (type: string, errorMessage?: string) => {
 export default function ToastPopUp({ type, errorMessage, isVisible }: Props) {
   return (
     <div
-      className={`flex justify-center items-center gap-8 bg-lightGrey w-[23.6rem] h-[4.0rem] rounded-[2.0rem] 
+      className={`flex justify-center items-center gap-8 bg-primaryLight w-[23.6rem] h-[4.0rem] rounded-[2.0rem] 
       ${isVisible ? 'toast-slide-up' : 'toast-slide-down'}`}
     >
       <InfoIcon />
-      <div className={`font-caption leading-8 ${type !== 'error' ? 'w-fit' : 'w-[17rem]'} text-center`}>
+      <div className={`font-caption leading-8 ${type !== 'error' ? 'w-fit' : 'w-[17rem]'} text-center text-black`}>
         {decideContent(type, errorMessage)}
       </div>
     </div>
