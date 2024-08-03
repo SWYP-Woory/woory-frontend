@@ -6,7 +6,7 @@ export default function ServiceInfo() {
   return (
     <div className="flex flex-col">
       <OptionTitle icon={<ServiceInfoIcon />} title="서비스 정보" />
-      <Link href="/mypage" className="setting-button">
+      <Link href="/introduce" className="setting-button">
         서비스 기능 소개
       </Link>
       <Link href="/mypage/terms-of-use" className="setting-button" scroll={false}>
