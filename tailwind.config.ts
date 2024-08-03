@@ -43,6 +43,8 @@ const config: Config = {
       bgGrey: '#EEEEEE',
       primary: '#1EA49A',
       primaryDark: '#1B8981',
+      primaryLight: '#DEEBEA',
+      primaryMedium: '#B4DCD9',
       secondary: '#FF95B9',
       modalBackground: 'rgba(34, 34, 34, 0.20)',
       notiBackground: 'rgba(30, 164, 154, 0.20)',
