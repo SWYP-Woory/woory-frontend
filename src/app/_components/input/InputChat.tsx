@@ -69,8 +69,8 @@ export default function InputChat({ postId, value, maxLength, placeholder, onCha
     resetInputComment();
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && !e.nativeEvent.isComposing) {
       handleClick();
     }
   };
