@@ -15,7 +15,11 @@ export default function ImageModalMain() {
 
   return (
     <div className="flex relative min-h-screen justify-center items-center bg-black">
-      <div role="presentation" className="absolute top-[1.4rem] left-16" onClick={handleClose}>
+      <div
+        role="presentation"
+        className="cursor-pointer absolute top-[1.4rem] left-16 back-image-button"
+        onClick={handleClose}
+      >
         <ImageCloseIcon />
       </div>
       <div className="relative w-full">

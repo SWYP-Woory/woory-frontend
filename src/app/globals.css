@@ -71,6 +71,12 @@
   .delete-image-button:active svg .imageDelete_svg__x_mark {
     fill: #666666;
   }
+  .back-image-button:hover svg path {
+    fill: #EEEEEE;
+  }
+  .back-image-button:active svg path {
+    fill: #DDDDDD;
+  }
 }
 @keyframes fadeIn {
   from {
