@@ -69,7 +69,7 @@ export default function DailyUserTitle({
     setComments(data);
   };
 
-  const handleKebabClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleKebabClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     if (targetType === 'post') {
       if (postActiveId === postId) {
