@@ -15,9 +15,9 @@ export default function ImageModalMain() {
 
   return (
     <div className="flex relative min-h-screen justify-center items-center bg-black">
-      <button type="button" aria-label="image close" className="absolute top-[1.4rem] left-16" onClick={handleClose}>
+      <div role="presentation" className="absolute top-[1.4rem] left-16" onClick={handleClose}>
         <ImageCloseIcon />
-      </button>
+      </div>
       <div className="relative w-full">
         <Image
           src={postUrl!}
@@ -25,6 +25,7 @@ export default function ImageModalMain() {
           layout="intrinsic"
           width={343}
           height={500}
+          priority
           className="object-contain w-full h-auto"
         />
       </div>
