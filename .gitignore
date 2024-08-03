@@ -179,3 +179,4 @@ fabric.properties
 # Ignore sw.js and workbox~~.js files
 sw.js
 workbox*.js
+/.idea/inspectionProfiles/Project_Default.xml
