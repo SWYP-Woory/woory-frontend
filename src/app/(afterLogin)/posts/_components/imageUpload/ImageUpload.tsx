@@ -26,9 +26,14 @@ export default function ImageUpload() {
           height={500}
           className="object-contain w-full h-auto"
         />
-        <button type="button" aria-label="delete" className="absolute top-8 right-[0.8rem]" onClick={handleImageDelete}>
+        <div
+          role="presentation"
+          aria-label="delete"
+          className="absolute top-8 right-[0.8rem]"
+          onClick={handleImageDelete}
+        >
           <ImageDeleteIcon />
-        </button>
+        </div>
       </div>
     );
   }
