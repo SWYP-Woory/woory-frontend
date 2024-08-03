@@ -36,7 +36,7 @@
     @apply w-full h-[5.8rem] font-body text-start p-16;
   }
   .bottom-menu {
-    @apply flex justify-center items-center w-[8.8rem] h-full;
+    @apply flex justify-center items-center w-[8.8rem] h-full hover:bg-bgGrey active:bg-lightGrey rounded-[1.0rem];
   }
   .modal-background-fade-In {
     animation: fadeIn 0.3s ease-in-out;
@@ -63,7 +63,7 @@
     fill: #666666;
   }
   .send-button:active svg circle {
-    fill: #1B8981;
+    fill: #1b8981;
   }
 }
 @keyframes fadeIn {
