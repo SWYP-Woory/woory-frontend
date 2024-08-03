@@ -48,6 +48,8 @@ const config: Config = {
       secondary: '#FF95B9',
       modalBackground: 'rgba(34, 34, 34, 0.20)',
       notiBackground: 'rgba(30, 164, 154, 0.20)',
+      introduceOddBackground: 'rgba(30, 164, 154, 0.20)',
+      introduceEvenBackground: 'rgba(255, 149, 185, 0.20)',
     },
     spacing: PX_ENTRIES,
     fontSize: {
