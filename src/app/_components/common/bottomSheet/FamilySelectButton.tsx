@@ -28,7 +28,9 @@ export default function FamilySelectButton({ familyData }: Props) {
         <Profile size="small" profileImage={familyData.groupImage} isFamilyProfile />
         <h3 className="text-18 text-black font-500">{familyData.groupName}</h3>
       </div>
-      {selectGroupId === familyData.groupId && <FamilySelectIcon className="absolute top-16 right-16" />}
+      {selectGroupId === familyData.groupId && (
+        <FamilySelectIcon width={24} height={24} className="absolute top-16 right-16" />
+      )}
     </button>
   );
 }
