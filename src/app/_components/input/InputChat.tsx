@@ -100,8 +100,8 @@ export default function InputChat({ postId, value, maxLength, placeholder, onCha
           ({value.length}/{maxLength})
         </span>
         {(isFocused || isEntered) && (
-          <button type="button" aria-label="Send Button" onClick={handleClick}>
-            <SendIcon fill={isEntered ? '#1EA49A' : '#888888'} />
+          <button type="button" aria-label="Send Button" onClick={handleClick} className="send-button">
+            <SendIcon fill={isEntered ? '#1EA49A' : '#DDDDDD'} />
           </button>
         )}
       </div>

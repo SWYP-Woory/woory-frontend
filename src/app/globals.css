@@ -62,6 +62,9 @@
   .checkbox-button:hover svg path {
     fill: #666666;
   }
+  .send-button:active svg circle {
+    fill: #1B8981;
+  }
 }
 @keyframes fadeIn {
   from {
