@@ -73,7 +73,7 @@ export default function DailyUserTitle({
     e.stopPropagation();
     if (targetType === 'post') {
       if (postActiveId === postId) {
-        setTimeout(() => resetActiveId(), 300);
+        resetActiveId();
       } else {
         setPostActiveId(postId!);
         setCommentActiveId(null);
@@ -81,7 +81,7 @@ export default function DailyUserTitle({
     }
     if (targetType === 'comment' || targetType === 'reply') {
       if (commentActiveId === commentId) {
-        setTimeout(() => resetActiveId(), 300);
+        resetActiveId();
       } else {
         setCommentActiveId(commentId!);
         setPostActiveId(null);
