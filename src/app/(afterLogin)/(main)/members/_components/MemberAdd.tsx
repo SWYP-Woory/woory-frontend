@@ -7,7 +7,7 @@ interface Props {
 export default function MemberAdd({ onClick }: Props) {
   return (
     <button type="button" aria-label="link" className="w-full" onClick={onClick}>
-      <div className="flex justify-between items-center p-16 bg-white border-bgGrey border-t border-b">
+      <div className="flex justify-between items-center p-16 bg-white border-bgGrey border-t border-b hover:bg-bgGrey active:bg-lightGrey">
         <div className="flex items-center gap-8">
           <LinkIcon />
           <div className="flex flex-col">
