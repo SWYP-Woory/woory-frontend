@@ -73,7 +73,7 @@ export default function DailyUserTitle({
     e.stopPropagation();
     if (targetType === 'post') {
       if (postActiveId === postId) {
-        resetActiveId();
+        setTimeout(() => resetActiveId(), 300);
       } else {
         setPostActiveId(postId!);
         setCommentActiveId(null);
@@ -81,7 +81,7 @@ export default function DailyUserTitle({
     }
     if (targetType === 'comment' || targetType === 'reply') {
       if (commentActiveId === commentId) {
-        resetActiveId();
+        setTimeout(() => resetActiveId(), 300);
       } else {
         setCommentActiveId(commentId!);
         setPostActiveId(null);
@@ -133,7 +133,9 @@ export default function DailyUserTitle({
       <div className="font-bodyBold">{name}</div>
       {isEdit && <KebabMenuIcon isActive={isOpenEditDeleteButton()} onClick={handleKebabClick} />}
       {isOpenEditDeleteButton() && (
-        <div className={`absolute ${isLastReply ? 'bottom-0' : 'top-0'} right-24 z-20`}>
+        <div
+          className={`absolute ${isLastReply ? 'bottom-0' : 'top-0'} right-24 z-20 ${isOpenEditDeleteButton() ? 'edit-delete-button-fade-in' : 'edit-delete-button-fade-out'}`}
+        >
           <EditDeleteButton onEdit={handleEditClick} onDelete={handleDeleteClick} />
         </div>
       )}
