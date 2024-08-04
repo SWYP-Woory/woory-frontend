@@ -7,6 +7,7 @@ import Profile from '@/app/_components/common/profile/Profile';
 import MemberDeleteIcon from '@/app/_components/icon/delete/MemberDeleteIcon';
 import { MEMBER_DELETE_CONTENT } from '@/app/_constants/modal';
 import { getCookies } from '@/app/_store/cookie/cookies';
+import { useModalStore } from '@/app/_store/modalStore';
 import { MemberType } from '@/type';
 import { useState } from 'react';
 
@@ -17,13 +18,18 @@ interface Props extends MemberType {
 
 export default function MemberProfile({ userId, profileUrl, userName, isHouseholder, canDelete, fetchMembers }: Props) {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const { setIsClosed, reset } = useModalStore();
 
   const handleDeleteIcon = () => {
     setIsModalOpen(true);
   };
 
   const handleCancelClick = () => {
-    setIsModalOpen(false);
+    setIsClosed(true);
+    setTimeout(() => {
+      reset();
+      setIsModalOpen(false);
+    }, 200);
   };
 
   const handleMemberDelete = async () => {
@@ -50,14 +56,15 @@ export default function MemberProfile({ userId, profileUrl, userName, isHousehol
           <MemberDeleteIcon isClicked={isModalOpen} />
         </button>
       )}
-      <Modal
-        isOpen={isModalOpen}
-        title="멤버 내보내기"
-        content={MEMBER_DELETE_CONTENT}
-        buttonText="내보내기"
-        onCancel={handleCancelClick}
-        onExecute={handleMemberDelete}
-      />
+      {isModalOpen && (
+        <Modal
+          title="멤버 내보내기"
+          content={MEMBER_DELETE_CONTENT}
+          buttonText="내보내기"
+          onCancel={handleCancelClick}
+          onExecute={handleMemberDelete}
+        />
+      )}
     </div>
   );
 }

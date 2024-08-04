@@ -1,13 +1,14 @@
+import { useModalStore } from '@/app/_store/modalStore';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 
 export const useModalClosed = () => {
-  const [isClosed, setIsClosed] = useState<boolean>(false);
+  const { isClosed, setIsClosed, reset } = useModalStore();
   const router = useRouter();
 
   const handleClose = () => {
     setIsClosed(true);
     setTimeout(() => {
+      reset();
       router.back();
     }, 200);
   };

@@ -10,10 +10,6 @@ export default function FamilyDelete() {
   const { imageReset } = useImageUploadStore();
   const router = useRouter();
 
-  const handleCancelClick = () => {
-    router.back();
-  };
-
   const handleDeletionConfirm = async () => {
     try {
       const groupId = getCookies('groupId');
@@ -29,11 +25,9 @@ export default function FamilyDelete() {
   return (
     <div className="absolute">
       <Modal
-        isOpen
         title="가족 삭제하기"
         content={FAMILY_DELETE_CONTENT}
         buttonText="가족 삭제"
-        onCancel={handleCancelClick}
         onExecute={handleDeletionConfirm}
       />
     </div>
