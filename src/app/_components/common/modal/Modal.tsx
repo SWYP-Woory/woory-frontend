@@ -28,7 +28,7 @@ export default function Modal({ isOpen, title, content, buttonText, onCancel, on
 
   return (
     isVisible && (
-      <ModalBackground>
+      <ModalBackground isClosed={!isVisible}>
         <div
           className={`flex flex-col items-center justify-evenly w-[31.1rem] bg-white rounded-[2.0rem] transform transition-transform duration-300 ${isOpen ? 'fade-in' : 'fade-out'} ${isSmall ? 'h-[21.0rem]' : 'h-[32.0rem]'}`}
         >
