@@ -18,6 +18,7 @@ export default function LikeIcon({ topicId, isLiked }: Props) {
   const pathName = usePathname();
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [isActive, setIsActive] = useState<boolean>(false);
+  const [isAnimating, setIsAnimating] = useState<boolean>(false);
   const { setFavoritePosts } = useFavoritePostsStore();
 
   const toggleFavorite = useCallback(async () => {
@@ -29,7 +30,7 @@ export default function LikeIcon({ topicId, isLiked }: Props) {
     const groupId = getCookies('groupId');
     const { data } = await getData({ path: `${apiRoutes.favorites}/${groupId}/favorites` });
     setFavoritePosts(data);
-  }, []);
+  }, [setFavoritePosts]);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -45,6 +46,8 @@ export default function LikeIcon({ topicId, isLiked }: Props) {
       fetchFavoritePosts();
     }
     setIsActive(!isActive);
+    setIsAnimating(true);
+    setTimeout(() => setIsAnimating(false), 300);
   };
 
   useEffect(() => {
@@ -54,16 +57,29 @@ export default function LikeIcon({ topicId, isLiked }: Props) {
   return (
     <div className="cursor-pointer">
       {isActive ? (
-        <ActiveLike width="2.0rem" height="1.8rem" onClick={handleClick} />
+        <button type="button" aria-label="active-like-button" onClick={handleClick}>
+          <ActiveLike
+            width="2.0rem"
+            height="1.8rem"
+            className={`transition-all duration-300 ease-in-out transform ${isAnimating ? 'scale-125' : 'scale-100'}`}
+            fill={isAnimating ? '#FF6C9E' : '#FF95B9'}
+          />
+        </button>
       ) : (
-        <Like
-          width="2.0rem"
-          height="1.8rem"
-          fill={isHovered ? '#666666' : '#888888'}
+        <button
+          type="button"
+          aria-label="like-button"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           onClick={handleClick}
-        />
+        >
+          <Like
+            width="2.0rem"
+            height="1.8rem"
+            className={`transition-all duration-300 ease-in-out transform ${isAnimating ? 'scale-125' : 'scale-100'}`}
+            fill={isHovered ? '#666666' : '#888888'}
+          />
+        </button>
       )}
     </div>
   );
