@@ -29,6 +29,7 @@ export default function FamilyDelete() {
   return (
     <div className="absolute">
       <Modal
+        isOpen
         title="가족 삭제하기"
         content={FAMILY_DELETE_CONTENT}
         buttonText="가족 삭제"

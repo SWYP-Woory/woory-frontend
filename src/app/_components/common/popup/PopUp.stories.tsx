@@ -1,4 +1,3 @@
-import Modal from '@/app/_components/common/modal/Modal';
 import ToastPopUp from '@/app/_components/common/popup/ToastPopUp';
 import { Meta, StoryObj } from '@storybook/react';
 

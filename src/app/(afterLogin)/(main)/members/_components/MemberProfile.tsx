@@ -50,15 +50,14 @@ export default function MemberProfile({ userId, profileUrl, userName, isHousehol
           <MemberDeleteIcon isClicked={isModalOpen} />
         </button>
       )}
-      {isModalOpen && (
-        <Modal
-          title="멤버 내보내기"
-          content={MEMBER_DELETE_CONTENT}
-          buttonText="내보내기"
-          onCancel={handleCancelClick}
-          onExecute={handleMemberDelete}
-        />
-      )}
+      <Modal
+        isOpen={isModalOpen}
+        title="멤버 내보내기"
+        content={MEMBER_DELETE_CONTENT}
+        buttonText="내보내기"
+        onCancel={handleCancelClick}
+        onExecute={handleMemberDelete}
+      />
     </div>
   );
 }
