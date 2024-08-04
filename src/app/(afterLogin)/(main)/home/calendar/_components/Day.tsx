@@ -29,11 +29,12 @@ export default function Day({ day, date, validation, hasContent, imageUrl, isLik
           )}
           <div className="absolute z-10">
             {isLiked ? (
-              <ActiveLike width="2.0rem" height="1.8rem" />
+              <ActiveLike width="2.0rem" height="1.8rem" fill="#FF95B9" />
             ) : (
               <div className="text-white/40 font-body">{day}</div>
             )}
           </div>
+          <div className="absolute rounded-[0.6rem] inset-0 hover:bg-hoverBackground hover:bg-opacity-50 hover:z-20" />
         </div>
       </Link>
     );

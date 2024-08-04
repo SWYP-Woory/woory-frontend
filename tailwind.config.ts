@@ -50,6 +50,7 @@ const config: Config = {
       secondaryDarkSet: '#F674A0',
       modalBackground: 'rgba(34, 34, 34, 0.20)',
       notiBackground: 'rgba(30, 164, 154, 0.20)',
+      hoverBackground: 'rgba(221, 221, 221, 0.30)',
       introduceOddBackground: 'rgba(30, 164, 154, 0.20)',
       introduceEvenBackground: 'rgba(255, 149, 185, 0.20)',
     },

@@ -22,20 +22,20 @@ export default function DateController({
   const arrowStyle = (condition?: boolean) => {
     if (controllerType === 'daily') {
       if (!condition) {
-        return 'hidden';
+        return false;
       }
     }
-    return '';
+    return true;
   };
 
   return (
     <div className="flex items-center justify-between w-[28.0rem] h-[3.2rem]">
-      <button type="button" aria-label="LeftArrowButton" onClick={prevHandler}>
-        <LeftArrowIcon arrowStyle={arrowStyle(hasPrevDay)} />
+      <button type="button" disabled={!arrowStyle(hasPrevDay)} aria-label="LeftArrowButton" onClick={prevHandler}>
+        <LeftArrowIcon arrowStyle={arrowStyle(hasPrevDay) ? '' : 'hidden'} />
       </button>
       <div className="font-title">{date}</div>
-      <button type="button" aria-label="RightArrowButton" onClick={nextHandler}>
-        <RightArrowIcon arrowStyle={arrowStyle(hasNextDay)} />
+      <button type="button" disabled={!arrowStyle(hasNextDay)} aria-label="RightArrowButton" onClick={nextHandler}>
+        <RightArrowIcon arrowStyle={arrowStyle(hasNextDay) ? '' : 'hidden'} />
       </button>
     </div>
   );
