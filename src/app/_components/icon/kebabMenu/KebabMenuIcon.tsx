@@ -12,7 +12,7 @@ export default function KebabMenuIcon({ isActive, onClick }: Props) {
     <div
       aria-label="kebabMenu"
       onClick={onClick}
-      className="flex justify-center w-[2.4rem] h-[2.4rem] group"
+      className="flex cursor-pointer justify-center w-[2.4rem] h-[2.4rem] group"
       role="presentation"
     >
       <KebabMenu

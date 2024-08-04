@@ -132,11 +132,11 @@ export default function DailyUserTitle({
     <div className="flex flex-grow justify-between items-center relative">
       <div className="font-bodyBold">{name}</div>
       {isEdit && <KebabMenuIcon isActive={isOpenEditDeleteButton()} onClick={handleKebabClick} />}
-      {isOpenEditDeleteButton() && (
-        <div className={`absolute ${isLastReply ? 'bottom-0' : 'top-0'} right-24 z-20`}>
-          <EditDeleteButton onEdit={handleEditClick} onDelete={handleDeleteClick} />
-        </div>
-      )}
+      <div
+        className={`absolute ${isLastReply ? 'bottom-0' : 'top-0'} right-24 z-20 ${isOpenEditDeleteButton() ? 'fade-in' : 'fade-out'}`}
+      >
+        <EditDeleteButton onEdit={handleEditClick} onDelete={handleDeleteClick} isActive={isOpenEditDeleteButton()} />
+      </div>
       {isModalOpen && (
         <div className="absolute">
           <Modal

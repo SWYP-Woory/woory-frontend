@@ -38,7 +38,9 @@
   .bottom-menu {
     @apply flex justify-center items-center w-[8.8rem] h-full hover:bg-bgGrey active:bg-lightGrey rounded-[1.0rem];
   }
-  .modal-background-fade-In {
+
+  /* 애니메이션 */
+  .fade-in {
     animation: fadeIn 0.3s ease-in-out;
   }
   .fade-out {
@@ -59,6 +61,8 @@
   .scale-up {
     animation: scaleUp 0.3s ease-out;
   }
+
+  /* svg */
   .checkbox-button:hover svg path {
     fill: #666666;
   }
@@ -72,10 +76,10 @@
     fill: #666666;
   }
   .back-image-button:hover svg path {
-    fill: #EEEEEE;
+    fill: #eeeeee;
   }
   .back-image-button:active svg path {
-    fill: #DDDDDD;
+    fill: #dddddd;
   }
 }
 @keyframes fadeIn {
