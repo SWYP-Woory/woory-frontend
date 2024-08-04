@@ -28,7 +28,7 @@ export default function MyTitle({ name, profileImage }: Props) {
       <button
         type="button"
         aria-label="profile edit"
-        className="flex w-[34.3rem] h-40 py-4 px-16 justify-center items-center bg-white rounded-[0.8rem] border-[1px] border-lightGrey"
+        className="flex w-[34.3rem] h-40 py-4 px-16 justify-center items-center bg-white rounded-[0.8rem] border-[1px] border-lightGrey mypage-module"
         onClick={handleClick}
       >
         <div className="text-midGrey text-18 font-500">프로필 수정</div>
