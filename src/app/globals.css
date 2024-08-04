@@ -40,7 +40,7 @@
   }
 
   /* 애니메이션 */
-  .modal-background-fade-In {
+  .fade-in {
     animation: fadeIn 0.3s ease-in-out;
   }
   .fade-out {
@@ -61,12 +61,6 @@
   .scale-up {
     animation: scaleUp 0.3s ease-out;
   }
-  .edit-delete-button-fade-in {
-    animation: fadeIn 0.3s ease-in-out;
-  }
-  .edit-delete-button-fade-out {
-    animation: fadeOut 0.3s ease-in-out;
-  }
 
   /* svg */
   .checkbox-button:hover svg path {
@@ -82,10 +76,10 @@
     fill: #666666;
   }
   .back-image-button:hover svg path {
-    fill: #EEEEEE;
+    fill: #eeeeee;
   }
   .back-image-button:active svg path {
-    fill: #DDDDDD;
+    fill: #dddddd;
   }
 }
 @keyframes fadeIn {
