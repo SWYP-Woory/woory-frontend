@@ -33,6 +33,7 @@ export default function AccountDeletionContent() {
   return (
     <div className="absolute">
       <Modal
+        isOpen
         title="삭제하기"
         content={content}
         buttonText="탈퇴"

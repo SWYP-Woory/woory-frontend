@@ -110,6 +110,7 @@ export default function DailyUserTitle({
   const handleDeleteClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     setIsModalOpen(true);
+    resetActiveId();
   };
 
   const handleCancelClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -137,18 +138,17 @@ export default function DailyUserTitle({
       >
         <EditDeleteButton onEdit={handleEditClick} onDelete={handleDeleteClick} isActive={isOpenEditDeleteButton()} />
       </div>
-      {isModalOpen && (
-        <div className="absolute">
-          <Modal
-            title="삭제하기"
-            content={content}
-            buttonText="삭제"
-            onCancel={handleCancelClick}
-            onExecute={handleDeleteConfirm}
-            isSmall={targetType === 'reply'}
-          />
-        </div>
-      )}
+      <div className="absolute">
+        <Modal
+          isOpen={isModalOpen}
+          title="삭제하기"
+          content={content}
+          buttonText="삭제"
+          onCancel={handleCancelClick}
+          onExecute={handleDeleteConfirm}
+          isSmall={targetType === 'reply'}
+        />
+      </div>
     </div>
   );
 }
