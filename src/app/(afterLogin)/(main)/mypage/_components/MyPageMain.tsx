@@ -3,7 +3,6 @@
 import MyTitle from '@/app/(afterLogin)/(main)/mypage/_components/MyTitle';
 import AccountSetting from '@/app/(afterLogin)/(main)/mypage/_components/account/AccountSetting';
 import FamilySetting from '@/app/(afterLogin)/(main)/mypage/_components/family/FamilySetting';
-// import NotificationSetting from '@/app/(afterLogin)/(main)/mypage/_components/notification/NotificationSetting';
 import ServiceInfo from '@/app/(afterLogin)/(main)/mypage/_components/service/ServiceInfo';
 import { getData } from '@/app/_api/api';
 import { apiRoutes } from '@/app/_api/apiRoutes';
@@ -62,7 +61,6 @@ export default function MyPageMain() {
         <>
           <MyTitle name={userData.nickname} profileImage={userData.profileImgLink} />
           <Border />
-          {/* <NotificationSetting notifications={DUMMY_DATA.notifications} /> */}
           <FamilySetting isHouseholder={userData.isHouseholder} />
           <AccountSetting targetType={targetType} />
           <ServiceInfo />
