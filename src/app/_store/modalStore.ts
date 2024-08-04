@@ -1,11 +1,13 @@
 import { create } from 'zustand';
 
 interface ModalState {
-  isModalOpen: boolean;
-  setIsModalOpen: (isModalOpen: boolean) => void;
+  isClosed: boolean;
+  setIsClosed: (isClosed: boolean) => void;
+  reset: () => void;
 }
 
 export const useModalStore = create<ModalState>((set) => ({
-  isModalOpen: false,
-  setIsModalOpen: (isModalOpen: boolean) => set((state) => ({ ...state, isModalOpen })),
+  isClosed: false,
+  setIsClosed: (isClosed: boolean) => set((state) => ({ ...state, isClosed })),
+  reset: () => set({ isClosed: false }),
 }));

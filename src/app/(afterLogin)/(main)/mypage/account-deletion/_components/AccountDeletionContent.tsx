@@ -12,12 +12,7 @@ export default function AccountDeletionContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const targetType = searchParams.get('targetType') || 'member';
-
   const content = MODAL_TYPE_MAP[targetType];
-
-  const handleCancelClick = () => {
-    router.back();
-  };
 
   const handleDeletionConfirm = async () => {
     try {
@@ -32,14 +27,7 @@ export default function AccountDeletionContent() {
 
   return (
     <div className="absolute">
-      <Modal
-        isOpen
-        title="삭제하기"
-        content={content}
-        buttonText="탈퇴"
-        onCancel={handleCancelClick}
-        onExecute={handleDeletionConfirm}
-      />
+      <Modal title="삭제하기" content={content} buttonText="탈퇴" onExecute={handleDeletionConfirm} />
     </div>
   );
 }

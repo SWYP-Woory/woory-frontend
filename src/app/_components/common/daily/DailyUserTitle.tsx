@@ -12,6 +12,7 @@ import { getCookies } from '@/app/_store/cookie/cookies';
 import { useInputCommentStore } from '@/app/_store/inputCommentStore';
 import { usePostDeletedStore } from '@/app/_store/isPostDeletedStore';
 import { useKebabMenuStore } from '@/app/_store/kebabStore';
+import { useModalStore } from '@/app/_store/modalStore';
 import { CommentListType, DailyPostTitleType } from '@/type';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -39,6 +40,7 @@ export default function DailyUserTitle({
 }: Props) {
   const content = MODAL_TYPE_MAP[targetType];
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const { setIsClosed, reset } = useModalStore();
   const { isDeleted, setIsDeleted } = usePostDeletedStore();
   const { setInputComment } = useInputCommentStore();
   const { setCommentId, setCommentMethod } = useCommentStore();
@@ -115,7 +117,11 @@ export default function DailyUserTitle({
 
   const handleCancelClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    setIsModalOpen(false);
+    setIsClosed(true);
+    setTimeout(() => {
+      reset();
+      setIsModalOpen(false);
+    }, 200);
     resetActiveId();
   };
 
@@ -138,17 +144,18 @@ export default function DailyUserTitle({
       >
         <EditDeleteButton onEdit={handleEditClick} onDelete={handleDeleteClick} isActive={isOpenEditDeleteButton()} />
       </div>
-      <div className="absolute">
-        <Modal
-          isOpen={isModalOpen}
-          title="삭제하기"
-          content={content}
-          buttonText="삭제"
-          onCancel={handleCancelClick}
-          onExecute={handleDeleteConfirm}
-          isSmall={targetType === 'reply'}
-        />
-      </div>
+      {isModalOpen && (
+        <div className="absolute">
+          <Modal
+            title="삭제하기"
+            content={content}
+            buttonText="삭제"
+            onCancel={handleCancelClick}
+            onExecute={handleDeleteConfirm}
+            isSmall={targetType === 'reply'}
+          />
+        </div>
+      )}
     </div>
   );
 }
