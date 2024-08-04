@@ -1,6 +1,7 @@
 'use client';
 
 import PopUpButton from '@/app/_components/common/button/PopUpButton';
+import ModalBackground from '@/app/_components/common/modal/ModalBackground';
 import { useEffect, useState } from 'react';
 
 interface Props {
@@ -27,11 +28,7 @@ export default function Modal({ isOpen, title, content, buttonText, onCancel, on
 
   return (
     isVisible && (
-      <div
-        className={`fixed inset-0 z-20 flex items-center justify-center transition-opacity duration-300 ${
-          isOpen ? 'bg-modalBackground fade-in' : 'fade-out'
-        }`}
-      >
+      <ModalBackground>
         <div
           className={`flex flex-col items-center justify-evenly w-[31.1rem] bg-white rounded-[2.0rem] transform transition-transform duration-300 ${isOpen ? 'fade-in' : 'fade-out'} ${isSmall ? 'h-[21.0rem]' : 'h-[32.0rem]'}`}
         >
@@ -44,7 +41,7 @@ export default function Modal({ isOpen, title, content, buttonText, onCancel, on
             <PopUpButton text={buttonText} textColor="white" colorType="primary" size="small" onClick={onExecute} />
           </div>
         </div>
-      </div>
+      </ModalBackground>
     )
   );
 }
