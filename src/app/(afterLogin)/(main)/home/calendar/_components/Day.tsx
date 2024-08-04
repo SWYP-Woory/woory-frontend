@@ -34,6 +34,7 @@ export default function Day({ day, date, validation, hasContent, imageUrl, isLik
               <div className="text-white/40 font-body">{day}</div>
             )}
           </div>
+          <div className="absolute rounded-[0.6rem] inset-0 hover:bg-hoverBackground hover:bg-opacity-50 hover:z-20" />
         </div>
       </Link>
     );
