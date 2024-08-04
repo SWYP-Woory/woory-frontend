@@ -24,21 +24,46 @@ export default function ReactionMenu({ onClick, isClicked }: Props) {
 
   return (
     <div
-      className={`flex gap-16 justify-center items-center bg-white shadow-custom w-[24.6rem] h-[4.8rem] rounded-[3.0rem] ${isClicked ? 'scale-up' : 'fade-out'} ${!isVisible && 'hidden'}`}
+      className={`flex justify-center items-center bg-white shadow-custom w-[24.6rem] h-[4.8rem] rounded-[3.0rem] ${isClicked ? 'scale-up' : 'fade-out'} ${!isVisible && 'hidden'}`}
     >
-      <button type="button" aria-label="heart" onClick={() => onClick('LOVE')}>
+      <button
+        type="button"
+        aria-label="heart"
+        className="rounded-full p-8 hover:bg-bgGrey active:bg-lightGrey"
+        onClick={() => onClick('LOVE')}
+      >
         <RcHeartIcon size="large" />
       </button>
-      <button type="button" aria-label="thumbs" onClick={() => onClick('LIKE')}>
+      <button
+        type="button"
+        aria-label="thumbs"
+        className="rounded-full p-8 hover:bg-bgGrey active:bg-lightGrey"
+        onClick={() => onClick('LIKE')}
+      >
         <ThumbsIcon size="large" />
       </button>
-      <button type="button" aria-label="smile" onClick={() => onClick('HAPPY')}>
+      <button
+        type="button"
+        aria-label="smile"
+        className="rounded-full p-8 hover:bg-bgGrey active:bg-lightGrey"
+        onClick={() => onClick('HAPPY')}
+      >
         <SmileIcon size="large" />
       </button>
-      <button type="button" aria-label="surprise" onClick={() => onClick('WOW')}>
+      <button
+        type="button"
+        aria-label="surprise"
+        className="rounded-full p-8 hover:bg-bgGrey active:bg-lightGrey"
+        onClick={() => onClick('WOW')}
+      >
         <SurpriseIcon size="large" />
       </button>
-      <button type="button" aria-label="sad" onClick={() => onClick('SAD')}>
+      <button
+        type="button"
+        aria-label="sad"
+        className="rounded-full p-8 hover:bg-bgGrey active:bg-lightGrey"
+        onClick={() => onClick('SAD')}
+      >
         <SadIcon size="large" />
       </button>
     </div>
