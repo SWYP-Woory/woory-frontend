@@ -11,7 +11,7 @@ interface Props extends FavoritePostType {}
 export default function FavoritePost({ topicId, topicText, contentImg, issueDate }: Props) {
   const date = getCalendarTime(issueDate);
   return (
-    <div className="relative w-[37.5rem] h-[9.3rem] bg-white">
+    <div className="relative w-[37.5rem] h-[9.3rem] bg-white hover:bg-bgGrey active:bg-lightGrey">
       <Link href={`/home/daily?day=${issueDate}`}>
         <div className="relative w-full h-full">
           <div className="flex absolute top-[1.6rem] left-[1.6rem] w-[6rem] h-[6rem] justify-center items-center">
