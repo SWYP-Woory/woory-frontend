@@ -6,7 +6,7 @@ function EditDeleteButtons() {
 
   return (
     <div className="flex gap-8">
-      <EditDeleteButton onEdit={handleEditDelete} onDelete={handleEditDelete} />
+      <EditDeleteButton onEdit={handleEditDelete} onDelete={handleEditDelete} isActive />
     </div>
   );
 }
