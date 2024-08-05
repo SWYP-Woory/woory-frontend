@@ -8,23 +8,25 @@ export type BottomSheetType = 'inquiry' | 'familySelect';
 
 export type ReactionType = 'LOVE' | 'LIKE' | 'SAD' | 'WOW' | 'HAPPY';
 
-export type NotiType = 'topic' | 'reaction' | 'post';
+export type NotiType = 'TOPIC' | 'CONTENT' | 'REACTION_COMMENT' | 'REACTION_EMOJI' | 'REACTION_REPLY';
 
 export type InputTextType = 'family' | 'profile' | 'familyEdit';
 
 export type ProfileSize = 'small' | 'large' | 'xLarge';
 
 export type NotificationType = {
-  isRead?: boolean;
-  notiType: NotiType;
-  topic?: string;
-  opponent?: string;
-  reactionNotiType?: ReactionNotiType;
-  notiTime: Date;
+  notificationType: NotiType;
+  topicId?: number;
+  topicTitle?: string;
+  topicDate?: Date;
+  contentUser?: string;
+  contentId?: number;
+  reactionUser?: string;
+  issueDate: Date;
 };
 
 export type NotificationDataType = NotificationType & {
-  id: number;
+  notificationId: number;
 };
 
 export type ReactionNotiType = 'comment' | 'reComment' | 'reaction';

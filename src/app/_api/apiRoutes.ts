@@ -41,4 +41,7 @@ export const apiRoutes = {
 
   // Favorite
   favorites: '/v1/contents',
+
+  // Notification
+  getNotification: '/v1/notifications',
 };
