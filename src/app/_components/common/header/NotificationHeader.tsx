@@ -52,7 +52,7 @@ export default function NotificationHeader() {
         className="absolute right-[1.6rem] w-[2.4rem] h-[2.4rem] bg-white rounded-md hover:bg-bgGrey active:bg-lightGrey"
       >
         <div className="pt-[0.1rem]">
-          <NoticeIcon isActive />
+          <NoticeIcon />
         </div>
       </Link>
     </header>
