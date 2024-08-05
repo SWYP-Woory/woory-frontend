@@ -82,8 +82,8 @@ function Icons() {
       <IconSection title="Info, Notice, ImageDeleteIcon Icons">
         <InfoIcon />
         <IconSort>
-          <NoticeIcon isActive />
-          <NoticeIcon isActive={false} />
+          <NoticeIcon />
+          <NoticeIcon />
         </IconSort>
         <ImageDeleteIcon />
         <CommentIcon />
