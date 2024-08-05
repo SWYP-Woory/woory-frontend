@@ -2,12 +2,18 @@ import DailyPostView from '@/app/(afterLogin)/posts/[postId]/_components/DailyPo
 import CommentMain from '@/app/(afterLogin)/posts/[postId]/_components/comment/CommentMain';
 import Border from '@/app/_components/common/border/Border';
 import BasicHeader from '@/app/_components/common/header/BasicHeader';
+import { Metadata } from 'next';
 
 interface Props {
   params: {
     postId: number;
   };
 }
+
+export const metadata: Metadata = {
+  title: '게시글',
+  description: '게시글',
+};
 
 export default function PostPage({ params }: Props) {
   return (
