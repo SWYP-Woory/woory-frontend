@@ -7,7 +7,13 @@ import IntroduceCalendarImage from '@/assets/images/introduce/introduce_calendar
 import IntroduceDailyImage from '@/assets/images/introduce/introduce_daily.png';
 import IntroduceFavoriteImage from '@/assets/images/introduce/introduce_favorite.png';
 import IntroduceMemberImage from '@/assets/images/introduce/introduce_member.png';
+import { Metadata } from 'next';
 import Image from 'next/image';
+
+export const metadata: Metadata = {
+  title: 'WOORY 소개',
+  description: 'WOORY 소개',
+};
 
 export default function IntroducePage() {
   return (
