@@ -1,5 +1,7 @@
 import { DOMAIN } from '@/app/_constants/domain';
+import { deleteCookies } from '@/app/_store/cookie/cookies';
 import { getSession } from '@/app/_store/cookie/session';
+import { redirect } from 'next/navigation';
 
 type Fetch = typeof fetch;
 
@@ -35,6 +37,11 @@ const fetchJSON = async (...params: Parameters<Fetch>) => {
       const { headers, body } = await makeHeader(init?.body);
       const fullInit = { ...init, headers, body };
       const response = await fetch(API_BASE_URL + url, fullInit);
+      if (response.status === 401) {
+        deleteCookies('AccessToken');
+        deleteCookies('groupId');
+        redirect('/');
+      }
       return response.json();
     };
     return await wrappedFetch();
