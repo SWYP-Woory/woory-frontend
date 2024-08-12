@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-size: 62.5%;
+
+  body {
+    @apply m-0 mx-auto max-w-[375px] max-h-screen;
+  }
+}
+
+@layer components {
+  .font-title {
+    @apply text-black font-700 text-22;
+  }
+  .font-body {
+    @apply text-black font-500 text-18;
+  }
+  .font-caption {
+    @apply text-black font-500 text-14;
+  }
+  .font-bodyBold {
+    @apply text-black font-700 text-18;
+  }
+  .header {
+    @apply flex sticky top-0 z-10 justify-center items-center bg-white w-[37.5rem] h-[4.8rem] border-bgGrey border-b;
+  }
+  .dayChip {
+    @apply flex items-center justify-center w-[4.8rem] h-[7.6rem] bg-white rounded-[0.6rem] font-body;
+  }
+  .modal-background {
+    @apply bg-modalBackground w-full h-full;
+  }
+  .setting-button {
+    @apply w-full h-[5.8rem] font-body text-start p-16;
+  }
+  .mypage-module {
+    @apply hover:bg-bgGrey active:bg-lightGrey;
+  }
+  .bottom-menu {
+    @apply flex justify-center items-center w-[8.8rem] h-full hover:bg-bgGrey active:bg-lightGrey rounded-[1.0rem];
+  }
+
+  /* 애니메이션 */
+  .fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  .fade-out {
+    animation: fadeOut 0.3s ease-in-out forwards;
+  }
+  .bottomSheet-slide-up {
+    animation: slideUp 0.3s ease-in-out;
+  }
+  .bottomSheet-slide-down {
+    animation: slideDown 0.2s ease-in-out forwards;
+  }
+  .toast-slide-up {
+    animation: slideUp 0.2s ease-out;
+  }
+  .toast-slide-down {
+    animation: slideDown 0.2s ease-out forwards;
+  }
+  .scale-up {
+    animation: scaleUp 0.3s ease-out;
+  }
+
+  /* svg */
+  .checkbox-button:hover svg path {
+    fill: #666666;
+  }
+  .send-button:active svg circle {
+    fill: #1b8981;
+  }
+  .delete-image-button:hover svg .imageDelete_svg__x_mark {
+    fill: #888888;
+  }
+  .delete-image-button:active svg .imageDelete_svg__x_mark {
+    fill: #666666;
+  }
+  .back-image-button:hover svg path {
+    fill: #eeeeee;
+  }
+  .back-image-button:active svg path {
+    fill: #dddddd;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+    transform-origin: left;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+    transform-origin: left;
+  }
+}
