@@ -1,6 +1,5 @@
 # WOORY | 우리 가족 일상 공유
-
-사진 들어가야함
+![woory_logo](https://github.com/user-attachments/assets/2d348367-7baf-4abe-ba60-692a7215fde5)
 
 **WOORY**는 가족 간에 보다 유쾌하고 부담 없지만 진정성 있는 소통을 지향하는 폐쇄형 SNS 입니다.
 
@@ -62,7 +61,6 @@
   <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white">
   <img src="https://img.shields.io/badge/tailwind-06B6D4?style=for-the-badge&logo=Tailwindcss&logoColor=white">
   <img src="https://img.shields.io/badge/zustand-36454F?style=for-the-badge&logo=zustand&logoColor=white">
+  <img src="https://img.shields.io/badge/-Storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white">
 </div>
 
-## 페이지별 기능
-- gif가 들어가야함
