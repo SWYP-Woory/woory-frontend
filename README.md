@@ -19,6 +19,55 @@
 
 <br>
 
+## 시연 영상
+### 로그인 & 가족 만들기
+![로그인   가족 만들기](https://github.com/user-attachments/assets/72490a0b-16bb-47b8-937c-809b010a9a84)
+
+<br>
+
+### 게시글 작성
+![게시글 작성 시연](https://github.com/user-attachments/assets/1719bac6-1876-4366-acb8-a6927035d35b)
+<br>
+
+### 게시글 수정
+![게시글 수정](https://github.com/user-attachments/assets/e1f38981-522e-4583-8a53-f144477df15e)
+
+<br>
+
+### 게시글 삭제
+![게시글 삭제](https://github.com/user-attachments/assets/4d9a00d2-aa3c-40f4-83c6-d1ca53c57390)
+
+<br>
+
+### 캘린더 , 데일리 뷰 변환
+![캘린더 뷰 및 데일리 뷰 전환](https://github.com/user-attachments/assets/9333ba61-a849-458a-b4b1-4ecf68a07dbf)
+
+<br>
+
+### 댓글 작성, 수정, 삭제
+![댓글 수정 및 삭제](https://github.com/user-attachments/assets/6ac7440d-4cbd-46d0-a7d1-afe1b97d4f41)
+
+<br>
+
+### 리액션
+![리액션](https://github.com/user-attachments/assets/75530218-b871-4b16-baa8-160b544b791a)
+
+<br>
+
+### 마음함
+![마음함 시연](https://github.com/user-attachments/assets/1d22dcb8-4278-4bc3-81a5-9e7033c019da)
+
+<br>
+
+### 멤버 내보내기
+![멤버 내보내기](https://github.com/user-attachments/assets/e1169002-193e-49e2-bb9d-dc39b740d989)
+
+<br>
+ 
+ ---
+
+<br>
+
 ## 팀원 소개
 <img width="647" alt="image" src="https://github.com/user-attachments/assets/6a95a9c8-7b63-4932-9fd5-73a61423d753">
 
@@ -37,6 +86,8 @@
   </tbody>
 </table>
 
+<br>
+
 ## 기술 스택
 
 **✅ 개발 환경**
@@ -45,6 +96,8 @@
 <img src="https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white">
 <img src="https://img.shields.io/badge/webstorm-143?style=for-the-badge&logo=webstorm&logoColor=white&color=black"/>
 </div>
+
+<br>
 
 **✅ 협업**
 
